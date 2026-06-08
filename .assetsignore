@@ -1,0 +1,7 @@
+build.py
+DEPLOY.md
+README.md
+.assetsignore
+.git
+.gitignore
+.wrangler

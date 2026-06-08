@@ -1,0 +1,13 @@
+<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1A1D24"></stop><stop offset="1" stop-color="#101218"></stop></linearGradient>
+    <radialGradient id="glow" cx="0.28" cy="0.2" r="0.9"><stop offset="0" stop-color="#EBB84B" stop-opacity="0.20"></stop><stop offset="0.6" stop-color="#EBB84B" stop-opacity="0"></stop></radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2D58A"></stop><stop offset="1" stop-color="#EBB84B"></stop></linearGradient>
+    <clipPath id="clip"><rect width="1024" height="1024" rx="228"></rect></clipPath>
+  </defs>
+  <g clip-path="url(#clip)">
+    <rect width="1024" height="1024" fill="url(#bg)"></rect>
+    <rect width="1024" height="1024" fill="url(#glow)"></rect>
+    <g transform="translate(312 252) scale(20)" fill="url(#gold)"><path d="M8 0h4v8h8v4h-8v14H8V12H0V8h8z"></path></g>
+  </g>
+</svg>
