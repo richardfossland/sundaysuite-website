@@ -34,6 +34,7 @@ IC = {
  "people":'<circle cx="9" cy="8" r="3.5"/><path d="M3 21c0-3.3 2.7-5 6-5s6 1.7 6 5"/><path d="M16 6a3 3 0 0 1 0 6M22 21c0-2.5-1.4-4-4-4.5"/>',
  "split":'<path d="M6 3v6a3 3 0 0 0 3 3h6a3 3 0 0 1 3 3v6"/><path d="M3 6h6M15 18h6"/>',
  "arrow":'<path d="M5 12h14M13 6l6 6-6 6"/>',
+ "arrowne":'<path d="M7 17L17 7M9 7h8v8"/>',
 }
 def sv(k, sw="2"):
     return f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{sw}" stroke-linecap="round" stroke-linejoin="round">{IC[k]}</svg>'
@@ -53,7 +54,7 @@ CH = {
    "status_head":"Status: in development","what_kicker":"What it does",
    "foot_tag":"A family of Norwegian-built tools for the modern church. Seven apps, one golden thread.",
    "foot_products":"Products","foot_suite":"The suite","foot_legal":"Legal","foot_terms":"Terms of Use","foot_privacy":"Privacy",
-   "foot_phil":"Philosophy","foot_together":"Better together","foot_contact":"Contact",
+   "foot_phil":"Philosophy","foot_together":"Better together","foot_toolbox":"Community tools","foot_contact":"Contact",
    "foot_bottom":"&copy; 2026 Sunday Suite &middot; Richard Fossland. Built in Norway.",
    "back_home":"&larr; Back to home","cta_back":"Back to the products"},
  "no":{"lang":"no","other":"EN","nav_products":"Produkter","nav_phil":"Filosofi","nav_together":"Sammen",
@@ -64,7 +65,7 @@ CH = {
    "status_head":"Status: under utvikling","what_kicker":"Hva det gjør",
    "foot_tag":"En familie av norskbygde verktøy for den moderne menigheten. Sju apper, én gylden tråd.",
    "foot_products":"Produkter","foot_suite":"Suiten","foot_legal":"Juridisk","foot_terms":"Vilkår for bruk","foot_privacy":"Personvern",
-   "foot_phil":"Filosofi","foot_together":"Bedre sammen","foot_contact":"Kontakt",
+   "foot_phil":"Filosofi","foot_together":"Bedre sammen","foot_toolbox":"Fellesskapsverktøy","foot_contact":"Kontakt",
    "foot_bottom":"&copy; 2026 Sunday Suite &middot; Richard Fossland. Bygd i Norge.",
    "back_home":"&larr; Tilbake til forsiden","cta_back":"Tilbake til produktene"},
 }
@@ -97,7 +98,7 @@ def footer(c, L):
       f'<div class="foot-brand"><div class="brand">{CROSS}<span><b>Sunday</b> Suite</span></div><p>{c["foot_tag"]}</p></div>'
       f'<div class="foot-cols">'
       f'<div class="foot-col"><h5>{c["foot_products"]}</h5>{prod}</div>'
-      f'<div class="foot-col"><h5>{c["foot_suite"]}</h5><a href="{L["home"]}#philosophy">{c["foot_phil"]}</a><a href="{L["home"]}#together">{c["foot_together"]}</a><a href="mailto:dev@sundaysuite.app">{c["foot_contact"]}</a></div>'
+      f'<div class="foot-col"><h5>{c["foot_suite"]}</h5><a href="{L["home"]}#philosophy">{c["foot_phil"]}</a><a href="{L["home"]}#together">{c["foot_together"]}</a><a href="{L["home"]}#toolbox">{c["foot_toolbox"]}</a><a href="mailto:dev@sundaysuite.app">{c["foot_contact"]}</a></div>'
       f'<div class="foot-col"><h5>{c["foot_legal"]}</h5><a href="{L["legal"]("terms")}">{c["foot_terms"]}</a><a href="{L["legal"]("privacy")}">{c["foot_privacy"]}</a></div>'
       f'</div></div>'
       f'<div class="foot-bottom"><div>{c["foot_bottom"]}</div><div><a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a> &middot; sundaysuite.app</div></div>'
@@ -143,6 +144,10 @@ HOME = {
             ("Stage","Song","every shown song is logged for TONO/CCLI"),("Plan","Paper","setlist becomes a printed program in one click"),
             ("Paper","Song","a scanned songbook becomes catalog entries"),("Rec","Paper","the sermon becomes a parish-magazine draft"),
             ("Rec","Edit","sermon + transcript ready for captioning")],
+   "tb_kicker":"Beyond the suite","tb_title":"A little toolbox for building community",
+   "tb_lead":"Alongside the seven core products, Sunday Suite tinkers with small, playful tools for church and classroom — games and group activities that help people meet, mix and connect. They run straight in the browser, nothing to install. A corner of the workshop that will keep growing.",
+   "tb_note":"More fellowship tools are on the workbench. Have an idea for one?",
+   "tb_open":"Open","tb_soon":"Coming soon",
    "cta_h":"Let's build a better Sunday together.",
    "cta_p":"Want to try the SundayRec beta, collaborate, or just hear where Sunday Suite is headed? We'd love to hear from you.",
    "cta_back":"Back to the products"},
@@ -170,6 +175,10 @@ HOME = {
             ("Stage","Song","hver vist sang loggføres for TONO/CCLI"),("Plan","Paper","setliste blir trykt program med ett klikk"),
             ("Paper","Song","skannet sangbok blir katalogoppføringer"),("Rec","Paper","preken blir menighetsblad-utkast"),
             ("Rec","Edit","preken + transkripsjon klar for teksting")],
+   "tb_kicker":"Utenfor suiten","tb_title":"En liten verktøykasse for å bygge fellesskap",
+   "tb_lead":"Ved siden av de sju kjerneproduktene snekrer Sunday Suite på små, lekne verktøy for menighet og klasserom — spill og gruppeaktiviteter som hjelper folk å møtes, bli kjent og knytte bånd. De kjører rett i nettleseren, uten installasjon. En krok av verkstedet som bare kommer til å vokse.",
+   "tb_note":"Flere fellesskapsverktøy ligger på arbeidsbenken. Har du en idé til ett?",
+   "tb_open":"Åpne","tb_soon":"Kommer snart",
    "cta_h":"La oss bygge en bedre søndag sammen.",
    "cta_p":"Vil du teste SundayRec-betaen, samarbeide eller bare høre mer om hvor Sunday Suite er på vei? Vi vil gjerne høre fra deg.",
    "cta_back":"Tilbake til produktene"},
@@ -199,6 +208,47 @@ CARD = {
    "en":("AI document &amp; PDF tool","Split songbooks, lay out service programs, parish magazines, large-print editions and forms — with professional Typst layout and OCR under the hood.",["Songbook split","Programs","Parish mag","Large print"]),
    "no":("AI-dokument &amp; PDF-verktøy","Splitt sangbøker, sett opp gudstjenesteprogrammer, lag menighetsblad, storskrift-utgaver og skjemaer — med profesjonell Typst-layout og OCR under panseret.",["Sangbok-splitt","Programmer","Menighetsblad","Storskrift"])},
 }
+
+# community-toolbox tools (live web apps on *.sundaysuite.app); soon=not yet deployed
+TOOLS = [
+ {"name":"SundayQuiz","accent":"quiz","url":"https://quiz.sundaysuite.app","live":True,
+  "en":("Icebreaker","Get-to-know-you bingo for a first gathering — everyone hunts for people who match the squares, and the room warms up fast."),
+  "no":("Bli kjent","Bli-kjent-bingo for første samling — alle jakter på folk som passer rutene, og rommet tiner opp på et blunk.")},
+ {"name":"SundayChess","accent":"chess","url":"https://chess.sundaysuite.app","live":True,
+  "en":("Classroom","A Kahoot-style chess tournament for the classroom — Swiss rounds and a knockout, run from one screen with a solo bot to practice against."),
+  "no":("Klasserom","Sjakkturnering i Kahoot-stil for klasserommet — sveitsiske runder og sluttspill, styrt fra én skjerm, med solo-bot å øve mot.")},
+ {"name":"SundayTurnering","accent":"turnering","url":"https://turnering.sundaysuite.app","live":True,
+  "en":("Sport &amp; play","A live tournament board for any sport or game — leagues, cups and playoffs, with a big-screen view and a phone in every hand."),
+  "no":("Idrett &amp; lek","Live turneringstavle for hvilken som helst idrett eller lek — serie, cup og sluttspill, med storskjerm-visning og en telefon i hver hånd.")},
+ {"name":"SundayMarket","accent":"market","url":"https://marked.sundaysuite.app","live":True,
+  "en":("Group game","A fast, friendly trading game for a group — buy low, sell high, dodge the famine and out-trade the table before the bell."),
+  "no":("Gruppespill","Et kjapt og vennlig handelsspill for en gruppe — kjøp billig, selg dyrt, unngå hungersnøden og slå bordet før det ringer ut.")},
+ {"name":"SundayHarvest","accent":"harvest","url":"https://harvest.sundaysuite.app","live":True,
+  "en":("Party game","Biblical social deduction — wheat among the tares (Matthew 13). No one gets eliminated; everyone plays to the final reveal."),
+  "no":("Selskapsspill","Bibelsk social deduction — hvete blant ugresset (Matteus 13). Ingen elimineres; alle er med helt til den store avsløringen.")},
+]
+
+def render_toolbox(lang, h, c, L):
+    arrow = sv("arrowne","2.5")
+    cards=""
+    for i,t in enumerate(TOOLS):
+        tag,desc=t[lang]; live=t["live"]; d=f' data-d="{(i%3)+1}"' if i%3 else ""
+        suffix=t["name"][6:]
+        inner=(f'<div class="tb-top"><span class="tb-dot"></span><span class="tb-tag">{tag}</span></div>'
+          f'<h4><span class="sunday">Sunday</span>{suffix}</h4><p>{desc}</p>')
+        if live:
+            cards+=(f'      <a class="tb-card reveal"{d} style="--c:var(--{t["accent"]})" href="{t["url"]}" '
+              f'target="_blank" rel="noopener">{inner}'
+              f'<span class="tb-go">{h["tb_open"]}{arrow}</span></a>\n')
+        else:
+            cards+=(f'      <div class="tb-card soon reveal"{d} style="--c:var(--{t["accent"]})">{inner}'
+              f'<span class="tb-go">{h["tb_soon"]}</span></div>\n')
+    return (f'''<section class="toolbox" id="toolbox"><div class="wrap">
+  <div class="section-head reveal"><div class="section-kicker">{h["tb_kicker"]}</div><h2 class="section-title">{h["tb_title"]}</h2><p class="section-lead">{h["tb_lead"]}</p></div>
+  <div class="tb-grid">
+{cards}  </div>
+  <p class="tb-note reveal">{h["tb_note"]} <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a></p>
+</div></section>''')
 
 def status_badge(st, c):
     if st=="beta": return f'<span class="status beta">{c["status_beta"].split(" ·")[0] if False else ("Beta" if c["lang"]=="en" else "Beta")}</span>'
@@ -254,6 +304,8 @@ def render_home(lang):
   <div class="section-head reveal"><div class="section-kicker">{h["mg_kicker"]}</div><h2 class="section-title">{h["mg_title"]}</h2><p class="section-lead">{h["mg_lead"]}</p></div>
   <div class="chips reveal" data-d="1">{chips}</div>
 </div></section>
+
+{render_toolbox(lang, h, c, L)}
 
 <section class="cta"><div class="glow"></div><div class="wrap cta-inner reveal">
   <svg class="bigcross cross" viewBox="0 0 20 26"><path d="M8 0h4v8h8v4h-8v14H8V12H0V8h8z"/></svg>
