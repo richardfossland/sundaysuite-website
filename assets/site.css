@@ -325,3 +325,7 @@ h1.app-title .sunday{ color:var(--txt-on-ink-dim); font-weight:500; }
 .app-legal-table td:first-child{ font-weight:700; white-space:nowrap; }
 
 @media(prefers-reduced-motion:reduce){ .reveal{ opacity:1; transform:none; transition:none; } html{ scroll-behavior:auto; } *{ animation:none!important; } }
+
+/* ---------- help ---------- */
+.legal-body .wrap.wide{ max-width:1100px; }
+.prose ol{ margin:12px 0 12px 26px; }

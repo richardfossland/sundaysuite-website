@@ -56,7 +56,8 @@ CH = {
    "foot_products":"Products","foot_suite":"The suite","foot_legal":"Legal","foot_terms":"Terms of Use","foot_privacy":"Privacy",
    "foot_phil":"Philosophy","foot_together":"Better together","foot_toolbox":"Community tools","foot_contact":"Contact",
    "foot_bottom":"&copy; 2026 Sunday Suite &middot; Richard Fossland. Built in Norway.",
-   "back_home":"&larr; Back to home","cta_back":"Back to the products"},
+   "back_home":"&larr; Back to home","cta_back":"Back to the products",
+   "nav_help":"Help","foot_help":"Help &amp; guides","back_help":"&larr; Back to Help"},
  "no":{"lang":"no","other":"EN","nav_products":"Produkter","nav_phil":"Filosofi","nav_together":"Sammen",
    "nav_cta":"Ta kontakt","all_products":"Alle produkter","keep_posted":"Hold meg oppdatert",
    "status_build":"Under utvikling","status_beta":"Beta · gratis","family_kicker":"Del av familien",
@@ -67,7 +68,8 @@ CH = {
    "foot_products":"Produkter","foot_suite":"Suiten","foot_legal":"Juridisk","foot_terms":"Vilkår for bruk","foot_privacy":"Personvern",
    "foot_phil":"Filosofi","foot_together":"Bedre sammen","foot_toolbox":"Fellesskapsverktøy","foot_contact":"Kontakt",
    "foot_bottom":"&copy; 2026 Sunday Suite &middot; Richard Fossland. Bygd i Norge.",
-   "back_home":"&larr; Tilbake til forsiden","cta_back":"Tilbake til produktene"},
+   "back_home":"&larr; Tilbake til forsiden","cta_back":"Tilbake til produktene",
+   "nav_help":"Hjelp","foot_help":"Hjelp &amp; veiledninger","back_help":"&larr; Tilbake til hjelpen"},
 }
 SLUGS = ["sundayrec","sundaystudio","sundaystage","sundayplan","sundaysong","sundayedit","sundaypaper"]
 PNAME = {"sundayrec":"SundayRec","sundaystudio":"SundayStudio","sundaystage":"SundayStage",
@@ -75,11 +77,13 @@ PNAME = {"sundayrec":"SundayRec","sundaystudio":"SundayStudio","sundaystage":"Su
 
 def links(lang, root):
     base = "" if lang=="en" else "no/"
+    helpdir = "help/" if lang=="en" else "no/hjelp/"
     return {
       "assets": root+"assets/",
       "home":   root+base+"index.html",
       "app":    lambda s: root+base+"apps/"+s+".html",
       "legal":  lambda n: root+base+"legal/"+n+".html",
+      "help":   lambda n="index": root+helpdir+n+".html",
     }
 
 def nav(c, L, other_href):
@@ -88,6 +92,7 @@ def nav(c, L, other_href):
       f'<nav class="links">'
       f'<a href="{L["home"]}#products" class="linkitem">{c["nav_products"]}</a>'
       f'<a href="{L["home"]}#philosophy" class="linkitem">{c["nav_phil"]}</a>'
+      f'<a href="{L["help"]("index")}" class="linkitem">{c["nav_help"]}</a>'
       f'<a href="{other_href}" class="lang-switch">{c["other"]}</a>'
       f'<a href="mailto:dev@sundaysuite.app" class="nav-cta">{c["nav_cta"]}</a>'
       f'</nav></div></header>')
@@ -98,7 +103,7 @@ def footer(c, L):
       f'<div class="foot-brand"><div class="brand">{CROSS}<span><b>Sunday</b> Suite</span></div><p>{c["foot_tag"]}</p></div>'
       f'<div class="foot-cols">'
       f'<div class="foot-col"><h5>{c["foot_products"]}</h5>{prod}</div>'
-      f'<div class="foot-col"><h5>{c["foot_suite"]}</h5><a href="{L["home"]}#philosophy">{c["foot_phil"]}</a><a href="{L["home"]}#together">{c["foot_together"]}</a><a href="{L["home"]}#toolbox">{c["foot_toolbox"]}</a><a href="mailto:dev@sundaysuite.app">{c["foot_contact"]}</a></div>'
+      f'<div class="foot-col"><h5>{c["foot_suite"]}</h5><a href="{L["home"]}#philosophy">{c["foot_phil"]}</a><a href="{L["home"]}#together">{c["foot_together"]}</a><a href="{L["home"]}#toolbox">{c["foot_toolbox"]}</a><a href="{L["help"]("index")}">{c["foot_help"]}</a><a href="mailto:dev@sundaysuite.app">{c["foot_contact"]}</a></div>'
       f'<div class="foot-col"><h5>{c["foot_legal"]}</h5><a href="{L["legal"]("terms")}">{c["foot_terms"]}</a><a href="{L["legal"]("privacy")}">{c["foot_privacy"]}</a></div>'
       f'</div></div>'
       f'<div class="foot-bottom"><div>{c["foot_bottom"]}</div><div><a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a> &middot; sundaysuite.app</div></div>'
@@ -838,6 +843,418 @@ def privacy_no():
     <p>Spørsmål om personvern? Kontakt behandlingsansvarlig Richard Fossland på <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a>.</p>'''
     return legal_shell("no","privacy","Personvernerklæring","Sist oppdatert: 8. juni 2026",note,toc(items),prose)
 
+# ===================================================================== HELP
+# Task-based help articles for non-technical volunteers and planners.
+# EN lives at /help/, NO at /no/hjelp/ — same English file slugs in both
+# languages so the language switch is a simple directory swap.
+HELP_ORDER = ["getting-started","volunteers-and-teams","plan-a-service","messages-and-magic-links",
+              "recording-with-sundayrec","licensing-ccli-tono","your-data-and-privacy","faq"]
+
+HELP_INDEX = {
+ "en":{"title":"Help & guides — Sunday Suite",
+   "meta":"Plain-language guides for Sunday Suite: get started with SundayPlan, invite volunteers, plan services, record with SundayRec, licensing, privacy and FAQ.",
+   "crumb":"Help","h1":"Help &amp; guides",
+   "lead":"Plain-language guides for church volunteers and planners — no technical background needed. Start at the top if you're new, or jump straight to the question you have.",
+   "read":"Read the guide",
+   "contact":"Can't find what you're looking for? We answer every email:"},
+ "no":{"title":"Hjelp & veiledninger — Sunday Suite",
+   "meta":"Lettleste veiledninger for Sunday Suite: kom i gang med SundayPlan, inviter frivillige, planlegg gudstjenester, ta opp med SundayRec, lisens, personvern og FAQ.",
+   "crumb":"Hjelp","h1":"Hjelp &amp; veiledninger",
+   "lead":"Lettleste veiledninger for frivillige og planleggere i menigheten — ingen teknisk bakgrunn nødvendig. Start øverst om du er ny, eller hopp rett til spørsmålet du har.",
+   "read":"Les veiledningen",
+   "contact":"Finner du ikke det du leter etter? Vi svarer på hver e-post:"},
+}
+
+HELPDOC = {
+ # ------------------------------------------------------------ 1 getting started
+ "getting-started":{"accent":"plan",
+  "en":{"tag":"SundayPlan","card":"Getting started with SundayPlan",
+    "desc":"Sign up at plan.sundaysuite.app, create your church and follow the five-step checklist — from blank screen to ready to plan.",
+    "h1":"Getting started with SundayPlan","sub":"From signing up to a church that is ready to plan — in one sitting.",
+    "note":"<strong>Good to know:</strong> SundayPlan is live in an open test phase and is free while testing. Small things may still move around in the interface — if a screen looks a little different from this guide, the idea is the same. Stuck? Email <a href=\"mailto:dev@sundaysuite.app\">dev@sundaysuite.app</a>.",
+    "body":'''    <p class="lead">SundayPlan is the planning tool in Sunday Suite: services, volunteers and messages in one place, with a fair auto-fill engine doing the heavy lifting. This guide takes you from a blank screen to a church that is ready to plan. You don't need any technical background — if you can use email, you can use SundayPlan.</p>
+    <h2>1. Create your account</h2>
+    <p>Open <a href="https://plan.sundaysuite.app" target="_blank" rel="noopener">plan.sundaysuite.app</a> in your browser and sign up with your email address. There is nothing to install and nothing to pay — SundayPlan runs entirely in the browser, on your computer, tablet or phone.</p>
+    <h2>2. Create your church</h2>
+    <p>The first time you sign in, you create your church. Give it a name and the basics — everything can be changed later, and details such as licence numbers can wait (see <a href="licensing-ccli-tono.html">Licensing: CCLI &amp; TONO</a>). You become the church's first planner, and your church's data is visible only to your church.</p>
+    <h2>3. Follow the five-step checklist</h2>
+    <p>On the start page, a five-step checklist walks you through the essentials in a sensible order. In short, you will:</p>
+    <ol>
+      <li><strong>Add your people</strong> — the volunteers who serve, with a name and an email address or mobile number. That's all SundayPlan needs.</li>
+      <li><strong>Organise teams</strong> — sound, projection, welcome, kids' church, coffee. People can belong to more than one team.</li>
+      <li><strong>Plan your first service</strong> — a date, a time and the roles that need filling.</li>
+      <li><strong>Try auto-fill</strong> — let the engine suggest a fair rota, then adjust it by hand.</li>
+      <li><strong>Send your first message</strong> — invitations go out by email (and SMS, as it rolls out), and volunteers answer with one tap.</li>
+    </ol>
+    <p>You can do the steps at your own pace — nothing is sent to anyone until you say so.</p>
+    <h2>4. Invite other planners</h2>
+    <p>You don't have to run everything alone. Other staff or trusted volunteers can be given planner access so several people can build and send plans. Ordinary volunteers, on the other hand, never need an account at all — more on that in <a href="volunteers-and-teams.html">Inviting volunteers &amp; teams</a>.</p>
+    <h2>Where to go next</h2>
+    <ul>
+      <li><a href="volunteers-and-teams.html">Inviting volunteers &amp; teams</a> — people, teams and roles.</li>
+      <li><a href="plan-a-service.html">Planning a service &amp; auto-fill</a> — from empty plan to fully staffed.</li>
+      <li><a href="messages-and-magic-links.html">Messages &amp; magic links</a> — how volunteers answer without an account.</li>
+      <li><a href="your-data-and-privacy.html">Your data &amp; privacy</a> — export, erasure and what stays where.</li>
+    </ul>'''},
+  "no":{"tag":"SundayPlan","card":"Kom i gang med SundayPlan",
+    "desc":"Registrer deg på plan.sundaysuite.app, opprett menigheten din og følg fem-stegs-sjekklisten — fra blank skjerm til klar til å planlegge.",
+    "h1":"Kom i gang med SundayPlan","sub":"Fra registrering til en menighet som er klar til å planlegge — i én økt.",
+    "note":"<strong>Greit å vite:</strong> SundayPlan er ute i en åpen testfase og er gratis så lenge testingen pågår. Småting kan fortsatt flytte på seg i grensesnittet — ser en skjerm litt annerledes ut enn i denne veiledningen, er tankegangen den samme. Står du fast? Send en e-post til <a href=\"mailto:dev@sundaysuite.app\">dev@sundaysuite.app</a>.",
+    "body":'''    <p class="lead">SundayPlan er planleggingsverktøyet i Sunday Suite: gudstjenester, frivillige og meldinger på ett sted, med en rettferdig auto-fyll-motor som tar tungløftet. Denne veiledningen tar deg fra blank skjerm til en menighet som er klar til å planlegge. Du trenger ingen teknisk bakgrunn — kan du bruke e-post, kan du bruke SundayPlan.</p>
+    <h2>1. Opprett kontoen din</h2>
+    <p>Åpne <a href="https://plan.sundaysuite.app" target="_blank" rel="noopener">plan.sundaysuite.app</a> i nettleseren og registrer deg med e-postadressen din. Det er ingenting å installere og ingenting å betale — SundayPlan kjører helt i nettleseren, på PC, nettbrett eller mobil.</p>
+    <h2>2. Opprett menigheten din</h2>
+    <p>Første gang du logger inn, oppretter du menigheten din. Gi den et navn og det mest grunnleggende — alt kan endres senere, og detaljer som lisensnumre kan vente (se <a href="licensing-ccli-tono.html">Lisens: CCLI &amp; TONO</a>). Du blir menighetens første planlegger, og menighetens data er synlige bare for din menighet.</p>
+    <h2>3. Følg fem-stegs-sjekklisten</h2>
+    <p>På startsiden tar en sjekkliste med fem steg deg gjennom det viktigste i fornuftig rekkefølge. Kort fortalt skal du:</p>
+    <ol>
+      <li><strong>Legge inn folkene dine</strong> — de frivillige som tjener, med navn og e-postadresse eller mobilnummer. Mer trenger ikke SundayPlan.</li>
+      <li><strong>Organisere lag</strong> — lyd, projeksjon, velkomst, søndagsskole, kaffe. Folk kan høre til flere lag.</li>
+      <li><strong>Planlegge din første gudstjeneste</strong> — en dato, et klokkeslett og rollene som skal fylles.</li>
+      <li><strong>Prøve auto-fyll</strong> — la motoren foreslå en rettferdig turnus, og juster den for hånd.</li>
+      <li><strong>Sende din første melding</strong> — forespørslene går ut på e-post (og SMS, etter hvert som det rulles ut), og de frivillige svarer med ett trykk.</li>
+    </ol>
+    <p>Ta stegene i ditt eget tempo — ingenting sendes til noen før du sier fra.</p>
+    <h2>4. Inviter flere planleggere</h2>
+    <p>Du trenger ikke drive alt alene. Andre ansatte eller betrodde frivillige kan få planlegger-tilgang, slik at flere kan bygge og sende planer. Vanlige frivillige trenger derimot aldri noen konto — mer om det i <a href="volunteers-and-teams.html">Inviter frivillige &amp; lag</a>.</p>
+    <h2>Veien videre</h2>
+    <ul>
+      <li><a href="volunteers-and-teams.html">Inviter frivillige &amp; lag</a> — folk, lag og roller.</li>
+      <li><a href="plan-a-service.html">Planlegg en gudstjeneste &amp; auto-fyll</a> — fra tom plan til fullsatt.</li>
+      <li><a href="messages-and-magic-links.html">Meldinger &amp; magiske lenker</a> — slik svarer frivillige uten konto.</li>
+      <li><a href="your-data-and-privacy.html">Dine data &amp; personvern</a> — eksport, sletting og hva som blir hvor.</li>
+    </ul>'''}},
+ # ------------------------------------------------------------ 2 volunteers & teams
+ "volunteers-and-teams":{"accent":"plan",
+  "en":{"tag":"SundayPlan","card":"Inviting volunteers &amp; teams",
+    "desc":"Add people, organise them into teams and roles — and why your volunteers never need to create an account.",
+    "h1":"Inviting volunteers &amp; teams","sub":"People, teams and roles in SundayPlan — and why volunteers never need an account.",
+    "note":None,
+    "body":'''    <p class="lead">Volunteers are the heart of every church — and the last thing they need is another username and password. In SundayPlan, the planner keeps the register, and volunteers simply answer requests from a link. Here is how to set it up.</p>
+    <h2>Add your people</h2>
+    <p>Start by adding the people who serve. For each person you only need a name and a way to reach them — an email address, a mobile number, or both. You can always add more detail later, but you never have to. A good rule: store only what you actually need (see <a href="your-data-and-privacy.html">Your data &amp; privacy</a>).</p>
+    <h2>Organise teams</h2>
+    <p>Teams mirror how your church already works: sound, projection, welcome, kids' church, worship, coffee. Create the teams you have, and place people in them — one person can happily belong to several. Teams make planning faster, because each service role draws from the right group of people.</p>
+    <h2>Roles and skills</h2>
+    <p>Within a team, people often do different things — one person can mix sound, another can only run the livestream. Mark what each person can do, and the auto-fill engine will only suggest people for roles they can actually fill. It also uses this to spread the load fairly over time (see <a href="plan-a-service.html">Planning a service &amp; auto-fill</a>).</p>
+    <h2>Volunteers never need an account</h2>
+    <p>This is the part volunteers love. When you send a request, each person gets their own personal link by email — and by SMS, as SMS sending rolls out. They tap the link, see what they're being asked to do, and answer <strong>accept</strong> or <strong>decline</strong>. No app to install, no account to create, no password to forget. How that works in detail is covered in <a href="messages-and-magic-links.html">Messages &amp; magic links</a>.</p>
+    <h2>Who sees what?</h2>
+    <p>Only your church's planners see the people register. Volunteers only ever see their own requests. Your church's data is separated from every other church's with row-level security in the database — and you can export or erase a person whenever you need to.</p>'''},
+  "no":{"tag":"SundayPlan","card":"Inviter frivillige &amp; lag",
+    "desc":"Legg inn folk, organiser dem i lag og roller — og hvorfor de frivillige dine aldri trenger å opprette en konto.",
+    "h1":"Inviter frivillige &amp; lag","sub":"Folk, lag og roller i SundayPlan — og hvorfor frivillige aldri trenger konto.",
+    "note":None,
+    "body":'''    <p class="lead">De frivillige er hjertet i hver menighet — og det siste de trenger, er enda et brukernavn og passord. I SundayPlan er det planleggeren som holder registeret, og de frivillige svarer på forespørsler rett fra en lenke. Slik setter du det opp.</p>
+    <h2>Legg inn folkene dine</h2>
+    <p>Begynn med å legge inn dem som tjener. For hver person trenger du bare et navn og en måte å nå dem på — en e-postadresse, et mobilnummer, eller begge deler. Du kan alltid legge til mer senere, men du må aldri. En god regel: lagre bare det du faktisk trenger (se <a href="your-data-and-privacy.html">Dine data &amp; personvern</a>).</p>
+    <h2>Organiser lag</h2>
+    <p>Lagene speiler slik menigheten allerede fungerer: lyd, projeksjon, velkomst, søndagsskole, lovsang, kaffe. Opprett lagene dere har, og plasser folk i dem — én person kan fint høre til flere. Lag gjør planleggingen raskere, fordi hver rolle i gudstjenesten henter fra riktig gruppe mennesker.</p>
+    <h2>Roller og kompetanse</h2>
+    <p>Innenfor et lag gjør folk ofte ulike ting — én kan mikse lyd, en annen kan bare kjøre strømmen. Merk av hva hver person kan, så foreslår auto-fyll-motoren bare folk til roller de faktisk kan fylle. Den bruker det også til å fordele belastningen rettferdig over tid (se <a href="plan-a-service.html">Planlegg en gudstjeneste &amp; auto-fyll</a>).</p>
+    <h2>Frivillige trenger aldri konto</h2>
+    <p>Dette er delen de frivillige elsker. Når du sender en forespørsel, får hver person sin egen personlige lenke på e-post — og på SMS, etter hvert som SMS-utsending rulles ut. De trykker på lenken, ser hva de blir spurt om, og svarer <strong>ja</strong> eller <strong>nei</strong>. Ingen app å installere, ingen konto å opprette, ikke noe passord å glemme. Hvordan det fungerer i detalj, står i <a href="messages-and-magic-links.html">Meldinger &amp; magiske lenker</a>.</p>
+    <h2>Hvem ser hva?</h2>
+    <p>Bare menighetens planleggere ser personregisteret. Frivillige ser aldri annet enn sine egne forespørsler. Menighetens data er skilt fra alle andre menigheters med rad-nivå sikkerhet i databasen — og du kan eksportere eller slette en person når du måtte trenge det.</p>'''}},
+ # ------------------------------------------------------------ 3 plan a service
+ "plan-a-service":{"accent":"plan",
+  "en":{"tag":"SundayPlan","card":"Planning a service &amp; auto-fill",
+    "desc":"Create the service, add the roles you need, let auto-fill suggest a fair rota — then review conflicts and adjust by hand.",
+    "h1":"Planning a service &amp; auto-fill","sub":"From an empty plan to a fully staffed service — fairly distributed.",
+    "note":None,
+    "body":'''    <p class="lead">This is where SundayPlan earns its keep: instead of a spreadsheet and a round of phone calls, you describe the service once and let the auto-fill engine suggest who serves. You stay in charge — the engine suggests, you decide.</p>
+    <h2>1. Create the service</h2>
+    <p>Create a new service with a date, a time and a name — "Sunday service 11:00", "Christmas Eve", whatever fits. Most churches plan several weeks at a time; that's fine, each service is its own plan.</p>
+    <h2>2. Add the roles you need</h2>
+    <p>List what needs to be staffed: sound, projection, two on welcome, kids' church, and so on. The roles draw from the teams and skills you set up earlier (see <a href="volunteers-and-teams.html">Inviting volunteers &amp; teams</a>), so the right people are considered for the right jobs.</p>
+    <h2>3. Let auto-fill suggest the rota</h2>
+    <p>Run auto-fill, and the engine fills the open roles with a suggestion. It isn't random — it weighs several things at once:</p>
+    <ul>
+      <li><strong>Skill</strong> — only people who can do the job are suggested.</li>
+      <li><strong>Fair rotation</strong> — the same people aren't picked every single week.</li>
+      <li><strong>How often people serve</strong> — so no one quietly ends up carrying everything.</li>
+      <li><strong>Burnout</strong> — heavy stretches are spread out over time.</li>
+      <li><strong>Fixed pairs</strong> — people who serve together (say, a married couple on welcome) stay together.</li>
+    </ul>
+    <h2>4. Review conflicts and adjust</h2>
+    <p>Look the suggestion over before anything goes out. Watch for double-bookings, people who have said they're away, and anyone serving more often than feels right. Swap people in and out by hand — the engine's suggestion is a starting point, not a verdict. Nothing is sent to any volunteer until you choose to send it.</p>
+    <h2>5. Send it out</h2>
+    <p>Happy with the plan? Send the requests, and every volunteer gets a personal link to answer with one tap — no account needed. That whole flow is covered in <a href="messages-and-magic-links.html">Messages &amp; magic links</a>.</p>'''},
+  "no":{"tag":"SundayPlan","card":"Planlegg en gudstjeneste &amp; auto-fyll",
+    "desc":"Opprett gudstjenesten, legg inn rollene du trenger, la auto-fyll foreslå en rettferdig turnus — og se over konflikter før du justerer for hånd.",
+    "h1":"Planlegg en gudstjeneste &amp; auto-fyll","sub":"Fra tom plan til fullsatt gudstjeneste — rettferdig fordelt.",
+    "note":None,
+    "body":'''    <p class="lead">Det er her SundayPlan gjør nytte for seg: i stedet for regneark og telefonrunder beskriver du gudstjenesten én gang og lar auto-fyll-motoren foreslå hvem som tjener. Du har fortsatt styringen — motoren foreslår, du bestemmer.</p>
+    <h2>1. Opprett gudstjenesten</h2>
+    <p>Opprett en ny gudstjeneste med dato, klokkeslett og navn — «Gudstjeneste 11:00», «Julaften», det som passer. De fleste menigheter planlegger flere uker om gangen; det går fint, hver gudstjeneste er sin egen plan.</p>
+    <h2>2. Legg inn rollene du trenger</h2>
+    <p>List opp det som skal bemannes: lyd, projeksjon, to på velkomst, søndagsskole, og så videre. Rollene henter fra lagene og kompetansen du satte opp tidligere (se <a href="volunteers-and-teams.html">Inviter frivillige &amp; lag</a>), slik at riktige folk vurderes til riktige oppgaver.</p>
+    <h2>3. La auto-fyll foreslå turnusen</h2>
+    <p>Kjør auto-fyll, så fyller motoren de åpne rollene med et forslag. Det er ikke tilfeldig — den veier flere ting samtidig:</p>
+    <ul>
+      <li><strong>Kompetanse</strong> — bare folk som kan oppgaven, blir foreslått.</li>
+      <li><strong>Rettferdig rotasjon</strong> — de samme menneskene plukkes ikke hver eneste uke.</li>
+      <li><strong>Hvor ofte folk tjener</strong> — så ingen i det stille ender med å bære alt.</li>
+      <li><strong>Utbrenthet</strong> — tunge perioder spres ut over tid.</li>
+      <li><strong>Faste par</strong> — folk som tjener sammen (for eksempel et ektepar på velkomst) holdes sammen.</li>
+    </ul>
+    <h2>4. Se over konflikter og juster</h2>
+    <p>Se over forslaget før noe sendes ut. Se etter dobbeltbookinger, folk som har meldt at de er bortreist, og noen som tjener oftere enn det kjennes riktig. Bytt folk inn og ut for hånd — motorens forslag er et utgangspunkt, ikke en dom. Ingenting sendes til noen frivillig før du velger å sende.</p>
+    <h2>5. Send den ut</h2>
+    <p>Fornøyd med planen? Send forespørslene, så får hver frivillig en personlig lenke og svarer med ett trykk — uten konto. Hele den flyten er beskrevet i <a href="messages-and-magic-links.html">Meldinger &amp; magiske lenker</a>.</p>'''}},
+ # ------------------------------------------------------------ 4 messages & magic links
+ "messages-and-magic-links":{"accent":"plan",
+  "en":{"tag":"SundayPlan","card":"Messages &amp; magic links",
+    "desc":"Send requests by email and SMS, and let volunteers accept or decline with one tap — no account, no app, no password.",
+    "h1":"Messages &amp; magic links","sub":"How requests reach your volunteers — and how they answer with one tap.",
+    "note":"<strong>About SMS:</strong> email sending works for everyone today. SMS sending is being rolled out gradually during the test phase — if it isn't switched on for your church yet, email does exactly the same job in the meantime.",
+    "body":'''    <p class="lead">Once a plan is ready, SundayPlan handles the part that used to take all evening: asking everyone. Each volunteer gets a personal "magic link" — a link that is theirs alone, where they can answer without logging in to anything.</p>
+    <h2>Compose and send</h2>
+    <p>From a finished plan, you send requests to the people in it. You can write a short personal message to go along with the request — "Thanks for serving this month!" goes a long way. Messages go out by email, and by SMS as SMS sending rolls out.</p>
+    <h2>What the volunteer sees</h2>
+    <p>The volunteer gets a message with their own link. They tap it and see exactly what they're being asked: which service, which date, which role. Two buttons: <strong>accept</strong> or <strong>decline</strong>. That's the whole experience — no app to install, no account to create, no password. It works on any phone or computer with a browser.</p>
+    <h2>Watching the answers come in</h2>
+    <p>As volunteers answer, the plan fills in. You see at a glance who has accepted, who has declined and who hasn't answered yet — so the Sunday-morning surprise becomes a Tuesday-evening adjustment instead.</p>
+    <h2>Declines and swaps</h2>
+    <p>If someone declines, the role opens up again and you can ask the next person — auto-fill can suggest who. SundayPlan is also built for swaps, so that a volunteer who discovers a conflict can pass the task to someone else with the planner kept in the loop, rather than everything going through phone calls.</p>
+    <h2>Tips for happy volunteers</h2>
+    <ul>
+      <li>Keep contact details fresh — a magic link can only arrive if the email address or mobile number is right.</li>
+      <li>Send requests well in advance, and keep the message short and warm.</li>
+      <li>One question per message beats five — people answer faster when the ask is clear.</li>
+    </ul>'''},
+  "no":{"tag":"SundayPlan","card":"Meldinger &amp; magiske lenker",
+    "desc":"Send forespørsler på e-post og SMS, og la de frivillige svare ja eller nei med ett trykk — uten konto, app eller passord.",
+    "h1":"Meldinger &amp; magiske lenker","sub":"Slik når forespørslene de frivillige — og slik svarer de med ett trykk.",
+    "note":"<strong>Om SMS:</strong> e-postutsending fungerer for alle i dag. SMS-utsending rulles ut gradvis i testfasen — er den ikke skrudd på for din menighet ennå, gjør e-post nøyaktig samme jobb i mellomtiden.",
+    "body":'''    <p class="lead">Når en plan er klar, tar SundayPlan seg av delen som før tok hele kvelden: å spørre alle. Hver frivillig får en personlig «magisk lenke» — en lenke som er deres alene, der de kan svare uten å logge inn på noe som helst.</p>
+    <h2>Skriv og send</h2>
+    <p>Fra en ferdig plan sender du forespørsler til folkene i den. Du kan skrive en kort personlig melding som følger med — «Takk for at du tjener denne måneden!» kommer man langt med. Meldingene går ut på e-post, og på SMS etter hvert som SMS-utsending rulles ut.</p>
+    <h2>Hva den frivillige ser</h2>
+    <p>Den frivillige får en melding med sin egen lenke. De trykker på den og ser nøyaktig hva de blir spurt om: hvilken gudstjeneste, hvilken dato, hvilken rolle. To knapper: <strong>ja</strong> eller <strong>nei</strong>. Det er hele opplevelsen — ingen app å installere, ingen konto å opprette, ikke noe passord. Det fungerer på alle telefoner og datamaskiner med nettleser.</p>
+    <h2>Se svarene komme inn</h2>
+    <p>Etter hvert som de frivillige svarer, fylles planen inn. Du ser med ett blikk hvem som har sagt ja, hvem som har sagt nei og hvem som ikke har svart ennå — så søndagsmorgen-overraskelsen blir en tirsdagskvelds-justering i stedet.</p>
+    <h2>Nei-svar og bytter</h2>
+    <p>Sier noen nei, åpner rollen seg igjen, og du kan spørre nestemann — auto-fyll kan foreslå hvem. SundayPlan er også bygd for bytter, slik at en frivillig som oppdager en kollisjon kan gi oppgaven videre til en annen med planleggeren i loopen, i stedet for at alt går via telefonrunder.</p>
+    <h2>Tips for fornøyde frivillige</h2>
+    <ul>
+      <li>Hold kontaktinfoen fersk — en magisk lenke kommer bare fram hvis e-postadressen eller mobilnummeret stemmer.</li>
+      <li>Send forespørsler i god tid, og hold meldingen kort og varm.</li>
+      <li>Ett spørsmål per melding slår fem — folk svarer raskere når spørsmålet er tydelig.</li>
+    </ul>'''}},
+ # ------------------------------------------------------------ 5 recording with sundayrec
+ "recording-with-sundayrec":{"accent":"rec",
+  "en":{"tag":"SundayRec","card":"Recording with SundayRec",
+    "desc":"Download the free beta for Mac or Windows, make your first recording and find the file afterwards — in five minutes.",
+    "h1":"Recording with SundayRec","sub":"Download the beta, record your first service and find the file afterwards.",
+    "note":"<strong>Beta:</strong> SundayRec is free and works today, but it is still in beta. Do a test recording before you rely on it for a service that matters — press record, talk for a minute, stop, and check the file.",
+    "body":'''    <p class="lead">SundayRec is the desktop app that records the service — audio and video — on your own machine. No subscription, no account, and your files never leave the computer unless you choose to upload them. Here is the five-minute version.</p>
+    <h2>1. Download and install</h2>
+    <p>Download the latest version from the <a href="https://github.com/richardfossland/sundayrec/releases" target="_blank" rel="noopener">SundayRec releases page on GitHub</a> — pick the Mac or Windows installer at the top of the newest release. Install it like any other program. The <a href="@@RECAPP@@">SundayRec product page</a> on this site is the app's home; there's no separate website.</p>
+    <h2>2. Make your first recording</h2>
+    <p>Open SundayRec and check that the right microphone (and camera, if you record video) is selected in the settings. Then press <strong>record</strong>. When the service is over, press <strong>stop</strong>. That's genuinely it — scheduling, transcription, streaming and podcast publishing exist too, but plain record→stop is the place to start.</p>
+    <h2>3. Find your file</h2>
+    <p>Finished recordings appear in the app's history list, and from there you can jump straight to the file on disk. The recordings are ordinary audio and video files — you can play them, copy them to a USB stick, or hand them to whoever edits, like any other file.</p>
+    <h2>Good habits</h2>
+    <ul>
+      <li><strong>Test first.</strong> A one-minute test recording before the real thing catches a wrong microphone while it's still fixable.</li>
+      <li><strong>Check disk space.</strong> Video takes room; SundayRec shows you how much space is free.</li>
+      <li><strong>Let it warm up.</strong> Start the machine a little before the service rather than thirty seconds before.</li>
+    </ul>
+    <h2>Going further</h2>
+    <p>When record→stop feels comfortable, SundayRec can do much more: scheduled recordings that start by themselves, local AI transcription of the sermon, live streaming and podcast publishing. Read more on the <a href="@@RECAPP@@">SundayRec product page</a>, or just explore the settings — and email <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a> if you get stuck.</p>'''},
+  "no":{"tag":"SundayRec","card":"Ta opp med SundayRec",
+    "desc":"Last ned gratis-betaen for Mac eller Windows, gjør ditt første opptak og finn fila etterpå — på fem minutter.",
+    "h1":"Ta opp med SundayRec","sub":"Last ned betaen, ta opp din første gudstjeneste og finn fila etterpå.",
+    "note":"<strong>Beta:</strong> SundayRec er gratis og fungerer i dag, men er fortsatt i beta. Gjør et testopptak før du stoler på den til en gudstjeneste som betyr noe — trykk opptak, snakk i ett minutt, stopp, og sjekk fila.",
+    "body":'''    <p class="lead">SundayRec er skrivebordsappen som tar opp gudstjenesten — lyd og video — på din egen maskin. Ingen abonnement, ingen konto, og filene dine forlater aldri datamaskinen med mindre du selv velger å laste dem opp. Her er fem-minutters-versjonen.</p>
+    <h2>1. Last ned og installer</h2>
+    <p>Last ned nyeste versjon fra <a href="https://github.com/richardfossland/sundayrec/releases" target="_blank" rel="noopener">SundayRec sin utgivelsesside på GitHub</a> — velg Mac- eller Windows-installasjonen øverst i nyeste utgivelse. Installer som et hvilket som helst annet program. <a href="@@RECAPP@@">Produktsiden for SundayRec</a> her på nettstedet er appens hjem; det finnes ingen egen nettside.</p>
+    <h2>2. Gjør ditt første opptak</h2>
+    <p>Åpne SundayRec og sjekk at riktig mikrofon (og kamera, hvis du tar opp video) er valgt i innstillingene. Trykk så <strong>opptak</strong>. Når gudstjenesten er over, trykker du <strong>stopp</strong>. Det er faktisk alt — tidsplan, transkripsjon, strømming og podkast-publisering finnes også, men rent opptak→stopp er stedet å begynne.</p>
+    <h2>3. Finn fila di</h2>
+    <p>Ferdige opptak dukker opp i appens historikkliste, og derfra kan du hoppe rett til fila på disken. Opptakene er helt vanlige lyd- og videofiler — du kan spille dem av, kopiere dem til en minnepinne eller gi dem til den som redigerer, som en hvilken som helst annen fil.</p>
+    <h2>Gode vaner</h2>
+    <ul>
+      <li><strong>Test først.</strong> Et ettminutts testopptak før alvoret avslører feil mikrofon mens det fortsatt kan fikses.</li>
+      <li><strong>Sjekk diskplass.</strong> Video tar plass; SundayRec viser deg hvor mye som er ledig.</li>
+      <li><strong>La den varme opp.</strong> Start maskinen litt før gudstjenesten i stedet for tretti sekunder før.</li>
+    </ul>
+    <h2>Veien videre</h2>
+    <p>Når opptak→stopp kjennes trygt, kan SundayRec mye mer: planlagte opptak som starter av seg selv, lokal AI-transkripsjon av talen, live-strømming og podkast-publisering. Les mer på <a href="@@RECAPP@@">produktsiden for SundayRec</a>, eller bare utforsk innstillingene — og send en e-post til <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a> om du står fast.</p>'''}},
+ # ------------------------------------------------------------ 6 licensing
+ "licensing-ccli-tono":{"accent":"song",
+  "en":{"tag":"Licensing","card":"Licensing: CCLI &amp; TONO",
+    "desc":"What Sunday Suite keeps track of for your music licences, where to enter your numbers — and why TONO support matters for Nordic churches.",
+    "h1":"Licensing: CCLI &amp; TONO","sub":"What the suite tracks, where your licence numbers go — and why TONO matters.",
+    "note":"<strong>One honest line:</strong> Sunday Suite helps you keep licence information in order, but the responsibility for correct reporting to TONO and CCLI always stays with the church. The tools make it easier — they don't take over the obligation.",
+    "body":'''    <p class="lead">Most churches sing and stream songs that are protected by copyright, and cover this through licences — internationally often <strong>CCLI</strong>, and in Norway and the Nordics through <strong>TONO</strong>. Sunday Suite is built with both in mind from day one, with TONO as a first-class citizen rather than an afterthought.</p>
+    <h2>What Sunday Suite keeps track of</h2>
+    <p>In SundayPlan, your church's licence information lives as proper, first-class fields: TONO customer ID and licence status, your denomination, and your CCLI licence number. That means the suite always knows whether your licences are in order — instead of the numbers living in someone's old email.</p>
+    <h2>Where to enter your numbers</h2>
+    <p>You enter the licence details in SundayPlan, under your church's settings. Dig out your TONO customer ID and your CCLI licence number (they're on your agreements or invoices), type them in once, and you're done. If you don't have the numbers handy, everything else in SundayPlan works fine in the meantime — you can add them whenever.</p>
+    <h2>Why TONO matters — and why we emphasise it</h2>
+    <p>The big international church tools are built around American CCLI, and TONO — which is what actually applies for Norwegian rights holders — is usually missing entirely. Sunday Suite is designed the other way around: TONO fields from the first row of the database, including the distinction between songs used <em>in the room</em> and songs that were <em>streamed</em>, which TONO treats as a separate royalty pool.</p>
+    <h2>What works today, and what is coming</h2>
+    <p>Today, the suite stores and tracks your licence information in SundayPlan. The bigger vision — every song shown on screen automatically logged into a ready-to-send TONO and CCLI usage report — belongs to <a href="@@SONGAPP@@">SundaySong</a> and SundayStage, which are still in development. We'd rather tell you that straight than promise it early. If licensing is what your church needs most, say so: <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a>.</p>'''},
+  "no":{"tag":"Lisens","card":"Lisens: CCLI &amp; TONO",
+    "desc":"Hva Sunday Suite holder styr på for musikklisensene dine, hvor du legger inn numrene — og hvorfor TONO-støtte betyr noe for nordiske menigheter.",
+    "h1":"Lisens: CCLI &amp; TONO","sub":"Hva suiten holder styr på, hvor lisensnumrene dine skal — og hvorfor TONO betyr noe.",
+    "note":"<strong>Én ærlig linje:</strong> Sunday Suite hjelper deg å holde lisensinformasjonen i orden, men ansvaret for riktig rapportering til TONO og CCLI ligger alltid hos menigheten. Verktøyene gjør det enklere — de overtar ikke forpliktelsen.",
+    "body":'''    <p class="lead">De fleste menigheter synger og strømmer sanger som er beskyttet av opphavsrett, og dekker dette gjennom lisenser — internasjonalt ofte <strong>CCLI</strong>, og i Norge og Norden gjennom <strong>TONO</strong>. Sunday Suite er bygd med begge i tankene fra dag én, med TONO i førsteklasse i stedet for som en ettertanke.</p>
+    <h2>Hva Sunday Suite holder styr på</h2>
+    <p>I SundayPlan ligger menighetens lisensinformasjon som ordentlige, førsteklasses felt: TONO-kunde-ID og lisensstatus, kirkesamfunn, og CCLI-lisensnummeret deres. Det betyr at suiten alltid vet om lisensene er i orden — i stedet for at numrene bor i en gammel e-post hos noen.</p>
+    <h2>Hvor du legger inn numrene</h2>
+    <p>Lisensdetaljene legger du inn i SundayPlan, under menighetens innstillinger. Finn fram TONO-kunde-ID-en og CCLI-lisensnummeret (de står på avtalene eller fakturaene deres), skriv dem inn én gang, og du er ferdig. Har du ikke numrene for hånden, fungerer alt annet i SundayPlan fint i mellomtiden — du kan legge dem til når som helst.</p>
+    <h2>Hvorfor TONO betyr noe — og hvorfor vi legger vekt på det</h2>
+    <p>De store internasjonale menighetsverktøyene er bygd rundt amerikansk CCLI, og TONO — som er det som faktisk gjelder for norske rettighetshavere — mangler som regel helt. Sunday Suite er designet motsatt vei: TONO-felt fra første rad i databasen, inkludert skillet mellom sanger brukt <em>i rommet</em> og sanger som ble <em>strømmet</em>, som TONO behandler som en egen royalty-pott.</p>
+    <h2>Hva som virker i dag, og hva som kommer</h2>
+    <p>I dag lagrer og holder suiten styr på lisensinformasjonen din i SundayPlan. Den større visjonen — at hver sang som vises på skjermen automatisk loggføres i en ferdig TONO- og CCLI-rapport — hører til <a href="@@SONGAPP@@">SundaySong</a> og SundayStage, som fortsatt er under utvikling. Det sier vi heller rett ut enn å love det for tidlig. Er lisens det menigheten din trenger mest, si fra: <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a>.</p>'''}},
+ # ------------------------------------------------------------ 7 data & privacy
+ "your-data-and-privacy":{"accent":"gold-deep",
+  "en":{"tag":"Privacy","card":"Your data &amp; privacy",
+    "desc":"Local-first by principle: export everything as JSON, erase a person completely, and cloud AI that is off until you turn it on.",
+    "h1":"Your data &amp; privacy","sub":"What lives where, how to export it, and how to erase it.",
+    "note":None,
+    "body":'''    <p class="lead">Sunday Suite is built "local-first": your content belongs to you, stays with you, and leaves your control only when you actively choose it. Here is what that means in everyday terms — and which buttons to press.</p>
+    <h2>Local-first by design</h2>
+    <p>The desktop apps — like SundayRec — do their work on your own machine. Recordings, video and transcription are processed locally; nothing is uploaded unless you switch on a cloud or publishing feature yourself. There is no analytics and no telemetry in the apps.</p>
+    <h2>What SundayPlan stores</h2>
+    <p>SundayPlan is a web app, so your church's planning data — people, teams, services, messages — is stored for you so every planner sees the same plan. It is your church's data alone: row-level security in the database means each church can only ever see its own rows. Nothing is sold, shared or used for advertising.</p>
+    <h2>Export everything as JSON</h2>
+    <p>In SundayPlan, go to <strong>Settings → Privacy</strong> and you can export your church's data as a JSON file — a plain, machine-readable text format any developer or tool can open. Your data is never locked in: you can take a full copy with you whenever you like.</p>
+    <h2>Erasing a person</h2>
+    <p>When a volunteer leaves, or simply asks to be removed, you can erase the person from SundayPlan so their personal details are no longer stored. Combined with the rule of thumb from <a href="volunteers-and-teams.html">Inviting volunteers &amp; teams</a> — store only what you need — this keeps your register tidy and your GDPR conscience clean.</p>
+    <h2>Cloud AI is off until you turn it on</h2>
+    <p>Some features can use cloud-based AI. These are governed by a consent toggle that is <strong>off by default</strong> — nothing is sent to any AI service unless your church actively switches it on. Local AI, like the speech-to-text in SundayRec, runs entirely on your own machine either way.</p>
+    <h2>Read the full policy</h2>
+    <p>The complete picture — OAuth tokens, cloud uploads, your GDPR rights — is in the <a href="@@PRIVACY@@">Privacy Policy</a>. Questions about your data? Email <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a>.</p>'''},
+  "no":{"tag":"Personvern","card":"Dine data &amp; personvern",
+    "desc":"Lokalt først av prinsipp: eksporter alt som JSON, slett en person helt, og sky-AI som er av til du skrur den på.",
+    "h1":"Dine data &amp; personvern","sub":"Hva som bor hvor, hvordan du eksporterer det, og hvordan du sletter det.",
+    "note":None,
+    "body":'''    <p class="lead">Sunday Suite er bygd «lokalt først»: innholdet ditt tilhører deg, blir hos deg, og forlater din kontroll bare når du aktivt velger det. Her er hva det betyr i praksis — og hvilke knapper du trykker på.</p>
+    <h2>Lokalt først, etter design</h2>
+    <p>Skrivebordsappene — som SundayRec — gjør jobben sin på din egen maskin. Opptak, video og transkripsjon behandles lokalt; ingenting lastes opp med mindre du selv skrur på en sky- eller publiseringsfunksjon. Det er ingen analyse og ingen telemetri i appene.</p>
+    <h2>Hva SundayPlan lagrer</h2>
+    <p>SundayPlan er en nettapp, så menighetens planleggingsdata — folk, lag, gudstjenester, meldinger — lagres for dere slik at alle planleggere ser samme plan. Det er menighetens data alene: rad-nivå sikkerhet i databasen gjør at hver menighet bare kan se sine egne rader. Ingenting selges, deles eller brukes til reklame.</p>
+    <h2>Eksporter alt som JSON</h2>
+    <p>I SundayPlan går du til <strong>Innstillinger → Personvern</strong>, og der kan du eksportere menighetens data som en JSON-fil — et enkelt, maskinlesbart tekstformat enhver utvikler eller ethvert verktøy kan åpne. Dataene dine er aldri innelåst: du kan ta med deg en full kopi når du vil.</p>
+    <h2>Slette en person</h2>
+    <p>Når en frivillig slutter, eller rett og slett ber om å bli fjernet, kan du slette personen fra SundayPlan slik at personopplysningene deres ikke lenger lagres. Sammen med tommelfingerregelen fra <a href="volunteers-and-teams.html">Inviter frivillige &amp; lag</a> — lagre bare det du trenger — holder dette registeret ryddig og GDPR-samvittigheten ren.</p>
+    <h2>Sky-AI er av til du skrur den på</h2>
+    <p>Noen funksjoner kan bruke skybasert AI. Disse styres av en samtykke-bryter som er <strong>av som standard</strong> — ingenting sendes til noen AI-tjeneste med mindre menigheten aktivt skrur det på. Lokal AI, som tale-til-tekst i SundayRec, kjører uansett helt på din egen maskin.</p>
+    <h2>Les hele erklæringen</h2>
+    <p>Hele bildet — OAuth-tokens, sky-opplastinger, GDPR-rettighetene dine — finner du i <a href="@@PRIVACY@@">Personvernerklæringen</a>. Spørsmål om dataene dine? Send e-post til <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a>.</p>'''}},
+ # ------------------------------------------------------------ 8 faq
+ "faq":{"accent":"gold-deep",
+  "en":{"tag":"FAQ","card":"Frequently asked questions",
+    "desc":"Price, languages, browsers, offline use, who sees your data, how to delete everything — the short answers in one place.",
+    "h1":"Frequently asked questions","sub":"The short answers, in one place.",
+    "note":None,
+    "body":'''    <p class="lead">The questions we get most often, answered briefly. If yours isn't here, email <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a> — a real person reads it.</p>
+    <h2>What does it cost?</h2>
+    <p>Nothing, for now. Everything that is available today — the SundayPlan test phase and the SundayRec beta — is free. Paid plans may come later, but any change will be communicated clearly and well in advance.</p>
+    <h2>Which apps can I actually use today?</h2>
+    <p><strong>SundayPlan</strong> is live on the web at <a href="https://plan.sundaysuite.app" target="_blank" rel="noopener">plan.sundaysuite.app</a> (open test phase), and <strong>SundayRec</strong> is a downloadable desktop beta for Mac and Windows. The rest of the family — Stage, Song, Edit, Studio and Paper — is in development and not available yet.</p>
+    <h2>Which languages are supported?</h2>
+    <p>SundayPlan speaks Norwegian, English, Swedish, Danish, German, French and Polish. SundayRec ships in seven languages, including Norwegian Bokmål and Nynorsk. This website is in English and Norwegian.</p>
+    <h2>Which browsers work with SundayPlan?</h2>
+    <p>Any modern, up-to-date browser: Chrome, Edge, Firefox or Safari, on computer, tablet or phone. If your browser updates itself (most do), you're fine.</p>
+    <h2>Do my volunteers need an account?</h2>
+    <p>No — never. Volunteers answer requests through their own personal link in an email or SMS, with one tap. Only planners sign in. See <a href="messages-and-magic-links.html">Messages &amp; magic links</a>.</p>
+    <h2>Who can see my church's data?</h2>
+    <p>Only your church. In SundayPlan, row-level security keeps every church's data separate, and volunteers only ever see their own requests. Content you create in the desktop apps stays on your own machine. We sell nothing and run no ads. More in <a href="your-data-and-privacy.html">Your data &amp; privacy</a>.</p>
+    <h2>Does it work offline?</h2>
+    <p>The desktop apps, yes: SundayRec records, edits and transcribes entirely on your machine, no internet needed. SundayPlan is a web app and needs an internet connection.</p>
+    <h2>Is AI used on my data?</h2>
+    <p>Local AI — like the sermon transcription in SundayRec — runs on your own machine and uploads nothing. Features that would use cloud AI sit behind a consent toggle that is off by default.</p>
+    <h2>Can I delete everything?</h2>
+    <p>Yes. In SundayPlan you can export your church's data as JSON and erase individual people under Settings → Privacy; email us to have your church's account and data removed entirely. Files from the desktop apps live on your own disk — deleting them is up to you, as it should be.</p>
+    <h2>Can SundayPlan send SMS?</h2>
+    <p>SMS sending is rolling out gradually during the test phase. Email requests work for everyone today and do the same job; magic links work equally well from both.</p>
+    <h2>How do I get help?</h2>
+    <p>Email <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a>. There is no call centre and no ticket robot — your message lands with the people building the suite, and we answer every email.</p>'''},
+  "no":{"tag":"FAQ","card":"Ofte stilte spørsmål",
+    "desc":"Pris, språk, nettlesere, frakoblet bruk, hvem som ser dataene dine, hvordan du sletter alt — de korte svarene samlet.",
+    "h1":"Ofte stilte spørsmål","sub":"De korte svarene, samlet på ett sted.",
+    "note":None,
+    "body":'''    <p class="lead">Spørsmålene vi får oftest, besvart kort. Står ikke ditt her, send en e-post til <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a> — et ekte menneske leser den.</p>
+    <h2>Hva koster det?</h2>
+    <p>Ingenting, foreløpig. Alt som er tilgjengelig i dag — SundayPlan-testfasen og SundayRec-betaen — er gratis. Betalte planer kan komme senere, men eventuelle endringer kommuniseres tydelig og i god tid.</p>
+    <h2>Hvilke apper kan jeg faktisk bruke i dag?</h2>
+    <p><strong>SundayPlan</strong> er live på nett på <a href="https://plan.sundaysuite.app" target="_blank" rel="noopener">plan.sundaysuite.app</a> (åpen testfase), og <strong>SundayRec</strong> er en nedlastbar skrivebords-beta for Mac og Windows. Resten av familien — Stage, Song, Edit, Studio og Paper — er under utvikling og ikke tilgjengelig ennå.</p>
+    <h2>Hvilke språk støttes?</h2>
+    <p>SundayPlan snakker norsk, engelsk, svensk, dansk, tysk, fransk og polsk. SundayRec leveres på sju språk, inkludert bokmål og nynorsk. Dette nettstedet finnes på engelsk og norsk.</p>
+    <h2>Hvilke nettlesere fungerer med SundayPlan?</h2>
+    <p>Alle moderne, oppdaterte nettlesere: Chrome, Edge, Firefox eller Safari, på PC, nettbrett eller mobil. Oppdaterer nettleseren din seg selv (det gjør de fleste), er du i mål.</p>
+    <h2>Trenger de frivillige mine en konto?</h2>
+    <p>Nei — aldri. Frivillige svarer på forespørsler gjennom sin egen personlige lenke i en e-post eller SMS, med ett trykk. Bare planleggere logger inn. Se <a href="messages-and-magic-links.html">Meldinger &amp; magiske lenker</a>.</p>
+    <h2>Hvem kan se menighetens data?</h2>
+    <p>Bare din menighet. I SundayPlan holder rad-nivå sikkerhet hver menighets data adskilt, og frivillige ser aldri annet enn sine egne forespørsler. Innhold du lager i skrivebordsappene blir på din egen maskin. Vi selger ingenting og kjører ingen reklame. Mer i <a href="your-data-and-privacy.html">Dine data &amp; personvern</a>.</p>
+    <h2>Fungerer det uten internett?</h2>
+    <p>Skrivebordsappene, ja: SundayRec tar opp, redigerer og transkriberer helt på din maskin, uten behov for internett. SundayPlan er en nettapp og trenger internettforbindelse.</p>
+    <h2>Brukes AI på dataene mine?</h2>
+    <p>Lokal AI — som preken-transkripsjonen i SundayRec — kjører på din egen maskin og laster ikke opp noe. Funksjoner som ville brukt sky-AI, ligger bak en samtykke-bryter som er av som standard.</p>
+    <h2>Kan jeg slette alt?</h2>
+    <p>Ja. I SundayPlan kan du eksportere menighetens data som JSON og slette enkeltpersoner under Innstillinger → Personvern; send oss en e-post for å få menighetens konto og data fjernet helt. Filer fra skrivebordsappene ligger på din egen disk — å slette dem er opp til deg, slik det skal være.</p>
+    <h2>Kan SundayPlan sende SMS?</h2>
+    <p>SMS-utsending rulles ut gradvis i testfasen. E-postforespørsler fungerer for alle i dag og gjør samme jobb; magiske lenker virker like godt fra begge.</p>
+    <h2>Hvordan får jeg hjelp?</h2>
+    <p>Send e-post til <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a>. Det finnes ikke noe kundesenter og ingen billettrobot — meldingen din lander hos dem som bygger suiten, og vi svarer på hver e-post.</p>'''}},
+}
+
+def help_fill(s, L):
+    return (s.replace("@@PRIVACY@@", L["legal"]("privacy"))
+             .replace("@@PLANAPP@@", L["app"]("sundayplan"))
+             .replace("@@RECAPP@@",  L["app"]("sundayrec"))
+             .replace("@@SONGAPP@@", L["app"]("sundaysong")))
+
+def render_help_index(lang):
+    c=CH[lang]; root="../" if lang=="en" else "../../"; L=links(lang,root)
+    other = "../no/hjelp/index.html" if lang=="en" else "../../help/index.html"
+    hi=HELP_INDEX[lang]; arrow=sv("arrow","2.5")
+    cards=""
+    for slug in HELP_ORDER:
+        doc=HELPDOC[slug]; d=doc[lang]
+        cards+=(f'    <a class="card link" style="--c:var(--{doc["accent"]})" href="{slug}.html">'
+          f'<h3 style="font-size:22px">{d["card"]}</h3><div class="tag">{d["tag"]}</div>'
+          f'<p>{d["desc"]}</p><span class="more">{hi["read"]}{arrow}</span></a>\n')
+    content=f'''<main>
+<section class="legal-hero"><div class="glow"></div><div class="wrap">
+  <div class="crumb"><a href="{L["home"]}">Sunday Suite</a><span>/</span><span>{hi["crumb"]}</span></div>
+  <h1>{hi["h1"]}</h1>
+  <p style="margin-top:18px; max-width:62ch; font-size:17px; color:var(--txt-on-ink-dim)">{hi["lead"]}</p>
+</div></section>
+<section class="legal-body"><div class="wrap wide">
+  <div class="grid">
+{cards}  </div>
+  <div class="note" style="margin-top:44px"><p>{hi["contact"]} <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a></p></div>
+</div></section>
+</main>'''
+    return shell(c,L,other,hi["title"],hi["meta"],'',content,navscrolled=True)
+
+def render_help_article(lang, slug):
+    c=CH[lang]; root="../" if lang=="en" else "../../"; L=links(lang,root)
+    other = (f'../no/hjelp/{slug}.html' if lang=="en" else f'../../help/{slug}.html')
+    doc=HELPDOC[slug]; d=doc[lang]; hi=HELP_INDEX[lang]
+    note=f'<div class="note"><p>{d["note"]}</p></div>\n  ' if d.get("note") else ""
+    body=help_fill(d["body"], L)
+    content=f'''<main>
+<section class="legal-hero"><div class="glow"></div><div class="wrap">
+  <div class="crumb"><a href="{L["home"]}">Sunday Suite</a><span>/</span><a href="index.html">{hi["crumb"]}</a><span>/</span><span>{d["tag"]}</span></div>
+  <h1>{d["h1"]}</h1><div class="updated">{d["sub"]}</div>
+</div></section>
+<section class="legal-body"><div class="wrap">
+  {note}<div class="prose">
+{body}
+    <p style="margin-top:40px"><a href="index.html">{c["back_help"]}</a> &middot; <a href="{L["home"]}">Sunday Suite</a></p>
+  </div>
+</div></section>
+</main>'''
+    title=f'{d["h1"]} — {hi["crumb"]} | Sunday Suite'
+    return shell(c,L,other,title,d["desc"],'',content,navscrolled=True)
+
 # ===================================================================== WRITE
 def W(path, html):
     full=os.path.join(ROOTDIR, path)
@@ -847,9 +1264,13 @@ def W(path, html):
 
 for lang in ("en","no"):
     pre = "" if lang=="en" else "no/"
+    hpre = "help/" if lang=="en" else "no/hjelp/"
     W(pre+"index.html", render_home(lang))
     for s in SLUGS:
         W(pre+f"apps/{s}.html", render_app(lang,s))
     W(pre+"legal/terms.html",   terms_en()   if lang=="en" else terms_no())
     W(pre+"legal/privacy.html", privacy_en() if lang=="en" else privacy_no())
+    W(hpre+"index.html", render_help_index(lang))
+    for hs in HELP_ORDER:
+        W(hpre+f"{hs}.html", render_help_article(lang,hs))
 print("done")
