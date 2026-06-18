@@ -20,7 +20,7 @@
   --rec:#2563EB; --stage:#E6B13A; --plan:#3146C9; --song:#B1431C;
   --edit:#10A8B5; --studio:#D4A017; --paper-c:#B87333; --translate:#2BB3C0;
   /* community-toolbox accents */
-  --quiz:#2E9E8F; --chess:#7C5CCB; --turnering:#E07A2F; --market:#C9952F; --harvest:#7BA23F;
+  --quiz:#FF8A5C; --chess:#7C5CCB; --turnering:#E07A2F; --market:#C9952F; --harvest:#7BA23F;
 
   --display:'Playfair Display',Georgia,serif;
   --body:'Hanken Grotesk',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
@@ -57,7 +57,21 @@ nav.links a:hover{ color:var(--txt-on-ink); }
 .nav-cta:hover{ transform:translateY(-2px); box-shadow:0 10px 30px rgba(235,184,75,.4); }
 .lang-switch{ font-size:12px; font-weight:700; letter-spacing:.1em; color:var(--txt-on-ink-dim); border:1px solid var(--ink-line); padding:7px 12px; border-radius:100px; transition:color .25s,border-color .25s; }
 .lang-switch:hover{ color:var(--gold); border-color:rgba(235,184,75,.5); }
-@media(max-width:760px){ nav.links a.linkitem{ display:none; } }
+.nav-burger{ display:none; flex-direction:column; justify-content:center; gap:5px; width:44px; height:44px; padding:0; background:none; border:0; cursor:pointer; }
+.nav-burger span{ display:block; width:22px; height:2px; margin:0 auto; border-radius:2px; background:var(--txt-on-ink); transition:transform .3s var(--ease),opacity .2s; }
+header.nav.open .nav-burger span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+header.nav.open .nav-burger span:nth-child(2){ opacity:0; }
+header.nav.open .nav-burger span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+@media(max-width:760px){
+  .nav-burger{ display:flex; }
+  nav.links{ position:absolute; top:74px; left:0; right:0; flex-direction:column; align-items:stretch; gap:0;
+    background:rgba(18,21,28,.97); backdrop-filter:blur(18px) saturate(140%); border-bottom:1px solid var(--ink-line);
+    max-height:0; overflow:hidden; transition:max-height .35s var(--ease); }
+  header.nav.open nav.links{ max-height:80vh; }
+  nav.links a.linkitem{ display:block; padding:16px 7vw; font-size:16px; border-top:1px solid var(--ink-line); color:var(--txt-on-ink); }
+  nav.links .lang-switch{ margin:14px 7vw; align-self:flex-start; }
+  nav.links .nav-cta{ margin:0 7vw 22px; text-align:center; }
+}
 
 /* ---------- buttons ---------- */
 .btn{ display:inline-flex; align-items:center; gap:9px; font-weight:600; font-size:15.5px; padding:15px 28px; border-radius:100px;

@@ -97,7 +97,8 @@ def links(lang, root):
 def nav(c, L, other_href):
     return (f'<header class="nav" id="nav"><div class="wrap nav-inner">'
       f'<a href="{L["home"]}" class="brand">{CROSS}<span><b>Sunday</b> Suite</span></a>'
-      f'<nav class="links">'
+      f'<button class="nav-burger" id="navBurger" type="button" aria-label="{"Menu" if c["lang"]=="en" else "Meny"}" aria-controls="navLinks" aria-expanded="false"><span></span><span></span><span></span></button>'
+      f'<nav class="links" id="navLinks">'
       f'<a href="{L["home"]}#products" class="linkitem">{c["nav_products"]}</a>'
       f'<a href="{L["home"]}#philosophy" class="linkitem">{c["nav_phil"]}</a>'
       f'<a href="{L["toolbox"]}" class="linkitem">{c["nav_toolbox"]}</a>'
