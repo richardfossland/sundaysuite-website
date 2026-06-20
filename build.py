@@ -41,6 +41,9 @@ IC = {
  "trophy":'<path d="M7 4h10v4.5a5 5 0 0 1-10 0z"/><path d="M7 6.5H4.5v1a3 3 0 0 0 3 3M17 6.5h2.5v1a3 3 0 0 1-3 3"/><path d="M12 13.5V17M9 21h6M10.5 17h3"/>',
  "trade":'<path d="M3.5 8.5h13l-3.2-3.2M20.5 15.5h-13l3.2 3.2"/>',
  "wheat":'<path d="M12 21.5V8.5"/><path d="M12 8.5c2.1 0 3.6-1.6 3.6-3.6C13.5 4.9 12 6.5 12 8.5zm0 0c-2.1 0-3.6-1.6-3.6-3.6C10.5 4.9 12 6.5 12 8.5z"/><path d="M12 13c2.1 0 3.6-1.6 3.6-3.6C13.5 9.4 12 11 12 13zm0 0c-2.1 0-3.6-1.6-3.6-3.6C10.5 9.4 12 11 12 13z"/><path d="M12 17.5c2.1 0 3.6-1.6 3.6-3.6C13.5 13.9 12 15.5 12 17.5zm0 0c-2.1 0-3.6-1.6-3.6-3.6C10.5 13.9 12 15.5 12 17.5z"/>',
+ "tictactoe":'<path d="M9 3v18M15 3v18M3 9h18M3 15h18"/><path d="M4.7 4.7l2.6 2.6M7.3 4.7L4.7 7.3"/><circle cx="18" cy="18" r="1.9"/>',
+ "basar":'<circle cx="12" cy="13" r="8.2"/><path d="M12 4.8v16.4M3.8 13h16.4M6.2 7.2l11.6 11.6M17.8 7.2L6.2 18.8"/><circle cx="12" cy="13" r="1.3" fill="currentColor" stroke="none"/><path d="M12 1.6l2.3 3.2h-4.6z" fill="currentColor" stroke="none"/>',
+ "panel":'<path d="M21 4H3a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h4v4l5-4h9a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1z"/><path d="M9.6 9.2a2.4 2.4 0 1 1 3.1 2.5c-.8.3-1.2.8-1.2 1.5v.3"/><path d="M11.5 15.4v.3"/>',
 }
 def sv(k, sw="2"):
     return f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{sw}" stroke-linecap="round" stroke-linejoin="round">{IC[k]}</svg>'
@@ -58,7 +61,7 @@ CH = {
    "family_title":"Plays well with the rest of Sunday Suite","standalone_title":"Standalone — but part of the family",
    "standalone_lead":"The tool stands entirely on its own, but shares the account, design language and golden thread with the rest of Sunday Suite.",
    "status_head":"Status: in development","what_kicker":"What it does",
-   "foot_tag":"A family of Norwegian-built tools for the modern church. Eight apps, one golden thread.",
+   "foot_tag":"A family of Norwegian-built tools for the modern church. Ten apps, one golden thread.",
    "foot_products":"Products","foot_suite":"The suite","foot_legal":"Legal","foot_terms":"Terms of Use","foot_privacy":"Privacy",
    "foot_phil":"Philosophy","foot_together":"Better together","foot_toolbox":"Community tools","foot_contact":"Contact",
    "foot_bottom":"&copy; 2026 Sunday Suite &middot; Richard Fossland. Built in Norway.",
@@ -70,17 +73,17 @@ CH = {
    "family_title":"Spiller sammen med resten av Sunday Suite","standalone_title":"Frittstående — men en del av familien",
    "standalone_lead":"Verktøyet står helt på egne bein, men deler konto, designspråk og den gylne tråden med resten av Sunday Suite.",
    "status_head":"Status: under utvikling","what_kicker":"Hva det gjør",
-   "foot_tag":"En familie av norskbygde verktøy for den moderne menigheten. Åtte apper, én gylden tråd.",
+   "foot_tag":"En familie av norskbygde verktøy for den moderne menigheten. Ti apper, én gylden tråd.",
    "foot_products":"Produkter","foot_suite":"Suiten","foot_legal":"Juridisk","foot_terms":"Vilkår for bruk","foot_privacy":"Personvern",
    "foot_phil":"Filosofi","foot_together":"Bedre sammen","foot_toolbox":"Fellesskapsverktøy","foot_contact":"Kontakt",
    "foot_bottom":"&copy; 2026 Sunday Suite &middot; Richard Fossland. Bygd i Norge.",
    "back_home":"&larr; Tilbake til forsiden","cta_back":"Tilbake til produktene",
    "nav_help":"Hjelp","foot_help":"Hjelp &amp; veiledninger","back_help":"&larr; Tilbake til hjelpen"},
 }
-SLUGS = ["sundayrec","sundaystudio","sundaystage","sundayplan","sundaysong","sundayedit","sundaypaper","sundaytranslate"]
+SLUGS = ["sundayrec","sundaystudio","sundaystage","sundayplan","sundaysong","sundayedit","sundaypaper","sundaytranslate","sundayinfo","sundaybooking"]
 PNAME = {"sundayrec":"SundayRec","sundaystudio":"SundayStudio","sundaystage":"SundayStage",
          "sundayplan":"SundayPlan","sundaysong":"SundaySong","sundayedit":"SundayEdit","sundaypaper":"SundayPaper",
-         "sundaytranslate":"SundayTranslate"}
+         "sundaytranslate":"SundayTranslate","sundayinfo":"SundayInfo","sundaybooking":"SundayBooking"}
 
 def links(lang, root):
     base = "" if lang=="en" else "no/"
@@ -138,12 +141,12 @@ HOME = {
  "en":{"title":"Sunday Suite — Tools for the modern church",
    "desc":"Sunday Suite is a family of Norwegian-built tools for the church: recording, presentation, planning, song, podcasting, captioning and print — bound together by one golden thread.",
    "eyebrow":"Norwegian-built church technology · in development",
-   "h1":'Eight tools.<br><em>One golden thread.</em>',
+   "h1":'Ten tools.<br><em>One golden thread.</em>',
    "sub":"Sunday Suite is a family of programs for the modern church — from recording and streaming to presentation, planning, song, podcasting, captioning and print. Each tool stands on its own, but they share one account, one design language, and one thread of gold.",
    "b1":"See the products","b2":"Why Sunday?",
-   "m1":"<b>8</b> products, one ecosystem","m2":"<b>TONO &amp; CCLI</b> in the design from day one","m3":"<b>Local-first</b> — your data stays with you",
+   "m1":"<b>10</b> products, one ecosystem","m2":"<b>TONO &amp; CCLI</b> in the design from day one","m3":"<b>Local-first</b> — your data stays with you",
    "g_kicker":"The products","g_title":"The family of Sunday apps",
-   "g_lead":"Eight tools in active development. Each product owns its own deep jewel tone, and the golden cross binds them together. Click through to read more about each one.",
+   "g_lead":"Ten tools — several already live, the rest in active development. Each product owns its own deep jewel tone, and the golden cross binds them together. Click through to read more about each one.",
    "one_h":"One Sunday account","one_tag":"Sign in once",
    "one_p":"The goal: one account signs you into every tool, and what you do in one program shows up where it's needed in the others — no double work.",
    "one_f":["Single sign-on","Shared design language","Secure key handling"],
@@ -160,7 +163,7 @@ HOME = {
             ("Paper","Song","a scanned songbook becomes catalog entries"),("Rec","Paper","the sermon becomes a parish-magazine draft"),
             ("Rec","Edit","sermon + transcript ready for captioning")],
    "tb_kicker":"Beyond the suite","tb_title":"A little toolbox for building community",
-   "tb_lead":"Alongside the eight core products, Sunday Suite tinkers with small, playful tools for church and classroom — games and group activities that help people meet, mix and connect. They run straight in the browser, nothing to install. A corner of the workshop that will keep growing.",
+   "tb_lead":"Alongside the ten core products, Sunday Suite tinkers with small, playful tools for church and classroom — games and group activities that help people meet, mix and connect. They run straight in the browser, nothing to install. A corner of the workshop that will keep growing.",
    "tb_note":"More fellowship tools are on the workbench. Have an idea for one?",
    "tb_open":"Open","tb_soon":"Coming soon","tb_more":"Explore the whole toolbox",
    "cta_h":"Let's build a better Sunday together.",
@@ -169,12 +172,12 @@ HOME = {
  "no":{"title":"Sunday Suite — Verktøyene for den moderne menigheten",
    "desc":"Sunday Suite er en familie av norskbygde verktøy for menigheten: opptak, presentasjon, planlegging, sang, podkast, teksting og dokumenter — bundet sammen av én gylden tråd.",
    "eyebrow":"Norskbygd kirketeknologi · under utvikling",
-   "h1":'Åtte verktøy.<br><em>Én gylden tråd.</em>',
+   "h1":'Ti verktøy.<br><em>Én gylden tråd.</em>',
    "sub":"Sunday Suite er en familie av programmer for den moderne menigheten — fra opptak og strømming til presentasjon, planlegging, sang, podkast, teksting og trykksaker. Hvert verktøy står på egne bein, men deler én konto, ett designspråk og én tråd av gull.",
    "b1":"Se programmene","b2":"Hvorfor Sunday?",
-   "m1":"<b>8</b> produkter, ett økosystem","m2":"<b>TONO &amp; CCLI</b> med i designet fra dag én","m3":"<b>Lokalt først</b> — dine data blir hos deg",
+   "m1":"<b>10</b> produkter, ett økosystem","m2":"<b>TONO &amp; CCLI</b> med i designet fra dag én","m3":"<b>Lokalt først</b> — dine data blir hos deg",
    "g_kicker":"Produktene","g_title":"Familien av Sunday-apper",
-   "g_lead":"Åtte verktøy under utvikling. Hvert produkt eier sin egen dype juveltone, og det gylne korset binder dem sammen. Klikk deg inn for å lese mer om hvert program.",
+   "g_lead":"Ti verktøy — flere alt live, resten under utvikling. Hvert produkt eier sin egen dype juveltone, og det gylne korset binder dem sammen. Klikk deg inn for å lese mer om hvert program.",
    "one_h":"Én Sunday-konto","one_tag":"Logg inn én gang",
    "one_p":"Målet: én konto signerer deg inn på alle verktøyene, og det du gjør i ett program dukker opp der det trengs i de andre — uten dobbeltarbeid.",
    "one_f":["Felles innlogging","Delt designspråk","Sikker nøkkelhåndtering"],
@@ -191,7 +194,7 @@ HOME = {
             ("Paper","Song","skannet sangbok blir katalogoppføringer"),("Rec","Paper","preken blir menighetsblad-utkast"),
             ("Rec","Edit","preken + transkripsjon klar for teksting")],
    "tb_kicker":"Utenfor suiten","tb_title":"En liten verktøykasse for å bygge fellesskap",
-   "tb_lead":"Ved siden av de åtte kjerneproduktene snekrer Sunday Suite på små, lekne verktøy for menighet og klasserom — spill og gruppeaktiviteter som hjelper folk å møtes, bli kjent og knytte bånd. De kjører rett i nettleseren, uten installasjon. En krok av verkstedet som bare kommer til å vokse.",
+   "tb_lead":"Ved siden av de ti kjerneproduktene snekrer Sunday Suite på små, lekne verktøy for menighet og klasserom — spill og gruppeaktiviteter som hjelper folk å møtes, bli kjent og knytte bånd. De kjører rett i nettleseren, uten installasjon. En krok av verkstedet som bare kommer til å vokse.",
    "tb_note":"Flere fellesskapsverktøy ligger på arbeidsbenken. Har du en idé til ett?",
    "tb_open":"Åpne","tb_soon":"Kommer snart","tb_more":"Utforsk hele verktøykassa",
    "cta_h":"La oss bygge en bedre søndag sammen.",
@@ -225,6 +228,12 @@ CARD = {
  "sundaytranslate":{"accent":"translate","icon":"globe","status":"build",
    "en":("Live translation &amp; hearing help","Anyone in the pew hears the service in their own language — or louder and clearer — straight in their earbuds. An interpreter speaks; phones listen. Nothing to install.",["Live interpreting","Assistive listening","AI captions","Any phone"]),
    "no":("Live tolking &amp; lyttehjelp","Hvem som helst i benken hører gudstjenesten på sitt eget språk — eller klarere og høyere — rett i øreproppene. En tolk snakker; mobilene lytter. Ingenting å installere.",["Live tolking","Lytteanlegg","AI-undertekster","Hvilken som helst mobil"])},
+ "sundayinfo":{"accent":"info","icon":"screen","status":"live",
+   "en":("Digital signage for the church","Turn any TV into the church noticeboard — service times, today's plan, weather and a Bible verse. Pair a screen in seconds; it keeps running even if the network drops.",["Any screen","Multi-editor","Church year","Works offline"]),
+   "no":("Digital infoskjerm for menigheten","Gjør en hvilken som helst TV til menighetens infotavle — gudstjenestetider, dagens plan, vær og bibelvers. Par en skjerm på sekunder; den går videre selv om nettet faller.",["Enhver skjerm","Flere redaktører","Kirkeår","Virker offline"])},
+ "sundaybooking":{"accent":"booking","icon":"calendar","status":"live",
+   "en":("Rooms, rentals &amp; appointments","Book rooms, rentals and appointments without double-bookings — the calendar makes overlaps structurally impossible. Part of the SundayPlan family.",["No double-booking","Rooms &amp; rentals","Approval queue","Shared account"]),
+   "no":("Rom, utleie &amp; avtaler","Book rom, utleie og avtaler uten dobbeltbooking — kalenderen gjør overlapp strukturelt umulig. En del av SundayPlan-familien.",["Ingen dobbeltbooking","Rom &amp; utleie","Godkjenningskø","Delt konto"])},
 }
 
 # community-toolbox tools (live web apps on *.sundaysuite.app); soon=not yet deployed
@@ -244,6 +253,15 @@ TOOLS = [
  {"name":"SundayHarvest","accent":"harvest","icon":"wheat","url":"https://harvest.sundaysuite.app","live":True,
   "en":("Party game","Biblical social deduction — wheat among the tares (Matthew 13). No one gets eliminated; everyone plays to the final reveal.","Party · no elimination"),
   "no":("Selskapsspill","Bibelsk social deduction — hvete blant ugresset (Matteus 13). Ingen elimineres; alle er med helt til den store avsløringen.","Selskap · ingen utslag")},
+ {"name":"SundayTicTacToe","accent":"tictactoe","icon":"tictactoe","url":"https://tictactoe.sundaysuite.app","live":True,
+  "en":("Classroom","Tic-tac-toe as a tournament — three board sizes, Swiss rounds and a knockout, run from one screen with a bot to practise against.","Classroom · 3×3 to 5×5"),
+  "no":("Klasserom","Bondesjakk som turnering — tre brettstørrelser, sveitsiske runder og sluttspill, styrt fra én skjerm, med en bot å øve mot.","Klasserom · 3×3 til 5×5")},
+ {"name":"SundayBasar","accent":"basar","icon":"basar","url":"https://basar.sundaysuite.app","live":True,
+  "en":("Fundraiser","A digital church bazaar — sell raffle tickets and draw the prizes live on the big screen. The app never touches money; you confirm each Vipps payment yourself.","Any event · live draw"),
+  "no":("Basar","En digital bedehus-basar — selg årer og trekk premiene live på storskjerm. Appen rører aldri penger; du bekrefter hver Vipps-betaling selv.","Arrangement · live trekning")},
+ {"name":"SundayPanel","accent":"panel","icon":"panel","url":"https://panel.sundaysuite.app","live":True,
+  "en":("Youth","Anonymous questions from the floor to a panel on the big screen — no app, no login. Everyone asks with a word-code or QR; you curate what goes up.","Youth · word-code or QR"),
+  "no":("Ungdom","Anonyme spørsmål fra salen til et panel på storskjerm — ingen app, ingen innlogging. Alle spør med ordkode eller QR; du velger hva som vises.","Ungdom · ordkode eller QR")},
 ]
 
 # copy for the dedicated toolbox landing page (/toolbox.html + /no/verktoykasse.html)
@@ -252,23 +270,23 @@ TBPAGE = {
    "desc":"A little toolbox of free, browser-based games and group activities from Sunday Suite — icebreakers, classroom chess, tournaments and more. Nothing to install.",
    "crumb":"Toolbox","kicker":"Beyond the suite","h1":"The Sunday toolbox",
    "tagline":"Small, playful tools for church and classroom.",
-   "lead":"Free, browser-based games and group activities that help people meet, mix and connect — alongside the eight core Sunday Suite products. Nothing to install: open one on the big screen, everyone joins on their phones.",
+   "lead":"Free, browser-based games and group activities that help people meet, mix and connect — alongside the ten core Sunday Suite products. Nothing to install: open one on the big screen, everyone joins on their phones.",
    "meta":["<b>Free</b> — no account needed","<b>Nothing to install</b> — runs in the browser","<b>Phones</b> + a big screen"],
    "act_browse":"Browse the tools","act_back":"Back to the suite",
    "g_kicker":"The tools","g_title":"Gather a room in one click",
    "g_lead":"Each one runs live in the browser — open it on a shared screen and everyone joins from a phone. Click a card to start.",
-   "cta_h":"Part of one golden thread.","cta_p":"These little tools share the design language — and the heart — of the eight core Sunday Suite apps. Have an idea for the next one? We'd love to hear it.",
+   "cta_h":"Part of one golden thread.","cta_p":"These little tools share the design language — and the heart — of the ten core Sunday Suite apps. Have an idea for the next one? We'd love to hear it.",
    "cta_suite":"See the products","cta_mail":"dev@sundaysuite.app"},
  "no":{"title":"Verktøykassa — gratis fellesskapsspill for menighet og klasserom | Sunday Suite",
    "desc":"En liten verktøykasse med gratis, nettleserbaserte spill og gruppeaktiviteter fra Sunday Suite — bli-kjent-leker, klasseromssjakk, turneringer og mer. Ingenting å installere.",
    "crumb":"Verktøykassa","kicker":"Utenfor suiten","h1":"Verktøykassa",
    "tagline":"Små, lekne verktøy for menighet og klasserom.",
-   "lead":"Gratis, nettleserbaserte spill og gruppeaktiviteter som hjelper folk å møtes, bli kjent og knytte bånd — ved siden av de åtte kjerneproduktene i Sunday Suite. Ingenting å installere: åpne ett på storskjermen, og alle blir med fra sine egne telefoner.",
+   "lead":"Gratis, nettleserbaserte spill og gruppeaktiviteter som hjelper folk å møtes, bli kjent og knytte bånd — ved siden av de ti kjerneproduktene i Sunday Suite. Ingenting å installere: åpne ett på storskjermen, og alle blir med fra sine egne telefoner.",
    "meta":["<b>Gratis</b> — ingen konto","<b>Ingen installasjon</b> — kjører i nettleseren","<b>Telefoner</b> + storskjerm"],
    "act_browse":"Se verktøyene","act_back":"Tilbake til suiten",
    "g_kicker":"Verktøyene","g_title":"Samle rommet med ett klikk",
    "g_lead":"Hvert verktøy kjører live i nettleseren — åpne det på en storskjerm, så blir alle med fra telefonen. Klikk på et kort for å starte.",
-   "cta_h":"En del av den samme gylne tråden.","cta_p":"Disse små verktøyene deler designspråket — og hjertet — med de åtte kjerneproduktene i Sunday Suite. Har du en idé til det neste? Vi vil gjerne høre den.",
+   "cta_h":"En del av den samme gylne tråden.","cta_p":"Disse små verktøyene deler designspråket — og hjertet — med de ti kjerneproduktene i Sunday Suite. Har du en idé til det neste? Vi vil gjerne høre den.",
    "cta_suite":"Se produktene","cta_mail":"dev@sundaysuite.app"},
 }
 
@@ -342,6 +360,7 @@ def render_toolbox_page(lang):
 
 def status_badge(st, c):
     if st=="beta": return f'<span class="status beta">{c["status_beta"].split(" ·")[0] if False else ("Beta" if c["lang"]=="en" else "Beta")}</span>'
+    if st=="live": return '<span class="status live">Live</span>'
     return f'<span class="status build">{c["status_build"]}</span>'
 
 def render_home(lang):
@@ -670,13 +689,77 @@ APPDATA = {
     "status":"SundayTranslate er kode-komplett gjennom alle tre faser — live tolking, lytteanlegg og AI-undertekster — og lanseres som en web-app på translate.sundaysuite.app. Siste testing på enhet pågår.",
     "cta_h":"Vil du ha SundayTranslate i menigheten din?","cta_p":"Den lanseres på translate.sundaysuite.app. Ta kontakt om menigheten din vil være tidlig ute med live tolking og lyttehjelp."},
   "chips":[]},
+ "sundayinfo":{"accent":"info","icon":"screen","short":"Info","url":"https://info.sundaysuite.app","live":True,
+  "en":{"tagline":"Your church, on every screen.",
+    "meta":"SundayInfo is digital signage for churches — service times, plans, weather and the church year on any TV, paired from your phone and running even when the network drops.",
+    "lead":"Turn any screen in the building into the church's noticeboard. Service times, today's plan, announcements, weather and a verse for the season — composed from your phone or laptop and shown on a TV, a Chromecast, a PC or a Raspberry Pi. Multi-tenant and multi-editor, with a local cache so it keeps running when the network doesn't.",
+    "what":"One screen, always current","whatlead":"Everything a visitor needs to see in the foyer, kept up to date by itself.",
+    "features":[("screen","Any screen","TV browser, Chromecast, a PC or a Raspberry Pi — if it shows a web page, it shows SundayInfo."),
+      ("people","Many editors, many churches","Multi-tenant from the start, with roles so several people can keep the boards up to date."),
+      ("calendar","Knows the church year","Advent, Lent, Easter and ordinary time — the look and the verse follow the season automatically."),
+      ("shield","Pairs in seconds","A code on the TV, a tap from your phone — the screen is claimed once and never asks again."),
+      ("bolt","Survives a network drop","A local snapshot keeps the last content on screen through an outage, then catches up on its own."),
+      ("globe","Vipps QR &amp; live data","Show a Vipps giving QR, the weather and live data alongside the plan, refreshed on the screen's own clock.")],
+    "hl_kicker":"Built for the foyer","hl_title":"Always on, always current — even when the network isn't.",
+    "hl_p":"A 30-second heartbeat is the source of truth, realtime is just a hint, and a local snapshot survives a dropped connection. The screen runs on its own clock, so the church year and the day's mode are always right.",
+    "checks":["Multi-tenant with roles from day one","Pairs once; only a hashed token is stored","Keeps showing content through a network outage"],
+    "status":"SundayInfo is live at info.sundaysuite.app. Pair a screen, invite editors and publish — sign in with your Sunday account. Rig-testing on real TVs is the last step before we call it done.",
+    "cta_h":"Want SundayInfo on your foyer screen?","cta_p":"It's live at info.sundaysuite.app. Get in touch if your church wants help getting the first screen on the wall."},
+  "no":{"tagline":"Menigheten din, på hver skjerm.",
+    "meta":"SundayInfo er digital infoskjerm for menigheter — gudstjenestetider, planer, vær og kirkeår på en hvilken som helst TV, paret fra mobilen og i drift selv om nettet faller.",
+    "lead":"Gjør en hvilken som helst skjerm i bygget til menighetens infotavle. Gudstjenestetider, dagens plan, kunngjøringer, vær og et vers for sesongen — satt sammen fra mobil eller PC og vist på en TV, en Chromecast, en PC eller en Raspberry Pi. Multi-tenant og fler-redaktør, med lokal cache så den går videre når nettet ikke gjør det.",
+    "what":"Én skjerm, alltid oppdatert","whatlead":"Alt en besøkende trenger å se i foajeen, holdt oppdatert av seg selv.",
+    "features":[("screen","Enhver skjerm","TV-nettleser, Chromecast, en PC eller en Raspberry Pi — viser den en nettside, viser den SundayInfo."),
+      ("people","Mange redaktører, mange menigheter","Multi-tenant fra start, med roller så flere kan holde tavlene oppdatert."),
+      ("calendar","Kan kirkeåret","Advent, faste, påske og det alminnelige kirkeår — uttrykket og verset følger sesongen automatisk."),
+      ("shield","Pares på sekunder","En kode på TV-en, ett trykk fra mobilen — skjermen claimes én gang og spør aldri igjen."),
+      ("bolt","Tåler nettbrudd","Et lokalt øyeblikksbilde holder siste innhold på skjermen gjennom et brudd, og tar igjen av seg selv."),
+      ("globe","Vipps-QR &amp; sanntidsdata","Vis en Vipps-QR for gaver, været og sanntidsdata ved siden av planen, oppdatert på skjermens egen klokke.")],
+    "hl_kicker":"Bygd for foajeen","hl_title":"Alltid på, alltid oppdatert — selv når nettet ikke er det.",
+    "hl_p":"Et 30-sekunders hjerteslag er sannheten, realtime er bare et hint, og et lokalt øyeblikksbilde overlever et brudd. Skjermen går på sin egen klokke, så kirkeåret og dagens modus er alltid riktig.",
+    "checks":["Multi-tenant med roller fra dag én","Pares én gang; kun en hashet token lagres","Viser innhold videre gjennom nettbrudd"],
+    "status":"SundayInfo er live på info.sundaysuite.app. Par en skjerm, inviter redaktører og publiser — logg inn med Sunday-kontoen din. Rigg-test på ekte TV-er er siste steg før vi kaller den ferdig.",
+    "cta_h":"Vil du ha SundayInfo på foajé-skjermen?","cta_p":"Den er live på info.sundaysuite.app. Ta kontakt om menigheten din vil ha hjelp til å få den første skjermen opp på veggen."},
+  "chips":[("Plan","Info","today's service / dagens gudstjeneste"),("Booking","Info","rooms in use / lokaler i bruk")]},
+ "sundaybooking":{"accent":"booking","icon":"calendar","short":"Booking","url":"https://booking.sundaysuite.app","live":True,
+  "en":{"tagline":"Book the church — without double-bookings.",
+    "meta":"SundayBooking handles room bookings, external rentals and appointments for the church, with double-bookings made structurally impossible. Part of the SundayPlan family.",
+    "lead":"Manage internal rooms, external rentals and appointment bookings in one calendar where overlaps are structurally impossible — set-up and clean-up time included. Staff approve requests; members and renters ask through a link, no account needed for the public flow. Shares one account and one church with SundayPlan.",
+    "what":"Every space, one honest calendar","whatlead":"From a wedding to a choir rehearsal — requested, checked and approved without a clash.",
+    "features":[("calendar","Conflict-proof calendar","An exclusion constraint in the database makes a double-booking impossible — including rig and clean-up buffers."),
+      ("check","Approval queue","Requests land in a queue staff approve or decline, with suggested alternatives when a slot is taken."),
+      ("people","Internal &amp; external","Rooms for staff and volunteers, plus public rentals via a link and a magic-link status page — no account needed."),
+      ("stack","Resources &amp; bundles","Define rooms, equipment and event types once; bundle them so booking the hall books the chairs too."),
+      ("bell","Live presence","See “someone is asking for this time right now” as it happens, so two planners don't grab the same slot."),
+      ("globe","ICS feed &amp; utilisation","Subscribe to a room's calendar as an ICS feed and watch a utilisation dashboard fill in.")],
+    "hl_kicker":"Correct by construction","hl_title":"A double-booking isn't caught — it's impossible.",
+    "hl_p":"Booking goes through an atomic database function that locks the resources and rejects any overlap on the effective time range, set-up and clean-up included. The wedding and the choir rehearsal can never land on the same room.",
+    "checks":["Overlaps blocked by the database, not by a check after the fact","Public rentals without an account, via magic link","Shares the account, church and SSO with SundayPlan"],
+    "status":"SundayBooking is live at booking.sundaysuite.app and lives inside SundayPlan — same account, same church. Sign in with your Sunday account to manage resources and approvals; rig-testing across devices is under way.",
+    "cta_h":"Want bookings without the clashes?","cta_p":"It's live at booking.sundaysuite.app, part of the SundayPlan family. Get in touch if your church wants help setting up rooms and rentals."},
+  "no":{"tagline":"Book menigheten — uten dobbeltbooking.",
+    "meta":"SundayBooking håndterer rombooking, ekstern utleie og avtaler for menigheten, med dobbeltbooking gjort strukturelt umulig. En del av SundayPlan-familien.",
+    "lead":"Styr interne rom, ekstern utleie og avtalebooking i én kalender der overlapp er strukturelt umulig — rigge- og ryddetid inkludert. Staben godkjenner forespørsler; medlemmer og leietakere spør via en lenke, uten konto for den offentlige flyten. Deler én konto og én menighet med SundayPlan.",
+    "what":"Hvert lokale, én ærlig kalender","whatlead":"Fra bryllup til korøvelse — forespurt, sjekket og godkjent uten kollisjon.",
+    "features":[("calendar","Kollisjonssikker kalender","En exclusion-constraint i databasen gjør dobbeltbooking umulig — inkludert rigge- og ryddebuffere."),
+      ("check","Godkjenningskø","Forespørsler havner i en kø staben godkjenner eller avslår, med forslag til alternativer når en tid er opptatt."),
+      ("people","Internt &amp; eksternt","Rom for stab og frivillige, pluss offentlig utleie via lenke og en magic-link-statusside — uten konto."),
+      ("stack","Ressurser &amp; pakker","Definer rom, utstyr og arrangementstyper én gang; pakk dem så booking av salen også booker stolene."),
+      ("bell","Live tilstedeværelse","Se «noen ber om denne tiden nå» idet det skjer, så to planleggere ikke tar samme tid."),
+      ("globe","ICS-feed &amp; utnyttelse","Abonner på et roms kalender som ICS-feed og følg et utnyttelses-dashboard fylles inn.")],
+    "hl_kicker":"Riktig ved konstruksjon","hl_title":"En dobbeltbooking fanges ikke — den er umulig.",
+    "hl_p":"Booking går gjennom en atomisk databasefunksjon som låser ressursene og avviser ethvert overlapp på det effektive tidsrommet, rigge- og ryddetid inkludert. Bryllupet og korøvelsen kan aldri havne på samme rom.",
+    "checks":["Overlapp blokkeres av databasen, ikke av en sjekk i etterkant","Offentlig utleie uten konto, via magic link","Deler konto, menighet og SSO med SundayPlan"],
+    "status":"SundayBooking er live på booking.sundaysuite.app og bor inne i SundayPlan — samme konto, samme menighet. Logg inn med Sunday-kontoen din for å styre ressurser og godkjenninger; rigg-test på tvers av enheter pågår.",
+    "cta_h":"Vil du ha booking uten kollisjoner?","cta_p":"Den er live på booking.sundaysuite.app, en del av SundayPlan-familien. Ta kontakt om menigheten din vil ha hjelp til å sette opp rom og utleie."},
+  "chips":[("Plan","Booking","shared church / delt menighet"),("Booking","Info","rooms in use / lokaler i bruk")]},
 }
 
 CHECKSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>'
 
 def chip_html(a,b,t): return f'<div class="chip"><span class="from">{a}</span><span class="arrow">&rarr;</span><span class="to">{b}</span>&nbsp;{t}</div>'
 
-def app_body(c, L, slug, accent, icon, short, d, chips, status_head=None, hero_actions=None):
+def app_body(c, L, slug, accent, icon, short, d, chips, status_head=None, hero_actions=None, badge=None):
     feats=""
     for i,(ik,t,desc) in enumerate(d["features"]):
         dd=f' data-d="{i%3}"' if i%3 else ""
@@ -692,9 +775,10 @@ def app_body(c, L, slug, accent, icon, short, d, chips, status_head=None, hero_a
     sh = status_head or c["status_head"]
     if hero_actions is None:
         hero_actions=f'<a href="mailto:dev@sundaysuite.app" class="btn btn-accent">{c["keep_posted"]}</a><a href="{L["home"]}#products" class="btn btn-ghost">{c["all_products"]}</a>'
-        badge=f'<span class="status on-ink build">{c["status_build"]}</span>'
+        default_badge=f'<span class="status on-ink build">{c["status_build"]}</span>'
     else:
-        badge=f'<span class="status on-ink beta">{("Beta · free" if c["lang"]=="en" else "Beta · gratis")}</span>'
+        default_badge=f'<span class="status on-ink beta">{("Beta · free" if c["lang"]=="en" else "Beta · gratis")}</span>'
+    badge = badge or default_badge
     return (f'''<main>
 <section class="app-hero"><div class="grain"></div><div class="wrap">
   <div class="crumb"><a href="{L["home"]}">Sunday Suite</a><span>/</span><span>{PNAME[slug]}</span></div>
@@ -761,7 +845,21 @@ def render_app(lang, slug):
         chips=None
         if ad["chips"]:
             chips=[(x[0],x[1], x[2].split(" / ")[0] if lang=="en" else x[2].split(" / ")[1]) for x in ad["chips"]]
-        body=app_body(c,L,slug,ad["accent"],ad["icon"],ad["short"],d,chips)
+        if ad.get("live"):
+            sub=ad["url"].replace("https://","")
+            visit=(f'Open {sub}' if lang=="en" else f'Åpne {sub}')
+            ha=(f'<a href="{ad["url"]}" target="_blank" rel="noopener" class="btn btn-accent">{visit}</a>'
+                f'<a href="{L["home"]}#products" class="btn btn-ghost">{c["all_products"]}</a>')
+            live_badge='<span class="status on-ink live">Live</span>'
+            body=app_body(c,L,slug,ad["accent"],ad["icon"],ad["short"],d,chips,hero_actions=ha,badge=live_badge)
+            old_cta=(f'<div class="hero-actions" style="justify-content:center"><a href="mailto:dev@sundaysuite.app" class="btn btn-primary">dev@sundaysuite.app</a>'
+                     f'<a href="{L["home"]}#products" class="btn btn-ghost">{c["all_products"]}</a></div>')
+            new_cta=(f'<div class="hero-actions" style="justify-content:center">'
+                     f'<a href="{ad["url"]}" target="_blank" rel="noopener" class="btn btn-primary">{visit}</a>'
+                     f'<a href="mailto:dev@sundaysuite.app" class="btn btn-ghost">dev@sundaysuite.app</a></div>')
+            body=body.replace(old_cta,new_cta,1)
+        else:
+            body=app_body(c,L,slug,ad["accent"],ad["icon"],ad["short"],d,chips)
         title=f'{PNAME[slug]} — {d["tagline"]} | Sunday Suite'
     return shell(c,L,other,title,d["meta"],f' style="--c:var(--{(APP["sundayrec"]["accent"] if slug=="sundayrec" else APPDATA[slug]["accent"])})"',body)
 
@@ -806,7 +904,9 @@ def terms_en():
       ("SundaySong","Song database with AI and TONO/CCLI reporting","In development"),
       ("SundayEdit","AI video captioning (standalone product)","In development"),
       ("SundayPaper","AI document and PDF tool for print","Planning"),
-      ("SundayTranslate","Live translation and assistive listening for the service (web app)","In development")])
+      ("SundayTranslate","Live translation and assistive listening for the service (web app)","In development"),
+      ("SundayInfo","Digital signage for the church (web app)","Live"),
+      ("SundayBooking","Room, rental and appointment booking (web app)","Live")])
     prose=f'''    <p class="lead">Please read these Terms of Use ("Terms") before using the software in Sunday Suite or the website sundaysuite.app (together the "Service"), operated by Richard Fossland ("we", "us" or "our"). By downloading, installing or using a Sunday program you agree to be bound by these Terms. If you do not agree, do not use the Service.</p>
     {h2(1,"s1","About these Terms")}
     <p>Sunday Suite is a family of standalone programs for churches and organizations. These Terms apply to all programs in the suite, both those out in beta and those still in development, and to the website. Individual programs may have their own supplementary terms; in case of conflict, the supplementary terms for the program in question prevail over these general Terms.</p>
@@ -822,7 +922,7 @@ def terms_en():
     <p>You may not:</p>
     <ul><li>redistribute, sell, rent or sublicense the software;</li><li>decompile, reverse-engineer or attempt to derive the source code, except to the extent mandatory law permits;</li><li>remove or alter any copyright notices, trademarks or other proprietary markings;</li><li>use the software, name or design to create, market or operate a competing or confusingly similar product; or</li><li>use the Service for any unlawful purpose.</li></ul>
     {h2(5,"s5","Intellectual property and trademarks")}
-    <p>Sunday Suite and all programs in the suite — <strong>SundayRec, SundayStudio, SundayStage, SundayPlan, SundaySong, SundayEdit and SundayPaper</strong> — together with source code, design, graphics, the golden cross, logos, names, text and all other content, are owned by Richard Fossland and protected by applicable law on copyright, trademarks and other intellectual property rights.</p>
+    <p>Sunday Suite and all programs in the suite — <strong>SundayRec, SundayStudio, SundayStage, SundayPlan, SundaySong, SundayEdit, SundayPaper, SundayTranslate, SundayInfo and SundayBooking</strong> — together with source code, design, graphics, the golden cross, logos, names, text and all other content, are owned by Richard Fossland and protected by applicable law on copyright, trademarks and other intellectual property rights.</p>
     <h3>Trademarks</h3>
     <p>The names "Sunday Suite", the "Sunday" family of product names listed above, and the associated cross and gold symbol, are our trademarks (registered or being established). You are granted no right to use these trademarks, and you must not use them — or names, logos or designs likely to be confused with them — without prior written consent. This also applies to product, domain, app-store and company names.</p>
     <h3>No transfer of rights</h3>
@@ -890,7 +990,9 @@ def terms_no():
       ("SundaySong","Sangdatabase med AI og TONO/CCLI-rapportering","Under utvikling"),
       ("SundayEdit","AI-teksting av video (frittstående produkt)","Under utvikling"),
       ("SundayPaper","AI-dokument- og PDF-verktøy for trykksaker","Planlegging"),
-      ("SundayTranslate","Live tolking og lytteanlegg for gudstjenesten (web-app)","Under utvikling")])
+      ("SundayTranslate","Live tolking og lytteanlegg for gudstjenesten (web-app)","Under utvikling"),
+      ("SundayInfo","Digital infoskjerm for menigheten (web-app)","Live"),
+      ("SundayBooking","Rom-, utleie- og avtalebooking (web-app)","Live")])
     prose=f'''    <p class="lead">Les disse vilkårene for bruk («Vilkårene») før du bruker programvaren i Sunday Suite eller nettstedet sundaysuite.app (samlet «Tjenesten»), drevet av Richard Fossland («vi», «oss» eller «vår»). Ved å laste ned, installere eller bruke et Sunday-program godtar du å være bundet av disse Vilkårene. Godtar du dem ikke, skal du ikke bruke Tjenesten.</p>
     {h2(1,"s1","Om vilkårene")}
     <p>Sunday Suite er en familie av selvstendige programmer for menigheter og organisasjoner. Vilkårene gjelder for alle programmene i suiten, både de som er ute i beta og de som fortsatt er under utvikling, samt for nettstedet. Enkelte programmer kan ha egne tilleggsvilkår; ved motstrid gjelder tilleggsvilkårene for det aktuelle programmet foran disse generelle Vilkårene.</p>
@@ -906,7 +1008,7 @@ def terms_no():
     <p>Du har ikke lov til å:</p>
     <ul><li>videredistribuere, selge, leie ut eller viderelisensiere programvaren;</li><li>dekompilere, reversutvikle eller forsøke å utlede kildekoden, unntatt i den grad ufravikelig lov tillater det;</li><li>fjerne eller endre opphavsrettsmerker, varemerker eller andre rettighetsmerker;</li><li>bruke programvaren, navnet eller utformingen til å lage, markedsføre eller drive et konkurrerende eller forvekselbart produkt; eller</li><li>bruke Tjenesten til ulovlige formål.</li></ul>
     {h2(5,"s5","Immaterielle rettigheter og varemerker")}
-    <p>Sunday Suite og alle programmene i suiten — <strong>SundayRec, SundayStudio, SundayStage, SundayPlan, SundaySong, SundayEdit og SundayPaper</strong> — sammen med kildekode, design, grafikk, det gylne korset, logoer, navn, tekst og alt øvrig innhold, eies av Richard Fossland og er beskyttet av gjeldende lovgivning om opphavsrett, varemerker og andre immaterielle rettigheter.</p>
+    <p>Sunday Suite og alle programmene i suiten — <strong>SundayRec, SundayStudio, SundayStage, SundayPlan, SundaySong, SundayEdit, SundayPaper, SundayTranslate, SundayInfo og SundayBooking</strong> — sammen med kildekode, design, grafikk, det gylne korset, logoer, navn, tekst og alt øvrig innhold, eies av Richard Fossland og er beskyttet av gjeldende lovgivning om opphavsrett, varemerker og andre immaterielle rettigheter.</p>
     <h3>Varemerker</h3>
     <p>Navnene «Sunday Suite», «Sunday»-familien av produktnavn nevnt over, samt det tilhørende kors- og gull-symbolet, er våre varemerker (registrerte eller under etablering). Du får ingen rett til å bruke disse varemerkene, og du må ikke bruke dem — eller navn, logoer eller utforming som er egnet til å forveksles med dem — uten skriftlig forhåndssamtykke. Dette gjelder også produkt-, domene-, app-butikk- og selskapsnavn.</p>
     <h3>Ingen rettighetsoverføring</h3>
@@ -1275,7 +1377,7 @@ HELPDOC = {
     <h2>What does it cost?</h2>
     <p>Nothing, for now. Everything that is available today — the SundayPlan test phase and the SundayRec beta — is free. Paid plans may come later, but any change will be communicated clearly and well in advance.</p>
     <h2>Which apps can I actually use today?</h2>
-    <p><strong>SundayPlan</strong> is live on the web at <a href="https://plan.sundaysuite.app" target="_blank" rel="noopener">plan.sundaysuite.app</a> (open test phase), and <strong>SundayRec</strong> is a downloadable desktop beta for Mac and Windows. The rest of the family — Stage, Song, Edit, Studio and Paper — is in development and not available yet.</p>
+    <p>Several are already live on the web — <strong>SundayPlan</strong> (<a href="https://plan.sundaysuite.app" target="_blank" rel="noopener">plan.sundaysuite.app</a>, open test phase), <strong>SundayInfo</strong> (<a href="https://info.sundaysuite.app" target="_blank" rel="noopener">info.sundaysuite.app</a>) and <strong>SundayBooking</strong> (<a href="https://booking.sundaysuite.app" target="_blank" rel="noopener">booking.sundaysuite.app</a>). <strong>SundayRec</strong> is a downloadable desktop beta for Mac and Windows, and <strong>SundayTranslate</strong> is launching at <a href="https://translate.sundaysuite.app" target="_blank" rel="noopener">translate.sundaysuite.app</a>. The rest — Stage, Song, Edit, Studio and Paper — is in development and not available yet.</p>
     <h2>Which languages are supported?</h2>
     <p>SundayPlan speaks Norwegian, English, Swedish, Danish, German, French and Polish. SundayRec ships in seven languages, including Norwegian Bokmål and Nynorsk. This website is in English and Norwegian.</p>
     <h2>Which browsers work with SundayPlan?</h2>
@@ -1302,7 +1404,7 @@ HELPDOC = {
     <h2>Hva koster det?</h2>
     <p>Ingenting, foreløpig. Alt som er tilgjengelig i dag — SundayPlan-testfasen og SundayRec-betaen — er gratis. Betalte planer kan komme senere, men eventuelle endringer kommuniseres tydelig og i god tid.</p>
     <h2>Hvilke apper kan jeg faktisk bruke i dag?</h2>
-    <p><strong>SundayPlan</strong> er live på nett på <a href="https://plan.sundaysuite.app" target="_blank" rel="noopener">plan.sundaysuite.app</a> (åpen testfase), og <strong>SundayRec</strong> er en nedlastbar skrivebords-beta for Mac og Windows. Resten av familien — Stage, Song, Edit, Studio og Paper — er under utvikling og ikke tilgjengelig ennå.</p>
+    <p>Flere er allerede live på nett — <strong>SundayPlan</strong> (<a href="https://plan.sundaysuite.app" target="_blank" rel="noopener">plan.sundaysuite.app</a>, åpen testfase), <strong>SundayInfo</strong> (<a href="https://info.sundaysuite.app" target="_blank" rel="noopener">info.sundaysuite.app</a>) og <strong>SundayBooking</strong> (<a href="https://booking.sundaysuite.app" target="_blank" rel="noopener">booking.sundaysuite.app</a>). <strong>SundayRec</strong> er en nedlastbar skrivebords-beta for Mac og Windows, og <strong>SundayTranslate</strong> lanseres på <a href="https://translate.sundaysuite.app" target="_blank" rel="noopener">translate.sundaysuite.app</a>. Resten — Stage, Song, Edit, Studio og Paper — er under utvikling og ikke tilgjengelig ennå.</p>
     <h2>Hvilke språk støttes?</h2>
     <p>SundayPlan snakker norsk, engelsk, svensk, dansk, tysk, fransk og polsk. SundayRec leveres på sju språk, inkludert bokmål og nynorsk. Dette nettstedet finnes på engelsk og norsk.</p>
     <h2>Hvilke nettlesere fungerer med SundayPlan?</h2>

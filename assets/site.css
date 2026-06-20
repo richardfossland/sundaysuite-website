@@ -19,8 +19,10 @@
   /* per-app accents */
   --rec:#2563EB; --stage:#E6B13A; --plan:#3146C9; --song:#B1431C;
   --edit:#10A8B5; --studio:#D4A017; --paper-c:#B87333; --translate:#2BB3C0;
+  --info:#7A3FA0; --booking:#1F7A6B;
   /* community-toolbox accents */
   --quiz:#FF8A5C; --chess:#7C5CCB; --turnering:#E07A2F; --market:#C9952F; --harvest:#7BA23F;
+  --tictactoe:#4C63D2; --basar:#CF4C86; --panel:#2E9E8F;
 
   --display:'Playfair Display',Georgia,serif;
   --body:'Hanken Grotesk',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
@@ -153,6 +155,7 @@ h1.hero-title em{ font-style:italic; font-weight:500; color:var(--gold); }
 .status.on-ink{ background:rgba(255,255,255,.1); }
 .status.on-ink.beta{ color:#f5cf7d; background:rgba(235,184,75,.14); }
 .status.on-ink.build{ color:#bcd0f5; background:rgba(96,140,235,.16); }
+.status.on-ink.live{ color:#9be3b6; background:rgba(16,167,87,.16); }
 
 /* ---------- PHILOSOPHY (ink) ---------- */
 .philo{ position:relative; background:var(--ink-2); padding:120px 0; overflow:hidden; }
