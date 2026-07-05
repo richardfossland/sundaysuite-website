@@ -44,6 +44,7 @@ IC = {
  "tictactoe":'<path d="M9 3v18M15 3v18M3 9h18M3 15h18"/><path d="M4.7 4.7l2.6 2.6M7.3 4.7L4.7 7.3"/><circle cx="18" cy="18" r="1.9"/>',
  "basar":'<circle cx="12" cy="13" r="8.2"/><path d="M12 4.8v16.4M3.8 13h16.4M6.2 7.2l11.6 11.6M17.8 7.2L6.2 18.8"/><circle cx="12" cy="13" r="1.3" fill="currentColor" stroke="none"/><path d="M12 1.6l2.3 3.2h-4.6z" fill="currentColor" stroke="none"/>',
  "panel":'<path d="M21 4H3a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h4v4l5-4h9a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1z"/><path d="M9.6 9.2a2.4 2.4 0 1 1 3.1 2.5c-.8.3-1.2.8-1.2 1.5v.3"/><path d="M11.5 15.4v.3"/>',
+ "licks":'<rect x="3" y="5.5" width="18" height="13" rx="1.6"/><path d="M8 5.5v13M12.5 5.5v13M17 5.5v13"/><rect x="6.8" y="5.5" width="2.4" height="6" rx="0.5" fill="currentColor" stroke="none"/><rect x="11.3" y="5.5" width="2.4" height="6" rx="0.5" fill="currentColor" stroke="none"/><rect x="15.8" y="5.5" width="2.4" height="6" rx="0.5" fill="currentColor" stroke="none"/>',
 }
 def sv(k, sw="2"):
     return f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{sw}" stroke-linecap="round" stroke-linejoin="round">{IC[k]}</svg>'
@@ -262,6 +263,9 @@ TOOLS = [
  {"name":"SundayPanel","accent":"panel","icon":"panel","url":"https://panel.sundaysuite.app","live":True,
   "en":("Youth","Anonymous questions from the floor to a panel on the big screen — no app, no login. Everyone asks with a word-code or QR; you curate what goes up.","Youth · word-code or QR"),
   "no":("Ungdom","Anonyme spørsmål fra salen til et panel på storskjerm — ingen app, ingen innlogging. Alle spør med ordkode eller QR; du velger hva som vises.","Ungdom · ordkode eller QR")},
+ {"name":"SundayLicks","accent":"licks","icon":"licks","url":"https://licks.sundaysuite.app","live":True,
+  "en":("Piano practice","A practice library of gospel and worship piano licks — a lit-up keyboard, live tempo and transpose to any key. Everything plays from notes, never audio, so it never stutters.","Pianists · any key"),
+  "no":("Pianoøving","Et øvingsbibliotek av gospel- og lovsang-licks for piano — opplyst klaviatur, live tempo og transponering til alle tonearter. Alt spilles fra noter, aldri lyd, så det aldri hakker.","Pianister · alle tonearter")},
 ]
 
 # copy for the dedicated toolbox landing page (/toolbox.html + /no/verktoykasse.html)
