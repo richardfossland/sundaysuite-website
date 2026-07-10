@@ -46,6 +46,7 @@ IC = {
  "panel":'<path d="M21 4H3a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h4v4l5-4h9a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1z"/><path d="M9.6 9.2a2.4 2.4 0 1 1 3.1 2.5c-.8.3-1.2.8-1.2 1.5v.3"/><path d="M11.5 15.4v.3"/>',
  "licks":'<rect x="3" y="5.5" width="18" height="13" rx="1.6"/><path d="M8 5.5v13M12.5 5.5v13M17 5.5v13"/><rect x="6.8" y="5.5" width="2.4" height="6" rx="0.5" fill="currentColor" stroke="none"/><rect x="11.3" y="5.5" width="2.4" height="6" rx="0.5" fill="currentColor" stroke="none"/><rect x="15.8" y="5.5" width="2.4" height="6" rx="0.5" fill="currentColor" stroke="none"/>',
  "welcome":'<path d="M13.5 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h7.5"/><path d="M13.5 21l5.5-1.8V4.8L13.5 3z"/><circle cx="15.6" cy="12" r="0.9" fill="currentColor" stroke="none"/><path d="M8 12h3M9.7 10.3L8 12l1.7 1.7"/>',
+ "school":'<path d="M12 3.5 2.5 8 12 12.5 21.5 8 12 3.5z"/><path d="M6 10.4V15c0 1.6 2.7 3 6 3s6-1.4 6-3v-4.6"/><path d="M21.5 8v5"/>',
 }
 def sv(k, sw="2"):
     return f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{sw}" stroke-linecap="round" stroke-linejoin="round">{IC[k]}</svg>'
@@ -270,6 +271,9 @@ TOOLS = [
  {"name":"SundayWelcome","accent":"welcome","icon":"welcome","url":"https://welcome.sundaysuite.app","live":True,
   "en":("Welcome newcomers","A digital welcome note for first-time visitors — they scan a QR, leave their details, and the team follows up. No one falls through the cracks.","Newcomer follow-up"),
   "no":("Ta imot nykommere","En digital velkomstlapp for førstegangsbesøkende — de skanner en QR, legger igjen kontaktinfo, og teamet følger opp. Ingen faller mellom to stoler.","Nykommer-oppfølging")},
+ {"name":"SundaySchool","accent":"school","icon":"school","url":"https://school.sundaysuite.app","live":True,
+  "en":("Learn piano","Learn hymns, worship and gospel on piano — falling notes, real notation, practice mode that waits for you, and one-tap transpose to the singer's key. Free, rights-cleared repertoire.","Piano · falling notes"),
+  "no":("Lær piano","Lær salmer, lovsang og gospel på piano — fallende noter, ekte notasjon, øvemodus som venter på deg, og transponering til forsangerens toneart med ett trykk. Fritt og rettighetsklarert repertoar.","Piano · fallende noter")},
 ]
 
 # copy for the dedicated toolbox landing page (/toolbox.html + /no/verktoykasse.html)
