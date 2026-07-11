@@ -272,8 +272,8 @@ TOOLS = [
   "en":("Welcome newcomers","A digital welcome note for first-time visitors — they scan a QR, leave their details, and the team follows up. No one falls through the cracks.","Newcomer follow-up"),
   "no":("Ta imot nykommere","En digital velkomstlapp for førstegangsbesøkende — de skanner en QR, legger igjen kontaktinfo, og teamet følger opp. Ingen faller mellom to stoler.","Nykommer-oppfølging")},
  {"name":"SundaySchool","accent":"school","icon":"school","url":"https://school.sundaysuite.app","live":True,
-  "en":("Learn piano","Learn hymns, worship and gospel on piano — falling notes, real notation, practice mode that waits for you, and one-tap transpose to the singer's key. Free, rights-cleared repertoire.","Piano · falling notes"),
-  "no":("Lær piano","Lær salmer, lovsang og gospel på piano — fallende noter, ekte notasjon, øvemodus som venter på deg, og transponering til forsangerens toneart med ett trykk. Fritt og rettighetsklarert repertoar.","Piano · fallende noter")},
+  "en":("Music & theology school","The church's own school — piano, guitar, bass and drums with falling notes, band mode and one-tap transpose, plus hymn stories, Bible verses, catechism and the church year. Free, rights-cleared.","Piano · guitar · bass · drums · theology"),
+  "no":("Musikk- og teologiskole","Menighetens egen skole — piano, gitar, bass og trommer med fallende noter, band-modus og transponering med ett trykk, pluss salmehistorier, bibelvers, katekisme og kirkeåret. Fritt og rettighetsklarert.","Piano · gitar · bass · trommer · teologi")},
 ]
 
 # copy for the dedicated toolbox landing page (/toolbox.html + /no/verktoykasse.html)
