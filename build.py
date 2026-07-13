@@ -272,8 +272,8 @@ TOOLS = [
   "en":("Welcome newcomers","A digital welcome note for first-time visitors — they scan a QR, leave their details, and the team follows up. No one falls through the cracks.","Newcomer follow-up"),
   "no":("Ta imot nykommere","En digital velkomstlapp for førstegangsbesøkende — de skanner en QR, legger igjen kontaktinfo, og teamet følger opp. Ingen faller mellom to stoler.","Nykommer-oppfølging")},
  {"name":"SundaySchool","accent":"school","icon":"school","url":"https://school.sundaysuite.app","live":True,
-  "en":("Music & theology school","The church's own school — piano, guitar, bass and drums with falling notes, band mode and one-tap transpose, plus hymn stories, Bible verses, catechism and the church year. Free, rights-cleared.","Piano · guitar · bass · drums · theology"),
-  "no":("Musikk- og teologiskole","Menighetens egen skole — piano, gitar, bass og trommer med fallende noter, band-modus og transponering med ett trykk, pluss salmehistorier, bibelvers, katekisme og kirkeåret. Fritt og rettighetsklarert.","Piano · gitar · bass · trommer · teologi")},
+  "en":("Music & theology school","The church's own school — eleven subjects, from piano, guitar, bass and drums to worship planning, sight-reading, rhythm and sound tech, plus theology. A rights-cleared library of 51 hymns in 104 playable arrangements.","11 subjects · 51 hymns · 104 arrangements"),
+  "no":("Musikk- og teologiskole","Menighetens egen skole — elleve fag, fra piano, gitar, bass og trommer til lovsangsledelse, bladspill, rytme og lydteknikk, pluss teologi. Et rettighetsklarert bibliotek med 51 salmer i 104 spillbare arrangementer.","11 fag · 51 verk · 104 arrangementer")},
 ]
 
 # copy for the dedicated toolbox landing page (/toolbox.html + /no/verktoykasse.html)
