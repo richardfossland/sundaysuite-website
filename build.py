@@ -98,6 +98,13 @@ STATUS = {"sundayrec":"beta","sundaystudio":"build","sundaystage":"build",
           "sundaypaper":"plan","sundaytranslate":"build",
           "sundayinfo":"live","sundaybooking":"live"}
 
+SITE = "https://sundaysuite.app"
+def clean_url(path):
+    """Repo html path -> canonical live URL (Pages serves clean, extensionless URLs)."""
+    if path.endswith("index.html"): path = path[:-len("index.html")]
+    elif path.endswith(".html"):    path = path[:-len(".html")]
+    return SITE + "/" + path
+
 def links(lang, root):
     base = "" if lang=="en" else "no/"
     helpdir = "help/" if lang=="en" else "no/hjelp/"
@@ -135,13 +142,23 @@ def footer(c, L):
       f'<div class="foot-bottom"><div>{c["foot_bottom"]}</div><div><a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a> &middot; sundaysuite.app</div></div>'
       f'</div></footer>')
 
-def shell(c, L, other_href, title, desc, body_open, content, navscrolled=False):
+def shell(c, L, other_href, title, desc, body_open, content, navscrolled=False, pair=None):
     nv = nav(c, L, other_href)
     if navscrolled: nv = nv.replace('class="nav"','class="nav scrolled"')
+    seo = ""
+    if pair:
+        en_url, no_url = clean_url(pair[0]), clean_url(pair[1])
+        own = en_url if c["lang"]=="en" else no_url
+        seo = (f'<link rel="canonical" href="{own}" />\n'
+               f'<link rel="alternate" hreflang="en" href="{en_url}" />\n'
+               f'<link rel="alternate" hreflang="no" href="{no_url}" />\n'
+               f'<link rel="alternate" hreflang="x-default" href="{en_url}" />\n'
+               f'<meta property="og:url" content="{own}" />\n')
     return (f'<!DOCTYPE html>\n<html lang="{c["lang"]}">\n<head>\n<meta charset="UTF-8" />\n'
       f'<meta name="viewport" content="width=device-width, initial-scale=1.0" />\n'
       f'<title>{title}</title>\n<meta name="description" content="{desc}" />\n'
       f'<link rel="icon" href="{L["assets"]}favicon.svg" type="image/svg+xml" />\n'
+      f'{seo}'
       f'<meta property="og:title" content="{title}" />\n<meta property="og:description" content="{desc}" />\n'
       f'<meta property="og:type" content="website" />\n<meta property="og:site_name" content="Sunday Suite" />\n<meta name="twitter:card" content="summary" />\n'
       f'<link rel="preconnect" href="https://fonts.googleapis.com" />\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />\n'
@@ -380,7 +397,7 @@ def render_toolbox_page(lang):
   <div class="hero-actions" style="justify-content:center"><a href="{L["home"]}#products" class="btn btn-primary">{p["cta_suite"]}</a><a href="mailto:dev@sundaysuite.app" class="btn btn-ghost">{p["cta_mail"]}</a></div>
 </div></section>
 </main>''')
-    return shell(c,L,other,p["title"],p["desc"],' style="--c:var(--gold)"',content)
+    return shell(c,L,other,p["title"],p["desc"],' style="--c:var(--gold)"',content,pair=("toolbox.html","no/verktoykasse.html"))
 
 def status_badge(st, c, on_ink=False):
     return f'<span class="status{" on-ink" if on_ink else ""} {st}">{c["status_labels"][st]}</span>'
@@ -454,7 +471,7 @@ def render_home(lang):
   <div class="hero-actions" style="justify-content:center"><a href="mailto:dev@sundaysuite.app" class="btn btn-primary">dev@sundaysuite.app</a><a href="#products" class="btn btn-ghost">{h["cta_back"]}</a></div>
 </div></section>
 </main>''')
-    return shell(c,L,other,h["title"],h["desc"]," id=\"top\"".replace(' id="top"',''),content)
+    return shell(c,L,other,h["title"],h["desc"]," id=\"top\"".replace(' id="top"',''),content,pair=("index.html","no/index.html"))
 
 # ===================================================================== APPS
 APP = {
@@ -897,7 +914,7 @@ def render_app(lang, slug):
         else:
             body=app_body(c,L,slug,ad["short"],d,chips,st)
         title=f'{PNAME[slug]} — {d["tagline"]} | Sunday Suite'
-    return shell(c,L,other,title,d["meta"],f' style="--c:var(--{(APP["sundayrec"]["accent"] if slug=="sundayrec" else APPDATA[slug]["accent"])})"',body)
+    return shell(c,L,other,title,d["meta"],f' style="--c:var(--{(APP["sundayrec"]["accent"] if slug=="sundayrec" else APPDATA[slug]["accent"])})"',body,pair=(f"apps/{slug}.html",f"no/apps/{slug}.html"))
 
 # ===================================================================== LEGAL
 def legal_shell(lang, name, h1, updated, note, toc, prose):
@@ -923,7 +940,7 @@ def legal_shell(lang, name, h1, updated, note, toc, prose):
         desc=("Terms of Use for Sunday Suite and sundaysuite.app." if lang=="en" else "Vilkår for bruk av Sunday Suite og sundaysuite.app.")
     else:
         desc=("Privacy Policy for Sunday Suite — local-first, your content stays with you." if lang=="en" else "Personvernerklæring for Sunday Suite — lokalt først, innholdet ditt blir hos deg.")
-    return shell(c,L,other,f'{title} — Sunday Suite',desc,'',content,navscrolled=True)
+    return shell(c,L,other,f'{title} — Sunday Suite',desc,'',content,navscrolled=True,pair=(f"legal/{name}.html",f"no/legal/{name}.html"))
 
 def toc(items): return "".join(f'<li><a href="#{i}">{t}</a></li>' for i,t in items)
 def h2(n,i,t): return f'<h2 id="{i}"><span class="num">{n}.</span>{t}</h2>'
@@ -1647,7 +1664,7 @@ def render_help_index(lang):
   <div class="note" style="margin-top:44px"><p>{hi["contact"]} <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a></p></div>
 </div></section>
 </main>'''
-    return shell(c,L,other,hi["title"],hi["meta"],'',content,navscrolled=True)
+    return shell(c,L,other,hi["title"],hi["meta"],'',content,navscrolled=True,pair=("help/index.html","no/hjelp/index.html"))
 
 def render_help_article(lang, slug):
     c=CH[lang]; root="../" if lang=="en" else "../../"; L=links(lang,root)
@@ -1668,7 +1685,7 @@ def render_help_article(lang, slug):
 </div></section>
 </main>'''
     title=f'{d["h1"]} — {hi["crumb"]} | Sunday Suite'
-    return shell(c,L,other,title,d["desc"],'',content,navscrolled=True)
+    return shell(c,L,other,title,d["desc"],'',content,navscrolled=True,pair=(f"help/{slug}.html",f"no/hjelp/{slug}.html"))
 
 # ===================================================================== WRITE
 def W(path, html):
@@ -1676,6 +1693,29 @@ def W(path, html):
     os.makedirs(os.path.dirname(full), exist_ok=True)
     open(full,"w",encoding="utf-8").write(html)
     print("wrote", path)
+
+def page_pairs():
+    """(EN html path, NO html path) for every page — drives hreflang and the sitemap."""
+    pairs=[("index.html","no/index.html"),("toolbox.html","no/verktoykasse.html")]
+    pairs+=[(f"apps/{s}.html", f"no/apps/{s}.html") for s in SLUGS]
+    pairs+=[("legal/terms.html","no/legal/terms.html"),("legal/privacy.html","no/legal/privacy.html")]
+    pairs+=[("help/index.html","no/hjelp/index.html")]
+    pairs+=[(f"help/{hs}.html", f"no/hjelp/{hs}.html") for hs in HELP_ORDER]
+    return pairs
+
+def sitemap_xml():
+    rows=[]
+    for en,no in page_pairs():
+        eu, nu = clean_url(en), clean_url(no)
+        alts=(f'<xhtml:link rel="alternate" hreflang="en" href="{eu}"/>'
+              f'<xhtml:link rel="alternate" hreflang="no" href="{nu}"/>'
+              f'<xhtml:link rel="alternate" hreflang="x-default" href="{eu}"/>')
+        for own in (eu, nu):
+            rows.append(f'  <url><loc>{own}</loc>{alts}</url>')
+    return ('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+            'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
+            + "\n".join(rows) + "\n</urlset>\n")
 
 for lang in ("en","no"):
     pre = "" if lang=="en" else "no/"
@@ -1689,4 +1729,6 @@ for lang in ("en","no"):
     W(hpre+"index.html", render_help_index(lang))
     for hs in HELP_ORDER:
         W(hpre+f"{hs}.html", render_help_article(lang,hs))
+W("sitemap.xml", sitemap_xml())
+W("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
 print("done")
