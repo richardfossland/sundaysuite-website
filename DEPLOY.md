@@ -17,9 +17,11 @@ Project name: **sundaysuite**
    ```
 2. Deploy the current folder:
    ```
-   npx wrangler pages deploy . --project-name sundaysuite
+   npx wrangler pages deploy . --project-name sundaysuite --branch main
    ```
-   The first deploy creates the project. `.assetsignore` keeps `build.py` and these notes out of the upload.
+   `--branch main` targets the production branch, so the deploy goes straight to
+   the live custom domains. The first deploy creates the project. `.assetsignore`
+   keeps `build.py` and these notes out of the upload.
 
 3. Attach the custom domain `sundaysuite.app`:
    - Cloudflare dashboard → Workers & Pages → **sundaysuite** → Custom domains → *Set up a custom domain* → `sundaysuite.app` (and `www.sundaysuite.app`).

@@ -13,6 +13,21 @@
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
     }
   }
+  // SundayRec product page: show the latest release version (progressive enhancement)
+  var vslot = document.querySelector('[data-rec-version]');
+  if (vslot && window.fetch) {
+    fetch('/download/sundayrec/version').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+      if (!d || !d.version) return;
+      var no = document.documentElement.lang === 'no';
+      var txt = (no ? 'Nyeste versjon: v' : 'Latest version: v') + d.version;
+      if (d.pub_date) {
+        var dt = new Date(d.pub_date);
+        if (!isNaN(dt)) txt += ' · ' + dt.toLocaleDateString(no ? 'nb-NO' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+      }
+      vslot.textContent = txt + ' · ';
+      vslot.hidden = false;
+    }).catch(function () {});
+  }
   var els = document.querySelectorAll('.reveal:not(.in)');
   if (!('IntersectionObserver' in window)) {
     els.forEach(function (el) { el.classList.add('in'); });
