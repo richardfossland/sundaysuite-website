@@ -65,6 +65,8 @@ assets/
   site.js                 ← shared nav + scroll-reveal + Rec version badge (hand-edited)
   favicon.svg             ← suite mark (gold cross on ink tile)
   logos/{slug}.svg        ← per-product app-icon tiles
+sitemap.xml               ← generated (52 clean URLs with hreflang alternates)
+robots.txt                ← generated (allows all, points at the sitemap)
 functions/
   _middleware.js          ← Pages Function: 301-redirects sundayrec.com → /apps/sundayrec
   download/sundayrec/
@@ -72,6 +74,10 @@ functions/
     version.js            ← /download/sundayrec/version → {"version","pub_date"} JSON
 .assetsignore             ← keeps build.py/docs out of the deployed upload
 ```
+
+Every page carries a canonical URL plus `en`/`no`/`x-default` hreflang
+alternates (clean, extensionless URLs — `page_pairs()` in `build.py` is the
+single list driving both the head tags and the sitemap).
 
 ### Editing content
 
