@@ -13,7 +13,7 @@ Static, bilingual (English primary, Norwegian secondary), deployed on **Cloudfla
 
 **Ten core products** are presented, each with its own page in both languages, plus a
 **community toolbox** (11 free web tools with a dedicated landing page), a **help
-section** (8 plain-language guides per language) and shared legal pages.
+section** (11 plain-language guides per language) and shared legal pages.
 
 Product status lives in **one place**: the `STATUS` dict in `build.py`
 (`live` / `beta` / `build` / `plan`). It drives the home-card badges, the
@@ -84,8 +84,8 @@ functions/
    ```
    python3 build.py
    ```
-   This rewrites all 46 HTML pages (23 EN, 23 NO: home + toolbox + 10 products
-   + 2 legal + help index + 8 guides per language).
+   This rewrites all 52 HTML pages (26 EN, 26 NO: home + toolbox + 10 products
+   + 2 legal + help index + 11 guides per language).
 3. Styling lives in `assets/site.css` (edit directly — not generated).
 
 ### SundayRec download redirector

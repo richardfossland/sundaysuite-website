@@ -1115,17 +1115,18 @@ def privacy_no():
 # EN lives at /help/, NO at /no/hjelp/ — same English file slugs in both
 # languages so the language switch is a simple directory swap.
 HELP_ORDER = ["getting-started","volunteers-and-teams","plan-a-service","messages-and-magic-links",
-              "recording-with-sundayrec","licensing-ccli-tono","your-data-and-privacy","faq"]
+              "recording-with-sundayrec","signage-with-sundayinfo","booking-with-sundaybooking",
+              "licensing-ccli-tono","your-data-and-privacy","community-toolbox","faq"]
 
 HELP_INDEX = {
  "en":{"title":"Help & guides — Sunday Suite",
-   "meta":"Plain-language guides for Sunday Suite: get started with SundayPlan, invite volunteers, plan services, record with SundayRec, licensing, privacy and FAQ.",
+   "meta":"Plain-language guides for Sunday Suite: plan services with SundayPlan, record with SundayRec, put SundayInfo on a screen, book rooms with SundayBooking, run the community toolbox — plus licensing, privacy and FAQ.",
    "crumb":"Help","h1":"Help &amp; guides",
    "lead":"Plain-language guides for church volunteers and planners — no technical background needed. Start at the top if you're new, or jump straight to the question you have.",
    "read":"Read the guide",
    "contact":"Can't find what you're looking for? We answer every email:"},
  "no":{"title":"Hjelp & veiledninger — Sunday Suite",
-   "meta":"Lettleste veiledninger for Sunday Suite: kom i gang med SundayPlan, inviter frivillige, planlegg gudstjenester, ta opp med SundayRec, lisens, personvern og FAQ.",
+   "meta":"Lettleste veiledninger for Sunday Suite: planlegg med SundayPlan, ta opp med SundayRec, få SundayInfo på skjermen, book rom med SundayBooking, kjør verktøykassa — pluss lisens, personvern og FAQ.",
    "crumb":"Hjelp","h1":"Hjelp &amp; veiledninger",
    "lead":"Lettleste veiledninger for frivillige og planleggere i menigheten — ingen teknisk bakgrunn nødvendig. Start øverst om du er ny, eller hopp rett til spørsmålet du har.",
    "read":"Les veiledningen",
@@ -1349,6 +1350,90 @@ HELPDOC = {
     </ul>
     <h2>Veien videre</h2>
     <p>Når opptak→stopp kjennes trygt, kan SundayRec mye mer: planlagte opptak som starter av seg selv, lokal AI-transkripsjon av talen, live-strømming og podkast-publisering. Les mer på <a href="@@RECAPP@@">produktsiden for SundayRec</a>, eller bare utforsk innstillingene — og send en e-post til <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a> om du står fast.</p>'''}},
+ # ------------------------------------------------------------ signage with sundayinfo
+ "signage-with-sundayinfo":{"accent":"info",
+  "en":{"tag":"SundayInfo","card":"Signage with SundayInfo",
+    "desc":"Turn any TV into the church noticeboard — pair a screen with a code, invite editors, and keep it running even when the network drops.",
+    "h1":"Signage with SundayInfo","sub":"From a blank TV to a living noticeboard in the foyer.",
+    "note":"<strong>Live:</strong> SundayInfo is live at <a href=\"https://info.sundaysuite.app\" target=\"_blank\" rel=\"noopener\">info.sundaysuite.app</a> and free to use — sign in with your Sunday account. We're still rig-testing on a variety of real TVs, so if your screen does something odd, tell us: <a href=\"mailto:dev@sundaysuite.app\">dev@sundaysuite.app</a>.",
+    "body":'''    <p class="lead">SundayInfo turns any screen in the building into the church's noticeboard: service times, today's plan, announcements, the weather and a verse for the season. If a device can show a web page — a TV browser, a Chromecast, a PC or a Raspberry Pi — it can show SundayInfo. Here is how to get the first screen on the wall.</p>
+    <h2>1. Sign in and create your church</h2>
+    <p>Open <a href="https://info.sundaysuite.app" target="_blank" rel="noopener">info.sundaysuite.app</a> and sign in with your Sunday account. The first time, you create your church — and you can invite more editors later, so keeping the boards fresh never depends on one person.</p>
+    <h2>2. Pair the screen</h2>
+    <p>On the TV (or whatever drives it), open the screen link — a short pairing code appears on the display. From your phone or laptop, enter the code, and the screen is claimed for your church. It pairs once and never asks again; only a hashed token is stored on the device.</p>
+    <h2>3. Compose the board</h2>
+    <p>Choose what the screen shows: service times, today's plan, announcements, the weather, a Vipps giving QR, and a verse that follows the church year — Advent, Lent, Easter and ordinary time change the look and the verse automatically. You compose from your phone or laptop; the screen updates on its own clock.</p>
+    <h2>Several editors, several screens</h2>
+    <p>SundayInfo is built for teams: invite the people who should keep the boards up to date, and give each screen its own content if you like — one board in the foyer, another outside the kids' rooms. Every editor sees only your church's screens.</p>
+    <h2>When the network drops</h2>
+    <p>Screens keep going through an outage: a local snapshot holds the last published content on the display, and when the connection returns the screen catches up by itself. A dropped wifi should never mean a black wall on Sunday morning.</p>
+    <h2>Good habits</h2>
+    <ul>
+      <li><strong>Put the screen where guests actually look</strong> — the foyer beats the office corridor.</li>
+      <li><strong>Keep announcements short.</strong> A noticeboard is read in passing, not studied.</li>
+      <li><strong>Check it on a Sunday.</strong> Walk past your own screen now and then — the board is for the people walking by.</li>
+    </ul>
+    <p>Read more on the <a href="@@INFOAPP@@">SundayInfo product page</a>, or email <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a> if you'd like help getting the first screen up.</p>'''},
+  "no":{"tag":"SundayInfo","card":"Infoskjermer med SundayInfo",
+    "desc":"Gjør en hvilken som helst TV til menighetens infotavle — par en skjerm med en kode, inviter redaktører, og la den gå videre selv om nettet faller.",
+    "h1":"Infoskjermer med SundayInfo","sub":"Fra svart TV til en levende infotavle i foajeen.",
+    "note":"<strong>Live:</strong> SundayInfo er live på <a href=\"https://info.sundaysuite.app\" target=\"_blank\" rel=\"noopener\">info.sundaysuite.app</a> og gratis å bruke — logg inn med Sunday-kontoen din. Vi rigg-tester fortsatt på ulike ekte TV-er, så gjør skjermen din noe rart, si fra: <a href=\"mailto:dev@sundaysuite.app\">dev@sundaysuite.app</a>.",
+    "body":'''    <p class="lead">SundayInfo gjør en hvilken som helst skjerm i bygget til menighetens infotavle: gudstjenestetider, dagens plan, kunngjøringer, været og et vers for sesongen. Kan en enhet vise en nettside — en TV-nettleser, en Chromecast, en PC eller en Raspberry Pi — kan den vise SundayInfo. Slik får du den første skjermen opp på veggen.</p>
+    <h2>1. Logg inn og opprett menigheten</h2>
+    <p>Åpne <a href="https://info.sundaysuite.app" target="_blank" rel="noopener">info.sundaysuite.app</a> og logg inn med Sunday-kontoen din. Første gang oppretter du menigheten — og du kan invitere flere redaktører senere, så tavlene aldri avhenger av én person.</p>
+    <h2>2. Par skjermen</h2>
+    <p>På TV-en (eller det som driver den) åpner du skjermlenken — en kort paringskode vises på displayet. Fra mobilen eller PC-en skriver du inn koden, og skjermen claimes for menigheten din. Den pares én gang og spør aldri igjen; kun en hashet token lagres på enheten.</p>
+    <h2>3. Sett sammen tavla</h2>
+    <p>Velg hva skjermen skal vise: gudstjenestetider, dagens plan, kunngjøringer, været, en Vipps-QR for gaver, og et vers som følger kirkeåret — advent, faste, påske og det alminnelige kirkeår endrer uttrykk og vers automatisk. Du komponerer fra mobil eller PC; skjermen oppdaterer seg på sin egen klokke.</p>
+    <h2>Flere redaktører, flere skjermer</h2>
+    <p>SundayInfo er bygd for team: inviter de som skal holde tavlene oppdatert, og gi gjerne hver skjerm sitt eget innhold — én tavle i foajeen, en annen utenfor barnerommene. Hver redaktør ser bare din menighets skjermer.</p>
+    <h2>Når nettet faller</h2>
+    <p>Skjermene går videre gjennom et brudd: et lokalt øyeblikksbilde holder det sist publiserte innholdet på displayet, og når forbindelsen er tilbake, tar skjermen igjen av seg selv. Et wifi-brudd skal aldri bety en svart vegg søndag morgen.</p>
+    <h2>Gode vaner</h2>
+    <ul>
+      <li><strong>Sett skjermen der gjestene faktisk ser</strong> — foajeen slår kontorgangen.</li>
+      <li><strong>Hold kunngjøringene korte.</strong> En infotavle leses i forbifarten, ikke studeres.</li>
+      <li><strong>Sjekk den en søndag.</strong> Gå forbi din egen skjerm av og til — tavla er til for dem som går forbi.</li>
+    </ul>
+    <p>Les mer på <a href="@@INFOAPP@@">produktsiden for SundayInfo</a>, eller send en e-post til <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a> om du vil ha hjelp til å få opp den første skjermen.</p>'''}},
+ # ------------------------------------------------------------ booking with sundaybooking
+ "booking-with-sundaybooking":{"accent":"booking",
+  "en":{"tag":"SundayBooking","card":"Rooms &amp; rentals with SundayBooking",
+    "desc":"One honest calendar for rooms, rentals and appointments — where a double-booking isn't caught afterwards, it's impossible.",
+    "h1":"Rooms &amp; rentals with SundayBooking","sub":"From request to approved booking — without a single clash.",
+    "note":"<strong>Live:</strong> SundayBooking is live at <a href=\"https://booking.sundaysuite.app\" target=\"_blank\" rel=\"noopener\">booking.sundaysuite.app</a> and free to use. It lives inside the SundayPlan family — same Sunday account, same church.",
+    "body":'''    <p class="lead">SundayBooking manages internal rooms, external rentals and appointment bookings in one calendar where overlaps are structurally impossible — set-up and clean-up time included. Staff approve requests; members and renters ask through a link, with no account needed. Here is how to set it up.</p>
+    <h2>1. Sign in</h2>
+    <p>Open <a href="https://booking.sundaysuite.app" target="_blank" rel="noopener">booking.sundaysuite.app</a> and sign in with your Sunday account. SundayBooking shares its account and church with SundayPlan, so if your church exists in one, it exists in the other.</p>
+    <h2>2. Define rooms and resources</h2>
+    <p>Set up the spaces and things people book: the main hall, the kitchen, meeting rooms, the projector, the minibus. Define event types with their own rules, and bundle resources so booking the hall can book the chairs and the kitchen along with it — once, not as three separate requests.</p>
+    <h2>3. How requests come in</h2>
+    <p>Staff and trusted volunteers book directly in the calendar. Everyone else — members and external renters — asks through a link: they pick a time, describe what they need, and get a personal magic-link status page to follow their request. No account, no password, no phone tag.</p>
+    <h2>4. The approval queue</h2>
+    <p>Requests land in a queue where staff approve or decline. If a slot is taken, SundayBooking suggests alternatives instead of just saying no. You can also see "someone is asking about this time right now" as it happens, so two planners don't chase the same evening.</p>
+    <h2>Why a double-booking can't happen</h2>
+    <p>This is the part spreadsheets can't promise: every booking goes through an atomic database check that locks the resources and rejects any overlap on the effective time range — rig time and clean-up buffers included. The wedding and the choir rehearsal can never land on the same room. It isn't caught by someone paying attention; it's rejected by construction.</p>
+    <h2>Calendars out, insight in</h2>
+    <p>Subscribe to any room's calendar as an ICS feed in the calendar app you already use, and watch the utilisation dashboard fill in — which spaces earn their keep, and which evenings stand empty.</p>
+    <p>Read more on the <a href="@@BOOKINGAPP@@">SundayBooking product page</a>, or email <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a> if you'd like help setting up rooms and rentals.</p>'''},
+  "no":{"tag":"SundayBooking","card":"Rom &amp; utleie med SundayBooking",
+    "desc":"Én ærlig kalender for rom, utleie og avtaler — der en dobbeltbooking ikke fanges i etterkant, men er umulig.",
+    "h1":"Rom &amp; utleie med SundayBooking","sub":"Fra forespørsel til godkjent booking — uten en eneste kollisjon.",
+    "note":"<strong>Live:</strong> SundayBooking er live på <a href=\"https://booking.sundaysuite.app\" target=\"_blank\" rel=\"noopener\">booking.sundaysuite.app</a> og gratis å bruke. Den bor i SundayPlan-familien — samme Sunday-konto, samme menighet.",
+    "body":'''    <p class="lead">SundayBooking styrer interne rom, ekstern utleie og avtalebooking i én kalender der overlapp er strukturelt umulig — rigge- og ryddetid inkludert. Staben godkjenner forespørsler; medlemmer og leietakere spør via en lenke, uten konto. Slik setter du det opp.</p>
+    <h2>1. Logg inn</h2>
+    <p>Åpne <a href="https://booking.sundaysuite.app" target="_blank" rel="noopener">booking.sundaysuite.app</a> og logg inn med Sunday-kontoen din. SundayBooking deler konto og menighet med SundayPlan, så finnes menigheten din i den ene, finnes den i den andre.</p>
+    <h2>2. Definer rom og ressurser</h2>
+    <p>Sett opp lokalene og tingene folk booker: storsalen, kjøkkenet, møterom, prosjektoren, minibussen. Definer arrangementstyper med egne regler, og pakk ressurser sammen slik at booking av salen også kan booke stolene og kjøkkenet — én gang, ikke som tre separate forespørsler.</p>
+    <h2>3. Slik kommer forespørslene inn</h2>
+    <p>Stab og betrodde frivillige booker rett i kalenderen. Alle andre — medlemmer og eksterne leietakere — spør via en lenke: de velger en tid, beskriver behovet, og får en personlig magic-link-statusside der de følger forespørselen sin. Ingen konto, ikke noe passord, ingen telefonrunder.</p>
+    <h2>4. Godkjenningskøen</h2>
+    <p>Forespørsler havner i en kø der staben godkjenner eller avslår. Er en tid opptatt, foreslår SundayBooking alternativer i stedet for bare å si nei. Du kan også se «noen spør om denne tiden nå» idet det skjer, så to planleggere ikke jakter på samme kveld.</p>
+    <h2>Hvorfor en dobbeltbooking ikke kan skje</h2>
+    <p>Dette er delen regneark ikke kan love: hver booking går gjennom en atomisk databasesjekk som låser ressursene og avviser ethvert overlapp på det effektive tidsrommet — rigge- og ryddebuffere inkludert. Bryllupet og korøvelsen kan aldri havne på samme rom. Det fanges ikke av at noen følger med; det avvises ved konstruksjon.</p>
+    <h2>Kalendere ut, innsikt inn</h2>
+    <p>Abonner på et hvilket som helst roms kalender som ICS-feed i kalenderappen du allerede bruker, og følg utnyttelses-dashbordet fylles inn — hvilke lokaler som gjør nytte for seg, og hvilke kvelder som står tomme.</p>
+    <p>Les mer på <a href="@@BOOKINGAPP@@">produktsiden for SundayBooking</a>, eller send en e-post til <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a> om du vil ha hjelp til å sette opp rom og utleie.</p>'''}},
  # ------------------------------------------------------------ 6 licensing
  "licensing-ccli-tono":{"accent":"song",
   "en":{"tag":"Licensing","card":"Licensing: CCLI &amp; TONO",
@@ -1413,6 +1498,66 @@ HELPDOC = {
     <p>Noen funksjoner kan bruke skybasert AI. Disse styres av en samtykke-bryter som er <strong>av som standard</strong> — ingenting sendes til noen AI-tjeneste med mindre menigheten aktivt skrur det på. Lokal AI, som tale-til-tekst i SundayRec, kjører uansett helt på din egen maskin.</p>
     <h2>Les hele erklæringen</h2>
     <p>Hele bildet — OAuth-tokens, sky-opplastinger, GDPR-rettighetene dine — finner du i <a href="@@PRIVACY@@">Personvernerklæringen</a>. Spørsmål om dataene dine? Send e-post til <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a>.</p>'''}},
+ # ------------------------------------------------------------ community toolbox
+ "community-toolbox":{"accent":"gold-deep",
+  "en":{"tag":"Toolbox","card":"Using the community toolbox",
+    "desc":"Eleven free browser tools for church and classroom — how to run one on the big screen, with everyone joining from their phones.",
+    "h1":"Using the community toolbox","sub":"Free games and group tools — nothing to install, no accounts.",
+    "note":"<strong>All free:</strong> every tool runs straight in the browser on <em>*.sundaysuite.app</em> — no installation, no account, no cost. The full list lives on the <a href=\"@@TOOLBOX@@\">toolbox page</a>.",
+    "body":'''    <p class="lead">Alongside the core products, Sunday Suite keeps a toolbox of small, playful web tools for church and classroom — icebreakers, tournaments, a digital bazaar, anonymous Q&amp;A and more. They all follow the same recipe: open one on the big screen, and everyone joins from their own phone. Here is how to run one well.</p>
+    <h2>How every tool works</h2>
+    <p>Open the tool on a shared screen — a projector, a TV, a classroom smartboard. The screen shows a QR code or a short code; everyone joins by scanning or typing it on their phone. Nobody creates an account, nobody installs anything, and participants stay anonymous. When the session is over, it expires by itself.</p>
+    <h2>Pick the right tool for the room</h2>
+    <ul>
+      <li><strong>A first gathering:</strong> <a href="https://quiz.sundaysuite.app" target="_blank" rel="noopener">SundayQuiz</a> — get-to-know-you bingo that warms a room up fast.</li>
+      <li><strong>The classroom:</strong> <a href="https://chess.sundaysuite.app" target="_blank" rel="noopener">SundayChess</a> and <a href="https://tictactoe.sundaysuite.app" target="_blank" rel="noopener">SundayTicTacToe</a> — big-screen tournaments with Swiss rounds and a knockout.</li>
+      <li><strong>Sports day or games night:</strong> <a href="https://turnering.sundaysuite.app" target="_blank" rel="noopener">SundayTurnering</a> — a live tournament board for any sport or game.</li>
+      <li><strong>A group evening:</strong> <a href="https://marked.sundaysuite.app" target="_blank" rel="noopener">SundayMarket</a> (fast, friendly trading game) and <a href="https://harvest.sundaysuite.app" target="_blank" rel="noopener">SundayHarvest</a> (biblical social deduction — no one gets eliminated).</li>
+      <li><strong>The fundraiser:</strong> <a href="https://basar.sundaysuite.app" target="_blank" rel="noopener">SundayBasar</a> — sell raffle tickets and draw prizes live on the big screen. The app never touches money; you confirm each Vipps payment yourself.</li>
+      <li><strong>Youth night:</strong> <a href="https://panel.sundaysuite.app" target="_blank" rel="noopener">SundayPanel</a> — anonymous questions from the floor to a panel, with you curating what goes up.</li>
+      <li><strong>Musicians:</strong> <a href="https://licks.sundaysuite.app" target="_blank" rel="noopener">SundayLicks</a> — a practice library of gospel and worship licks for piano, guitar and bass.</li>
+      <li><strong>Newcomers:</strong> <a href="https://welcome.sundaysuite.app" target="_blank" rel="noopener">SundayWelcome</a> — a digital welcome note, so no first-time visitor falls through the cracks.</li>
+      <li><strong>Learning:</strong> <a href="https://school.sundaysuite.app" target="_blank" rel="noopener">SundaySchool</a> — the church's own music and theology school, eleven subjects deep.</li>
+    </ul>
+    <h2>Tips for a smooth session</h2>
+    <ul>
+      <li><strong>Test five minutes before.</strong> Open the tool on the big screen and join from your own phone once, before the room fills up.</li>
+      <li><strong>Check the wifi.</strong> Every phone in the room will be online at once — the venue's guest network should be up to it.</li>
+      <li><strong>Read the code aloud.</strong> A QR on screen plus the short code spoken once gets even the least technical participant in.</li>
+    </ul>
+    <h2>What about privacy?</h2>
+    <p>The tools are built to store as little as possible: participants are anonymous and sessions expire after use. The deliberate exception is SundayWelcome, which stores the contact details a newcomer chooses to leave so the church can follow up — see the <a href="@@PRIVACY@@">Privacy Policy</a> for the details.</p>
+    <h2>The toolbox keeps growing</h2>
+    <p>More fellowship tools are on the workbench. Have an idea for the next one — something your church or classroom actually needs? Tell us: <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a>.</p>'''},
+  "no":{"tag":"Verktøykassa","card":"Slik bruker du verktøykassa",
+    "desc":"Elleve gratis nettleserverktøy for menighet og klasserom — slik kjører du ett på storskjermen, mens alle blir med fra mobilen.",
+    "h1":"Slik bruker du verktøykassa","sub":"Gratis spill og gruppeverktøy — ingenting å installere, ingen kontoer.",
+    "note":"<strong>Alt er gratis:</strong> hvert verktøy kjører rett i nettleseren på <em>*.sundaysuite.app</em> — ingen installasjon, ingen konto, ingen kostnad. Hele lista bor på <a href=\"@@TOOLBOX@@\">verktøykasse-siden</a>.",
+    "body":'''    <p class="lead">Ved siden av kjerneproduktene holder Sunday Suite en verktøykasse med små, lekne nettverktøy for menighet og klasserom — bli-kjent-leker, turneringer, digital basar, anonyme spørsmål og mer. Alle følger samme oppskrift: åpne ett på storskjermen, så blir alle med fra sin egen mobil. Slik kjører du det godt.</p>
+    <h2>Slik virker hvert verktøy</h2>
+    <p>Åpne verktøyet på en delt skjerm — prosjektor, TV eller smartboard. Skjermen viser en QR-kode eller en kort kode; alle blir med ved å skanne eller taste den på mobilen. Ingen oppretter konto, ingen installerer noe, og deltakerne er anonyme. Når økta er over, utløper den av seg selv.</p>
+    <h2>Velg riktig verktøy for rommet</h2>
+    <ul>
+      <li><strong>Første samling:</strong> <a href="https://quiz.sundaysuite.app" target="_blank" rel="noopener">SundayQuiz</a> — bli-kjent-bingo som tiner opp et rom på et blunk.</li>
+      <li><strong>Klasserommet:</strong> <a href="https://chess.sundaysuite.app" target="_blank" rel="noopener">SundayChess</a> og <a href="https://tictactoe.sundaysuite.app" target="_blank" rel="noopener">SundayTicTacToe</a> — storskjermturneringer med sveitsiske runder og sluttspill.</li>
+      <li><strong>Idrettsdag eller spillkveld:</strong> <a href="https://turnering.sundaysuite.app" target="_blank" rel="noopener">SundayTurnering</a> — live turneringstavle for hvilken som helst idrett eller lek.</li>
+      <li><strong>Gruppekveld:</strong> <a href="https://marked.sundaysuite.app" target="_blank" rel="noopener">SundayMarket</a> (kjapt og vennlig handelsspill) og <a href="https://harvest.sundaysuite.app" target="_blank" rel="noopener">SundayHarvest</a> (bibelsk social deduction — ingen elimineres).</li>
+      <li><strong>Basaren:</strong> <a href="https://basar.sundaysuite.app" target="_blank" rel="noopener">SundayBasar</a> — selg årer og trekk premiene live på storskjerm. Appen rører aldri penger; du bekrefter hver Vipps-betaling selv.</li>
+      <li><strong>Ungdomskvelden:</strong> <a href="https://panel.sundaysuite.app" target="_blank" rel="noopener">SundayPanel</a> — anonyme spørsmål fra salen til et panel, der du velger hva som vises.</li>
+      <li><strong>Musikerne:</strong> <a href="https://licks.sundaysuite.app" target="_blank" rel="noopener">SundayLicks</a> — øvingsbibliotek med gospel- og lovsang-licks for piano, gitar og bass.</li>
+      <li><strong>Nykommere:</strong> <a href="https://welcome.sundaysuite.app" target="_blank" rel="noopener">SundayWelcome</a> — en digital velkomstlapp, så ingen førstegangsbesøkende faller mellom to stoler.</li>
+      <li><strong>Læring:</strong> <a href="https://school.sundaysuite.app" target="_blank" rel="noopener">SundaySchool</a> — menighetens egen musikk- og teologiskole, elleve fag dyp.</li>
+    </ul>
+    <h2>Tips for en smidig økt</h2>
+    <ul>
+      <li><strong>Test fem minutter før.</strong> Åpne verktøyet på storskjermen og bli med fra din egen mobil én gang, før rommet fylles.</li>
+      <li><strong>Sjekk wifien.</strong> Hver mobil i rommet skal på nett samtidig — gjestenettet bør tåle det.</li>
+      <li><strong>Les koden høyt.</strong> QR på skjermen pluss kortkoden lest høyt én gang får med selv den minst tekniske deltakeren.</li>
+    </ul>
+    <h2>Hva med personvern?</h2>
+    <p>Verktøyene er bygd for å lagre minst mulig: deltakerne er anonyme, og økter utløper etter bruk. Det bevisste unntaket er SundayWelcome, som lagrer kontaktinfoen en nykommer selv velger å legge igjen, slik at menigheten kan følge opp — se <a href="@@PRIVACY@@">Personvernerklæringen</a> for detaljene.</p>
+    <h2>Verktøykassa vokser videre</h2>
+    <p>Flere fellesskapsverktøy ligger på arbeidsbenken. Har du en idé til det neste — noe menigheten eller klasserommet ditt faktisk trenger? Si fra: <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a>.</p>'''}},
  # ------------------------------------------------------------ 8 faq
  "faq":{"accent":"gold-deep",
   "en":{"tag":"FAQ","card":"Frequently asked questions",
@@ -1476,6 +1621,8 @@ def help_fill(s, L):
              .replace("@@PLANAPP@@", L["app"]("sundayplan"))
              .replace("@@RECAPP@@",  L["app"]("sundayrec"))
              .replace("@@SONGAPP@@", L["app"]("sundaysong"))
+             .replace("@@INFOAPP@@", L["app"]("sundayinfo"))
+             .replace("@@BOOKINGAPP@@", L["app"]("sundaybooking"))
              .replace("@@TOOLBOX@@", L["toolbox"]))
 
 def render_help_index(lang):
@@ -1506,7 +1653,7 @@ def render_help_article(lang, slug):
     c=CH[lang]; root="../" if lang=="en" else "../../"; L=links(lang,root)
     other = (f'../no/hjelp/{slug}.html' if lang=="en" else f'../../help/{slug}.html')
     doc=HELPDOC[slug]; d=doc[lang]; hi=HELP_INDEX[lang]
-    note=f'<div class="note"><p>{d["note"]}</p></div>\n  ' if d.get("note") else ""
+    note=f'<div class="note"><p>{help_fill(d["note"], L)}</p></div>\n  ' if d.get("note") else ""
     body=help_fill(d["body"], L)
     content=f'''<main>
 <section class="legal-hero"><div class="glow"></div><div class="wrap">
