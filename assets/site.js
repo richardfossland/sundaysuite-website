@@ -13,10 +13,12 @@
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
     }
   }
-  // SundayRec product page: show the latest release version (progressive enhancement)
-  var vslot = document.querySelector('[data-rec-version]');
+  // Desktop product pages: show the latest release version (progressive enhancement)
+  var vconf = document.querySelector('[data-rec-version]') ? ['[data-rec-version]', '/download/sundayrec/version']
+            : document.querySelector('[data-screen-version]') ? ['[data-screen-version]', '/download/sundayscreen/version'] : null;
+  var vslot = vconf && document.querySelector(vconf[0]);
   if (vslot && window.fetch) {
-    fetch('/download/sundayrec/version').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+    fetch(vconf[1]).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
       if (!d || !d.version) return;
       var no = document.documentElement.lang === 'no';
       var txt = (no ? 'Nyeste versjon: v' : 'Latest version: v') + d.version;
