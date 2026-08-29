@@ -434,15 +434,15 @@ RING_APPS = {"sundayrec","sundayscreen","sundaystage","sundaysync"}
 REPOS = [
  {"name":"sundayrec","repo":"SundaySuite-app/sundayrec","lic":"MIT","en":"Automatic church service recorder","no":"Automatisk gudstjenesteopptaker"},
  {"name":"sundayscreen","repo":"SundaySuite-app/sundayscreen","lic":"MIT","en":"Offline classroom screen","no":"Offline klasseromsskjerm"},
- {"name":"sundaystage","repo":"SundaySuite-app/sundaystage","lic":None,"en":"Live presentation for churches","no":"Live presentasjon for menigheter"},
- {"name":"sundaystage-web","repo":"SundaySuite-app/sundaystage-web","lic":None,"en":"Web companion for SundayStage","no":"Web-følgesvenn for SundayStage"},
- {"name":"sundaysync","repo":"SundaySuite-app/sundaysync","lic":None,"en":"Multicam audio sync &rarr; FCPXML","no":"Multikam lydsynk &rarr; FCPXML"},
- {"name":"sundaytranslate","repo":"SundaySuite-app/sundaytranslate","lic":None,"en":"Live interpretation &amp; captions","no":"Live tolking &amp; undertekster"},
- {"name":"sundaytranslate-relay","repo":"SundaySuite-app/sundaytranslate-relay","lic":None,"en":"Local audio relay for SundayTranslate","no":"Lokal lydrelé for SundayTranslate"},
- {"name":"sundayedit","repo":"richardfossland/sundayedit","lic":None,"en":"AI video captioning","no":"AI-teksting av video"},
- {"name":"sundaystudio","repo":"richardfossland/sundaystudio","lic":None,"en":"Podcast &amp; jingle production","no":"Podkast- &amp; jingleproduksjon"},
- {"name":"sundayschool","repo":"richardfossland/sundayschool","lic":None,"en":"Music &amp; theology school (toolbox)","no":"Musikk- og teologiskole (verktøykassa)"},
- {"name":"sundaychess","repo":"richardfossland/sundaychess","lic":None,"en":"Classroom chess tournaments (toolbox)","no":"Klasseromssjakk-turneringer (verktøykassa)"},
+ {"name":"sundaystage","repo":"SundaySuite-app/sundaystage","lic":"MIT","en":"Live presentation for churches","no":"Live presentasjon for menigheter"},
+ {"name":"sundaystage-web","repo":"SundaySuite-app/sundaystage-web","lic":"MIT","en":"Web companion for SundayStage","no":"Web-følgesvenn for SundayStage"},
+ {"name":"sundaysync","repo":"SundaySuite-app/sundaysync","lic":"MIT","en":"Multicam audio sync &rarr; FCPXML","no":"Multikam lydsynk &rarr; FCPXML"},
+ {"name":"sundaytranslate","repo":"SundaySuite-app/sundaytranslate","lic":"MIT","en":"Live interpretation &amp; captions","no":"Live tolking &amp; undertekster"},
+ {"name":"sundaytranslate-relay","repo":"SundaySuite-app/sundaytranslate-relay","lic":"MIT","en":"Local audio relay for SundayTranslate","no":"Lokal lydrelé for SundayTranslate"},
+ {"name":"sundayedit","repo":"SundaySuite-app/sundayedit","lic":"MIT","en":"AI video captioning","no":"AI-teksting av video"},
+ {"name":"sundaystudio","repo":"SundaySuite-app/sundaystudio","lic":"MIT","en":"Podcast &amp; jingle production","no":"Podkast- &amp; jingleproduksjon"},
+ {"name":"sundayschool","repo":"richardfossland/sundayschool","lic":"MIT","en":"Music &amp; theology school (toolbox)","no":"Musikk- og teologiskole (verktøykassa)"},
+ {"name":"sundaychess","repo":"richardfossland/sundaychess","lic":"MIT","en":"Classroom chess tournaments (toolbox)","no":"Klasseromssjakk-turneringer (verktøykassa)"},
 ]
 
 BUILDPAGE = {
@@ -451,7 +451,7 @@ BUILDPAGE = {
    "crumb":"Build with us","kicker":"Open source","h1":"Build a better Sunday with us.",
    "tagline":"Open-source church tools — free, unfinished, and honest about both.",
    "lead":"Sunday Suite is one developer in Norway building twelve tools in the open, with the doors unlocked and the lights on. The code lives on GitHub, the betas are free, and the roadmap is shaped by the churches that use them. This page is the workbench — pull up a chair.",
-   "m_beta":"apps in beta today","m_code":"<b>The code</b> — public on GitHub","m_lic":"<b>MIT</b> where licensed",
+   "m_beta":"apps in beta today","m_code":"<b>The code</b> — public on GitHub","m_lic":"<b>MIT</b> — every repository",
    "act_gh":"Sunday Suite on GitHub","act_mail":"dev@sundaysuite.app",
    "hn_kicker":"Read this first","hn_title":"What “unfinished” honestly means",
    "hn_lead":"We would rather under-promise on a website than let you down on a Sunday. Here is exactly how far each tier has come:",
@@ -463,7 +463,7 @@ BUILDPAGE = {
    "bt_lead":"Five desktop apps for Mac and Windows, two web apps in the browser — all free, no account needed for the downloads. The buttons always fetch the newest release.",
    "bt_ring":"Fresh from the beta ring:","bt_more":"Read more",
    "code_kicker":"The code","code_title":"Every repository, open on GitHub",
-   "code_lead":"MIT-licensed where the licence file is in place — the rest are being licensed as they mature. If a missing licence file blocks you, email us and we'll sort it out.",
+   "code_lead":"All of it is MIT-licensed: read it, learn from it, run it, fork it. Each repository carries a CONTRIBUTING guide to get you started. The only thing the licence doesn't hand over is the brand — fork the code freely, but give your fork its own name.",
    "lic_pending":"licence on its way",
    "ways_kicker":"Ways to help","ways_title":"Six ways to build with us",
    "ways_lead":"You don't need to be a developer — the most valuable contributions often come from the people running the projector on Sunday.",
@@ -474,14 +474,14 @@ BUILDPAGE = {
      ("text","Improve the guides","The help section is written for volunteers, not developers. If a guide confused you, that's a bug — tell us or rewrite it."),
      ("star","Tell us what you need","The roadmap is shaped by real churches. Two sentences about your Sunday morning can change what gets built next.")],
    "how_head":"How we work",
-   "how_p":"Bugs and ideas go in a GitHub issue on the repo in question, or to <a href=\"mailto:dev@sundaysuite.app\">dev@sundaysuite.app</a> if GitHub isn't your thing. There is no ticket robot and no call centre — every message lands with the person who wrote the code, and every one gets an answer.",
+   "how_p":"Bugs and ideas go in a GitHub issue on the repo in question, or to <a href=\"mailto:dev@sundaysuite.app\">dev@sundaysuite.app</a> if GitHub isn't your thing. Every repository carries a CONTRIBUTING guide with the specifics. There is no ticket robot and no call centre — every message lands with the person who wrote the code, and every one gets an answer.",
    "cta_h":"One golden thread. Many hands.","cta_p":"Whether you test one beta on one Sunday or send a hundred pull requests — you're helping build free tools for churches everywhere. Welcome to the workbench."},
  "no":{"title":"Bygg med oss — åpen kildekode-verktøy for kirka | Sunday Suite",
    "desc":"Sunday Suite er en åpen kildekode-familie av kirkeverktøy — ærlig uferdig. Prøv betaene, les koden på GitHub, og bli med og bygg tolv verktøy for menighetene i Norden — og videre.",
    "crumb":"Bygg med oss","kicker":"Åpen kildekode","h1":"Bygg en bedre søndag med oss.",
    "tagline":"Åpen kildekode-verktøy for kirka — gratis, uferdige, og ærlige på begge deler.",
    "lead":"Sunday Suite er én utvikler i Norge som bygger tolv verktøy i det åpne, med dørene ulåst og lyset på. Koden bor på GitHub, betaene er gratis, og veikartet formes av menighetene som bruker dem. Denne siden er arbeidsbenken — trekk fram en stol.",
-   "m_beta":"apper i beta i dag","m_code":"<b>Koden</b> — offentlig på GitHub","m_lic":"<b>MIT</b> der lisensiert",
+   "m_beta":"apper i beta i dag","m_code":"<b>Koden</b> — offentlig på GitHub","m_lic":"<b>MIT</b> — hvert repositorium",
    "act_gh":"Sunday Suite på GitHub","act_mail":"dev@sundaysuite.app",
    "hn_kicker":"Les dette først","hn_title":"Hva «uferdig» ærlig betyr",
    "hn_lead":"Vi vil heller love for lite på en nettside enn å skuffe deg på en søndag. Her er nøyaktig hvor langt hvert nivå har kommet:",
@@ -493,7 +493,7 @@ BUILDPAGE = {
    "bt_lead":"Fem skrivebordsapper for Mac og Windows, to web-apper i nettleseren — alt gratis, ingen konto for nedlastingene. Knappene henter alltid nyeste utgivelse.",
    "bt_ring":"Ferskt fra beta-ringen:","bt_more":"Les mer",
    "code_kicker":"Koden","code_title":"Hvert repositorium, åpent på GitHub",
-   "code_lead":"MIT-lisensiert der lisensfila er på plass — resten lisensieres etter hvert som de modnes. Blokkerer en manglende lisensfil deg, send en e-post, så ordner vi det.",
+   "code_lead":"Alt sammen er MIT-lisensiert: les den, lær av den, kjør den, fork den. Hvert repositorium har en CONTRIBUTING-guide som får deg i gang. Det eneste lisensen ikke gir fra seg, er merkevaren — fork gjerne koden, men gi forken ditt eget navn.",
    "lic_pending":"lisens på vei",
    "ways_kicker":"Måter å hjelpe på","ways_title":"Seks måter å bygge med oss",
    "ways_lead":"Du trenger ikke være utvikler — de mest verdifulle bidragene kommer ofte fra dem som styrer projektoren på søndag.",
@@ -504,7 +504,7 @@ BUILDPAGE = {
      ("text","Forbedre guidene","Hjelpeseksjonen er skrevet for frivillige, ikke utviklere. Forvirret en guide deg, er det en feil — si fra eller skriv den om."),
      ("star","Fortell oss hva du trenger","Veikartet formes av ekte menigheter. To setninger om søndagsmorgenen din kan endre hva som bygges videre.")],
    "how_head":"Slik jobber vi",
-   "how_p":"Feil og idéer går i en GitHub-issue på det aktuelle repoet, eller til <a href=\"mailto:dev@sundaysuite.app\">dev@sundaysuite.app</a> om GitHub ikke er din greie. Det finnes ingen billettrobot og ikke noe kundesenter — hver melding lander hos den som skrev koden, og alle får svar.",
+   "how_p":"Feil og idéer går i en GitHub-issue på det aktuelle repoet, eller til <a href=\"mailto:dev@sundaysuite.app\">dev@sundaysuite.app</a> om GitHub ikke er din greie. Hvert repositorium har en CONTRIBUTING-guide med detaljene. Det finnes ingen billettrobot og ikke noe kundesenter — hver melding lander hos den som skrev koden, og alle får svar.",
    "cta_h":"Én gylden tråd. Mange hender.","cta_p":"Enten du tester én beta én søndag eller sender hundre pull requests — du er med og bygger gratis verktøy for menigheter overalt. Velkommen til arbeidsbenken."},
 }
 
@@ -942,7 +942,7 @@ APPDATA = {
     "status":"SundaySong er i tidlig utvikling. Datamodellen og API-kontrakten med TONO-feltene er på plass, og det offentlige SDK-et kompilerer mot kontrakten; sangimport, søk og AI er under arbeid. Ikke ute for bruk ennå.",
     "cta_h":"Vil du være med på TONO-moaten?","cta_p":"SundaySong er under utvikling. Ta kontakt om menigheten eller organisasjonen din vil følge sangdatabasen."},
   "chips":[("Stage","Song","logged / loggføres"),("Plan","Song","licensing / lisens"),("Paper","Song","catalog / katalog"),("Rec","Song","streaming flag / strømme-flagg")]},
- "sundayedit":{"accent":"edit","icon":"caption","short":"Edit","repo":"richardfossland/sundayedit",
+ "sundayedit":{"accent":"edit","icon":"caption","short":"Edit","repo":"SundaySuite-app/sundayedit",
   "en":{"tagline":"Caption video ten times faster.",
     "meta":"SundayEdit is AI video captioning with confidence highlighting and context priming. Local Whisper — the video is never uploaded. A standalone product.",
     "lead":"Every word gets a confidence score from the recognition model and is colour-coded. The ones the model is sure about you don't touch — you fix only the few per cent that light up amber. Tell the app what the video is about, and Whisper biases toward your names and jargon. Local and private: the video is never uploaded.",
@@ -1282,7 +1282,7 @@ def terms_en():
     <p>Except to the extent an applicable open-source licence expressly permits it, you may not:</p>
     <ul><li>redistribute, sell, rent or sublicense the software;</li><li>decompile, reverse-engineer or attempt to derive the source code, except to the extent mandatory law permits;</li><li>remove or alter any copyright notices, trademarks or other proprietary markings;</li><li>use the "Sunday" names, logos or trade dress in a way likely to cause confusion about origin or endorsement; or</li><li>use the Service for any unlawful purpose.</li></ul>
     {h2(5,"s5","Intellectual property and trademarks")}
-    <p>The website, design, graphics, the golden cross, logos, names and text are owned by Richard Fossland and protected by applicable law on copyright, trademarks and other intellectual property rights. The source code of the Sunday programs — <strong>SundayRec, SundayScreen, SundayStudio, SundayStage, SundayPlan, SundaySong, SundayEdit, SundaySync, SundayPaper, SundayTranslate, SundayInfo and SundayBooking</strong>, together with the community tools listed in section 2 — is &copy; Richard Fossland and contributors. Where a repository carries an open-source licence (for example MIT), that code is licensed to you under that licence; repositories that do not yet carry a licence file are published for reading, and no licence to that code is granted until one is added.</p>
+    <p>The website, design, graphics, the golden cross, logos, names and text are owned by Richard Fossland and protected by applicable law on copyright, trademarks and other intellectual property rights. The source code of the Sunday programs — <strong>SundayRec, SundayScreen, SundayStudio, SundayStage, SundayPlan, SundaySong, SundayEdit, SundaySync, SundayPaper, SundayTranslate, SundayInfo and SundayBooking</strong>, together with the community tools listed in section 2 — is &copy; Richard Fossland and contributors. Every public Sunday repository is currently published under the <strong>MIT Licence</strong>, and that licence governs your rights to the code it contains. Should a repository ever be published without a licence file, it is published for reading only, and no licence to that code is granted until one is added.</p>
     <h3>Trademarks</h3>
     <p>The names "Sunday Suite", the "Sunday" family of product names listed above (including the community tools listed in section 2), and the associated cross and gold symbol, are our trademarks (registered or being established). You are granted no right to use these trademarks, and you must not use them — or names, logos or designs likely to be confused with them — without prior written consent. This also applies to product, domain, app-store and company names. The open-source licences cover the code — they grant no rights to the "Sunday" names, the cross-and-gold mark or the logos.</p>
     <h3>No transfer of rights</h3>
@@ -1377,7 +1377,7 @@ def terms_no():
     <p>Med mindre en gjeldende åpen kildekode-lisens uttrykkelig tillater det, har du ikke lov til å:</p>
     <ul><li>videredistribuere, selge, leie ut eller viderelisensiere programvaren;</li><li>dekompilere, reversutvikle eller forsøke å utlede kildekoden, unntatt i den grad ufravikelig lov tillater det;</li><li>fjerne eller endre opphavsrettsmerker, varemerker eller andre rettighetsmerker;</li><li>bruke «Sunday»-navnene, logoene eller utformingen på en måte som er egnet til å skape forveksling om opphav eller tilknytning; eller</li><li>bruke Tjenesten til ulovlige formål.</li></ul>
     {h2(5,"s5","Immaterielle rettigheter og varemerker")}
-    <p>Nettstedet, designet, grafikken, det gylne korset, logoene, navnene og teksten eies av Richard Fossland og er beskyttet av gjeldende lovgivning om opphavsrett, varemerker og andre immaterielle rettigheter. Kildekoden til Sunday-programmene — <strong>SundayRec, SundayScreen, SundayStudio, SundayStage, SundayPlan, SundaySong, SundayEdit, SundaySync, SundayPaper, SundayTranslate, SundayInfo og SundayBooking</strong>, sammen med fellesskapsverktøyene nevnt i punkt 2 — er &copy; Richard Fossland og bidragsytere. Der et repositorium bærer en åpen kildekode-lisens (for eksempel MIT), er koden lisensiert til deg under den lisensen; repositorier som ennå ikke har lisensfil, er publisert for lesing, og ingen lisens til den koden gis før en legges til.</p>
+    <p>Nettstedet, designet, grafikken, det gylne korset, logoene, navnene og teksten eies av Richard Fossland og er beskyttet av gjeldende lovgivning om opphavsrett, varemerker og andre immaterielle rettigheter. Kildekoden til Sunday-programmene — <strong>SundayRec, SundayScreen, SundayStudio, SundayStage, SundayPlan, SundaySong, SundayEdit, SundaySync, SundayPaper, SundayTranslate, SundayInfo og SundayBooking</strong>, sammen med fellesskapsverktøyene nevnt i punkt 2 — er &copy; Richard Fossland og bidragsytere. Hvert offentlige Sunday-repositorium er i dag publisert under <strong>MIT-lisensen</strong>, og den lisensen styrer rettighetene dine til koden det inneholder. Skulle et repositorium noen gang bli publisert uten lisensfil, er det publisert kun for lesing, og ingen lisens til den koden gis før en legges til.</p>
     <h3>Varemerker</h3>
     <p>Navnene «Sunday Suite», «Sunday»-familien av produktnavn nevnt over (inkludert fellesskapsverktøyene i punkt 2), samt det tilhørende kors- og gull-symbolet, er våre varemerker (registrerte eller under etablering). Du får ingen rett til å bruke disse varemerkene, og du må ikke bruke dem — eller navn, logoer eller utforming som er egnet til å forveksles med dem — uten skriftlig forhåndssamtykke. Dette gjelder også produkt-, domene-, app-butikk- og selskapsnavn. Åpen kildekode-lisensene dekker koden — de gir ingen rett til «Sunday»-navnene, kors-og-gull-merket eller logoene.</p>
     <h3>Ingen rettighetsoverføring</h3>
@@ -1717,7 +1717,7 @@ HELPDOC = {
     <h2>Which apps can I actually use today?</h2>
     <p>Seven products are in beta today. Five desktop apps download free for Mac and Windows — <strong>SundayRec</strong> (record the service), <strong>SundayScreen</strong> (classroom screen), <strong>SundayStage</strong> (presentation), <strong>SundaySync</strong> (multicam sync) and <strong>SundayEdit</strong> (captioning) — and two web apps run in the browser: <strong>SundayInfo</strong> (<a href="https://info.sundaysuite.app" target="_blank" rel="noopener">info.sundaysuite.app</a>) and <strong>SundayBooking</strong> (<a href="https://booking.sundaysuite.app" target="_blank" rel="noopener">booking.sundaysuite.app</a>). All the betas are gathered on the <a href="@@BUILD@@">Build with us</a> page. SundayStudio and SundayTranslate are in development; SundayPlan, SundaySong and SundayPaper are on the drawing board. Beyond the suite, eleven free community tools are live in the <a href="@@TOOLBOX@@">toolbox</a> — icebreakers, classroom chess, tournaments, a digital bazaar and more.</p>
     <h2>Is Sunday Suite really open source?</h2>
-    <p>Yes. The suite is built in the open — the code lives on <a href="https://github.com/SundaySuite-app" target="_blank" rel="noopener">GitHub</a>, MIT-licensed where the licence file is in place (the rest are on their way). The Sunday names and the cross-and-gold mark are trademarks, but the code is there to read, learn from and improve. Want to join in? Start at <a href="@@BUILD@@">Build with us</a>.</p>
+    <p>Yes — every public Sunday repository is MIT-licensed. The code lives on <a href="https://github.com/SundaySuite-app" target="_blank" rel="noopener">GitHub</a>, free to read, run, learn from and fork. The Sunday names and the cross-and-gold mark are trademarks, so a fork needs its own name, but the code itself is yours to use. Want to join in? Start at <a href="@@BUILD@@">Build with us</a>.</p>
     <h2>Which languages are supported?</h2>
     <p>SundayRec ships in seven languages, including Norwegian Bokmål and Nynorsk. The rest of the suite speaks English and Norwegian first, with more languages as the tools mature. This website is in English and Norwegian.</p>
     <h2>Which browsers work with the web apps?</h2>
@@ -1742,7 +1742,7 @@ HELPDOC = {
     <h2>Hvilke apper kan jeg faktisk bruke i dag?</h2>
     <p>Sju produkter er i beta i dag. Fem skrivebordsapper kan lastes ned gratis for Mac og Windows — <strong>SundayRec</strong> (ta opp gudstjenesten), <strong>SundayScreen</strong> (klasseromsskjerm), <strong>SundayStage</strong> (presentasjon), <strong>SundaySync</strong> (multikam-synk) og <strong>SundayEdit</strong> (teksting) — og to web-apper kjører i nettleseren: <strong>SundayInfo</strong> (<a href="https://info.sundaysuite.app" target="_blank" rel="noopener">info.sundaysuite.app</a>) og <strong>SundayBooking</strong> (<a href="https://booking.sundaysuite.app" target="_blank" rel="noopener">booking.sundaysuite.app</a>). Alle betaene er samlet på <a href="@@BUILD@@">Bygg med oss</a>-siden. SundayStudio og SundayTranslate er under utvikling; SundayPlan, SundaySong og SundayPaper er på tegnebrettet. Utenfor suiten er elleve gratis fellesskapsverktøy live i <a href="@@TOOLBOX@@">verktøykassa</a> — bli-kjent-leker, klasseromssjakk, turneringer, digital basar og mer.</p>
     <h2>Er Sunday Suite virkelig åpen kildekode?</h2>
-    <p>Ja. Suiten bygges i det åpne — koden bor på <a href="https://github.com/SundaySuite-app" target="_blank" rel="noopener">GitHub</a>, MIT-lisensiert der lisensfila er på plass (resten er på vei). Sunday-navnene og kors-og-gull-merket er varemerker, men koden ligger der til å leses, læres av og forbedres. Vil du være med? Start på <a href="@@BUILD@@">Bygg med oss</a>.</p>
+    <p>Ja — hvert offentlige Sunday-repositorium er MIT-lisensiert. Koden bor på <a href="https://github.com/SundaySuite-app" target="_blank" rel="noopener">GitHub</a>, fri til å leses, kjøres, læres av og forkes. Sunday-navnene og kors-og-gull-merket er varemerker, så en fork trenger sitt eget navn, men selve koden er din å bruke. Vil du være med? Start på <a href="@@BUILD@@">Bygg med oss</a>.</p>
     <h2>Hvilke språk støttes?</h2>
     <p>SundayRec leveres på sju språk, inkludert bokmål og nynorsk. Resten av suiten snakker engelsk og norsk først, med flere språk etter hvert som verktøyene modnes. Dette nettstedet finnes på engelsk og norsk.</p>
     <h2>Hvilke nettlesere fungerer med web-appene?</h2>
