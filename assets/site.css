@@ -19,7 +19,7 @@
   /* per-app accents */
   --rec:#2563EB; --stage:#E6B13A; --plan:#3146C9; --song:#B1431C;
   --edit:#10A8B5; --studio:#D4A017; --paper-c:#B87333; --translate:#2BB3C0;
-  --info:#7A3FA0; --booking:#1F7A6B; --screen:#2E7D46;
+  --info:#7A3FA0; --booking:#1F7A6B; --screen:#2E7D46; --sync:#A63A50;
   /* community-toolbox accents */
   --quiz:#FF8A5C; --chess:#7C5CCB; --turnering:#E07A2F; --market:#C9952F; --harvest:#7BA23F;
   --tictactoe:#4C63D2; --basar:#CF4C86; --panel:#2E9E8F; --licks:#E8A33D; --welcome:#C96A50;
@@ -128,6 +128,30 @@ h1.hero-title em{ font-style:italic; font-weight:500; color:var(--gold); }
 .card.dev .logo-tile{ filter:saturate(.5); opacity:.85; transition:filter .35s,opacity .35s; }
 .card.dev:hover .logo-tile{ filter:none; opacity:1; }
 
+/* compact "on the drawing board" cards */
+.card.mini{ flex-direction:row; align-items:center; gap:16px; padding:18px 22px; }
+.card.mini .logo-tile{ width:40px; height:40px; border-radius:11px; flex:0 0 auto; }
+.card.mini .mini-body{ flex:1; min-width:0; }
+.card.mini h3{ font-size:19px; }
+.card.mini .tag{ display:block; margin-top:2px; font-size:13px; }
+.card.mini .status{ flex:0 0 auto; }
+
+/* build-page beta cards + repo list */
+.dl-links{ margin-top:14px; font-size:14.5px; font-weight:600; line-height:1.9; }
+.dl-links a{ color:var(--c); }
+.dl-links a:hover{ text-decoration:underline; }
+.dl-ring{ font-size:12.5px; font-weight:500; color:var(--txt-on-paper-dim); }
+.dl-ring a{ color:var(--txt-on-paper-dim); text-decoration:underline; }
+.repo-list{ max-width:860px; margin:0 auto; display:flex; flex-direction:column; gap:10px; }
+.repo-row{ display:flex; align-items:baseline; gap:16px; padding:14px 20px; border:1px solid var(--paper-line); border-radius:14px;
+  background:#fff; transition:border-color .3s, transform .3s var(--ease); }
+.repo-row:hover{ border-color:rgba(235,184,75,.55); transform:translateX(4px); }
+.repo-row .repo-name{ font-weight:700; font-size:15px; color:var(--txt-on-paper); white-space:nowrap; }
+.repo-row .repo-desc{ flex:1; font-size:14px; color:var(--txt-on-paper-dim); }
+.repo-row .repo-lic{ font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#0a7d3c; background:#e3f6ea; padding:4px 9px; border-radius:100px; white-space:nowrap; }
+.repo-row .repo-lic.pending{ color:#6a6e78; background:#eef0f2; }
+@media(max-width:600px){ .repo-row{ flex-wrap:wrap; gap:6px 12px; } .repo-row .repo-desc{ flex-basis:100%; } }
+
 .card{ --c:var(--gold); position:relative; background:#fff; border:1px solid var(--paper-line); border-radius:22px;
   padding:30px 28px 28px; overflow:hidden; transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s;
   box-shadow:0 4px 24px rgba(0,0,0,.05); display:flex; flex-direction:column; }
@@ -157,15 +181,13 @@ h1.hero-title em{ font-style:italic; font-weight:500; color:var(--gold); }
 
 /* status badges */
 .status{ font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:6px 11px; border-radius:100px; white-space:nowrap; }
-.status.live{ color:#0a7d3c; background:#e3f6ea; }
 .status.beta{ color:#8a5a00; background:#fbeecf; }
 .status.build{ color:#34507a; background:#e6eefb; }
-.status.plan{ color:#6a6e78; background:#eef0f2; }
+.status.early{ color:#6a6e78; background:#eef0f2; }
 .status.on-ink{ background:rgba(255,255,255,.1); }
 .status.on-ink.beta{ color:#f5cf7d; background:rgba(235,184,75,.14); }
 .status.on-ink.build{ color:#bcd0f5; background:rgba(96,140,235,.16); }
-.status.on-ink.live{ color:#9be3b6; background:rgba(16,167,87,.16); }
-.status.on-ink.plan{ color:#c9ccd4; background:rgba(255,255,255,.12); }
+.status.on-ink.early{ color:#c9ccd4; background:rgba(255,255,255,.12); }
 
 /* ---------- PHILOSOPHY (ink) ---------- */
 .philo{ position:relative; background:var(--ink-2); padding:120px 0; overflow:hidden; }

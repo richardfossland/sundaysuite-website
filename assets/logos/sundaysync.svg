@@ -1,0 +1,35 @@
+<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A63A50"></stop><stop offset="1" stop-color="#571F2C"></stop></linearGradient>
+    <radialGradient id="glow" cx="0.26" cy="0.2" r="0.95"><stop offset="0" stop-color="#ffffff" stop-opacity="0.12"></stop><stop offset="0.55" stop-color="#ffffff" stop-opacity="0"></stop></radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2D58A"></stop><stop offset="1" stop-color="#EBB84B"></stop></linearGradient>
+    <clipPath id="clip"><rect width="1024" height="1024" rx="228"></rect></clipPath>
+  </defs>
+  <g clip-path="url(#clip)">
+    <rect width="1024" height="1024" fill="url(#bg)"></rect>
+    <rect width="1024" height="1024" fill="url(#glow)"></rect>
+    <path d="M 512 236 v 552" stroke="#EBB84B" stroke-width="10" stroke-linecap="round" opacity="0.55"></path>
+    <g fill="url(#gold)">
+      <rect x="273" y="384" width="30" height="72" rx="15"></rect>
+      <rect x="329" y="360" width="30" height="120" rx="15"></rect>
+      <rect x="385" y="378" width="30" height="84" rx="15"></rect>
+      <rect x="441" y="336" width="30" height="168" rx="15"></rect>
+      <rect x="497" y="306" width="30" height="228" rx="15"></rect>
+      <rect x="553" y="336" width="30" height="168" rx="15"></rect>
+      <rect x="609" y="378" width="30" height="84" rx="15"></rect>
+      <rect x="665" y="360" width="30" height="120" rx="15"></rect>
+      <rect x="721" y="384" width="30" height="72" rx="15"></rect>
+    </g>
+    <g fill="url(#gold)" opacity="0.55">
+      <rect x="273" y="620" width="30" height="52" rx="15"></rect>
+      <rect x="329" y="602" width="30" height="88" rx="15"></rect>
+      <rect x="385" y="616" width="30" height="60" rx="15"></rect>
+      <rect x="441" y="586" width="30" height="120" rx="15"></rect>
+      <rect x="497" y="564" width="30" height="164" rx="15"></rect>
+      <rect x="553" y="586" width="30" height="120" rx="15"></rect>
+      <rect x="609" y="616" width="30" height="60" rx="15"></rect>
+      <rect x="665" y="602" width="30" height="88" rx="15"></rect>
+      <rect x="721" y="620" width="30" height="52" rx="15"></rect>
+    </g>
+  </g>
+</svg>

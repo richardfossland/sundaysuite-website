@@ -48,6 +48,7 @@ IC = {
  "welcome":'<path d="M13.5 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h7.5"/><path d="M13.5 21l5.5-1.8V4.8L13.5 3z"/><circle cx="15.6" cy="12" r="0.9" fill="currentColor" stroke="none"/><path d="M8 12h3M9.7 10.3L8 12l1.7 1.7"/>',
  "school":'<path d="M12 3.5 2.5 8 12 12.5 21.5 8 12 3.5z"/><path d="M6 10.4V15c0 1.6 2.7 3 6 3s6-1.4 6-3v-4.6"/><path d="M21.5 8v5"/>',
  "clock":'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>',
+ "sync":'<path d="M3 8h13M12.5 4.5L16 8l-3.5 3.5"/><path d="M21 16H8M11.5 12.5L8 16l3.5 3.5"/>',
  "dice":'<rect x="3" y="3" width="18" height="18" rx="3.5"/><circle cx="8.2" cy="8.2" r="1.5" fill="currentColor" stroke="none"/><circle cx="15.8" cy="8.2" r="1.5" fill="currentColor" stroke="none"/><circle cx="8.2" cy="15.8" r="1.5" fill="currentColor" stroke="none"/><circle cx="15.8" cy="15.8" r="1.5" fill="currentColor" stroke="none"/>',
 }
 def sv(k, sw="2"):
@@ -62,13 +63,14 @@ DEFS = ('<svg width="0" height="0" style="position:absolute" aria-hidden="true">
 CH = {
  "en":{"lang":"en","other":"NO","nav_products":"Products","nav_phil":"Philosophy","nav_together":"Together","nav_toolbox":"Toolbox",
    "nav_cta":"Get in touch","all_products":"All products","keep_posted":"Keep me posted",
-   "status_labels":{"live":"Live","beta":"Beta","build":"In development","plan":"Planned"},
-   "status_heads":{"live":"Status: live","beta":"Status: beta","build":"Status: in development","plan":"Status: planned"},
+   "nav_build":"Build with us","foot_build":"Build with us",
+   "status_labels":{"beta":"Beta","build":"In development","early":"Early days"},
+   "status_heads":{"beta":"Status: beta","build":"Status: in development","early":"Status: early days"},
    "family_kicker":"Part of the family",
    "family_title":"Plays well with the rest of Sunday Suite","standalone_title":"Standalone — but part of the family",
    "standalone_lead":"The tool stands entirely on its own, but shares the account, design language and golden thread with the rest of Sunday Suite.",
    "what_kicker":"What it does",
-   "foot_tag":"A family of Norwegian-built tools for church and classroom. Eleven apps, one golden thread.",
+   "foot_tag":"A family of Norwegian-built tools for church and classroom. Twelve apps, one golden thread — open source on GitHub.",
    "foot_products":"Products","foot_suite":"The suite","foot_legal":"Legal","foot_terms":"Terms of Use","foot_privacy":"Privacy",
    "foot_phil":"Philosophy","foot_together":"Better together","foot_toolbox":"Community tools","foot_contact":"Contact",
    "foot_bottom":"&copy; 2026 Sunday Suite &middot; Richard Fossland. Built in Norway.",
@@ -76,29 +78,33 @@ CH = {
    "nav_help":"Help","foot_help":"Help &amp; guides","back_help":"&larr; Back to Help"},
  "no":{"lang":"no","other":"EN","nav_products":"Produkter","nav_phil":"Filosofi","nav_together":"Sammen","nav_toolbox":"Verktøykassa",
    "nav_cta":"Ta kontakt","all_products":"Alle produkter","keep_posted":"Hold meg oppdatert",
-   "status_labels":{"live":"Live","beta":"Beta","build":"Under utvikling","plan":"Planlagt"},
-   "status_heads":{"live":"Status: live","beta":"Status: beta","build":"Status: under utvikling","plan":"Status: planlagt"},
+   "nav_build":"Bygg med oss","foot_build":"Bygg med oss",
+   "status_labels":{"beta":"Beta","build":"Under utvikling","early":"Påbegynt"},
+   "status_heads":{"beta":"Status: beta","build":"Status: under utvikling","early":"Status: påbegynt"},
    "family_kicker":"Del av familien",
    "family_title":"Spiller sammen med resten av Sunday Suite","standalone_title":"Frittstående — men en del av familien",
    "standalone_lead":"Verktøyet står helt på egne bein, men deler konto, designspråk og den gylne tråden med resten av Sunday Suite.",
    "what_kicker":"Hva det gjør",
-   "foot_tag":"En familie av norskbygde verktøy for menighet og klasserom. Elleve apper, én gylden tråd.",
+   "foot_tag":"En familie av norskbygde verktøy for menighet og klasserom. Tolv apper, én gylden tråd — åpen kildekode på GitHub.",
    "foot_products":"Produkter","foot_suite":"Suiten","foot_legal":"Juridisk","foot_terms":"Vilkår for bruk","foot_privacy":"Personvern",
    "foot_phil":"Filosofi","foot_together":"Bedre sammen","foot_toolbox":"Fellesskapsverktøy","foot_contact":"Kontakt",
    "foot_bottom":"&copy; 2026 Sunday Suite &middot; Richard Fossland. Bygd i Norge.",
    "back_home":"&larr; Tilbake til forsiden","cta_back":"Tilbake til produktene",
    "nav_help":"Hjelp","foot_help":"Hjelp &amp; veiledninger","back_help":"&larr; Tilbake til hjelpen"},
 }
-SLUGS = ["sundayrec","sundayscreen","sundaystudio","sundaystage","sundayplan","sundaysong","sundayedit","sundaypaper","sundaytranslate","sundayinfo","sundaybooking"]
+SLUGS = ["sundayrec","sundayscreen","sundaystudio","sundaystage","sundayplan","sundaysong","sundayedit","sundaysync","sundaypaper","sundaytranslate","sundayinfo","sundaybooking"]
 PNAME = {"sundayrec":"SundayRec","sundayscreen":"SundayScreen","sundaystudio":"SundayStudio","sundaystage":"SundayStage",
-         "sundayplan":"SundayPlan","sundaysong":"SundaySong","sundayedit":"SundayEdit","sundaypaper":"SundayPaper",
+         "sundayplan":"SundayPlan","sundaysong":"SundaySong","sundayedit":"SundayEdit","sundaysync":"SundaySync","sundaypaper":"SundayPaper",
          "sundaytranslate":"SundayTranslate","sundayinfo":"SundayInfo","sundaybooking":"SundayBooking"}
-# Single source of truth for product maturity: live / beta / build / plan.
+# Single source of truth for product maturity: beta / build / early.
+# Everything usable is honestly "beta" — the whole suite is open source and unfinished.
 # Drives home-card badges, product-page heroes + CTAs and the legal status table.
-STATUS = {"sundayrec":"beta","sundayscreen":"beta","sundaystudio":"build","sundaystage":"build",
-          "sundayplan":"build","sundaysong":"build","sundayedit":"build",
-          "sundaypaper":"plan","sundaytranslate":"build",
-          "sundayinfo":"live","sundaybooking":"live"}
+STATUS = {"sundayrec":"beta","sundayscreen":"beta","sundaystage":"beta",
+          "sundayedit":"beta","sundaysync":"beta","sundayinfo":"beta","sundaybooking":"beta",
+          "sundaystudio":"build","sundaytranslate":"build",
+          "sundayplan":"early","sundaysong":"early","sundaypaper":"early"}
+
+GITHUB_ORG = "https://github.com/SundaySuite-app"
 
 SITE = "https://sundaysuite.app"
 def clean_url(path):
@@ -117,6 +123,7 @@ def links(lang, root):
       "legal":  lambda n: root+base+"legal/"+n+".html",
       "help":   lambda n="index": root+helpdir+n+".html",
       "toolbox": root+base+("toolbox.html" if lang=="en" else "verktoykasse.html"),
+      "build":  root+base+("build.html" if lang=="en" else "bygg.html"),
     }
 
 def nav(c, L, other_href):
@@ -127,6 +134,7 @@ def nav(c, L, other_href):
       f'<a href="{L["home"]}#products" class="linkitem">{c["nav_products"]}</a>'
       f'<a href="{L["home"]}#philosophy" class="linkitem">{c["nav_phil"]}</a>'
       f'<a href="{L["toolbox"]}" class="linkitem">{c["nav_toolbox"]}</a>'
+      f'<a href="{L["build"]}" class="linkitem">{c["nav_build"]}</a>'
       f'<a href="{L["help"]("index")}" class="linkitem">{c["nav_help"]}</a>'
       f'<a href="{other_href}" class="lang-switch">{c["other"]}</a>'
       f'<a href="mailto:dev@sundaysuite.app" class="nav-cta">{c["nav_cta"]}</a>'
@@ -138,7 +146,7 @@ def footer(c, L):
       f'<div class="foot-brand"><div class="brand">{CROSS}<span><b>Sunday</b> Suite</span></div><p>{c["foot_tag"]}</p></div>'
       f'<div class="foot-cols">'
       f'<div class="foot-col"><h5>{c["foot_products"]}</h5>{prod}</div>'
-      f'<div class="foot-col"><h5>{c["foot_suite"]}</h5><a href="{L["home"]}#philosophy">{c["foot_phil"]}</a><a href="{L["home"]}#together">{c["foot_together"]}</a><a href="{L["toolbox"]}">{c["foot_toolbox"]}</a><a href="{L["help"]("index")}">{c["foot_help"]}</a><a href="mailto:dev@sundaysuite.app">{c["foot_contact"]}</a></div>'
+      f'<div class="foot-col"><h5>{c["foot_suite"]}</h5><a href="{L["home"]}#philosophy">{c["foot_phil"]}</a><a href="{L["home"]}#together">{c["foot_together"]}</a><a href="{L["toolbox"]}">{c["foot_toolbox"]}</a><a href="{L["build"]}">{c["foot_build"]}</a><a href="{L["help"]("index")}">{c["foot_help"]}</a><a href="{GITHUB_ORG}" target="_blank" rel="noopener">GitHub</a><a href="mailto:dev@sundaysuite.app">{c["foot_contact"]}</a></div>'
       f'<div class="foot-col"><h5>{c["foot_legal"]}</h5><a href="{L["legal"]("terms")}">{c["foot_terms"]}</a><a href="{L["legal"]("privacy")}">{c["foot_privacy"]}</a></div>'
       f'</div></div>'
       f'<div class="foot-bottom"><div>{c["foot_bottom"]}</div><div><a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a> &middot; sundaysuite.app</div></div>'
@@ -172,14 +180,14 @@ def shell(c, L, other_href, title, desc, body_open, content, navscrolled=False, 
 HOME = {
  "en":{"title":"Sunday Suite — Tools for the modern church",
    "desc":"Sunday Suite is a family of Norwegian-built tools for the church: recording, presentation, planning, song, podcasting, captioning and print — bound together by one golden thread.",
-   "eyebrow":"Norwegian-built church technology · first products live",
-   "h1":'Eleven tools.<br><em>One golden thread.</em>',
-   "sub":"Sunday Suite is a family of programs for the modern church — from recording and streaming to presentation, planning, song, podcasting, captioning and print. Each tool stands on its own, but they share one account, one design language, and one thread of gold.",
+   "eyebrow":"Norwegian-built church technology · open source · in beta",
+   "h1":'Twelve tools.<br><em>One golden thread.</em>',
+   "sub":"Sunday Suite is a family of open-source programs for the modern church — from recording, multicam sync and streaming to presentation, planning, song, podcasting, captioning and print. Each tool stands on its own, but they share one account, one design language, and one thread of gold.",
    "b1":"See the products","b2":"Why Sunday?",
-   "m1":"<b>11</b> products, one ecosystem","m2":"<b>TONO &amp; CCLI</b> in the design from day one","m3":"<b>Local-first</b> — your data stays with you",
+   "m1":"<b>12</b> products, one ecosystem","m2":"<b>Open source</b> — built in the open on GitHub","m3":"<b>Local-first</b> — your data stays with you",
    "g_kicker":"The products","g_title":"The family of Sunday apps",
-   "g_lead":"Eleven tools — four ready to use today, the rest in active development. Each product owns its own deep jewel tone, and the golden cross binds them together. Click through to read more about each one.",
-   "grp_now":"Available today","grp_dev":"In development",
+   "g_lead":"Twelve tools — seven in beta you can try today, the rest on the workbench. Each product owns its own deep jewel tone, and the golden cross binds them together. Click through to read more about each one.",
+   "grp_now":"Try today","grp_dev":"In development","grp_early":"On the drawing board",
    "one_h":"One Sunday account","one_tag":"Sign in once",
    "one_p":"The goal: one account signs you into every tool, and what you do in one program shows up where it's needed in the others — no double work.",
    "one_f":["Single sign-on","Shared design language","Secure key handling"],
@@ -194,24 +202,28 @@ HOME = {
             ("Plan","Stage","setlist becomes a published service"),("Rec","Plan","transcript returns as metadata"),
             ("Stage","Song","every shown song can be logged for TONO/CCLI"),("Plan","Paper","setlist becomes a printed program in one click"),
             ("Paper","Song","a scanned songbook becomes catalog entries"),("Rec","Paper","the sermon becomes a parish-magazine draft"),
+            ("Rec","Sync","recordings become a multicam timeline"),
             ("Rec","Edit","sermon + transcript ready for captioning")],
+   "os_kicker":"Built in the open","os_h":"Open source. Honestly unfinished.",
+   "os_p":"All of Sunday Suite is built in the open — the code lives on GitHub, the betas are free, and the roadmap is shaped by the churches that use it. If you can test, translate, design or code, there's a place for you at the workbench.",
+   "os_btn":"Build with us","os_gh":"See the code on GitHub",
    "tb_kicker":"Beyond the suite","tb_title":"A little toolbox for building community",
-   "tb_lead":"Alongside the eleven core products, Sunday Suite tinkers with small, playful tools for church and classroom — games and group activities that help people meet, mix and connect. They run straight in the browser, nothing to install. A corner of the workshop that will keep growing.",
+   "tb_lead":"Alongside the twelve core products, Sunday Suite tinkers with small, playful tools for church and classroom — games and group activities that help people meet, mix and connect. They run straight in the browser, nothing to install. A corner of the workshop that will keep growing.",
    "tb_note":"More fellowship tools are on the workbench. Have an idea for one?",
    "tb_open":"Open","tb_soon":"Coming soon","tb_more":"Explore the whole toolbox",
    "cta_h":"Let's build a better Sunday together.",
-   "cta_p":"Want to try the SundayRec beta, collaborate, or just hear where Sunday Suite is headed? We'd love to hear from you.",
+   "cta_p":"Try a beta, help build the suite, or just tell us what your church needs. We'd love to hear from you.",
    "cta_back":"Back to the products"},
  "no":{"title":"Sunday Suite — Verktøyene for den moderne menigheten",
    "desc":"Sunday Suite er en familie av norskbygde verktøy for menigheten: opptak, presentasjon, planlegging, sang, podkast, teksting og dokumenter — bundet sammen av én gylden tråd.",
-   "eyebrow":"Norskbygd kirketeknologi · de første produktene er live",
-   "h1":'Elleve verktøy.<br><em>Én gylden tråd.</em>',
-   "sub":"Sunday Suite er en familie av programmer for den moderne menigheten — fra opptak og strømming til presentasjon, planlegging, sang, podkast, teksting og trykksaker. Hvert verktøy står på egne bein, men deler én konto, ett designspråk og én tråd av gull.",
+   "eyebrow":"Norskbygd kirketeknologi · åpen kildekode · i beta",
+   "h1":'Tolv verktøy.<br><em>Én gylden tråd.</em>',
+   "sub":"Sunday Suite er en familie av åpen kildekode-programmer for den moderne menigheten — fra opptak, multikam-synk og strømming til presentasjon, planlegging, sang, podkast, teksting og trykksaker. Hvert verktøy står på egne bein, men deler én konto, ett designspråk og én tråd av gull.",
    "b1":"Se programmene","b2":"Hvorfor Sunday?",
-   "m1":"<b>11</b> produkter, ett økosystem","m2":"<b>TONO &amp; CCLI</b> med i designet fra dag én","m3":"<b>Lokalt først</b> — dine data blir hos deg",
+   "m1":"<b>12</b> produkter, ett økosystem","m2":"<b>Åpen kildekode</b> — bygges i det åpne på GitHub","m3":"<b>Lokalt først</b> — dine data blir hos deg",
    "g_kicker":"Produktene","g_title":"Familien av Sunday-apper",
-   "g_lead":"Elleve verktøy — fire klare til bruk i dag, resten under aktiv utvikling. Hvert produkt eier sin egen dype juveltone, og det gylne korset binder dem sammen. Klikk deg inn for å lese mer om hvert program.",
-   "grp_now":"Tilgjengelig i dag","grp_dev":"Under utvikling",
+   "g_lead":"Tolv verktøy — sju i beta som du kan prøve i dag, resten på arbeidsbenken. Hvert produkt eier sin egen dype juveltone, og det gylne korset binder dem sammen. Klikk deg inn for å lese mer om hvert program.",
+   "grp_now":"Prøv i dag","grp_dev":"Under utvikling","grp_early":"På tegnebrettet",
    "one_h":"Én Sunday-konto","one_tag":"Logg inn én gang",
    "one_p":"Målet: én konto signerer deg inn på alle verktøyene, og det du gjør i ett program dukker opp der det trengs i de andre — uten dobbeltarbeid.",
    "one_f":["Felles innlogging","Delt designspråk","Sikker nøkkelhåndtering"],
@@ -226,13 +238,17 @@ HOME = {
             ("Plan","Stage","setliste blir publisert gudstjeneste"),("Rec","Plan","transkripsjon tilbake som metadata"),
             ("Stage","Song","hver vist sang kan loggføres for TONO/CCLI"),("Plan","Paper","setliste blir trykt program med ett klikk"),
             ("Paper","Song","skannet sangbok blir katalogoppføringer"),("Rec","Paper","preken blir menighetsblad-utkast"),
+            ("Rec","Sync","opptak blir multikam-tidslinje"),
             ("Rec","Edit","preken + transkripsjon klar for teksting")],
+   "os_kicker":"Bygges i det åpne","os_h":"Åpen kildekode. Ærlig uferdig.",
+   "os_p":"Hele Sunday Suite bygges i det åpne — koden bor på GitHub, betaene er gratis, og veikartet formes av menighetene som bruker verktøyene. Kan du teste, oversette, designe eller kode, er det plass til deg ved arbeidsbenken.",
+   "os_btn":"Bygg med oss","os_gh":"Se koden på GitHub",
    "tb_kicker":"Utenfor suiten","tb_title":"En liten verktøykasse for å bygge fellesskap",
-   "tb_lead":"Ved siden av de elleve kjerneproduktene snekrer Sunday Suite på små, lekne verktøy for menighet og klasserom — spill og gruppeaktiviteter som hjelper folk å møtes, bli kjent og knytte bånd. De kjører rett i nettleseren, uten installasjon. En krok av verkstedet som bare kommer til å vokse.",
+   "tb_lead":"Ved siden av de tolv kjerneproduktene snekrer Sunday Suite på små, lekne verktøy for menighet og klasserom — spill og gruppeaktiviteter som hjelper folk å møtes, bli kjent og knytte bånd. De kjører rett i nettleseren, uten installasjon. En krok av verkstedet som bare kommer til å vokse.",
    "tb_note":"Flere fellesskapsverktøy ligger på arbeidsbenken. Har du en idé til ett?",
    "tb_open":"Åpne","tb_soon":"Kommer snart","tb_more":"Utforsk hele verktøykassa",
    "cta_h":"La oss bygge en bedre søndag sammen.",
-   "cta_p":"Vil du teste SundayRec-betaen, samarbeide eller bare høre mer om hvor Sunday Suite er på vei? Vi vil gjerne høre fra deg.",
+   "cta_p":"Prøv en beta, bli med og bygg suiten, eller bare fortell oss hva menigheten din trenger. Vi vil gjerne høre fra deg.",
    "cta_back":"Tilbake til produktene"},
 }
 
@@ -259,6 +275,9 @@ CARD = {
  "sundayedit":{"accent":"edit","icon":"caption",
    "en":("AI video captioning","Caption video ten times faster. Every word gets a confidence score and is colour-coded — you fix only the amber. Local and private: the video is never uploaded.",["Confidence","Context priming","Local Whisper","SRT/VTT"]),
    "no":("AI-teksting av video","Tekst video ti ganger raskere. Hvert ord får en konfidens-score og fargemarkeres — du retter bare det gule. Lokal og privat: videoen lastes aldri opp.",["Konfidens","Kontekst-priming","Lokal Whisper","SRT/VTT"])},
+ "sundaysync":{"accent":"sync","icon":"sync",
+   "en":("Multicam audio sync","Drop in every camera and recorder from the service; get back one synchronized timeline as FCPXML for DaVinci Resolve. No timecode needed — the audio itself is the clock.",["Any cameras","FCPXML out","No timecode","Fully local"]),
+   "no":("Multikam lydsynk","Slipp inn alle kameraer og opptakere fra gudstjenesten; få tilbake én synkronisert tidslinje som FCPXML for DaVinci Resolve. Ingen timekode — lyden selv er klokka.",["Alle kameraer","FCPXML ut","Ingen timekode","Helt lokalt"])},
  "sundaypaper":{"accent":"paper-c","icon":"doc",
    "en":("AI document &amp; PDF tool","Split songbooks, lay out service programs, parish magazines, large-print editions and forms — with professional Typst layout and OCR under the hood.",["Songbook split","Programs","Parish mag","Large print"]),
    "no":("AI-dokument &amp; PDF-verktøy","Splitt sangbøker, sett opp gudstjenesteprogrammer, lag menighetsblad, storskrift-utgaver og skjemaer — med profesjonell Typst-layout og OCR under panseret.",["Sangbok-splitt","Programmer","Menighetsblad","Storskrift"])},
@@ -269,8 +288,8 @@ CARD = {
    "en":("Digital signage for the church","Turn any TV into the church noticeboard — service times, today's plan, weather and a Bible verse. Pair a screen in seconds; it keeps running even if the network drops.",["Any screen","Multi-editor","Church year","Works offline"]),
    "no":("Digital infoskjerm for menigheten","Gjør en hvilken som helst TV til menighetens infotavle — gudstjenestetider, dagens plan, vær og bibelvers. Par en skjerm på sekunder; den går videre selv om nettet faller.",["Enhver skjerm","Flere redaktører","Kirkeår","Virker offline"])},
  "sundaybooking":{"accent":"booking","icon":"calendar",
-   "en":("Rooms, rentals &amp; appointments","Book rooms, rentals and appointments without double-bookings — the calendar makes overlaps structurally impossible. Part of the SundayPlan family.",["No double-booking","Rooms &amp; rentals","Approval queue","Shared account"]),
-   "no":("Rom, utleie &amp; avtaler","Book rom, utleie og avtaler uten dobbeltbooking — kalenderen gjør overlapp strukturelt umulig. En del av SundayPlan-familien.",["Ingen dobbeltbooking","Rom &amp; utleie","Godkjenningskø","Delt konto"])},
+   "en":("Rooms, rentals &amp; appointments","Book rooms, rentals and appointments without double-bookings — the calendar makes overlaps structurally impossible. Signs in with your Sunday account.",["No double-booking","Rooms &amp; rentals","Approval queue","Shared account"]),
+   "no":("Rom, utleie &amp; avtaler","Book rom, utleie og avtaler uten dobbeltbooking — kalenderen gjør overlapp strukturelt umulig. Logger inn med Sunday-kontoen din.",["Ingen dobbeltbooking","Rom &amp; utleie","Godkjenningskø","Delt konto"])},
 }
 
 # community-toolbox tools (live web apps on *.sundaysuite.app); soon=not yet deployed
@@ -316,23 +335,23 @@ TBPAGE = {
    "desc":"A little toolbox of free, browser-based games and group activities from Sunday Suite — icebreakers, classroom chess, tournaments and more. Nothing to install.",
    "crumb":"Toolbox","kicker":"Beyond the suite","h1":"The Sunday toolbox",
    "tagline":"Small, playful tools for church and classroom.",
-   "lead":"Free, browser-based games and group activities that help people meet, mix and connect — alongside the eleven core Sunday Suite products. Nothing to install: open one on the big screen, everyone joins on their phones.",
+   "lead":"Free, browser-based games and group activities that help people meet, mix and connect — alongside the twelve core Sunday Suite products. Nothing to install: open one on the big screen, everyone joins on their phones.",
    "meta":["<b>Free</b> — no account needed","<b>Nothing to install</b> — runs in the browser","<b>Phones</b> + a big screen"],
    "act_browse":"Browse the tools","act_back":"Back to the suite",
    "g_kicker":"The tools","g_title":"Gather a room in one click",
    "g_lead":"Each one runs live in the browser — open it on a shared screen and everyone joins from a phone. Click a card to start.",
-   "cta_h":"Part of one golden thread.","cta_p":"These little tools share the design language — and the heart — of the eleven core Sunday Suite apps. Have an idea for the next one? We'd love to hear it.",
+   "cta_h":"Part of one golden thread.","cta_p":"These little tools share the design language — and the heart — of the twelve core Sunday Suite apps. Have an idea for the next one? We'd love to hear it.",
    "cta_suite":"See the products","cta_mail":"dev@sundaysuite.app"},
  "no":{"title":"Verktøykassa — gratis fellesskapsspill for menighet og klasserom | Sunday Suite",
    "desc":"En liten verktøykasse med gratis, nettleserbaserte spill og gruppeaktiviteter fra Sunday Suite — bli-kjent-leker, klasseromssjakk, turneringer og mer. Ingenting å installere.",
    "crumb":"Verktøykassa","kicker":"Utenfor suiten","h1":"Verktøykassa",
    "tagline":"Små, lekne verktøy for menighet og klasserom.",
-   "lead":"Gratis, nettleserbaserte spill og gruppeaktiviteter som hjelper folk å møtes, bli kjent og knytte bånd — ved siden av de elleve kjerneproduktene i Sunday Suite. Ingenting å installere: åpne ett på storskjermen, og alle blir med fra sine egne telefoner.",
+   "lead":"Gratis, nettleserbaserte spill og gruppeaktiviteter som hjelper folk å møtes, bli kjent og knytte bånd — ved siden av de tolv kjerneproduktene i Sunday Suite. Ingenting å installere: åpne ett på storskjermen, og alle blir med fra sine egne telefoner.",
    "meta":["<b>Gratis</b> — ingen konto","<b>Ingen installasjon</b> — kjører i nettleseren","<b>Telefoner</b> + storskjerm"],
    "act_browse":"Se verktøyene","act_back":"Tilbake til suiten",
    "g_kicker":"Verktøyene","g_title":"Samle rommet med ett klikk",
    "g_lead":"Hvert verktøy kjører live i nettleseren — åpne det på en storskjerm, så blir alle med fra telefonen. Klikk på et kort for å starte.",
-   "cta_h":"En del av den samme gylne tråden.","cta_p":"Disse små verktøyene deler designspråket — og hjertet — med de elleve kjerneproduktene i Sunday Suite. Har du en idé til det neste? Vi vil gjerne høre den.",
+   "cta_h":"En del av den samme gylne tråden.","cta_p":"Disse små verktøyene deler designspråket — og hjertet — med de tolv kjerneproduktene i Sunday Suite. Har du en idé til det neste? Vi vil gjerne høre den.",
    "cta_suite":"Se produktene","cta_mail":"dev@sundaysuite.app"},
 }
 
@@ -407,6 +426,169 @@ def render_toolbox_page(lang):
 def status_badge(st, c, on_ink=False):
     return f'<span class="status{" on-ink" if on_ink else ""} {st}">{c["status_labels"][st]}</span>'
 
+# ============================================================== BUILD WITH US
+# Apps served by the suite's update rings (stable/beta) — gets "beta ring" links.
+RING_APPS = {"sundayrec","sundayscreen","sundaystage","sundaysync"}
+
+# Public repositories, shown on the build page. lic None = licence file on its way.
+REPOS = [
+ {"name":"sundayrec","repo":"SundaySuite-app/sundayrec","lic":"MIT","en":"Automatic church service recorder","no":"Automatisk gudstjenesteopptaker"},
+ {"name":"sundayscreen","repo":"SundaySuite-app/sundayscreen","lic":"MIT","en":"Offline classroom screen","no":"Offline klasseromsskjerm"},
+ {"name":"sundaystage","repo":"SundaySuite-app/sundaystage","lic":None,"en":"Live presentation for churches","no":"Live presentasjon for menigheter"},
+ {"name":"sundaystage-web","repo":"SundaySuite-app/sundaystage-web","lic":None,"en":"Web companion for SundayStage","no":"Web-følgesvenn for SundayStage"},
+ {"name":"sundaysync","repo":"SundaySuite-app/sundaysync","lic":None,"en":"Multicam audio sync &rarr; FCPXML","no":"Multikam lydsynk &rarr; FCPXML"},
+ {"name":"sundaytranslate","repo":"SundaySuite-app/sundaytranslate","lic":None,"en":"Live interpretation &amp; captions","no":"Live tolking &amp; undertekster"},
+ {"name":"sundaytranslate-relay","repo":"SundaySuite-app/sundaytranslate-relay","lic":None,"en":"Local audio relay for SundayTranslate","no":"Lokal lydrelé for SundayTranslate"},
+ {"name":"sundayedit","repo":"richardfossland/sundayedit","lic":None,"en":"AI video captioning","no":"AI-teksting av video"},
+ {"name":"sundaystudio","repo":"richardfossland/sundaystudio","lic":None,"en":"Podcast &amp; jingle production","no":"Podkast- &amp; jingleproduksjon"},
+ {"name":"sundayschool","repo":"richardfossland/sundayschool","lic":None,"en":"Music &amp; theology school (toolbox)","no":"Musikk- og teologiskole (verktøykassa)"},
+ {"name":"sundaychess","repo":"richardfossland/sundaychess","lic":None,"en":"Classroom chess tournaments (toolbox)","no":"Klasseromssjakk-turneringer (verktøykassa)"},
+]
+
+BUILDPAGE = {
+ "en":{"title":"Build with us — open-source church tools | Sunday Suite",
+   "desc":"Sunday Suite is an open-source, honestly unfinished family of church tools. Try the betas, read the code on GitHub, and help build twelve tools for the churches of the Nordics — and beyond.",
+   "crumb":"Build with us","kicker":"Open source","h1":"Build a better Sunday with us.",
+   "tagline":"Open-source church tools — free, unfinished, and honest about both.",
+   "lead":"Sunday Suite is one developer in Norway building twelve tools in the open, with the doors unlocked and the lights on. The code lives on GitHub, the betas are free, and the roadmap is shaped by the churches that use them. This page is the workbench — pull up a chair.",
+   "m_beta":"apps in beta today","m_code":"<b>The code</b> — public on GitHub","m_lic":"<b>MIT</b> where licensed",
+   "act_gh":"Sunday Suite on GitHub","act_mail":"dev@sundaysuite.app",
+   "hn_kicker":"Read this first","hn_title":"What “unfinished” honestly means",
+   "hn_lead":"We would rather under-promise on a website than let you down on a Sunday. Here is exactly how far each tier has come:",
+   "hn_feats":[("check","Beta","It works, and we use it ourselves — but keep a fallback the first Sundays, and expect rough edges. Your bug report is worth gold."),
+     ("sliders","In development","Real code, real progress, not ready for your service yet. Follow along, or help it get there faster."),
+     ("doc","On the drawing board","A vision and an architecture, honestly still on paper. The best time to tell us what your church needs.")],
+   "hn_note":"The apps send nothing home unless you opt in to anonymous telemetry — so when something breaks, we usually don't know. A two-line email about what went wrong is a genuine contribution.",
+   "bt_kicker":"Try the betas","bt_title":"Seven betas, ready for a test drive",
+   "bt_lead":"Five desktop apps for Mac and Windows, two web apps in the browser — all free, no account needed for the downloads. The buttons always fetch the newest release.",
+   "bt_ring":"Fresh from the beta ring:","bt_more":"Read more",
+   "code_kicker":"The code","code_title":"Every repository, open on GitHub",
+   "code_lead":"MIT-licensed where the licence file is in place — the rest are being licensed as they mature. If a missing licence file blocks you, email us and we'll sort it out.",
+   "lic_pending":"licence on its way",
+   "ways_kicker":"Ways to help","ways_title":"Six ways to build with us",
+   "ways_lead":"You don't need to be a developer — the most valuable contributions often come from the people running the projector on Sunday.",
+   "ways":[("check","Test &amp; report","Use a beta for something real and tell us what broke — in a GitHub issue or a plain email. This is the contribution we need most."),
+     ("code","Write code","Rust, TypeScript, Svelte, Preact — pick a repo, open an issue to say hello, and send a pull request."),
+     ("globe","Translate","Norwegian Bokmål and Nynorsk are first-class here, and more languages are welcome — translation files are friendly territory for a first contribution."),
+     ("sparkle","Design","Icons, layouts, the feel of a screen in a dark church — if you have the eye, the suite has the canvas."),
+     ("text","Improve the guides","The help section is written for volunteers, not developers. If a guide confused you, that's a bug — tell us or rewrite it."),
+     ("star","Tell us what you need","The roadmap is shaped by real churches. Two sentences about your Sunday morning can change what gets built next.")],
+   "how_head":"How we work",
+   "how_p":"Bugs and ideas go in a GitHub issue on the repo in question, or to <a href=\"mailto:dev@sundaysuite.app\">dev@sundaysuite.app</a> if GitHub isn't your thing. There is no ticket robot and no call centre — every message lands with the person who wrote the code, and every one gets an answer.",
+   "cta_h":"One golden thread. Many hands.","cta_p":"Whether you test one beta on one Sunday or send a hundred pull requests — you're helping build free tools for churches everywhere. Welcome to the workbench."},
+ "no":{"title":"Bygg med oss — åpen kildekode-verktøy for kirka | Sunday Suite",
+   "desc":"Sunday Suite er en åpen kildekode-familie av kirkeverktøy — ærlig uferdig. Prøv betaene, les koden på GitHub, og bli med og bygg tolv verktøy for menighetene i Norden — og videre.",
+   "crumb":"Bygg med oss","kicker":"Åpen kildekode","h1":"Bygg en bedre søndag med oss.",
+   "tagline":"Åpen kildekode-verktøy for kirka — gratis, uferdige, og ærlige på begge deler.",
+   "lead":"Sunday Suite er én utvikler i Norge som bygger tolv verktøy i det åpne, med dørene ulåst og lyset på. Koden bor på GitHub, betaene er gratis, og veikartet formes av menighetene som bruker dem. Denne siden er arbeidsbenken — trekk fram en stol.",
+   "m_beta":"apper i beta i dag","m_code":"<b>Koden</b> — offentlig på GitHub","m_lic":"<b>MIT</b> der lisensiert",
+   "act_gh":"Sunday Suite på GitHub","act_mail":"dev@sundaysuite.app",
+   "hn_kicker":"Les dette først","hn_title":"Hva «uferdig» ærlig betyr",
+   "hn_lead":"Vi vil heller love for lite på en nettside enn å skuffe deg på en søndag. Her er nøyaktig hvor langt hvert nivå har kommet:",
+   "hn_feats":[("check","Beta","Det virker, og vi bruker det selv — men ha en reserveløsning de første søndagene, og regn med skarpe kanter. Feilrapporten din er gull verdt."),
+     ("sliders","Under utvikling","Ekte kode, ekte framdrift, ikke klart for gudstjenesten din ennå. Følg med, eller hjelp det fram raskere."),
+     ("doc","På tegnebrettet","En visjon og en arkitektur, ærlig talt fortsatt på papir. Beste tidspunkt å fortelle oss hva menigheten din trenger.")],
+   "hn_note":"Appene sender ingenting hjem med mindre du takker ja til anonym telemetri — så når noe ryker, vet vi det som regel ikke. En e-post på to linjer om hva som gikk galt, er et ekte bidrag.",
+   "bt_kicker":"Prøv betaene","bt_title":"Sju betaer, klare for prøvetur",
+   "bt_lead":"Fem skrivebordsapper for Mac og Windows, to web-apper i nettleseren — alt gratis, ingen konto for nedlastingene. Knappene henter alltid nyeste utgivelse.",
+   "bt_ring":"Ferskt fra beta-ringen:","bt_more":"Les mer",
+   "code_kicker":"Koden","code_title":"Hvert repositorium, åpent på GitHub",
+   "code_lead":"MIT-lisensiert der lisensfila er på plass — resten lisensieres etter hvert som de modnes. Blokkerer en manglende lisensfil deg, send en e-post, så ordner vi det.",
+   "lic_pending":"lisens på vei",
+   "ways_kicker":"Måter å hjelpe på","ways_title":"Seks måter å bygge med oss",
+   "ways_lead":"Du trenger ikke være utvikler — de mest verdifulle bidragene kommer ofte fra dem som styrer projektoren på søndag.",
+   "ways":[("check","Test &amp; rapporter","Bruk en beta til noe ekte og fortell oss hva som røyk — i en GitHub-issue eller en helt vanlig e-post. Dette er bidraget vi trenger mest."),
+     ("code","Skriv kode","Rust, TypeScript, Svelte, Preact — velg et repo, åpne en issue for å si hei, og send en pull request."),
+     ("globe","Oversett","Bokmål og nynorsk er førsteklasses her, og flere språk er velkomne — oversettelsesfiler er vennlig terreng for et første bidrag."),
+     ("sparkle","Design","Ikoner, layouter, følelsen av en skjerm i en mørk kirke — har du øyet, har suiten lerretet."),
+     ("text","Forbedre guidene","Hjelpeseksjonen er skrevet for frivillige, ikke utviklere. Forvirret en guide deg, er det en feil — si fra eller skriv den om."),
+     ("star","Fortell oss hva du trenger","Veikartet formes av ekte menigheter. To setninger om søndagsmorgenen din kan endre hva som bygges videre.")],
+   "how_head":"Slik jobber vi",
+   "how_p":"Feil og idéer går i en GitHub-issue på det aktuelle repoet, eller til <a href=\"mailto:dev@sundaysuite.app\">dev@sundaysuite.app</a> om GitHub ikke er din greie. Det finnes ingen billettrobot og ikke noe kundesenter — hver melding lander hos den som skrev koden, og alle får svar.",
+   "cta_h":"Én gylden tråd. Mange hender.","cta_p":"Enten du tester én beta én søndag eller sender hundre pull requests — du er med og bygger gratis verktøy for menigheter overalt. Velkommen til arbeidsbenken."},
+}
+
+def render_build_page(lang):
+    c=CH[lang]; p=BUILDPAGE[lang]
+    root="" if lang=="en" else "../"; L=links(lang,root)
+    other = "no/bygg.html" if lang=="en" else "../build.html"
+    nbeta = sum(1 for s in SLUGS if STATUS[s]=="beta")
+    meta = f'<div><b>{nbeta}</b> {p["m_beta"]}</div><div>{p["m_code"]}</div><div>{p["m_lic"]}</div>'
+    # beta cards — generated from STATUS/APP/APPDATA so the list can never go stale
+    cards=""
+    for i,s in enumerate([x for x in SLUGS if STATUS[x]=="beta"]):
+        cd=CARD[s]; tag=cd[lang][0]
+        a=APP.get(s) or APPDATA[s]
+        if a.get("repo"):
+            act=(f'<a href="/download/{s}/mac">Mac</a> · <a href="/download/{s}/windows">Windows</a> · '
+                 f'<a href="https://github.com/{a["repo"]}" target="_blank" rel="noopener">GitHub</a>')
+            if s in RING_APPS:
+                act+=(f'<br><span class="dl-ring">{p["bt_ring"]} '
+                      f'<a href="/download/{s}/mac?channel=beta">Mac</a> · '
+                      f'<a href="/download/{s}/windows?channel=beta">Windows</a></span>')
+        else:
+            sub=a["url"].replace("https://","")
+            act=f'<a href="{a["url"]}" target="_blank" rel="noopener">{("Open " if lang=="en" else "Åpne ")}{sub}</a>'
+        cards+=(f'      <div class="card reveal" data-d="{(i%3)+1}" style="--c:var(--{cd["accent"]})">'
+          f'<div class="card-top"><img class="logo-tile" src="{L["assets"]}logos/{s}.svg" alt="{PNAME[s]} logo" width="52" height="52" loading="lazy" />{status_badge("beta",c)}</div>'
+          f'<h3><span class="sunday">Sunday</span>{PNAME[s][6:]}</h3><div class="tag">{tag}</div>'
+          f'<p class="dl-links">{act}</p>'
+          f'<a class="more" href="{L["app"](s)}">{p["bt_more"]}{sv("arrow","2.5")}</a></div>\n')
+    repos="".join(
+        f'      <a class="repo-row reveal" href="https://github.com/{r["repo"]}" target="_blank" rel="noopener">'
+        f'<span class="repo-name">{r["name"]}</span><span class="repo-desc">{r[lang]}</span>'
+        f'<span class="repo-lic{"" if r["lic"] else " pending"}">{r["lic"] or p["lic_pending"]}</span></a>\n'
+        for r in REPOS)
+    hn="".join(f'        <div class="feat reveal"><div class="fi">{sv(ik)}</div><h3>{t}</h3><p>{d}</p></div>\n' for ik,t,d in p["hn_feats"])
+    ways="".join(f'        <div class="feat reveal"{" data-d=%d"%(i%3) if i%3 else ""}><div class="fi">{sv(ik)}</div><h3>{t}</h3><p>{d}</p></div>\n' for i,(ik,t,d) in enumerate(p["ways"]))
+    content=(f'''<main>
+<section class="app-hero"><div class="grain"></div><div class="wrap">
+  <div class="crumb"><a href="{L["home"]}">Sunday Suite</a><span>/</span><span>{p["crumb"]}</span></div>
+  <div class="app-hero-inner">
+    <div class="section-kicker" style="color:var(--gold)">{p["kicker"]}</div>
+    <h1 class="app-title" style="margin-top:14px">{p["h1"]}</h1>
+    <div class="app-tagline">{p["tagline"]}</div>
+    <p class="app-lead">{p["lead"]}</p>
+    <div class="hero-meta" style="margin-top:34px; justify-content:flex-start">{meta}</div>
+    <div class="app-hero-actions"><a href="{GITHUB_ORG}" target="_blank" rel="noopener" class="btn btn-primary">{p["act_gh"]}</a><a href="mailto:dev@sundaysuite.app" class="btn btn-ghost">{p["act_mail"]}</a></div>
+  </div>
+</div></section>
+
+<div class="app-body">
+  <section class="app-section"><div class="wrap">
+    <div class="section-head"><div class="section-kicker kicker-c">{p["hn_kicker"]}</div><h2 class="section-title">{p["hn_title"]}</h2><p class="section-lead">{p["hn_lead"]}</p></div>
+    <div class="feat-grid">
+{hn}    </div>
+    <div class="callout reveal" style="margin:40px auto 0"><p>{p["hn_note"]}</p></div>
+  </div></section>
+
+  <section class="app-section alt" id="betas"><div class="wrap">
+    <div class="section-head"><div class="section-kicker kicker-c">{p["bt_kicker"]}</div><h2 class="section-title">{p["bt_title"]}</h2><p class="section-lead">{p["bt_lead"]}</p></div>
+    <div class="grid">
+{cards}    </div>
+  </div></section>
+
+  <section class="app-section" id="code"><div class="wrap">
+    <div class="section-head"><div class="section-kicker kicker-c">{p["code_kicker"]}</div><h2 class="section-title">{p["code_title"]}</h2><p class="section-lead">{p["code_lead"]}</p></div>
+    <div class="repo-list reveal">
+{repos}    </div>
+  </div></section>
+
+  <section class="app-section alt" id="ways"><div class="wrap">
+    <div class="section-head"><div class="section-kicker kicker-c">{p["ways_kicker"]}</div><h2 class="section-title">{p["ways_title"]}</h2><p class="section-lead">{p["ways_lead"]}</p></div>
+    <div class="feat-grid">
+{ways}    </div>
+    <div class="callout reveal" style="margin:40px auto 0"><h4>{p["how_head"]}</h4><p>{p["how_p"]}</p></div>
+  </div></section>
+</div>
+
+<section class="app-cta"><div class="wrap">
+  <h2>{p["cta_h"]}</h2><p>{p["cta_p"]}</p>
+  <div class="hero-actions" style="justify-content:center"><a href="{GITHUB_ORG}" target="_blank" rel="noopener" class="btn btn-primary">{p["act_gh"]}</a><a href="mailto:dev@sundaysuite.app" class="btn btn-ghost">{p["act_mail"]}</a></div>
+</div></section>
+</main>''')
+    return shell(c,L,other,p["title"],p["desc"],' style="--c:var(--gold-deep)"',content,pair=("build.html","no/bygg.html"))
+
 def render_home(lang):
     c=CH[lang]; h=HOME[lang]; root="" if lang=="en" else "../"; L=links(lang,root)
     other = "no/index.html" if lang=="en" else "../index.html"
@@ -415,18 +597,26 @@ def render_home(lang):
     def product_card(s, i):
         cd=CARD[s]; tag,desc,feats=cd[lang]; d=f' data-d="{(i%3)+1}"' if i%3 else f' data-d="1"'
         feats_html="".join(f"<li>{x}</li>" for x in feats)
-        dev=" dev" if STATUS[s] in ("build","plan") else ""
+        dev=" dev" if STATUS[s] in ("build","early") else ""
         return (f'      <a class="card link reveal{dev}"{d} style="--c:var(--{cd["accent"]})" href="{L["app"](s)}">'
           f'<span class="glowdot"></span><div class="card-top"><img class="logo-tile" src="{L["assets"]}logos/{s}.svg" alt="{PNAME[s]} logo" width="52" height="52" loading="lazy" />'
           f'{status_badge(STATUS[s],c)}</div>'
           f'<h3><span class="sunday">Sunday</span>{PNAME[s][6:]}</h3><div class="tag">{tag}</div>'
           f'<p>{desc}</p><ul class="feats">{feats_html}</ul>'
           f'<span class="more">{readmore}{arrow}</span></a>\n')
+    def mini_card(s, i):
+        cd=CARD[s]; tag,desc,feats=cd[lang]; d=f' data-d="{(i%3)+1}"' if i%3 else f' data-d="1"'
+        return (f'      <a class="card mini link reveal dev"{d} style="--c:var(--{cd["accent"]})" href="{L["app"](s)}">'
+          f'<img class="logo-tile" src="{L["assets"]}logos/{s}.svg" alt="{PNAME[s]} logo" width="40" height="40" loading="lazy" />'
+          f'<span class="mini-body"><h3><span class="sunday">Sunday</span>{PNAME[s][6:]}</h3><span class="tag">{tag}</span></span>'
+          f'{status_badge(STATUS[s],c)}</a>\n')
     def grid_label(txt):
         return f'<div class="grid-label reveal"><span class="line"></span><h3>{txt}</h3><span class="line"></span></div>'
-    avail=[s for s in SLUGS if STATUS[s] in ("live","beta")]
-    indev=[s for s in SLUGS if STATUS[s] not in ("live","beta")]
+    avail=[s for s in SLUGS if STATUS[s]=="beta"]
+    indev=[s for s in SLUGS if STATUS[s]=="build"]
+    early=[s for s in SLUGS if STATUS[s]=="early"]
     cards_avail="".join(product_card(s,i) for i,s in enumerate(avail))
+    cards_early="".join(mini_card(s,i) for i,s in enumerate(early))
     cards="".join(product_card(s,i) for i,s in enumerate(indev))
     one_f="".join(f"<li>{x}</li>" for x in h["one_f"])
     cards+=(f'      <div class="card reveal" data-d="5" style="--c:var(--gold-deep); background:linear-gradient(160deg,#fff,#FBF3DF)">'
@@ -456,6 +646,9 @@ def render_home(lang):
   {grid_label(h["grp_dev"])}
   <div class="grid">
 {cards}  </div>
+  {grid_label(h["grp_early"])}
+  <div class="grid">
+{cards_early}  </div>
 </div></section>
 
 <section class="philo" id="philosophy"><div class="glow"></div><div class="wrap philo-grid">
@@ -466,6 +659,12 @@ def render_home(lang):
 <section class="magic" id="together"><div class="wrap">
   <div class="section-head reveal"><div class="section-kicker">{h["mg_kicker"]}</div><h2 class="section-title">{h["mg_title"]}</h2><p class="section-lead">{h["mg_lead"]}</p></div>
   <div class="chips reveal" data-d="1">{chips}</div>
+</div></section>
+
+<section class="cta" id="opensource"><div class="glow"></div><div class="wrap cta-inner reveal">
+  <div class="section-kicker" style="color:var(--gold)">{h["os_kicker"]}</div>
+  <h2>{h["os_h"]}</h2><p>{h["os_p"]}</p>
+  <div class="hero-actions" style="justify-content:center"><a href="{L["build"]}" class="btn btn-primary">{h["os_btn"]}</a><a href="{GITHUB_ORG}" target="_blank" rel="noopener" class="btn btn-ghost">{h["os_gh"]}</a></div>
 </div></section>
 
 {render_toolbox(lang, h, c, L)}
@@ -480,7 +679,7 @@ def render_home(lang):
 
 # ===================================================================== APPS
 APP = {
- "sundayrec":{"accent":"rec","icon":"rec","short":"Rec","repo":"sundayrec","vattr":"data-rec-version",
+ "sundayrec":{"accent":"rec","icon":"rec","short":"Rec","repo":"SundaySuite-app/sundayrec",
   "en":{"tagline":"Your sermon, ready to share.",
     "meta":"SundayRec records the service, transcribes the sermon, streams live and publishes the podcast — by itself. Free beta for Mac and Windows. Your files stay yours.",
     "lead":"Set the schedule once. Every Sunday, SundayRec records the service, transcribes the sermon, streams it live, and publishes to your podcast — all by itself. Free desktop app for Mac and Windows. No subscription, no cloud relay. Your files stay yours.",
@@ -493,7 +692,7 @@ APP = {
       ("globe","Podcast publishing","Upload to YouTube and publish to a podcast RSS with review-before-publish, in one flow.")],
     "hl_kicker":"Built for trust","hl_title":"Local first. Your files never leave the machine — unless you ask.",
     "hl_p":"SundayRec is a desktop app, not a cloud service. Recording, editing and transcription happen on your own machine. If you enable cloud backup to Google Drive or publishing to a podcast host, the app uploads on your behalf — the relationship with that service is yours.",
-    "checks":["No analytics, no telemetry","Backed by over 1000 automated tests","Seven languages, including Norwegian Bokmål and Nynorsk"],
+    "checks":["No ads, no tracking — optional anonymous quality telemetry, off by default","Backed by over 1000 automated tests","Seven languages, including Norwegian Bokmål and Nynorsk"],
     "status":"SundayRec is the mature core of the suite and can be downloaded and used for free today, but it's still in beta. Test your first recordings before relying on it for a critical service. This page on sundaysuite.app is SundayRec's home — there's no separate site to visit, and the download buttons here always fetch the latest release.",
     "install_head":"Download &amp; install notes",
     "install_mac":"<strong>Mac:</strong> Apple Silicon (M1 or newer) only for now — there is no Intel build; get in touch if you need one. The app is signed but not yet notarized, so the very first launch is <em>right-click the app → Open</em>.",
@@ -512,7 +711,7 @@ APP = {
       ("globe","Podkast-publisering","Last opp til YouTube og publiser til podkast-RSS med review-før-publisering, i én flyt.")],
     "hl_kicker":"Bygd for tillit","hl_title":"Lokalt først. Filene dine forlater aldri maskinen — med mindre du ber om det.",
     "hl_p":"SundayRec er en skrivebordsapp, ikke en skytjeneste. Opptak, redigering og transkripsjon skjer på din egen maskin. Velger du sky-backup til Google Drive eller publisering til en podkast-host, er det appen som laster opp på dine vegne — forholdet til tjenesten er ditt.",
-    "checks":["Ingen analyse, ingen telemetri","Over 1000 automatiske tester i ryggen","Sju språk, inkludert bokmål og nynorsk"],
+    "checks":["Ingen reklame, ingen sporing — valgfri anonym kvalitetstelemetri, av som standard","Over 1000 automatiske tester i ryggen","Sju språk, inkludert bokmål og nynorsk"],
     "status":"SundayRec er den modne kjernen i suiten og kan lastes ned og brukes gratis i dag, men er fortsatt i beta. Test gjerne de første opptakene før du stoler på den til en kritisk gudstjeneste. Denne siden på sundaysuite.app er hjemmebasen til SundayRec — det finnes ingen egen nettside å besøke, og nedlastingsknappene her henter alltid nyeste utgivelse.",
     "install_head":"Nedlasting &amp; installasjon",
     "install_mac":"<strong>Mac:</strong> foreløpig kun Apple Silicon (M1 eller nyere) — det finnes ingen Intel-build; ta kontakt om du trenger en. Appen er signert, men ennå ikke notarisert, så aller første start er <em>høyreklikk på appen → Åpne</em>.",
@@ -521,7 +720,7 @@ APP = {
     "cta_h":"Klar til å ta opp neste søndag?","cta_p":"Last ned SundayRec gratis for Mac og Windows — ingen konto nødvendig — eller ta kontakt om du vil følge utviklingen."},
   "chips":[("Stage","Rec","cue→chapter / cue blir kapittelmerke"),("Stage","Rec","lyrics→SRT / sangtekst blir SRT"),("Rec","Plan","transcript / transkripsjon"),("Rec","Edit","sermon ready / preken klar"),("Rec","Paper","sermon→magazine / preken→blad")],
  },
- "sundayscreen":{"accent":"screen","icon":"clock","short":"Screen","repo":"sundayscreen","vattr":"data-screen-version",
+ "sundayscreen":{"accent":"screen","icon":"clock","short":"Screen","repo":"SundaySuite-app/sundayscreen",
   "en":{"tagline":"The classroom screen that never needs the internet.",
     "meta":"SundayScreen puts clock, timer, name picker, group maker, dice and traffic light on the projector — fully offline. Free desktop beta for Mac and Windows.",
     "lead":"Put the whole lesson on the projector: a clock, a big countdown, today's message, a traffic light and work symbols, a name picker, a group maker and dice. Everything runs in one calm, fullscreen window on your own machine — no account, no cloud, and no internet needed. Free desktop app for Mac and Windows.",
@@ -562,6 +761,47 @@ APP = {
     "cta_h":"Klar til mandag morgen?","cta_p":"Last ned SundayScreen gratis for Mac og Windows — ingen konto nødvendig — eller ta kontakt om du vil følge utviklingen."},
   "chips":None,
  },
+ "sundaysync":{"accent":"sync","icon":"sync","short":"Sync","repo":"SundaySuite-app/sundaysync",
+  "en":{"tagline":"Every camera, one timeline.",
+    "meta":"SundaySync aligns every camera and recorder from the service by their audio and exports one synchronized FCPXML timeline for DaVinci Resolve. Free beta for Mac and Windows.",
+    "lead":"Drop in every file from the service — phones, handycams, the audio recorder on the pulpit — and SundaySync lines them all up by listening to the audio itself. No timecode, no clapperboard. Out comes one synchronized multicam timeline as FCPXML, ready to open in DaVinci Resolve. Free desktop app for Mac and Windows, fully local.",
+    "what":"From memory cards to a cut-ready timeline","whatlead":"Drop everything in, press sync, open Resolve.",
+    "features":[("wave","Audio waveform sync","Every clip is aligned by cross-correlating its audio — sample-accurate, with no clapperboard or timecode needed."),
+      ("layers","Every source, one timeline","Cameras, phones and audio recorders all land in one synchronized multicam timeline."),
+      ("code","FCPXML for Resolve","Export an FCPXML and open it straight in DaVinci Resolve — angles named, clips placed."),
+      ("bolt","ffmpeg built in","The media engine ships inside the app — nothing else to install, and a first-launch self-test proves it works."),
+      ("search","Listen before you export","Play the synchronized sources together in the app and hear that everything lines up."),
+      ("shield","Fully local","Your footage never leaves the machine. No account, no cloud, no upload.")],
+    "hl_kicker":"Built for church shoots","hl_title":"No timecode? No problem. The audio is the clock.",
+    "hl_p":"A multicam rig in a church is rarely broadcast gear — it's phones, handycams and a recorder on the pulpit, and nothing shares timecode. SundaySync listens to what every device heard and aligns them to within a few samples, the way a patient editor would by hand — in seconds.",
+    "checks":["Sample-accurate alignment, verified against DaVinci Resolve","Bundled ffmpeg — works on a clean machine","Free and fully local — nothing is uploaded"],
+    "status":"SundaySync is out in beta on the suite's beta ring and free to download today. Sync your first service before relying on it for a deadline — and tell us how it went.",
+    "install_head":"Download &amp; install notes",
+    "install_mac":"<strong>Mac:</strong> Apple Silicon (M1 or newer) only for now — there is no Intel build; get in touch if you need one. The app is signed but not yet notarized, so the very first launch is <em>right-click the app &rarr; Open</em>.",
+    "install_win":"<strong>Windows:</strong> the installer can trigger a SmartScreen notice the first time — choose <em>More info &rarr; Run anyway</em>.",
+    "install_all":"All versions &amp; release notes on GitHub",
+    "cta_h":"Ready to cut this week's service?","cta_p":"Download SundaySync free for Mac and Windows — no account needed — or get in touch to follow development."},
+  "no":{"tagline":"Hvert kamera, én tidslinje.",
+    "meta":"SundaySync justerer alle kameraer og opptakere fra gudstjenesten etter lyden og eksporterer én synkronisert FCPXML-tidslinje for DaVinci Resolve. Gratis beta for Mac og Windows.",
+    "lead":"Slipp inn alle filene fra gudstjenesten — mobiler, handycam-er, lydopptakeren på talerstolen — og SundaySync legger dem kant i kant ved å lytte til selve lyden. Ingen timekode, ingen klapper. Ut kommer én synkronisert multikam-tidslinje som FCPXML, klar til å åpnes i DaVinci Resolve. Gratis skrivebordsapp for Mac og Windows, helt lokal.",
+    "what":"Fra minnekort til klippeklar tidslinje","whatlead":"Slipp alt inn, trykk synk, åpne Resolve.",
+    "features":[("wave","Lydbølge-synk","Hvert klipp justeres ved å krysskorrelere lyden — sample-nøyaktig, uten klapper eller timekode."),
+      ("layers","Alle kilder, én tidslinje","Kameraer, mobiler og lydopptakere lander i én synkronisert multikam-tidslinje."),
+      ("code","FCPXML for Resolve","Eksporter en FCPXML og åpne den rett i DaVinci Resolve — vinkler navngitt, klipp plassert."),
+      ("bolt","ffmpeg innebygd","Mediemotoren følger med inne i appen — ingenting annet å installere, og en selvtest ved første start beviser at den virker."),
+      ("search","Lytt før du eksporterer","Spill de synkroniserte kildene sammen i appen og hør at alt ligger kant i kant."),
+      ("shield","Helt lokalt","Opptakene dine forlater aldri maskinen. Ingen konto, ingen sky, ingen opplasting.")],
+    "hl_kicker":"Bygd for kirkeopptak","hl_title":"Ingen timekode? Ikke noe problem. Lyden er klokka.",
+    "hl_p":"En multikam-rigg i en kirke er sjelden kringkastingsutstyr — det er mobiler, handycam-er og en opptaker på talerstolen, og ingenting deler timekode. SundaySync lytter til hva hver enhet hørte og justerer dem til innenfor noen få samples, slik en tålmodig klipper ville gjort for hånd — på sekunder.",
+    "checks":["Sample-nøyaktig justering, verifisert mot DaVinci Resolve","Bundlet ffmpeg — virker på en ren maskin","Gratis og helt lokal — ingenting lastes opp"],
+    "status":"SundaySync er ute i beta på suitens beta-ring og gratis å laste ned i dag. Synk din første gudstjeneste før du stoler på den mot en deadline — og fortell oss hvordan det gikk.",
+    "install_head":"Nedlasting &amp; installasjon",
+    "install_mac":"<strong>Mac:</strong> foreløpig kun Apple Silicon (M1 eller nyere) — det finnes ingen Intel-build; ta kontakt om du trenger en. Appen er signert, men ennå ikke notarisert, så aller første start er <em>høyreklikk på appen &rarr; Åpne</em>.",
+    "install_win":"<strong>Windows:</strong> installasjonen kan utløse et SmartScreen-varsel første gang — velg <em>Mer info &rarr; Kjør likevel</em>.",
+    "install_all":"Alle versjoner &amp; utgivelsesnotater på GitHub",
+    "cta_h":"Klar til å klippe ukas gudstjeneste?","cta_p":"Last ned SundaySync gratis for Mac og Windows — ingen konto nødvendig — eller ta kontakt om du vil følge utviklingen."},
+  "chips":[("Rec","Sync","recordings become a timeline / opptak blir tidslinje"),("Sync","Edit","synced sermon ready for captions / synket preken klar for teksting")],
+ },
 }
 
 # Generic builder for the six in-development apps; rec is rendered specially.
@@ -598,7 +838,7 @@ APPDATA = {
     "status":"SundayStudio er langt på vei: fundamentet, fleirspors-opptakeren, bølgeform-editoren, DSP- og mastering-kjeden, AI-nivåjusteringen og eksport-løypa er på plass. Det som gjenstår krever ekte maskinvare, ffmpeg og live API-nøkler. Ikke ute for nedlasting ennå.",
     "cta_h":"Vil du høre når Studio er klar?","cta_p":"SundayStudio er under utvikling. Ta kontakt om du vil teste tidlig eller følge med på veien mot lansering."},
   "chips":None},
- "sundaystage":{"accent":"stage","icon":"screen","short":"Stage",
+ "sundaystage":{"accent":"stage","icon":"screen","short":"Stage","repo":"SundaySuite-app/sundaystage",
   "en":{"tagline":"Lyrics and media on the big screen.",
     "meta":"SundayStage shows lyrics, Bible verses and media on the big screen behind the altar — a Nordic alternative to ProPresenter, with cue control and safe, isolated output.",
     "lead":"Show lyrics, Bible verses, announcements and media on the screen behind the altar. A modern presentation tool in the ProPresenter class, built for Nordic churches, with cue control, seamless transitions and a live engine with an isolated output process for safe display.",
@@ -612,8 +852,12 @@ APPDATA = {
     "hl_kicker":"Built for live","hl_title":"Confident on the big screen when it counts.",
     "hl_p":"Nothing is worse than a black screen in the middle of worship. SundayStage isolates the display in its own process, so the app can fail without the congregation noticing.",
     "checks":["Isolated output process protects the display","A dark interface made for the stage","TONO ID on songs from day one"],
-    "status":"SundayStage is in early development. The data model, the app shell with a ⌘K palette and full-text search are in place; the slide editor and live engine are in progress. Not available for download yet.",
-    "cta_h":"Want to follow Stage to launch?","cta_p":"SundayStage is in development. Get in touch if your church wants to be early when the presentation tool is ready."},
+    "status":"SundayStage is out in beta and free to download today. The shell, the ⌘K palette, full-text search and the live engine with its isolated output all run; the slide editor is still growing. Try it on a rehearsal night before you trust it with a service — and tell us what breaks.",
+    "install_head":"Download &amp; install notes",
+    "install_mac":"<strong>Mac:</strong> Apple Silicon (M1 or newer) only for now — there is no Intel build; get in touch if you need one. The app is signed but not yet notarized, so the very first launch is <em>right-click the app &rarr; Open</em>.",
+    "install_win":"<strong>Windows:</strong> the installer can trigger a SmartScreen notice the first time — choose <em>More info &rarr; Run anyway</em>.",
+    "install_all":"All versions &amp; release notes on GitHub",
+    "cta_h":"Ready to try Stage on the big screen?","cta_p":"Download SundayStage free for Mac and Windows — no account needed — or get in touch to help shape the presentation tool."},
   "no":{"tagline":"Sangtekster og media på storskjerm.",
     "meta":"SundayStage viser sangtekster, bibelvers og media på storskjerm bak alteret — et nordisk alternativ til ProPresenter, med køstyring og trygg, isolert visning.",
     "lead":"Vis sangtekster, bibelvers, kunngjøringer og media på skjermen bak alteret. Et moderne presentasjonsverktøy i ProPresenter-klassen, bygd for nordiske menigheter, med køstyring, sømløse overganger og en live-motor med isolert utgangsprosess for trygg visning.",
@@ -627,8 +871,12 @@ APPDATA = {
     "hl_kicker":"Bygd for live","hl_title":"Trygg på storskjerm når det gjelder.",
     "hl_p":"Ingenting er verre enn en svart skjerm midt i lovsangen. SundayStage isolerer visningen i en egen prosess, slik at appen kan feile uten at menigheten merker det.",
     "checks":["Isolert utgangsprosess beskytter visningen","Mørkt grensesnitt laget for scenen","TONO-ID på sang fra dag én"],
-    "status":"SundayStage er i tidlig utvikling. Datamodellen, app-skallet med ⌘K-palett og fulltekstsøk er på plass; slide-editoren og live-motoren er under arbeid. Ikke ute for nedlasting ennå.",
-    "cta_h":"Vil du følge Stage mot lansering?","cta_p":"SundayStage er under utvikling. Ta kontakt om menigheten din vil være tidlig ute når presentasjonsverktøyet er klart."},
+    "status":"SundayStage er ute i beta og gratis å laste ned i dag. Skallet, ⌘K-paletten, fulltekstsøket og live-motoren med isolert visning kjører; slide-editoren vokser fortsatt. Prøv den på en øvingskveld før du stoler på den i en gudstjeneste — og fortell oss hva som ryker.",
+    "install_head":"Nedlasting &amp; installasjon",
+    "install_mac":"<strong>Mac:</strong> foreløpig kun Apple Silicon (M1 eller nyere) — det finnes ingen Intel-build; ta kontakt om du trenger en. Appen er signert, men ennå ikke notarisert, så aller første start er <em>høyreklikk på appen &rarr; Åpne</em>.",
+    "install_win":"<strong>Windows:</strong> installasjonen kan utløse et SmartScreen-varsel første gang — velg <em>Mer info &rarr; Kjør likevel</em>.",
+    "install_all":"Alle versjoner &amp; utgivelsesnotater på GitHub",
+    "cta_h":"Klar til å prøve Stage på storskjermen?","cta_p":"Last ned SundayStage gratis for Mac og Windows — ingen konto nødvendig — eller ta kontakt om du vil forme presentasjonsverktøyet."},
   "chips":[("Stage","Rec","cue→chapter / cue blir kapittelmerke"),("Stage","Rec","lyrics→SRT / sangtekst blir SRT"),("Plan","Stage","setlist / setliste"),("Stage","Song","can log / kan loggføres")]},
  "sundayplan":{"accent":"plan","icon":"calendar","short":"Plan",
   "en":{"tagline":"Planning and volunteer rota, done in minutes.",
@@ -694,7 +942,7 @@ APPDATA = {
     "status":"SundaySong er i tidlig utvikling. Datamodellen og API-kontrakten med TONO-feltene er på plass, og det offentlige SDK-et kompilerer mot kontrakten; sangimport, søk og AI er under arbeid. Ikke ute for bruk ennå.",
     "cta_h":"Vil du være med på TONO-moaten?","cta_p":"SundaySong er under utvikling. Ta kontakt om menigheten eller organisasjonen din vil følge sangdatabasen."},
   "chips":[("Stage","Song","logged / loggføres"),("Plan","Song","licensing / lisens"),("Paper","Song","catalog / katalog"),("Rec","Song","streaming flag / strømme-flagg")]},
- "sundayedit":{"accent":"edit","icon":"caption","short":"Edit",
+ "sundayedit":{"accent":"edit","icon":"caption","short":"Edit","repo":"richardfossland/sundayedit",
   "en":{"tagline":"Caption video ten times faster.",
     "meta":"SundayEdit is AI video captioning with confidence highlighting and context priming. Local Whisper — the video is never uploaded. A standalone product.",
     "lead":"Every word gets a confidence score from the recognition model and is colour-coded. The ones the model is sure about you don't touch — you fix only the few per cent that light up amber. Tell the app what the video is about, and Whisper biases toward your names and jargon. Local and private: the video is never uploaded.",
@@ -708,8 +956,12 @@ APPDATA = {
     "hl_kicker":"Two genuine innovations","hl_title":"Human review at ten times the speed.",
     "hl_p":"The 92% the model is sure about, you don't touch. You fix only the 8% that light up amber. That turns captioning into something you can actually finish before next Sunday.",
     "checks":["No competitor has confidence highlighting + context priming","Local Whisper — the video never leaves the machine","A standalone product, with an optional link to SundayRec"],
-    "status":"SundayEdit is in early development. The confidence editor and the export (SRT/VTT/ASS/TXT) work against sample data; video import, the Whisper engine and burn-in are in progress. A standalone product with its own brand. Not available for use yet.",
-    "cta_h":"Want to caption faster?","cta_p":"SundayEdit is in development and will be a standalone product. Get in touch to test the confidence captioning early."},
+    "status":"SundayEdit is out in beta and free to download today — the confidence editor, local Whisper transcription and export to SRT, VTT, ASS and TXT all work. A standalone product with its own brand, maturing in the open. Caption a real video and tell us where it stumbles.",
+    "install_head":"Download &amp; install notes",
+    "install_mac":"<strong>Mac:</strong> a universal build — works on both Apple Silicon and Intel Macs. The app is signed but not yet notarized, so the very first launch is <em>right-click the app &rarr; Open</em>.",
+    "install_win":"<strong>Windows:</strong> the installer can trigger a SmartScreen notice the first time — choose <em>More info &rarr; Run anyway</em>.",
+    "install_all":"All versions &amp; release notes on GitHub",
+    "cta_h":"Want to caption faster?","cta_p":"Download SundayEdit free for Mac and Windows — no account needed — or get in touch to follow development."},
   "no":{"tagline":"Tekst video ti ganger raskere.",
     "meta":"SundayEdit er AI-teksting av video med konfidens-fremheving og kontekst-priming. Lokal Whisper — videoen lastes aldri opp. Frittstående produkt.",
     "lead":"Hvert ord får en konfidens-score fra gjenkjenningsmodellen og fargemarkeres. Det modellen er sikker på rører du ikke — du retter bare de få prosentene som lyser gult. Fortell appen hva videoen handler om, så biaser Whisper mot dine navn og fagord. Lokalt og privat: videoen lastes aldri opp.",
@@ -723,8 +975,12 @@ APPDATA = {
     "hl_kicker":"To ekte nyvinninger","hl_title":"Menneskelig gjennomgang i ti ganger farten.",
     "hl_p":"De 92 prosentene modellen er sikker på rører du ikke. Du retter bare de 8 som lyser gult. Det gjør teksting til noe du faktisk rekker før neste søndag.",
     "checks":["Ingen konkurrent har konfidens-fremheving + kontekst-priming","Lokal Whisper — videoen forlater aldri maskinen","Frittstående produkt, valgfri kobling til SundayRec"],
-    "status":"SundayEdit er i tidlig utvikling. Konfidens-editoren og eksporten (SRT/VTT/ASS/TXT) virker mot testdata; video-import, Whisper-motoren og innbrenning er under arbeid. Et frittstående produkt med egen merkevare. Ikke ute for bruk ennå.",
-    "cta_h":"Vil du tekste raskere?","cta_p":"SundayEdit er under utvikling og blir et frittstående produkt. Ta kontakt om du vil teste konfidens-tekstingen tidlig."},
+    "status":"SundayEdit er ute i beta og gratis å laste ned i dag — konfidens-editoren, lokal Whisper-transkripsjon og eksport til SRT, VTT, ASS og TXT virker. Et frittstående produkt med egen merkevare, som modnes i det åpne. Tekst en ekte video og fortell oss hvor den snubler.",
+    "install_head":"Nedlasting &amp; installasjon",
+    "install_mac":"<strong>Mac:</strong> universal-build — virker på både Apple Silicon og Intel. Appen er signert, men ennå ikke notarisert, så aller første start er <em>høyreklikk på appen &rarr; Åpne</em>.",
+    "install_win":"<strong>Windows:</strong> installasjonen kan utløse et SmartScreen-varsel første gang — velg <em>Mer info &rarr; Kjør likevel</em>.",
+    "install_all":"Alle versjoner &amp; utgivelsesnotater på GitHub",
+    "cta_h":"Vil du tekste raskere?","cta_p":"Last ned SundayEdit gratis for Mac og Windows — ingen konto nødvendig — eller ta kontakt om du vil følge utviklingen."},
   "chips":[("Rec","Edit","sermon + transcript / preken + transkripsjon")]},
  "sundaypaper":{"accent":"paper-c","icon":"doc","short":"Paper",
   "en":{"tagline":"The AI document tool for the church.",
@@ -804,8 +1060,8 @@ APPDATA = {
     "hl_kicker":"Built for the foyer","hl_title":"Always on, always current — even when the network isn't.",
     "hl_p":"A 30-second heartbeat is the source of truth, realtime is just a hint, and a local snapshot survives a dropped connection. The screen runs on its own clock, so the church year and the day's mode are always right.",
     "checks":["Multi-tenant with roles from day one","Pairs once; only a hashed token is stored","Keeps showing content through a network outage"],
-    "status":"SundayInfo is live at info.sundaysuite.app. Pair a screen, invite editors and publish — sign in with your Sunday account. Rig-testing on real TVs is the last step before we call it done.",
-    "cta_h":"Want SundayInfo on your foyer screen?","cta_p":"It's live at info.sundaysuite.app. Get in touch if your church wants help getting the first screen on the wall."},
+    "status":"SundayInfo is up and running in beta at info.sundaysuite.app. Pair a screen, invite editors and publish — sign in with your Sunday account. Testing on real TVs is exactly what the beta is for, so tell us how your screen behaves.",
+    "cta_h":"Want SundayInfo on your foyer screen?","cta_p":"It's in beta at info.sundaysuite.app. Get in touch if your church wants help getting the first screen on the wall."},
   "no":{"tagline":"Menigheten din, på hver skjerm.",
     "meta":"SundayInfo er digital infoskjerm for menigheter — gudstjenestetider, planer, vær og kirkeår på en hvilken som helst TV, paret fra mobilen og i drift selv om nettet faller.",
     "lead":"Gjør en hvilken som helst skjerm i bygget til menighetens infotavle. Gudstjenestetider, dagens plan, kunngjøringer, vær og et vers for sesongen — satt sammen fra mobil eller PC og vist på en TV, en Chromecast, en PC eller en Raspberry Pi. Multi-tenant og fler-redaktør, med lokal cache så den går videre når nettet ikke gjør det.",
@@ -819,13 +1075,13 @@ APPDATA = {
     "hl_kicker":"Bygd for foajeen","hl_title":"Alltid på, alltid oppdatert — selv når nettet ikke er det.",
     "hl_p":"Et 30-sekunders hjerteslag er sannheten, realtime er bare et hint, og et lokalt øyeblikksbilde overlever et brudd. Skjermen går på sin egen klokke, så kirkeåret og dagens modus er alltid riktig.",
     "checks":["Multi-tenant med roller fra dag én","Pares én gang; kun en hashet token lagres","Viser innhold videre gjennom nettbrudd"],
-    "status":"SundayInfo er live på info.sundaysuite.app. Par en skjerm, inviter redaktører og publiser — logg inn med Sunday-kontoen din. Rigg-test på ekte TV-er er siste steg før vi kaller den ferdig.",
-    "cta_h":"Vil du ha SundayInfo på foajé-skjermen?","cta_p":"Den er live på info.sundaysuite.app. Ta kontakt om menigheten din vil ha hjelp til å få den første skjermen opp på veggen."},
+    "status":"SundayInfo er oppe og går i beta på info.sundaysuite.app. Par en skjerm, inviter redaktører og publiser — logg inn med Sunday-kontoen din. Testing på ekte TV-er er akkurat det betaen er til, så fortell oss hvordan skjermen din oppfører seg.",
+    "cta_h":"Vil du ha SundayInfo på foajé-skjermen?","cta_p":"Den er i beta på info.sundaysuite.app. Ta kontakt om menigheten din vil ha hjelp til å få den første skjermen opp på veggen."},
   "chips":[("Plan","Info","today's service / dagens gudstjeneste"),("Booking","Info","rooms in use / lokaler i bruk")]},
  "sundaybooking":{"accent":"booking","icon":"calendar","short":"Booking","url":"https://booking.sundaysuite.app",
   "en":{"tagline":"Book the church — without double-bookings.",
-    "meta":"SundayBooking handles room bookings, external rentals and appointments for the church, with double-bookings made structurally impossible. Part of the SundayPlan family.",
-    "lead":"Manage internal rooms, external rentals and appointment bookings in one calendar where overlaps are structurally impossible — set-up and clean-up time included. Staff approve requests; members and renters ask through a link, no account needed for the public flow. Shares one account and one church with SundayPlan.",
+    "meta":"SundayBooking handles room bookings, external rentals and appointments for the church, with double-bookings made structurally impossible. Signs in with your Sunday account.",
+    "lead":"Manage internal rooms, external rentals and appointment bookings in one calendar where overlaps are structurally impossible — set-up and clean-up time included. Staff approve requests; members and renters ask through a link, no account needed for the public flow. Signs in with your shared Sunday account.",
     "what":"Every space, one honest calendar","whatlead":"From a wedding to a choir rehearsal — requested, checked and approved without a clash.",
     "features":[("calendar","Conflict-proof calendar","An exclusion constraint in the database makes a double-booking impossible — including rig and clean-up buffers."),
       ("check","Approval queue","Requests land in a queue staff approve or decline, with suggested alternatives when a slot is taken."),
@@ -835,12 +1091,12 @@ APPDATA = {
       ("globe","ICS feed &amp; utilisation","Subscribe to a room's calendar as an ICS feed and watch a utilisation dashboard fill in.")],
     "hl_kicker":"Correct by construction","hl_title":"A double-booking isn't caught — it's impossible.",
     "hl_p":"Booking goes through an atomic database function that locks the resources and rejects any overlap on the effective time range, set-up and clean-up included. The wedding and the choir rehearsal can never land on the same room.",
-    "checks":["Overlaps blocked by the database, not by a check after the fact","Public rentals without an account, via magic link","Shares the account, church and SSO with SundayPlan"],
-    "status":"SundayBooking is live at booking.sundaysuite.app and lives inside SundayPlan — same account, same church. Sign in with your Sunday account to manage resources and approvals; rig-testing across devices is under way.",
-    "cta_h":"Want bookings without the clashes?","cta_p":"It's live at booking.sundaysuite.app, part of the SundayPlan family. Get in touch if your church wants help setting up rooms and rentals."},
+    "checks":["Overlaps blocked by the database, not by a check after the fact","Public rentals without an account, via magic link","One shared Sunday account across the suite"],
+    "status":"SundayBooking is up and running in beta at booking.sundaysuite.app. Sign in with your Sunday account to manage resources and approvals; testing across devices is exactly what the beta is for.",
+    "cta_h":"Want bookings without the clashes?","cta_p":"It's in beta at booking.sundaysuite.app. Get in touch if your church wants help setting up rooms and rentals."},
   "no":{"tagline":"Book menigheten — uten dobbeltbooking.",
-    "meta":"SundayBooking håndterer rombooking, ekstern utleie og avtaler for menigheten, med dobbeltbooking gjort strukturelt umulig. En del av SundayPlan-familien.",
-    "lead":"Styr interne rom, ekstern utleie og avtalebooking i én kalender der overlapp er strukturelt umulig — rigge- og ryddetid inkludert. Staben godkjenner forespørsler; medlemmer og leietakere spør via en lenke, uten konto for den offentlige flyten. Deler én konto og én menighet med SundayPlan.",
+    "meta":"SundayBooking håndterer rombooking, ekstern utleie og avtaler for menigheten, med dobbeltbooking gjort strukturelt umulig. Logger inn med Sunday-kontoen din.",
+    "lead":"Styr interne rom, ekstern utleie og avtalebooking i én kalender der overlapp er strukturelt umulig — rigge- og ryddetid inkludert. Staben godkjenner forespørsler; medlemmer og leietakere spør via en lenke, uten konto for den offentlige flyten. Logger inn med den delte Sunday-kontoen din.",
     "what":"Hvert lokale, én ærlig kalender","whatlead":"Fra bryllup til korøvelse — forespurt, sjekket og godkjent uten kollisjon.",
     "features":[("calendar","Kollisjonssikker kalender","En exclusion-constraint i databasen gjør dobbeltbooking umulig — inkludert rigge- og ryddebuffere."),
       ("check","Godkjenningskø","Forespørsler havner i en kø staben godkjenner eller avslår, med forslag til alternativer når en tid er opptatt."),
@@ -850,9 +1106,9 @@ APPDATA = {
       ("globe","ICS-feed &amp; utnyttelse","Abonner på et roms kalender som ICS-feed og følg et utnyttelses-dashboard fylles inn.")],
     "hl_kicker":"Riktig ved konstruksjon","hl_title":"En dobbeltbooking fanges ikke — den er umulig.",
     "hl_p":"Booking går gjennom en atomisk databasefunksjon som låser ressursene og avviser ethvert overlapp på det effektive tidsrommet, rigge- og ryddetid inkludert. Bryllupet og korøvelsen kan aldri havne på samme rom.",
-    "checks":["Overlapp blokkeres av databasen, ikke av en sjekk i etterkant","Offentlig utleie uten konto, via magic link","Deler konto, menighet og SSO med SundayPlan"],
-    "status":"SundayBooking er live på booking.sundaysuite.app og bor inne i SundayPlan — samme konto, samme menighet. Logg inn med Sunday-kontoen din for å styre ressurser og godkjenninger; rigg-test på tvers av enheter pågår.",
-    "cta_h":"Vil du ha booking uten kollisjoner?","cta_p":"Den er live på booking.sundaysuite.app, en del av SundayPlan-familien. Ta kontakt om menigheten din vil ha hjelp til å sette opp rom og utleie."},
+    "checks":["Overlapp blokkeres av databasen, ikke av en sjekk i etterkant","Offentlig utleie uten konto, via magic link","Én delt Sunday-konto på tvers av suiten"],
+    "status":"SundayBooking er oppe og går i beta på booking.sundaysuite.app. Logg inn med Sunday-kontoen din for å styre ressurser og godkjenninger; testing på tvers av enheter er akkurat det betaen er til.",
+    "cta_h":"Vil du ha booking uten kollisjoner?","cta_p":"Den er i beta på booking.sundaysuite.app. Ta kontakt om menigheten din vil ha hjelp til å sette opp rom og utleie."},
   "chips":[("Plan","Booking","shared church / delt menighet"),("Booking","Info","rooms in use / lokaler i bruk")]},
 }
 
@@ -925,9 +1181,14 @@ def render_app(lang, slug):
     c=CH[lang]; root="../" if lang=="en" else "../../"; L=links(lang,root)
     other = (f'../no/apps/{slug}.html' if lang=="en" else f'../../apps/{slug}.html')
     st=STATUS[slug]
-    if slug in APP:
-        a=APP[slug]; d=a[lang]
-        dl_mac = "Download for Mac (Apple&nbsp;Silicon)" if lang=="en" else "Last ned for Mac (Apple&nbsp;Silicon)"
+    a=APP.get(slug) or APPDATA[slug]; d=a[lang]
+    chips=None
+    if a["chips"]:
+        chips=[(x[0],x[1], x[2].split(" / ")[0] if lang=="en" else x[2].split(" / ")[1]) for x in a["chips"]]
+    if a.get("repo"):
+        universal = "niversal" in d["install_mac"]
+        dl_mac = (("Download for Mac" if universal else "Download for Mac (Apple&nbsp;Silicon)") if lang=="en"
+                  else ("Last ned for Mac" if universal else "Last ned for Mac (Apple&nbsp;Silicon)"))
         dl_win = "Download for Windows" if lang=="en" else "Last ned for Windows"
         ha=(f'<a href="/download/{slug}/mac" class="btn btn-accent">{dl_mac}</a>'
             f'<a href="/download/{slug}/windows" class="btn btn-accent">{dl_win}</a>'
@@ -939,30 +1200,21 @@ def render_app(lang, slug):
                f'      <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--c)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 21h16"/></svg>{d["install_head"]}</h4>\n'
                f'      <p>{d["install_mac"]}</p>\n'
                f'      <p>{d["install_win"]}</p>\n'
-               f'      <p><span {a["vattr"]} hidden></span><a href="https://github.com/SundaySuite-app/{a["repo"]}/releases" target="_blank" rel="noopener">{d["install_all"]}</a></p>\n'
+               f'      <p><span data-app-version="{slug}" hidden></span><a href="https://github.com/{a["repo"]}/releases" target="_blank" rel="noopener">{d["install_all"]}</a></p>\n'
                f'    </div>')
-        chips=None
-        if a["chips"]:
-            chips=[(x[0],x[1], x[2].split(" / ")[0] if lang=="en" else x[2].split(" / ")[1]) for x in a["chips"]]
         body=app_body(c,L,slug,a["short"],d,chips,st,hero_actions=ha,cta_actions=ca,extra=extra)
-        title=f'{PNAME[slug]} — {d["tagline"]} | Sunday Suite'
+    elif a.get("url"):
+        sub=a["url"].replace("https://","")
+        visit=(f'Open {sub}' if lang=="en" else f'Åpne {sub}')
+        ha=(f'<a href="{a["url"]}" target="_blank" rel="noopener" class="btn btn-accent">{visit}</a>'
+            f'<a href="{L["home"]}#products" class="btn btn-ghost">{c["all_products"]}</a>')
+        ca=(f'<a href="{a["url"]}" target="_blank" rel="noopener" class="btn btn-primary">{visit}</a>'
+            f'<a href="mailto:dev@sundaysuite.app" class="btn btn-ghost">dev@sundaysuite.app</a>')
+        body=app_body(c,L,slug,a["short"],d,chips,st,hero_actions=ha,cta_actions=ca)
     else:
-        ad=APPDATA[slug]; d=ad[lang]
-        chips=None
-        if ad["chips"]:
-            chips=[(x[0],x[1], x[2].split(" / ")[0] if lang=="en" else x[2].split(" / ")[1]) for x in ad["chips"]]
-        if st=="live":
-            sub=ad["url"].replace("https://","")
-            visit=(f'Open {sub}' if lang=="en" else f'Åpne {sub}')
-            ha=(f'<a href="{ad["url"]}" target="_blank" rel="noopener" class="btn btn-accent">{visit}</a>'
-                f'<a href="{L["home"]}#products" class="btn btn-ghost">{c["all_products"]}</a>')
-            ca=(f'<a href="{ad["url"]}" target="_blank" rel="noopener" class="btn btn-primary">{visit}</a>'
-                f'<a href="mailto:dev@sundaysuite.app" class="btn btn-ghost">dev@sundaysuite.app</a>')
-            body=app_body(c,L,slug,ad["short"],d,chips,st,hero_actions=ha,cta_actions=ca)
-        else:
-            body=app_body(c,L,slug,ad["short"],d,chips,st)
-        title=f'{PNAME[slug]} — {d["tagline"]} | Sunday Suite'
-    return shell(c,L,other,title,d["meta"],f' style="--c:var(--{(APP[slug]["accent"] if slug in APP else APPDATA[slug]["accent"])})"',body,pair=(f"apps/{slug}.html",f"no/apps/{slug}.html"))
+        body=app_body(c,L,slug,a["short"],d,chips,st)
+    title=f'{PNAME[slug]} — {d["tagline"]} | Sunday Suite'
+    return shell(c,L,other,title,d["meta"],f' style="--c:var(--{a["accent"]})"',body,pair=(f"apps/{slug}.html",f"no/apps/{slug}.html"))
 
 # ===================================================================== LEGAL
 def legal_shell(lang, name, h1, updated, note, toc, prose):
@@ -1005,6 +1257,7 @@ def terms_en():
       "sundayplan":"Service planning and volunteer rota",
       "sundaysong":"Song database with AI and TONO/CCLI reporting",
       "sundayedit":"AI video captioning (standalone product)",
+      "sundaysync":"Multicamera audio sync for church and event shoots (desktop app)",
       "sundaypaper":"AI document and PDF tool for print",
       "sundaytranslate":"Live translation and assistive listening for the service (web app)",
       "sundayinfo":"Digital signage for the church (web app)",
@@ -1023,15 +1276,17 @@ def terms_en():
     <p>The programs available today are provided free of charge. There is no purchase, subscription or licence fee. We reserve the right to introduce paid features or plans in the future, but any change will be communicated clearly.</p>
     <p>Software marked "beta" or "in development" is offered at an early stage. It may contain bugs, change materially or be withdrawn without notice, and you should verify the first results before using it for anything critical. We give no guarantee that the Service will be available, uninterrupted or preserved over time.</p>
     {h2(4,"s4","Licence")}
-    <p>Subject to your compliance with these Terms, we grant you a non-exclusive, non-transferable and revocable licence to download and use the Sunday programs for your organization's own purposes.</p>
-    <p>You may not:</p>
-    <ul><li>redistribute, sell, rent or sublicense the software;</li><li>decompile, reverse-engineer or attempt to derive the source code, except to the extent mandatory law permits;</li><li>remove or alter any copyright notices, trademarks or other proprietary markings;</li><li>use the software, name or design to create, market or operate a competing or confusingly similar product; or</li><li>use the Service for any unlawful purpose.</li></ul>
+    <p>Subject to your compliance with these Terms, we grant you a non-exclusive, non-transferable and revocable licence to download and use the Sunday programs, as distributed via sundaysuite.app, for your organization's own purposes.</p>
+    <h3>Open source</h3>
+    <p>Sunday Suite is built in the open: much of the suite's source code is published in public repositories on <a href="https://github.com/SundaySuite-app" target="_blank" rel="noopener">GitHub</a> under open-source licences — MIT where a licence file is present. For that code, the repository's own licence governs your rights, and nothing in these Terms limits what that licence grants you, including the rights to use, study, modify and redistribute the code.</p>
+    <p>Except to the extent an applicable open-source licence expressly permits it, you may not:</p>
+    <ul><li>redistribute, sell, rent or sublicense the software;</li><li>decompile, reverse-engineer or attempt to derive the source code, except to the extent mandatory law permits;</li><li>remove or alter any copyright notices, trademarks or other proprietary markings;</li><li>use the "Sunday" names, logos or trade dress in a way likely to cause confusion about origin or endorsement; or</li><li>use the Service for any unlawful purpose.</li></ul>
     {h2(5,"s5","Intellectual property and trademarks")}
-    <p>Sunday Suite and all programs in the suite — <strong>SundayRec, SundayScreen, SundayStudio, SundayStage, SundayPlan, SundaySong, SundayEdit, SundayPaper, SundayTranslate, SundayInfo and SundayBooking</strong> — together with the community tools listed in section 2, source code, design, graphics, the golden cross, logos, names, text and all other content, are owned by Richard Fossland and protected by applicable law on copyright, trademarks and other intellectual property rights.</p>
+    <p>The website, design, graphics, the golden cross, logos, names and text are owned by Richard Fossland and protected by applicable law on copyright, trademarks and other intellectual property rights. The source code of the Sunday programs — <strong>SundayRec, SundayScreen, SundayStudio, SundayStage, SundayPlan, SundaySong, SundayEdit, SundaySync, SundayPaper, SundayTranslate, SundayInfo and SundayBooking</strong>, together with the community tools listed in section 2 — is &copy; Richard Fossland and contributors. Where a repository carries an open-source licence (for example MIT), that code is licensed to you under that licence; repositories that do not yet carry a licence file are published for reading, and no licence to that code is granted until one is added.</p>
     <h3>Trademarks</h3>
-    <p>The names "Sunday Suite", the "Sunday" family of product names listed above (including the community tools listed in section 2), and the associated cross and gold symbol, are our trademarks (registered or being established). You are granted no right to use these trademarks, and you must not use them — or names, logos or designs likely to be confused with them — without prior written consent. This also applies to product, domain, app-store and company names.</p>
+    <p>The names "Sunday Suite", the "Sunday" family of product names listed above (including the community tools listed in section 2), and the associated cross and gold symbol, are our trademarks (registered or being established). You are granted no right to use these trademarks, and you must not use them — or names, logos or designs likely to be confused with them — without prior written consent. This also applies to product, domain, app-store and company names. The open-source licences cover the code — they grant no rights to the "Sunday" names, the cross-and-gold mark or the logos.</p>
     <h3>No transfer of rights</h3>
-    <p>Nothing in these Terms transfers any intellectual property rights to you. All use not expressly permitted is reserved to the rights holder. We reserve all rights not expressly granted here.</p>
+    <p>Except as granted by an applicable open-source licence, nothing in these Terms transfers any intellectual property rights to you. All use not expressly permitted is reserved to the rights holder. We reserve all rights not expressly granted here.</p>
     {h2(6,"s6","Your content")}
     <p>You retain full ownership of all content you create with the Sunday programs — recordings, video, text, transcripts, plans, songs and documents. We do not access, store or process your content on our servers. The programs run locally on your machine unless otherwise expressly stated. See the <a href="privacy.html">Privacy Policy</a> for how data is handled.</p>
     {h2(7,"s7","Third-party services")}
@@ -1048,7 +1303,7 @@ def terms_en():
     <p>These Terms are governed by Norwegian law. Any disputes shall be subject to the exclusive jurisdiction of the Norwegian courts, unless mandatory consumer-protection rules provide otherwise.</p>
     {h2(13,"s13","Contact")}
     <p>Questions about these Terms? Contact us at <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a>.</p>'''
-    return legal_shell("en","terms","Terms of Use","Last updated: 8 August 2026",note,toc(items),prose)
+    return legal_shell("en","terms","Terms of Use","Last updated: 29 August 2026",note,toc(items),prose)
 
 # ---- Privacy EN
 def privacy_en():
@@ -1056,7 +1311,7 @@ def privacy_en():
     items=[("p1","In short"),("p2","Data on your machine"),("p3","OAuth tokens"),("p4","Cloud uploads"),("p5","Publishing"),("p6","Email alerts"),("p7","No analytics or telemetry"),("p8","Content stays on the machine"),("p9","The website sundaysuite.app"),("p10","Community web tools"),("p11","Third-party services"),("p12","Your rights"),("p13","Changes"),("p14","Contact")]
     prose=f'''    <p class="lead">Sunday Suite is built "local-first". The programs run on your own machine, and your content stays with you unless you choose to upload or publish it. This policy explains what is processed, where, and by whom.</p>
     {h2(1,"p1","In short")}
-    <ul><li>The programs are desktop apps that store data locally on your machine.</li><li>We run no central server that receives your recordings, videos or documents.</li><li>Data leaves the machine only when you actively enable a cloud, publishing or alert feature.</li><li>We collect no analytics or telemetry from the programs.</li></ul>
+    <ul><li>The programs are desktop apps that store data locally on your machine.</li><li>We run no central server that receives your recordings, videos or documents.</li><li>Data leaves the machine only when you actively enable a cloud, publishing or alert feature.</li><li>We collect nothing from the programs unless you opt in to anonymous quality telemetry.</li></ul>
     {h2(2,"p2","Data on your machine")}
     <p>Settings, projects, recordings, video, transcripts, plans, songs and documents are stored locally in the program's data folder on your machine. You control these files and can delete them at any time.</p>
     {h2(3,"p3","OAuth tokens")}
@@ -1068,11 +1323,11 @@ def privacy_en():
     {h2(6,"p6","Email alerts")}
     <p>If a program can send you alerts (for example via your own SMTP server or a notification service), they are sent with the configuration you provide. We do not receive a copy of these alerts.</p>
     {h2(7,"p7","No analytics or telemetry")}
-    <p>The programs contain no analytics, tracking or telemetry. We do not know what you record, show, plan or publish. The programs may contact an update service to check whether a newer version exists; such a request does not contain your content.</p>
+    <p>The programs contain no advertising and no tracking. We do not know what you record, show, plan or publish. Some apps offer an optional, anonymous quality telemetry — a setting that is <strong>off until you switch it on</strong>, and that never contains your content, recordings or names. The programs may also contact the suite's update service to check whether a newer version exists; such a request does not contain your content.</p>
     {h2(8,"p8","Content stays on the machine")}
     <p>Recording, video and transcription are processed locally. Speech-to-text (Whisper) runs on your own machine. Your content leaves the machine only when you enable a cloud, publishing or sharing feature, as described above.</p>
     {h2(9,"p9","The website sundaysuite.app")}
-    <p>The website is an information site. If you get in touch via the email links, we process your email address and the content of your message to reply to you. The download buttons for the desktop apps redirect to the latest release on GitHub; that request is served by GitHub under GitHub's own privacy terms, and we receive no data about it. If the website later offers forms or a newsletter, their use will be described here, and you will be able to unsubscribe at any time.</p>
+    <p>The website is an information site. If you get in touch via the email links, we process your email address and the content of your message to reply to you. The download buttons for the desktop apps look up the newest version via the suite's own update service and then redirect to the release on GitHub, served under GitHub's own privacy terms; neither request carries any personal data. If the website later offers forms or a newsletter, their use will be described here, and you will be able to unsubscribe at any time.</p>
     {h2(10,"p10","Community web tools")}
     <p>The free community tools in the toolbox (games and group activities on subdomains of sundaysuite.app) are designed to store as little as possible: sessions are anonymous for participants and expire after use. Two exceptions are worth knowing. <strong>SundayWelcome</strong> stores the contact details a newcomer chooses to submit so the church team can follow up; that data belongs to the church in question, and deletion can be requested at any time from the church or via <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a>. <strong>SundayBasar</strong> never touches money — payments happen directly in Vipps between you and the organiser, and the app only records what the organiser confirms manually.</p>
     {h2(11,"p11","Third-party services")}
@@ -1083,7 +1338,7 @@ def privacy_en():
     <p>We may update this policy. Material changes are notified by updating the date at the top of the page.</p>
     {h2(14,"p14","Contact")}
     <p>Questions about privacy? Contact the data controller Richard Fossland at <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a>.</p>'''
-    return legal_shell("en","privacy","Privacy Policy","Last updated: 8 August 2026",note,toc(items),prose)
+    return legal_shell("en","privacy","Privacy Policy","Last updated: 29 August 2026",note,toc(items),prose)
 
 # ---- Terms NO
 def terms_no():
@@ -1097,6 +1352,7 @@ def terms_no():
       "sundayplan":"Gudstjenesteplanlegging og frivillig-turnus",
       "sundaysong":"Sangdatabase med AI og TONO/CCLI-rapportering",
       "sundayedit":"AI-teksting av video (frittstående produkt)",
+      "sundaysync":"Multikamera lydsynkronisering for gudstjeneste- og arrangementopptak (skrivebordsapp)",
       "sundaypaper":"AI-dokument- og PDF-verktøy for trykksaker",
       "sundaytranslate":"Live tolking og lytteanlegg for gudstjenesten (web-app)",
       "sundayinfo":"Digital infoskjerm for menigheten (web-app)",
@@ -1115,15 +1371,17 @@ def terms_no():
     <p>Programmene som er tilgjengelige i dag, leveres uten kostnad. Det er ingen kjøps-, abonnements- eller lisensavgift. Vi forbeholder oss retten til å innføre betalte funksjoner eller planer i fremtiden, men eventuelle endringer vil bli kommunisert tydelig.</p>
     <p>Programvare merket «beta» eller «under utvikling» tilbys i en tidlig fase. Den kan inneholde feil, endres vesentlig eller bli trukket tilbake uten varsel, og du bør verifisere de første resultatene før du bruker den til noe kritisk. Vi gir ingen garanti for at Tjenesten vil være tilgjengelig, uavbrutt eller bevart over tid.</p>
     {h2(4,"s4","Lisens")}
-    <p>Under forutsetning av at du følger disse Vilkårene, gir vi deg en ikke-eksklusiv, ikke-overførbar og gjenkallelig lisens til å laste ned og bruke Sunday-programmene for din organisasjons egne formål.</p>
-    <p>Du har ikke lov til å:</p>
-    <ul><li>videredistribuere, selge, leie ut eller viderelisensiere programvaren;</li><li>dekompilere, reversutvikle eller forsøke å utlede kildekoden, unntatt i den grad ufravikelig lov tillater det;</li><li>fjerne eller endre opphavsrettsmerker, varemerker eller andre rettighetsmerker;</li><li>bruke programvaren, navnet eller utformingen til å lage, markedsføre eller drive et konkurrerende eller forvekselbart produkt; eller</li><li>bruke Tjenesten til ulovlige formål.</li></ul>
+    <p>Under forutsetning av at du følger disse Vilkårene, gir vi deg en ikke-eksklusiv, ikke-overførbar og gjenkallelig lisens til å laste ned og bruke Sunday-programmene, slik de distribueres via sundaysuite.app, for din organisasjons egne formål.</p>
+    <h3>Åpen kildekode</h3>
+    <p>Sunday Suite bygges i det åpne: mye av suitens kildekode er publisert i offentlige repositorier på <a href="https://github.com/SundaySuite-app" target="_blank" rel="noopener">GitHub</a> under åpen kildekode-lisenser — MIT der lisensfil foreligger. For den koden er det repositoriets egen lisens som styrer rettighetene dine, og ingenting i disse Vilkårene innskrenker det lisensen gir deg, herunder retten til å bruke, studere, endre og videredistribuere koden.</p>
+    <p>Med mindre en gjeldende åpen kildekode-lisens uttrykkelig tillater det, har du ikke lov til å:</p>
+    <ul><li>videredistribuere, selge, leie ut eller viderelisensiere programvaren;</li><li>dekompilere, reversutvikle eller forsøke å utlede kildekoden, unntatt i den grad ufravikelig lov tillater det;</li><li>fjerne eller endre opphavsrettsmerker, varemerker eller andre rettighetsmerker;</li><li>bruke «Sunday»-navnene, logoene eller utformingen på en måte som er egnet til å skape forveksling om opphav eller tilknytning; eller</li><li>bruke Tjenesten til ulovlige formål.</li></ul>
     {h2(5,"s5","Immaterielle rettigheter og varemerker")}
-    <p>Sunday Suite og alle programmene i suiten — <strong>SundayRec, SundayScreen, SundayStudio, SundayStage, SundayPlan, SundaySong, SundayEdit, SundayPaper, SundayTranslate, SundayInfo og SundayBooking</strong> — sammen med fellesskapsverktøyene nevnt i punkt 2, kildekode, design, grafikk, det gylne korset, logoer, navn, tekst og alt øvrig innhold, eies av Richard Fossland og er beskyttet av gjeldende lovgivning om opphavsrett, varemerker og andre immaterielle rettigheter.</p>
+    <p>Nettstedet, designet, grafikken, det gylne korset, logoene, navnene og teksten eies av Richard Fossland og er beskyttet av gjeldende lovgivning om opphavsrett, varemerker og andre immaterielle rettigheter. Kildekoden til Sunday-programmene — <strong>SundayRec, SundayScreen, SundayStudio, SundayStage, SundayPlan, SundaySong, SundayEdit, SundaySync, SundayPaper, SundayTranslate, SundayInfo og SundayBooking</strong>, sammen med fellesskapsverktøyene nevnt i punkt 2 — er &copy; Richard Fossland og bidragsytere. Der et repositorium bærer en åpen kildekode-lisens (for eksempel MIT), er koden lisensiert til deg under den lisensen; repositorier som ennå ikke har lisensfil, er publisert for lesing, og ingen lisens til den koden gis før en legges til.</p>
     <h3>Varemerker</h3>
-    <p>Navnene «Sunday Suite», «Sunday»-familien av produktnavn nevnt over (inkludert fellesskapsverktøyene i punkt 2), samt det tilhørende kors- og gull-symbolet, er våre varemerker (registrerte eller under etablering). Du får ingen rett til å bruke disse varemerkene, og du må ikke bruke dem — eller navn, logoer eller utforming som er egnet til å forveksles med dem — uten skriftlig forhåndssamtykke. Dette gjelder også produkt-, domene-, app-butikk- og selskapsnavn.</p>
+    <p>Navnene «Sunday Suite», «Sunday»-familien av produktnavn nevnt over (inkludert fellesskapsverktøyene i punkt 2), samt det tilhørende kors- og gull-symbolet, er våre varemerker (registrerte eller under etablering). Du får ingen rett til å bruke disse varemerkene, og du må ikke bruke dem — eller navn, logoer eller utforming som er egnet til å forveksles med dem — uten skriftlig forhåndssamtykke. Dette gjelder også produkt-, domene-, app-butikk- og selskapsnavn. Åpen kildekode-lisensene dekker koden — de gir ingen rett til «Sunday»-navnene, kors-og-gull-merket eller logoene.</p>
     <h3>Ingen rettighetsoverføring</h3>
-    <p>Ingenting i disse Vilkårene overfører immaterielle rettigheter til deg. All bruk som ikke uttrykkelig er tillatt, er forbeholdt rettighetshaver. Vi forbeholder oss alle rettigheter som ikke uttrykkelig er gitt her.</p>
+    <p>Ut over det en gjeldende åpen kildekode-lisens gir, overfører ingenting i disse Vilkårene immaterielle rettigheter til deg. All bruk som ikke uttrykkelig er tillatt, er forbeholdt rettighetshaver. Vi forbeholder oss alle rettigheter som ikke uttrykkelig er gitt her.</p>
     {h2(6,"s6","Ditt innhold")}
     <p>Du beholder full eiendomsrett til alt innhold du lager med Sunday-programmene — opptak, video, tekst, transkripsjoner, planer, sanger og dokumenter. Vi får ikke tilgang til, lagrer ikke og behandler ikke innholdet ditt på våre servere. Programmene kjører lokalt på din maskin med mindre annet er uttrykkelig angitt. Se <a href="privacy.html">Personvernerklæringen</a> for hvordan data håndteres.</p>
     {h2(7,"s7","Tredjepartstjenester")}
@@ -1140,7 +1398,7 @@ def terms_no():
     <p>Disse Vilkårene reguleres av norsk rett. Eventuelle tvister skal være underlagt de norske domstolenes eksklusive jurisdiksjon, med mindre ufravikelige forbrukervernregler bestemmer noe annet.</p>
     {h2(13,"s13","Kontakt")}
     <p>Spørsmål om disse Vilkårene? Kontakt oss på <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a>.</p>'''
-    return legal_shell("no","terms","Vilkår for bruk","Sist oppdatert: 8. august 2026",note,toc(items),prose)
+    return legal_shell("no","terms","Vilkår for bruk","Sist oppdatert: 29. august 2026",note,toc(items),prose)
 
 # ---- Privacy NO
 def privacy_no():
@@ -1148,7 +1406,7 @@ def privacy_no():
     items=[("p1","Kort fortalt"),("p2","Data på din maskin"),("p3","OAuth-tokens"),("p4","Sky-opplastinger"),("p5","Publisering"),("p6","E-postvarsler"),("p7","Ingen analyse eller telemetri"),("p8","Innhold forlater ikke maskinen"),("p9","Nettstedet sundaysuite.app"),("p10","Fellesskapsverktøy på nett"),("p11","Tredjepartstjenester"),("p12","Dine rettigheter"),("p13","Endringer"),("p14","Kontakt")]
     prose=f'''    <p class="lead">Sunday Suite er bygd «lokalt først». Programmene kjører på din egen maskin, og innholdet ditt blir hos deg med mindre du selv velger å laste det opp eller publisere det. Denne erklæringen forklarer hva som behandles, hvor, og av hvem.</p>
     {h2(1,"p1","Kort fortalt")}
-    <ul><li>Programmene er skrivebordsapper som lagrer data lokalt på din maskin.</li><li>Vi driver ingen sentral server som mottar opptakene, videoene eller dokumentene dine.</li><li>Data forlater maskinen bare når du aktivt aktiverer en sky-, publiserings- eller varselfunksjon.</li><li>Vi samler ikke inn analyse eller telemetri fra programmene.</li></ul>
+    <ul><li>Programmene er skrivebordsapper som lagrer data lokalt på din maskin.</li><li>Vi driver ingen sentral server som mottar opptakene, videoene eller dokumentene dine.</li><li>Data forlater maskinen bare når du aktivt aktiverer en sky-, publiserings- eller varselfunksjon.</li><li>Vi samler ikke inn noe fra programmene med mindre du takker ja til anonym kvalitetstelemetri.</li></ul>
     {h2(2,"p2","Data på din maskin")}
     <p>Innstillinger, prosjekter, opptak, video, transkripsjoner, planer, sanger og dokumenter lagres lokalt i programmets datamappe på din maskin. Du kontrollerer disse filene og kan slette dem når som helst.</p>
     {h2(3,"p3","OAuth-tokens")}
@@ -1160,11 +1418,11 @@ def privacy_no():
     {h2(6,"p6","E-postvarsler")}
     <p>Hvis et program kan sende deg varsler (for eksempel via din egen SMTP-server eller en varslingstjeneste), sendes de med den konfigurasjonen du selv oppgir. Vi mottar ikke kopi av disse varslene.</p>
     {h2(7,"p7","Ingen analyse eller telemetri")}
-    <p>Programmene inneholder ingen analyseverktøy, sporing eller telemetri. Vi vet ikke hva du tar opp, viser, planlegger eller publiserer. Programmene kan kontakte en oppdateringstjeneste for å sjekke om en nyere versjon finnes; en slik forespørsel inneholder ikke ditt innhold.</p>
+    <p>Programmene inneholder ingen reklame og ingen sporing. Vi vet ikke hva du tar opp, viser, planlegger eller publiserer. Noen apper tilbyr en valgfri, anonym kvalitetstelemetri — en innstilling som er <strong>av til du skrur den på</strong>, og som aldri inneholder innholdet, opptakene eller navnene dine. Programmene kan også kontakte suitens oppdateringstjeneste for å sjekke om en nyere versjon finnes; en slik forespørsel inneholder ikke ditt innhold.</p>
     {h2(8,"p8","Innhold forlater ikke maskinen")}
     <p>Opptak, video og transkripsjon behandles lokalt. Tale-til-tekst (Whisper) kjører på din egen maskin. Ditt innhold forlater maskinen bare når du selv aktiverer en sky-, publiserings- eller delefunksjon, slik beskrevet over.</p>
     {h2(9,"p9","Nettstedet sundaysuite.app")}
-    <p>Nettstedet er en informasjonsside. Tar du kontakt via e-postlenkene, behandler vi e-postadressen din og innholdet i henvendelsen for å svare deg. Nedlastingsknappene for skrivebordsappene videresender til nyeste utgivelse på GitHub; den forespørselen betjenes av GitHub under GitHubs egne personvernvilkår, og vi mottar ingen data om den. Hvis nettstedet senere tilbyr skjemaer eller nyhetsbrev, vil bruken av disse beskrives her, og du vil kunne melde deg av når som helst.</p>
+    <p>Nettstedet er en informasjonsside. Tar du kontakt via e-postlenkene, behandler vi e-postadressen din og innholdet i henvendelsen for å svare deg. Nedlastingsknappene for skrivebordsappene slår opp nyeste versjon via suitens egen oppdateringstjeneste og videresender så til utgivelsen på GitHub, betjent under GitHubs egne personvernvilkår; ingen av forespørslene bærer persondata. Hvis nettstedet senere tilbyr skjemaer eller nyhetsbrev, vil bruken av disse beskrives her, og du vil kunne melde deg av når som helst.</p>
     {h2(10,"p10","Fellesskapsverktøy på nett")}
     <p>De gratis fellesskapsverktøyene i verktøykassa (spill og gruppeaktiviteter på underdomener av sundaysuite.app) er designet for å lagre minst mulig: økter er anonyme for deltakerne og utløper etter bruk. To unntak er verdt å kjenne til. <strong>SundayWelcome</strong> lagrer kontaktinformasjonen en nykommer selv velger å legge igjen, slik at menighetens team kan følge opp; disse dataene tilhører den aktuelle menigheten, og sletting kan når som helst kreves hos menigheten eller via <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a>. <strong>SundayBasar</strong> rører aldri penger — betalinger skjer direkte i Vipps mellom deg og arrangøren, og appen registrerer bare det arrangøren selv bekrefter manuelt.</p>
     {h2(11,"p11","Tredjepartstjenester")}
@@ -1175,25 +1433,27 @@ def privacy_no():
     <p>Vi kan oppdatere denne erklæringen. Vesentlige endringer varsles ved å oppdatere datoen øverst på siden.</p>
     {h2(14,"p14","Kontakt")}
     <p>Spørsmål om personvern? Kontakt behandlingsansvarlig Richard Fossland på <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a>.</p>'''
-    return legal_shell("no","privacy","Personvernerklæring","Sist oppdatert: 8. august 2026",note,toc(items),prose)
+    return legal_shell("no","privacy","Personvernerklæring","Sist oppdatert: 29. august 2026",note,toc(items),prose)
 
 # ===================================================================== HELP
 # Task-based help articles for non-technical volunteers and planners.
 # EN lives at /help/, NO at /no/hjelp/ — same English file slugs in both
 # languages so the language switch is a simple directory swap.
-HELP_ORDER = ["getting-started","volunteers-and-teams","plan-a-service","messages-and-magic-links",
-              "recording-with-sundayrec","signage-with-sundayinfo","booking-with-sundaybooking",
+HELP_ORDER = ["recording-with-sundayrec","signage-with-sundayinfo","booking-with-sundaybooking",
               "licensing-ccli-tono","your-data-and-privacy","community-toolbox","faq"]
+# Help guides removed 2026-08-29 (SundayPlan demoted to the drawing board); build.py
+# generates 301 redirects for them via _redirects so old links keep working.
+REMOVED_HELP = ["getting-started","volunteers-and-teams","plan-a-service","messages-and-magic-links"]
 
 HELP_INDEX = {
  "en":{"title":"Help & guides — Sunday Suite",
-   "meta":"Plain-language guides for Sunday Suite: plan services with SundayPlan, record with SundayRec, put SundayInfo on a screen, book rooms with SundayBooking, run the community toolbox — plus licensing, privacy and FAQ.",
+   "meta":"Plain-language guides for Sunday Suite: record with SundayRec, put SundayInfo on a screen, book rooms with SundayBooking, run the community toolbox — plus licensing, privacy and FAQ.",
    "crumb":"Help","h1":"Help &amp; guides",
    "lead":"Plain-language guides for church volunteers and planners — no technical background needed. Start at the top if you're new, or jump straight to the question you have.",
    "read":"Read the guide",
    "contact":"Can't find what you're looking for? We answer every email:"},
  "no":{"title":"Hjelp & veiledninger — Sunday Suite",
-   "meta":"Lettleste veiledninger for Sunday Suite: planlegg med SundayPlan, ta opp med SundayRec, få SundayInfo på skjermen, book rom med SundayBooking, kjør verktøykassa — pluss lisens, personvern og FAQ.",
+   "meta":"Lettleste veiledninger for Sunday Suite: ta opp med SundayRec, få SundayInfo på skjermen, book rom med SundayBooking, kjør verktøykassa — pluss lisens, personvern og FAQ.",
    "crumb":"Hjelp","h1":"Hjelp &amp; veiledninger",
    "lead":"Lettleste veiledninger for frivillige og planleggere i menigheten — ingen teknisk bakgrunn nødvendig. Start øverst om du er ny, eller hopp rett til spørsmålet du har.",
    "read":"Les veiledningen",
@@ -1201,182 +1461,6 @@ HELP_INDEX = {
 }
 
 HELPDOC = {
- # ------------------------------------------------------------ 1 getting started
- "getting-started":{"accent":"plan",
-  "en":{"tag":"SundayPlan","card":"Getting started with SundayPlan",
-    "desc":"Create your church and follow the five-step checklist — how SundayPlan will work, from blank screen to ready to plan.",
-    "h1":"Getting started with SundayPlan","sub":"From signing up to a church that is ready to plan — in one sitting.",
-    "note":"<strong>Good to know:</strong> SundayPlan is still in development and not open for public sign-up yet. This guide describes the flow as it opens up. Want your church to test early? Email <a href=\"mailto:dev@sundaysuite.app\">dev@sundaysuite.app</a>.",
-    "body":'''    <p class="lead">SundayPlan is the planning tool in Sunday Suite: services, volunteers and messages in one place, with a fair auto-fill engine doing the heavy lifting. This guide takes you from a blank screen to a church that is ready to plan. You don't need any technical background — if you can use email, you can use SundayPlan.</p>
-    <h2>1. Create your account</h2>
-    <p>When sign-up opens, you'll create your account at plan.sundaysuite.app with your email address. There will be nothing to install and nothing to pay — SundayPlan runs entirely in the browser, on your computer, tablet or phone.</p>
-    <h2>2. Create your church</h2>
-    <p>The first time you sign in, you create your church. Give it a name and the basics — everything can be changed later, and details such as licence numbers can wait (see <a href="licensing-ccli-tono.html">Licensing: CCLI &amp; TONO</a>). You become the church's first planner, and your church's data is visible only to your church.</p>
-    <h2>3. Follow the five-step checklist</h2>
-    <p>On the start page, a five-step checklist walks you through the essentials in a sensible order. In short, you will:</p>
-    <ol>
-      <li><strong>Add your people</strong> — the volunteers who serve, with a name and an email address or mobile number. That's all SundayPlan needs.</li>
-      <li><strong>Organise teams</strong> — sound, projection, welcome, kids' church, coffee. People can belong to more than one team.</li>
-      <li><strong>Plan your first service</strong> — a date, a time and the roles that need filling.</li>
-      <li><strong>Try auto-fill</strong> — let the engine suggest a fair rota, then adjust it by hand.</li>
-      <li><strong>Send your first message</strong> — invitations go out by email (and SMS, as it rolls out), and volunteers answer with one tap.</li>
-    </ol>
-    <p>You can do the steps at your own pace — nothing is sent to anyone until you say so.</p>
-    <h2>4. Invite other planners</h2>
-    <p>You don't have to run everything alone. Other staff or trusted volunteers can be given planner access so several people can build and send plans. Ordinary volunteers, on the other hand, never need an account at all — more on that in <a href="volunteers-and-teams.html">Inviting volunteers &amp; teams</a>.</p>
-    <h2>Where to go next</h2>
-    <ul>
-      <li><a href="volunteers-and-teams.html">Inviting volunteers &amp; teams</a> — people, teams and roles.</li>
-      <li><a href="plan-a-service.html">Planning a service &amp; auto-fill</a> — from empty plan to fully staffed.</li>
-      <li><a href="messages-and-magic-links.html">Messages &amp; magic links</a> — how volunteers answer without an account.</li>
-      <li><a href="your-data-and-privacy.html">Your data &amp; privacy</a> — export, erasure and what stays where.</li>
-    </ul>'''},
-  "no":{"tag":"SundayPlan","card":"Kom i gang med SundayPlan",
-    "desc":"Opprett menigheten din og følg fem-stegs-sjekklisten — slik vil SundayPlan fungere, fra blank skjerm til klar til å planlegge.",
-    "h1":"Kom i gang med SundayPlan","sub":"Fra registrering til en menighet som er klar til å planlegge — i én økt.",
-    "note":"<strong>Greit å vite:</strong> SundayPlan er fortsatt under utvikling og ikke åpen for offentlig registrering ennå. Denne veiledningen beskriver flyten slik den åpner opp. Vil menigheten din teste tidlig? Send en e-post til <a href=\"mailto:dev@sundaysuite.app\">dev@sundaysuite.app</a>.",
-    "body":'''    <p class="lead">SundayPlan er planleggingsverktøyet i Sunday Suite: gudstjenester, frivillige og meldinger på ett sted, med en rettferdig auto-fyll-motor som tar tungløftet. Denne veiledningen tar deg fra blank skjerm til en menighet som er klar til å planlegge. Du trenger ingen teknisk bakgrunn — kan du bruke e-post, kan du bruke SundayPlan.</p>
-    <h2>1. Opprett kontoen din</h2>
-    <p>Når registreringen åpner, oppretter du kontoen din på plan.sundaysuite.app med e-postadressen din. Det blir ingenting å installere og ingenting å betale — SundayPlan kjører helt i nettleseren, på PC, nettbrett eller mobil.</p>
-    <h2>2. Opprett menigheten din</h2>
-    <p>Første gang du logger inn, oppretter du menigheten din. Gi den et navn og det mest grunnleggende — alt kan endres senere, og detaljer som lisensnumre kan vente (se <a href="licensing-ccli-tono.html">Lisens: CCLI &amp; TONO</a>). Du blir menighetens første planlegger, og menighetens data er synlige bare for din menighet.</p>
-    <h2>3. Følg fem-stegs-sjekklisten</h2>
-    <p>På startsiden tar en sjekkliste med fem steg deg gjennom det viktigste i fornuftig rekkefølge. Kort fortalt skal du:</p>
-    <ol>
-      <li><strong>Legge inn folkene dine</strong> — de frivillige som tjener, med navn og e-postadresse eller mobilnummer. Mer trenger ikke SundayPlan.</li>
-      <li><strong>Organisere lag</strong> — lyd, projeksjon, velkomst, søndagsskole, kaffe. Folk kan høre til flere lag.</li>
-      <li><strong>Planlegge din første gudstjeneste</strong> — en dato, et klokkeslett og rollene som skal fylles.</li>
-      <li><strong>Prøve auto-fyll</strong> — la motoren foreslå en rettferdig turnus, og juster den for hånd.</li>
-      <li><strong>Sende din første melding</strong> — forespørslene går ut på e-post (og SMS, etter hvert som det rulles ut), og de frivillige svarer med ett trykk.</li>
-    </ol>
-    <p>Ta stegene i ditt eget tempo — ingenting sendes til noen før du sier fra.</p>
-    <h2>4. Inviter flere planleggere</h2>
-    <p>Du trenger ikke drive alt alene. Andre ansatte eller betrodde frivillige kan få planlegger-tilgang, slik at flere kan bygge og sende planer. Vanlige frivillige trenger derimot aldri noen konto — mer om det i <a href="volunteers-and-teams.html">Inviter frivillige &amp; lag</a>.</p>
-    <h2>Veien videre</h2>
-    <ul>
-      <li><a href="volunteers-and-teams.html">Inviter frivillige &amp; lag</a> — folk, lag og roller.</li>
-      <li><a href="plan-a-service.html">Planlegg en gudstjeneste &amp; auto-fyll</a> — fra tom plan til fullsatt.</li>
-      <li><a href="messages-and-magic-links.html">Meldinger &amp; magiske lenker</a> — slik svarer frivillige uten konto.</li>
-      <li><a href="your-data-and-privacy.html">Dine data &amp; personvern</a> — eksport, sletting og hva som blir hvor.</li>
-    </ul>'''}},
- # ------------------------------------------------------------ 2 volunteers & teams
- "volunteers-and-teams":{"accent":"plan",
-  "en":{"tag":"SundayPlan","card":"Inviting volunteers &amp; teams",
-    "desc":"Add people, organise them into teams and roles — and why your volunteers never need to create an account.",
-    "h1":"Inviting volunteers &amp; teams","sub":"People, teams and roles in SundayPlan — and why volunteers never need an account.",
-    "note":None,
-    "body":'''    <p class="lead">Volunteers are the heart of every church — and the last thing they need is another username and password. In SundayPlan, the planner keeps the register, and volunteers simply answer requests from a link. Here is how to set it up.</p>
-    <h2>Add your people</h2>
-    <p>Start by adding the people who serve. For each person you only need a name and a way to reach them — an email address, a mobile number, or both. You can always add more detail later, but you never have to. A good rule: store only what you actually need (see <a href="your-data-and-privacy.html">Your data &amp; privacy</a>).</p>
-    <h2>Organise teams</h2>
-    <p>Teams mirror how your church already works: sound, projection, welcome, kids' church, worship, coffee. Create the teams you have, and place people in them — one person can happily belong to several. Teams make planning faster, because each service role draws from the right group of people.</p>
-    <h2>Roles and skills</h2>
-    <p>Within a team, people often do different things — one person can mix sound, another can only run the livestream. Mark what each person can do, and the auto-fill engine will only suggest people for roles they can actually fill. It also uses this to spread the load fairly over time (see <a href="plan-a-service.html">Planning a service &amp; auto-fill</a>).</p>
-    <h2>Volunteers never need an account</h2>
-    <p>This is the part volunteers love. When you send a request, each person gets their own personal link by email — and by SMS, as SMS sending rolls out. They tap the link, see what they're being asked to do, and answer <strong>accept</strong> or <strong>decline</strong>. No app to install, no account to create, no password to forget. How that works in detail is covered in <a href="messages-and-magic-links.html">Messages &amp; magic links</a>.</p>
-    <h2>Who sees what?</h2>
-    <p>Only your church's planners see the people register. Volunteers only ever see their own requests. Your church's data is separated from every other church's with row-level security in the database — and you can export or erase a person whenever you need to.</p>'''},
-  "no":{"tag":"SundayPlan","card":"Inviter frivillige &amp; lag",
-    "desc":"Legg inn folk, organiser dem i lag og roller — og hvorfor de frivillige dine aldri trenger å opprette en konto.",
-    "h1":"Inviter frivillige &amp; lag","sub":"Folk, lag og roller i SundayPlan — og hvorfor frivillige aldri trenger konto.",
-    "note":None,
-    "body":'''    <p class="lead">De frivillige er hjertet i hver menighet — og det siste de trenger, er enda et brukernavn og passord. I SundayPlan er det planleggeren som holder registeret, og de frivillige svarer på forespørsler rett fra en lenke. Slik setter du det opp.</p>
-    <h2>Legg inn folkene dine</h2>
-    <p>Begynn med å legge inn dem som tjener. For hver person trenger du bare et navn og en måte å nå dem på — en e-postadresse, et mobilnummer, eller begge deler. Du kan alltid legge til mer senere, men du må aldri. En god regel: lagre bare det du faktisk trenger (se <a href="your-data-and-privacy.html">Dine data &amp; personvern</a>).</p>
-    <h2>Organiser lag</h2>
-    <p>Lagene speiler slik menigheten allerede fungerer: lyd, projeksjon, velkomst, søndagsskole, lovsang, kaffe. Opprett lagene dere har, og plasser folk i dem — én person kan fint høre til flere. Lag gjør planleggingen raskere, fordi hver rolle i gudstjenesten henter fra riktig gruppe mennesker.</p>
-    <h2>Roller og kompetanse</h2>
-    <p>Innenfor et lag gjør folk ofte ulike ting — én kan mikse lyd, en annen kan bare kjøre strømmen. Merk av hva hver person kan, så foreslår auto-fyll-motoren bare folk til roller de faktisk kan fylle. Den bruker det også til å fordele belastningen rettferdig over tid (se <a href="plan-a-service.html">Planlegg en gudstjeneste &amp; auto-fyll</a>).</p>
-    <h2>Frivillige trenger aldri konto</h2>
-    <p>Dette er delen de frivillige elsker. Når du sender en forespørsel, får hver person sin egen personlige lenke på e-post — og på SMS, etter hvert som SMS-utsending rulles ut. De trykker på lenken, ser hva de blir spurt om, og svarer <strong>ja</strong> eller <strong>nei</strong>. Ingen app å installere, ingen konto å opprette, ikke noe passord å glemme. Hvordan det fungerer i detalj, står i <a href="messages-and-magic-links.html">Meldinger &amp; magiske lenker</a>.</p>
-    <h2>Hvem ser hva?</h2>
-    <p>Bare menighetens planleggere ser personregisteret. Frivillige ser aldri annet enn sine egne forespørsler. Menighetens data er skilt fra alle andre menigheters med rad-nivå sikkerhet i databasen — og du kan eksportere eller slette en person når du måtte trenge det.</p>'''}},
- # ------------------------------------------------------------ 3 plan a service
- "plan-a-service":{"accent":"plan",
-  "en":{"tag":"SundayPlan","card":"Planning a service &amp; auto-fill",
-    "desc":"Create the service, add the roles you need, let auto-fill suggest a fair rota — then review conflicts and adjust by hand.",
-    "h1":"Planning a service &amp; auto-fill","sub":"From an empty plan to a fully staffed service — fairly distributed.",
-    "note":None,
-    "body":'''    <p class="lead">This is where SundayPlan earns its keep: instead of a spreadsheet and a round of phone calls, you describe the service once and let the auto-fill engine suggest who serves. You stay in charge — the engine suggests, you decide.</p>
-    <h2>1. Create the service</h2>
-    <p>Create a new service with a date, a time and a name — "Sunday service 11:00", "Christmas Eve", whatever fits. Most churches plan several weeks at a time; that's fine, each service is its own plan.</p>
-    <h2>2. Add the roles you need</h2>
-    <p>List what needs to be staffed: sound, projection, two on welcome, kids' church, and so on. The roles draw from the teams and skills you set up earlier (see <a href="volunteers-and-teams.html">Inviting volunteers &amp; teams</a>), so the right people are considered for the right jobs.</p>
-    <h2>3. Let auto-fill suggest the rota</h2>
-    <p>Run auto-fill, and the engine fills the open roles with a suggestion. It isn't random — it weighs several things at once:</p>
-    <ul>
-      <li><strong>Skill</strong> — only people who can do the job are suggested.</li>
-      <li><strong>Fair rotation</strong> — the same people aren't picked every single week.</li>
-      <li><strong>How often people serve</strong> — so no one quietly ends up carrying everything.</li>
-      <li><strong>Burnout</strong> — heavy stretches are spread out over time.</li>
-      <li><strong>Fixed pairs</strong> — people who serve together (say, a married couple on welcome) stay together.</li>
-    </ul>
-    <h2>4. Review conflicts and adjust</h2>
-    <p>Look the suggestion over before anything goes out. Watch for double-bookings, people who have said they're away, and anyone serving more often than feels right. Swap people in and out by hand — the engine's suggestion is a starting point, not a verdict. Nothing is sent to any volunteer until you choose to send it.</p>
-    <h2>5. Send it out</h2>
-    <p>Happy with the plan? Send the requests, and every volunteer gets a personal link to answer with one tap — no account needed. That whole flow is covered in <a href="messages-and-magic-links.html">Messages &amp; magic links</a>.</p>'''},
-  "no":{"tag":"SundayPlan","card":"Planlegg en gudstjeneste &amp; auto-fyll",
-    "desc":"Opprett gudstjenesten, legg inn rollene du trenger, la auto-fyll foreslå en rettferdig turnus — og se over konflikter før du justerer for hånd.",
-    "h1":"Planlegg en gudstjeneste &amp; auto-fyll","sub":"Fra tom plan til fullsatt gudstjeneste — rettferdig fordelt.",
-    "note":None,
-    "body":'''    <p class="lead">Det er her SundayPlan gjør nytte for seg: i stedet for regneark og telefonrunder beskriver du gudstjenesten én gang og lar auto-fyll-motoren foreslå hvem som tjener. Du har fortsatt styringen — motoren foreslår, du bestemmer.</p>
-    <h2>1. Opprett gudstjenesten</h2>
-    <p>Opprett en ny gudstjeneste med dato, klokkeslett og navn — «Gudstjeneste 11:00», «Julaften», det som passer. De fleste menigheter planlegger flere uker om gangen; det går fint, hver gudstjeneste er sin egen plan.</p>
-    <h2>2. Legg inn rollene du trenger</h2>
-    <p>List opp det som skal bemannes: lyd, projeksjon, to på velkomst, søndagsskole, og så videre. Rollene henter fra lagene og kompetansen du satte opp tidligere (se <a href="volunteers-and-teams.html">Inviter frivillige &amp; lag</a>), slik at riktige folk vurderes til riktige oppgaver.</p>
-    <h2>3. La auto-fyll foreslå turnusen</h2>
-    <p>Kjør auto-fyll, så fyller motoren de åpne rollene med et forslag. Det er ikke tilfeldig — den veier flere ting samtidig:</p>
-    <ul>
-      <li><strong>Kompetanse</strong> — bare folk som kan oppgaven, blir foreslått.</li>
-      <li><strong>Rettferdig rotasjon</strong> — de samme menneskene plukkes ikke hver eneste uke.</li>
-      <li><strong>Hvor ofte folk tjener</strong> — så ingen i det stille ender med å bære alt.</li>
-      <li><strong>Utbrenthet</strong> — tunge perioder spres ut over tid.</li>
-      <li><strong>Faste par</strong> — folk som tjener sammen (for eksempel et ektepar på velkomst) holdes sammen.</li>
-    </ul>
-    <h2>4. Se over konflikter og juster</h2>
-    <p>Se over forslaget før noe sendes ut. Se etter dobbeltbookinger, folk som har meldt at de er bortreist, og noen som tjener oftere enn det kjennes riktig. Bytt folk inn og ut for hånd — motorens forslag er et utgangspunkt, ikke en dom. Ingenting sendes til noen frivillig før du velger å sende.</p>
-    <h2>5. Send den ut</h2>
-    <p>Fornøyd med planen? Send forespørslene, så får hver frivillig en personlig lenke og svarer med ett trykk — uten konto. Hele den flyten er beskrevet i <a href="messages-and-magic-links.html">Meldinger &amp; magiske lenker</a>.</p>'''}},
- # ------------------------------------------------------------ 4 messages & magic links
- "messages-and-magic-links":{"accent":"plan",
-  "en":{"tag":"SundayPlan","card":"Messages &amp; magic links",
-    "desc":"Send requests by email and SMS, and let volunteers accept or decline with one tap — no account, no app, no password.",
-    "h1":"Messages &amp; magic links","sub":"How requests reach your volunteers — and how they answer with one tap.",
-    "note":"<strong>About SMS:</strong> requests are designed to go out by both email and SMS. Email comes first, and SMS sending rolls out gradually — where SMS isn't switched on yet, email does exactly the same job.",
-    "body":'''    <p class="lead">Once a plan is ready, SundayPlan handles the part that used to take all evening: asking everyone. Each volunteer gets a personal "magic link" — a link that is theirs alone, where they can answer without logging in to anything.</p>
-    <h2>Compose and send</h2>
-    <p>From a finished plan, you send requests to the people in it. You can write a short personal message to go along with the request — "Thanks for serving this month!" goes a long way. Messages go out by email, and by SMS as SMS sending rolls out.</p>
-    <h2>What the volunteer sees</h2>
-    <p>The volunteer gets a message with their own link. They tap it and see exactly what they're being asked: which service, which date, which role. Two buttons: <strong>accept</strong> or <strong>decline</strong>. That's the whole experience — no app to install, no account to create, no password. It works on any phone or computer with a browser.</p>
-    <h2>Watching the answers come in</h2>
-    <p>As volunteers answer, the plan fills in. You see at a glance who has accepted, who has declined and who hasn't answered yet — so the Sunday-morning surprise becomes a Tuesday-evening adjustment instead.</p>
-    <h2>Declines and swaps</h2>
-    <p>If someone declines, the role opens up again and you can ask the next person — auto-fill can suggest who. SundayPlan is also built for swaps, so that a volunteer who discovers a conflict can pass the task to someone else with the planner kept in the loop, rather than everything going through phone calls.</p>
-    <h2>Tips for happy volunteers</h2>
-    <ul>
-      <li>Keep contact details fresh — a magic link can only arrive if the email address or mobile number is right.</li>
-      <li>Send requests well in advance, and keep the message short and warm.</li>
-      <li>One question per message beats five — people answer faster when the ask is clear.</li>
-    </ul>'''},
-  "no":{"tag":"SundayPlan","card":"Meldinger &amp; magiske lenker",
-    "desc":"Send forespørsler på e-post og SMS, og la de frivillige svare ja eller nei med ett trykk — uten konto, app eller passord.",
-    "h1":"Meldinger &amp; magiske lenker","sub":"Slik når forespørslene de frivillige — og slik svarer de med ett trykk.",
-    "note":"<strong>Om SMS:</strong> forespørsler er designet for å gå ut både på e-post og SMS. E-post kommer først, og SMS-utsending rulles ut gradvis — der SMS ikke er skrudd på ennå, gjør e-post nøyaktig samme jobb.",
-    "body":'''    <p class="lead">Når en plan er klar, tar SundayPlan seg av delen som før tok hele kvelden: å spørre alle. Hver frivillig får en personlig «magisk lenke» — en lenke som er deres alene, der de kan svare uten å logge inn på noe som helst.</p>
-    <h2>Skriv og send</h2>
-    <p>Fra en ferdig plan sender du forespørsler til folkene i den. Du kan skrive en kort personlig melding som følger med — «Takk for at du tjener denne måneden!» kommer man langt med. Meldingene går ut på e-post, og på SMS etter hvert som SMS-utsending rulles ut.</p>
-    <h2>Hva den frivillige ser</h2>
-    <p>Den frivillige får en melding med sin egen lenke. De trykker på den og ser nøyaktig hva de blir spurt om: hvilken gudstjeneste, hvilken dato, hvilken rolle. To knapper: <strong>ja</strong> eller <strong>nei</strong>. Det er hele opplevelsen — ingen app å installere, ingen konto å opprette, ikke noe passord. Det fungerer på alle telefoner og datamaskiner med nettleser.</p>
-    <h2>Se svarene komme inn</h2>
-    <p>Etter hvert som de frivillige svarer, fylles planen inn. Du ser med ett blikk hvem som har sagt ja, hvem som har sagt nei og hvem som ikke har svart ennå — så søndagsmorgen-overraskelsen blir en tirsdagskvelds-justering i stedet.</p>
-    <h2>Nei-svar og bytter</h2>
-    <p>Sier noen nei, åpner rollen seg igjen, og du kan spørre nestemann — auto-fyll kan foreslå hvem. SundayPlan er også bygd for bytter, slik at en frivillig som oppdager en kollisjon kan gi oppgaven videre til en annen med planleggeren i loopen, i stedet for at alt går via telefonrunder.</p>
-    <h2>Tips for fornøyde frivillige</h2>
-    <ul>
-      <li>Hold kontaktinfoen fersk — en magisk lenke kommer bare fram hvis e-postadressen eller mobilnummeret stemmer.</li>
-      <li>Send forespørsler i god tid, og hold meldingen kort og varm.</li>
-      <li>Ett spørsmål per melding slår fem — folk svarer raskere når spørsmålet er tydelig.</li>
-    </ul>'''}},
  # ------------------------------------------------------------ 5 recording with sundayrec
  "recording-with-sundayrec":{"accent":"rec",
   "en":{"tag":"SundayRec","card":"Recording with SundayRec",
@@ -1422,7 +1506,7 @@ HELPDOC = {
   "en":{"tag":"SundayInfo","card":"Signage with SundayInfo",
     "desc":"Turn any TV into the church noticeboard — pair a screen with a code, invite editors, and keep it running even when the network drops.",
     "h1":"Signage with SundayInfo","sub":"From a blank TV to a living noticeboard in the foyer.",
-    "note":"<strong>Live:</strong> SundayInfo is live at <a href=\"https://info.sundaysuite.app\" target=\"_blank\" rel=\"noopener\">info.sundaysuite.app</a> and free to use — sign in with your Sunday account. We're still rig-testing on a variety of real TVs, so if your screen does something odd, tell us: <a href=\"mailto:dev@sundaysuite.app\">dev@sundaysuite.app</a>.",
+    "note":"<strong>In beta:</strong> SundayInfo is up and running at <a href=\"https://info.sundaysuite.app\" target=\"_blank\" rel=\"noopener\">info.sundaysuite.app</a> and free to use — sign in with your Sunday account. We're still testing on a variety of real TVs, so if your screen does something odd, tell us: <a href=\"mailto:dev@sundaysuite.app\">dev@sundaysuite.app</a>.",
     "body":'''    <p class="lead">SundayInfo turns any screen in the building into the church's noticeboard: service times, today's plan, announcements, the weather and a verse for the season. If a device can show a web page — a TV browser, a Chromecast, a PC or a Raspberry Pi — it can show SundayInfo. Here is how to get the first screen on the wall.</p>
     <h2>1. Sign in and create your church</h2>
     <p>Open <a href="https://info.sundaysuite.app" target="_blank" rel="noopener">info.sundaysuite.app</a> and sign in with your Sunday account. The first time, you create your church — and you can invite more editors later, so keeping the boards fresh never depends on one person.</p>
@@ -1444,7 +1528,7 @@ HELPDOC = {
   "no":{"tag":"SundayInfo","card":"Infoskjermer med SundayInfo",
     "desc":"Gjør en hvilken som helst TV til menighetens infotavle — par en skjerm med en kode, inviter redaktører, og la den gå videre selv om nettet faller.",
     "h1":"Infoskjermer med SundayInfo","sub":"Fra svart TV til en levende infotavle i foajeen.",
-    "note":"<strong>Live:</strong> SundayInfo er live på <a href=\"https://info.sundaysuite.app\" target=\"_blank\" rel=\"noopener\">info.sundaysuite.app</a> og gratis å bruke — logg inn med Sunday-kontoen din. Vi rigg-tester fortsatt på ulike ekte TV-er, så gjør skjermen din noe rart, si fra: <a href=\"mailto:dev@sundaysuite.app\">dev@sundaysuite.app</a>.",
+    "note":"<strong>I beta:</strong> SundayInfo er oppe og går på <a href=\"https://info.sundaysuite.app\" target=\"_blank\" rel=\"noopener\">info.sundaysuite.app</a> og gratis å bruke — logg inn med Sunday-kontoen din. Vi tester fortsatt på ulike ekte TV-er, så gjør skjermen din noe rart, si fra: <a href=\"mailto:dev@sundaysuite.app\">dev@sundaysuite.app</a>.",
     "body":'''    <p class="lead">SundayInfo gjør en hvilken som helst skjerm i bygget til menighetens infotavle: gudstjenestetider, dagens plan, kunngjøringer, været og et vers for sesongen. Kan en enhet vise en nettside — en TV-nettleser, en Chromecast, en PC eller en Raspberry Pi — kan den vise SundayInfo. Slik får du den første skjermen opp på veggen.</p>
     <h2>1. Logg inn og opprett menigheten</h2>
     <p>Åpne <a href="https://info.sundaysuite.app" target="_blank" rel="noopener">info.sundaysuite.app</a> og logg inn med Sunday-kontoen din. Første gang oppretter du menigheten — og du kan invitere flere redaktører senere, så tavlene aldri avhenger av én person.</p>
@@ -1468,10 +1552,10 @@ HELPDOC = {
   "en":{"tag":"SundayBooking","card":"Rooms &amp; rentals with SundayBooking",
     "desc":"One honest calendar for rooms, rentals and appointments — where a double-booking isn't caught afterwards, it's impossible.",
     "h1":"Rooms &amp; rentals with SundayBooking","sub":"From request to approved booking — without a single clash.",
-    "note":"<strong>Live:</strong> SundayBooking is live at <a href=\"https://booking.sundaysuite.app\" target=\"_blank\" rel=\"noopener\">booking.sundaysuite.app</a> and free to use. It lives inside the SundayPlan family — same Sunday account, same church.",
+    "note":"<strong>In beta:</strong> SundayBooking is up and running at <a href=\"https://booking.sundaysuite.app\" target=\"_blank\" rel=\"noopener\">booking.sundaysuite.app</a> and free to use — sign in with your Sunday account.",
     "body":'''    <p class="lead">SundayBooking manages internal rooms, external rentals and appointment bookings in one calendar where overlaps are structurally impossible — set-up and clean-up time included. Staff approve requests; members and renters ask through a link, with no account needed. Here is how to set it up.</p>
     <h2>1. Sign in</h2>
-    <p>Open <a href="https://booking.sundaysuite.app" target="_blank" rel="noopener">booking.sundaysuite.app</a> and sign in with your Sunday account. SundayBooking shares its account and church with SundayPlan, so if your church exists in one, it exists in the other.</p>
+    <p>Open <a href="https://booking.sundaysuite.app" target="_blank" rel="noopener">booking.sundaysuite.app</a> and sign in with your Sunday account — the same account that will carry you across the whole suite.</p>
     <h2>2. Define rooms and resources</h2>
     <p>Set up the spaces and things people book: the main hall, the kitchen, meeting rooms, the projector, the minibus. Define event types with their own rules, and bundle resources so booking the hall can book the chairs and the kitchen along with it — once, not as three separate requests.</p>
     <h2>3. How requests come in</h2>
@@ -1486,10 +1570,10 @@ HELPDOC = {
   "no":{"tag":"SundayBooking","card":"Rom &amp; utleie med SundayBooking",
     "desc":"Én ærlig kalender for rom, utleie og avtaler — der en dobbeltbooking ikke fanges i etterkant, men er umulig.",
     "h1":"Rom &amp; utleie med SundayBooking","sub":"Fra forespørsel til godkjent booking — uten en eneste kollisjon.",
-    "note":"<strong>Live:</strong> SundayBooking er live på <a href=\"https://booking.sundaysuite.app\" target=\"_blank\" rel=\"noopener\">booking.sundaysuite.app</a> og gratis å bruke. Den bor i SundayPlan-familien — samme Sunday-konto, samme menighet.",
+    "note":"<strong>I beta:</strong> SundayBooking er oppe og går på <a href=\"https://booking.sundaysuite.app\" target=\"_blank\" rel=\"noopener\">booking.sundaysuite.app</a> og gratis å bruke — logg inn med Sunday-kontoen din.",
     "body":'''    <p class="lead">SundayBooking styrer interne rom, ekstern utleie og avtalebooking i én kalender der overlapp er strukturelt umulig — rigge- og ryddetid inkludert. Staben godkjenner forespørsler; medlemmer og leietakere spør via en lenke, uten konto. Slik setter du det opp.</p>
     <h2>1. Logg inn</h2>
-    <p>Åpne <a href="https://booking.sundaysuite.app" target="_blank" rel="noopener">booking.sundaysuite.app</a> og logg inn med Sunday-kontoen din. SundayBooking deler konto og menighet med SundayPlan, så finnes menigheten din i den ene, finnes den i den andre.</p>
+    <p>Åpne <a href="https://booking.sundaysuite.app" target="_blank" rel="noopener">booking.sundaysuite.app</a> og logg inn med Sunday-kontoen din — den samme kontoen som skal bære deg gjennom hele suiten.</p>
     <h2>2. Definer rom og ressurser</h2>
     <p>Sett opp lokalene og tingene folk booker: storsalen, kjøkkenet, møterom, prosjektoren, minibussen. Definer arrangementstyper med egne regler, og pakk ressurser sammen slik at booking av salen også kan booke stolene og kjøkkenet — én gang, ikke som tre separate forespørsler.</p>
     <h2>3. Slik kommer forespørslene inn</h2>
@@ -1504,63 +1588,59 @@ HELPDOC = {
  # ------------------------------------------------------------ 6 licensing
  "licensing-ccli-tono":{"accent":"song",
   "en":{"tag":"Licensing","card":"Licensing: CCLI &amp; TONO",
-    "desc":"What Sunday Suite keeps track of for your music licences, where to enter your numbers — and why TONO support matters for Nordic churches.",
-    "h1":"Licensing: CCLI &amp; TONO","sub":"What the suite tracks, where your licence numbers go — and why TONO matters.",
+    "desc":"What Sunday Suite is designed to track for your music licences, where the numbers will live — and why TONO support matters for Nordic churches.",
+    "h1":"Licensing: CCLI &amp; TONO","sub":"What the suite is designed to track, where your licence numbers will live — and why TONO matters.",
     "note":"<strong>One honest line:</strong> Sunday Suite helps you keep licence information in order, but the responsibility for correct reporting to TONO and CCLI always stays with the church. The tools make it easier — they don't take over the obligation.",
     "body":'''    <p class="lead">Most churches sing and stream songs that are protected by copyright, and cover this through licences — internationally often <strong>CCLI</strong>, and in Norway and the Nordics through <strong>TONO</strong>. Sunday Suite is built with both in mind from day one, with TONO as a first-class citizen rather than an afterthought.</p>
-    <h2>What Sunday Suite keeps track of</h2>
-    <p>In SundayPlan, your church's licence information lives as proper, first-class fields: TONO customer ID and licence status, your denomination, and your CCLI licence number. That means the suite always knows whether your licences are in order — instead of the numbers living in someone's old email.</p>
-    <h2>Where to enter your numbers</h2>
-    <p>You enter the licence details in SundayPlan, under your church's settings. Dig out your TONO customer ID and your CCLI licence number (they're on your agreements or invoices), type them in once, and you're done. If you don't have the numbers handy, everything else in SundayPlan works fine in the meantime — you can add them whenever.</p>
+    <h2>What Sunday Suite is designed to keep track of</h2>
+    <p>Across the suite's data models, your church's licence information is designed in as proper, first-class fields: TONO customer ID and licence status, your denomination, and your CCLI licence number. The goal is that the suite always knows whether your licences are in order — instead of the numbers living in someone's old email.</p>
+    <h2>Where the numbers will live</h2>
+    <p>The licence fields have their home in SundayPlan, the suite's planning tool — which is still on the drawing board. Until it opens, keep your TONO customer ID and CCLI licence number somewhere safe (they're on your agreements or invoices), and know that a first-class home for them is part of the plan.</p>
     <h2>Why TONO matters — and why we emphasise it</h2>
     <p>The big international church tools are built around American CCLI, and TONO — which is what actually applies for Norwegian rights holders — is usually missing entirely. Sunday Suite is designed the other way around: TONO fields from the first row of the database, including the distinction between songs used <em>in the room</em> and songs that were <em>streamed</em>, which TONO treats as a separate royalty pool.</p>
     <h2>What works today, and what is coming</h2>
-    <p>Today, the suite stores and tracks your licence information in SundayPlan. The bigger vision — every song shown on screen automatically logged into a ready-to-send TONO and CCLI usage report — belongs to <a href="@@SONGAPP@@">SundaySong</a> and SundayStage, which are still in development. We'd rather tell you that straight than promise it early. If licensing is what your church needs most, say so: <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a>.</p>'''},
+    <p>Honestly: none of the licence bookkeeping has shipped yet. TONO-first is a design commitment baked into the data models, not a feature you can click today. The bigger vision — every song shown on screen automatically logged into a ready-to-send TONO and CCLI usage report — belongs to <a href="@@SONGAPP@@">SundaySong</a>, SundayPlan and the deeper SundayStage integrations, which are still being built. We'd rather tell you that straight than promise it early. If licensing is what your church needs most, say so: <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a>.</p>'''},
   "no":{"tag":"Lisens","card":"Lisens: CCLI &amp; TONO",
-    "desc":"Hva Sunday Suite holder styr på for musikklisensene dine, hvor du legger inn numrene — og hvorfor TONO-støtte betyr noe for nordiske menigheter.",
-    "h1":"Lisens: CCLI &amp; TONO","sub":"Hva suiten holder styr på, hvor lisensnumrene dine skal — og hvorfor TONO betyr noe.",
+    "desc":"Hva Sunday Suite er designet for å holde styr på for musikklisensene dine, hvor numrene skal bo — og hvorfor TONO-støtte betyr noe for nordiske menigheter.",
+    "h1":"Lisens: CCLI &amp; TONO","sub":"Hva suiten er designet for å holde styr på, hvor lisensnumrene dine skal bo — og hvorfor TONO betyr noe.",
     "note":"<strong>Én ærlig linje:</strong> Sunday Suite hjelper deg å holde lisensinformasjonen i orden, men ansvaret for riktig rapportering til TONO og CCLI ligger alltid hos menigheten. Verktøyene gjør det enklere — de overtar ikke forpliktelsen.",
     "body":'''    <p class="lead">De fleste menigheter synger og strømmer sanger som er beskyttet av opphavsrett, og dekker dette gjennom lisenser — internasjonalt ofte <strong>CCLI</strong>, og i Norge og Norden gjennom <strong>TONO</strong>. Sunday Suite er bygd med begge i tankene fra dag én, med TONO i førsteklasse i stedet for som en ettertanke.</p>
-    <h2>Hva Sunday Suite holder styr på</h2>
-    <p>I SundayPlan ligger menighetens lisensinformasjon som ordentlige, førsteklasses felt: TONO-kunde-ID og lisensstatus, kirkesamfunn, og CCLI-lisensnummeret deres. Det betyr at suiten alltid vet om lisensene er i orden — i stedet for at numrene bor i en gammel e-post hos noen.</p>
-    <h2>Hvor du legger inn numrene</h2>
-    <p>Lisensdetaljene legger du inn i SundayPlan, under menighetens innstillinger. Finn fram TONO-kunde-ID-en og CCLI-lisensnummeret (de står på avtalene eller fakturaene deres), skriv dem inn én gang, og du er ferdig. Har du ikke numrene for hånden, fungerer alt annet i SundayPlan fint i mellomtiden — du kan legge dem til når som helst.</p>
+    <h2>Hva Sunday Suite er designet for å holde styr på</h2>
+    <p>På tvers av suitens datamodeller er menighetens lisensinformasjon designet inn som ordentlige, førsteklasses felt: TONO-kunde-ID og lisensstatus, kirkesamfunn, og CCLI-lisensnummeret deres. Målet er at suiten alltid vet om lisensene er i orden — i stedet for at numrene bor i en gammel e-post hos noen.</p>
+    <h2>Hvor numrene skal bo</h2>
+    <p>Lisensfeltene hører hjemme i SundayPlan, suitens planleggingsverktøy — som fortsatt er på tegnebrettet. Til det åpner: ta vare på TONO-kunde-ID-en og CCLI-lisensnummeret et trygt sted (de står på avtalene eller fakturaene deres), og vit at et førsteklasses hjem for dem er en del av planen.</p>
     <h2>Hvorfor TONO betyr noe — og hvorfor vi legger vekt på det</h2>
     <p>De store internasjonale menighetsverktøyene er bygd rundt amerikansk CCLI, og TONO — som er det som faktisk gjelder for norske rettighetshavere — mangler som regel helt. Sunday Suite er designet motsatt vei: TONO-felt fra første rad i databasen, inkludert skillet mellom sanger brukt <em>i rommet</em> og sanger som ble <em>strømmet</em>, som TONO behandler som en egen royalty-pott.</p>
     <h2>Hva som virker i dag, og hva som kommer</h2>
-    <p>I dag lagrer og holder suiten styr på lisensinformasjonen din i SundayPlan. Den større visjonen — at hver sang som vises på skjermen automatisk loggføres i en ferdig TONO- og CCLI-rapport — hører til <a href="@@SONGAPP@@">SundaySong</a> og SundayStage, som fortsatt er under utvikling. Det sier vi heller rett ut enn å love det for tidlig. Er lisens det menigheten din trenger mest, si fra: <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a>.</p>'''}},
+    <p>Ærlig talt: ingenting av lisensbokføringen har rukket ut ennå. TONO-først er en designforpliktelse bakt inn i datamodellene, ikke en funksjon du kan klikke på i dag. Den større visjonen — at hver sang som vises på skjermen automatisk loggføres i en ferdig TONO- og CCLI-rapport — hører til <a href="@@SONGAPP@@">SundaySong</a>, SundayPlan og de dypere SundayStage-integrasjonene, som fortsatt bygges. Det sier vi heller rett ut enn å love det for tidlig. Er lisens det menigheten din trenger mest, si fra: <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a>.</p>'''}},
  # ------------------------------------------------------------ 7 data & privacy
  "your-data-and-privacy":{"accent":"gold-deep",
   "en":{"tag":"Privacy","card":"Your data &amp; privacy",
-    "desc":"Local-first by principle: export everything as JSON, erase a person completely, and cloud AI that is off until you turn it on.",
+    "desc":"Local-first by principle: what the desktop apps keep on your machine, what the web apps store, and how to get your data out — or gone.",
     "h1":"Your data &amp; privacy","sub":"What lives where, how to export it, and how to erase it.",
     "note":None,
     "body":'''    <p class="lead">Sunday Suite is built "local-first": your content belongs to you, stays with you, and leaves your control only when you actively choose it. Here is what that means in everyday terms — and which buttons to press.</p>
     <h2>Local-first by design</h2>
-    <p>The desktop apps — like SundayRec — do their work on your own machine. Recordings, video and transcription are processed locally; nothing is uploaded unless you switch on a cloud or publishing feature yourself. There is no analytics and no telemetry in the apps.</p>
-    <h2>What SundayPlan stores</h2>
-    <p>SundayPlan is a web app, so your church's planning data — people, teams, services, messages — is stored for you so every planner sees the same plan. It is your church's data alone: row-level security in the database means each church can only ever see its own rows. Nothing is sold, shared or used for advertising.</p>
-    <h2>Export everything as JSON</h2>
-    <p>In SundayPlan, go to <strong>Settings → Privacy</strong> and you can export your church's data as a JSON file — a plain, machine-readable text format any developer or tool can open. Your data is never locked in: you can take a full copy with you whenever you like.</p>
-    <h2>Erasing a person</h2>
-    <p>When a volunteer leaves, or simply asks to be removed, you can erase the person from SundayPlan so their personal details are no longer stored. Combined with the rule of thumb from <a href="volunteers-and-teams.html">Inviting volunteers &amp; teams</a> — store only what you need — this keeps your register tidy and your GDPR conscience clean.</p>
+    <p>The desktop apps — like SundayRec, SundayScreen and SundaySync — do their work on your own machine. Recordings, pupil names, video and transcription are processed locally; nothing is uploaded unless you switch on a cloud or publishing feature yourself. There is no advertising and no tracking in the apps; where an app offers quality telemetry it is anonymous, optional and off until you say yes.</p>
+    <h2>What the web apps store</h2>
+    <p>The web apps — SundayInfo and SundayBooking — store what they must to do their job: your church's screens and boards, rooms and bookings. It is your church's data alone: row-level security in the database means each church can only ever see its own rows. Nothing is sold, shared or used for advertising.</p>
+    <h2>Getting your data out — and gone</h2>
+    <p>Your data is never locked in. Email <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a> to get a copy of your church's data from the web apps, or to have your Sunday account and everything stored for your church removed entirely. As the planning tools mature, self-service export and erasure are part of the design — store only what you need remains the house rule.</p>
     <h2>Cloud AI is off until you turn it on</h2>
     <p>Some features can use cloud-based AI. These are governed by a consent toggle that is <strong>off by default</strong> — nothing is sent to any AI service unless your church actively switches it on. Local AI, like the speech-to-text in SundayRec, runs entirely on your own machine either way.</p>
     <h2>Read the full policy</h2>
     <p>The complete picture — OAuth tokens, cloud uploads, your GDPR rights — is in the <a href="@@PRIVACY@@">Privacy Policy</a>. Questions about your data? Email <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a>.</p>'''},
   "no":{"tag":"Personvern","card":"Dine data &amp; personvern",
-    "desc":"Lokalt først av prinsipp: eksporter alt som JSON, slett en person helt, og sky-AI som er av til du skrur den på.",
+    "desc":"Lokalt først av prinsipp: hva skrivebordsappene beholder på maskinen din, hva web-appene lagrer, og hvordan du får dataene ut — eller bort.",
     "h1":"Dine data &amp; personvern","sub":"Hva som bor hvor, hvordan du eksporterer det, og hvordan du sletter det.",
     "note":None,
     "body":'''    <p class="lead">Sunday Suite er bygd «lokalt først»: innholdet ditt tilhører deg, blir hos deg, og forlater din kontroll bare når du aktivt velger det. Her er hva det betyr i praksis — og hvilke knapper du trykker på.</p>
     <h2>Lokalt først, etter design</h2>
-    <p>Skrivebordsappene — som SundayRec — gjør jobben sin på din egen maskin. Opptak, video og transkripsjon behandles lokalt; ingenting lastes opp med mindre du selv skrur på en sky- eller publiseringsfunksjon. Det er ingen analyse og ingen telemetri i appene.</p>
-    <h2>Hva SundayPlan lagrer</h2>
-    <p>SundayPlan er en nettapp, så menighetens planleggingsdata — folk, lag, gudstjenester, meldinger — lagres for dere slik at alle planleggere ser samme plan. Det er menighetens data alene: rad-nivå sikkerhet i databasen gjør at hver menighet bare kan se sine egne rader. Ingenting selges, deles eller brukes til reklame.</p>
-    <h2>Eksporter alt som JSON</h2>
-    <p>I SundayPlan går du til <strong>Innstillinger → Personvern</strong>, og der kan du eksportere menighetens data som en JSON-fil — et enkelt, maskinlesbart tekstformat enhver utvikler eller ethvert verktøy kan åpne. Dataene dine er aldri innelåst: du kan ta med deg en full kopi når du vil.</p>
-    <h2>Slette en person</h2>
-    <p>Når en frivillig slutter, eller rett og slett ber om å bli fjernet, kan du slette personen fra SundayPlan slik at personopplysningene deres ikke lenger lagres. Sammen med tommelfingerregelen fra <a href="volunteers-and-teams.html">Inviter frivillige &amp; lag</a> — lagre bare det du trenger — holder dette registeret ryddig og GDPR-samvittigheten ren.</p>
+    <p>Skrivebordsappene — som SundayRec, SundayScreen og SundaySync — gjør jobben sin på din egen maskin. Opptak, elevnavn, video og transkripsjon behandles lokalt; ingenting lastes opp med mindre du selv skrur på en sky- eller publiseringsfunksjon. Det er ingen reklame og ingen sporing i appene; der en app tilbyr kvalitetstelemetri, er den anonym, valgfri og av til du sier ja.</p>
+    <h2>Hva web-appene lagrer</h2>
+    <p>Web-appene — SundayInfo og SundayBooking — lagrer det de må for å gjøre jobben sin: menighetens skjermer og tavler, rom og bookinger. Det er menighetens data alene: rad-nivå sikkerhet i databasen gjør at hver menighet bare kan se sine egne rader. Ingenting selges, deles eller brukes til reklame.</p>
+    <h2>Få dataene dine ut — og bort</h2>
+    <p>Dataene dine er aldri innelåst. Send en e-post til <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a> for å få en kopi av menighetens data fra web-appene, eller for å få Sunday-kontoen din og alt som er lagret for menigheten fjernet helt. Etter hvert som planleggingsverktøyene modnes, er selvbetjent eksport og sletting en del av designet — «lagre bare det du trenger» er fortsatt husregelen.</p>
     <h2>Sky-AI er av til du skrur den på</h2>
     <p>Noen funksjoner kan bruke skybasert AI. Disse styres av en samtykke-bryter som er <strong>av som standard</strong> — ingenting sendes til noen AI-tjeneste med mindre menigheten aktivt skrur det på. Lokal AI, som tale-til-tekst i SundayRec, kjører uansett helt på din egen maskin.</p>
     <h2>Les hele erklæringen</h2>
@@ -1633,25 +1713,23 @@ HELPDOC = {
     "note":None,
     "body":'''    <p class="lead">The questions we get most often, answered briefly. If yours isn't here, email <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a> — a real person reads it.</p>
     <h2>What does it cost?</h2>
-    <p>Nothing, for now. Everything that is available today — the live web apps, the SundayRec beta and all the community tools — is free. Paid plans may come later, but any change will be communicated clearly and well in advance.</p>
+    <p>Nothing, for now. Everything that is available today — the web apps, the desktop betas and all the community tools — is free. Paid plans may come later, but any change will be communicated clearly and well in advance.</p>
     <h2>Which apps can I actually use today?</h2>
-    <p>Two core products are live on the web — <strong>SundayInfo</strong> (<a href="https://info.sundaysuite.app" target="_blank" rel="noopener">info.sundaysuite.app</a>) and <strong>SundayBooking</strong> (<a href="https://booking.sundaysuite.app" target="_blank" rel="noopener">booking.sundaysuite.app</a>) — and two desktop apps are downloadable betas for Mac and Windows — <strong>SundayRec</strong> for the service and <strong>SundayScreen</strong> for the classroom; get them from the <a href="@@RECAPP@@">SundayRec</a> and <a href="@@SCREENAPP@@">SundayScreen</a> pages. The rest of the core products — Plan, Stage, Song, Edit, Studio, Translate and Paper — are in development and not available yet. Beyond the suite, eleven free community tools are live in the <a href="@@TOOLBOX@@">toolbox</a> — icebreakers, classroom chess, tournaments, a digital bazaar and more.</p>
+    <p>Seven products are in beta today. Five desktop apps download free for Mac and Windows — <strong>SundayRec</strong> (record the service), <strong>SundayScreen</strong> (classroom screen), <strong>SundayStage</strong> (presentation), <strong>SundaySync</strong> (multicam sync) and <strong>SundayEdit</strong> (captioning) — and two web apps run in the browser: <strong>SundayInfo</strong> (<a href="https://info.sundaysuite.app" target="_blank" rel="noopener">info.sundaysuite.app</a>) and <strong>SundayBooking</strong> (<a href="https://booking.sundaysuite.app" target="_blank" rel="noopener">booking.sundaysuite.app</a>). All the betas are gathered on the <a href="@@BUILD@@">Build with us</a> page. SundayStudio and SundayTranslate are in development; SundayPlan, SundaySong and SundayPaper are on the drawing board. Beyond the suite, eleven free community tools are live in the <a href="@@TOOLBOX@@">toolbox</a> — icebreakers, classroom chess, tournaments, a digital bazaar and more.</p>
+    <h2>Is Sunday Suite really open source?</h2>
+    <p>Yes. The suite is built in the open — the code lives on <a href="https://github.com/SundaySuite-app" target="_blank" rel="noopener">GitHub</a>, MIT-licensed where the licence file is in place (the rest are on their way). The Sunday names and the cross-and-gold mark are trademarks, but the code is there to read, learn from and improve. Want to join in? Start at <a href="@@BUILD@@">Build with us</a>.</p>
     <h2>Which languages are supported?</h2>
-    <p>SundayPlan speaks Norwegian, English, Swedish, Danish, German, French and Polish. SundayRec ships in seven languages, including Norwegian Bokmål and Nynorsk. This website is in English and Norwegian.</p>
-    <h2>Which browsers work with SundayPlan?</h2>
+    <p>SundayRec ships in seven languages, including Norwegian Bokmål and Nynorsk. The rest of the suite speaks English and Norwegian first, with more languages as the tools mature. This website is in English and Norwegian.</p>
+    <h2>Which browsers work with the web apps?</h2>
     <p>Any modern, up-to-date browser: Chrome, Edge, Firefox or Safari, on computer, tablet or phone. If your browser updates itself (most do), you're fine.</p>
-    <h2>Do my volunteers need an account?</h2>
-    <p>No — never. Volunteers answer requests through their own personal link in an email or SMS, with one tap. Only planners sign in. See <a href="messages-and-magic-links.html">Messages &amp; magic links</a>.</p>
     <h2>Who can see my church's data?</h2>
-    <p>Only your church. In SundayPlan, row-level security keeps every church's data separate, and volunteers only ever see their own requests. Content you create in the desktop apps stays on your own machine. We sell nothing and run no ads. More in <a href="your-data-and-privacy.html">Your data &amp; privacy</a>.</p>
+    <p>Only your church. In the web apps (SundayInfo, SundayBooking), row-level security in the database keeps every church's data separate. Content you create in the desktop apps stays on your own machine. We sell nothing and run no ads. More in <a href="your-data-and-privacy.html">Your data &amp; privacy</a>.</p>
     <h2>Does it work offline?</h2>
-    <p>The desktop apps, yes: SundayRec records, edits and transcribes entirely on your machine, no internet needed. SundayPlan is a web app and needs an internet connection.</p>
+    <p>The desktop apps, yes: SundayRec records, edits and transcribes entirely on your machine, and SundayScreen is built to run with no internet at all. The web apps need a connection.</p>
     <h2>Is AI used on my data?</h2>
     <p>Local AI — like the sermon transcription in SundayRec — runs on your own machine and uploads nothing. Features that would use cloud AI sit behind a consent toggle that is off by default.</p>
     <h2>Can I delete everything?</h2>
-    <p>Yes. In SundayPlan you can export your church's data as JSON and erase individual people under Settings → Privacy; email us to have your church's account and data removed entirely. Files from the desktop apps live on your own disk — deleting them is up to you, as it should be.</p>
-    <h2>Can SundayPlan send SMS?</h2>
-    <p>SMS sending is designed in and rolls out gradually. Email requests do the same job, and magic links work equally well from both.</p>
+    <p>Yes. Email us to have your Sunday account and your church's data in the web apps removed entirely. Files from the desktop apps live on your own disk — deleting them is up to you, as it should be.</p>
     <h2>How do I get help?</h2>
     <p>Email <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a>. There is no call centre and no ticket robot — your message lands with the people building the suite, and we answer every email.</p>'''},
   "no":{"tag":"FAQ","card":"Ofte stilte spørsmål",
@@ -1660,38 +1738,36 @@ HELPDOC = {
     "note":None,
     "body":'''    <p class="lead">Spørsmålene vi får oftest, besvart kort. Står ikke ditt her, send en e-post til <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a> — et ekte menneske leser den.</p>
     <h2>Hva koster det?</h2>
-    <p>Ingenting, foreløpig. Alt som er tilgjengelig i dag — de live web-appene, SundayRec-betaen og alle fellesskapsverktøyene — er gratis. Betalte planer kan komme senere, men eventuelle endringer kommuniseres tydelig og i god tid.</p>
+    <p>Ingenting, foreløpig. Alt som er tilgjengelig i dag — web-appene, skrivebords-betaene og alle fellesskapsverktøyene — er gratis. Betalte planer kan komme senere, men eventuelle endringer kommuniseres tydelig og i god tid.</p>
     <h2>Hvilke apper kan jeg faktisk bruke i dag?</h2>
-    <p>To kjerneprodukter er live på nett — <strong>SundayInfo</strong> (<a href="https://info.sundaysuite.app" target="_blank" rel="noopener">info.sundaysuite.app</a>) og <strong>SundayBooking</strong> (<a href="https://booking.sundaysuite.app" target="_blank" rel="noopener">booking.sundaysuite.app</a>) — og to skrivebordsapper er nedlastbare betaer for Mac og Windows — <strong>SundayRec</strong> for gudstjenesten og <strong>SundayScreen</strong> for klasserommet; hent dem på <a href="@@RECAPP@@">SundayRec</a>- og <a href="@@SCREENAPP@@">SundayScreen</a>-sidene. Resten av kjerneproduktene — Plan, Stage, Song, Edit, Studio, Translate og Paper — er under utvikling og ikke tilgjengelige ennå. Utenfor suiten er elleve gratis fellesskapsverktøy live i <a href="@@TOOLBOX@@">verktøykassa</a> — bli-kjent-leker, klasseromssjakk, turneringer, digital basar og mer.</p>
+    <p>Sju produkter er i beta i dag. Fem skrivebordsapper kan lastes ned gratis for Mac og Windows — <strong>SundayRec</strong> (ta opp gudstjenesten), <strong>SundayScreen</strong> (klasseromsskjerm), <strong>SundayStage</strong> (presentasjon), <strong>SundaySync</strong> (multikam-synk) og <strong>SundayEdit</strong> (teksting) — og to web-apper kjører i nettleseren: <strong>SundayInfo</strong> (<a href="https://info.sundaysuite.app" target="_blank" rel="noopener">info.sundaysuite.app</a>) og <strong>SundayBooking</strong> (<a href="https://booking.sundaysuite.app" target="_blank" rel="noopener">booking.sundaysuite.app</a>). Alle betaene er samlet på <a href="@@BUILD@@">Bygg med oss</a>-siden. SundayStudio og SundayTranslate er under utvikling; SundayPlan, SundaySong og SundayPaper er på tegnebrettet. Utenfor suiten er elleve gratis fellesskapsverktøy live i <a href="@@TOOLBOX@@">verktøykassa</a> — bli-kjent-leker, klasseromssjakk, turneringer, digital basar og mer.</p>
+    <h2>Er Sunday Suite virkelig åpen kildekode?</h2>
+    <p>Ja. Suiten bygges i det åpne — koden bor på <a href="https://github.com/SundaySuite-app" target="_blank" rel="noopener">GitHub</a>, MIT-lisensiert der lisensfila er på plass (resten er på vei). Sunday-navnene og kors-og-gull-merket er varemerker, men koden ligger der til å leses, læres av og forbedres. Vil du være med? Start på <a href="@@BUILD@@">Bygg med oss</a>.</p>
     <h2>Hvilke språk støttes?</h2>
-    <p>SundayPlan snakker norsk, engelsk, svensk, dansk, tysk, fransk og polsk. SundayRec leveres på sju språk, inkludert bokmål og nynorsk. Dette nettstedet finnes på engelsk og norsk.</p>
-    <h2>Hvilke nettlesere fungerer med SundayPlan?</h2>
+    <p>SundayRec leveres på sju språk, inkludert bokmål og nynorsk. Resten av suiten snakker engelsk og norsk først, med flere språk etter hvert som verktøyene modnes. Dette nettstedet finnes på engelsk og norsk.</p>
+    <h2>Hvilke nettlesere fungerer med web-appene?</h2>
     <p>Alle moderne, oppdaterte nettlesere: Chrome, Edge, Firefox eller Safari, på PC, nettbrett eller mobil. Oppdaterer nettleseren din seg selv (det gjør de fleste), er du i mål.</p>
-    <h2>Trenger de frivillige mine en konto?</h2>
-    <p>Nei — aldri. Frivillige svarer på forespørsler gjennom sin egen personlige lenke i en e-post eller SMS, med ett trykk. Bare planleggere logger inn. Se <a href="messages-and-magic-links.html">Meldinger &amp; magiske lenker</a>.</p>
     <h2>Hvem kan se menighetens data?</h2>
-    <p>Bare din menighet. I SundayPlan holder rad-nivå sikkerhet hver menighets data adskilt, og frivillige ser aldri annet enn sine egne forespørsler. Innhold du lager i skrivebordsappene blir på din egen maskin. Vi selger ingenting og kjører ingen reklame. Mer i <a href="your-data-and-privacy.html">Dine data &amp; personvern</a>.</p>
+    <p>Bare din menighet. I web-appene (SundayInfo, SundayBooking) holder rad-nivå sikkerhet i databasen hver menighets data adskilt. Innhold du lager i skrivebordsappene blir på din egen maskin. Vi selger ingenting og kjører ingen reklame. Mer i <a href="your-data-and-privacy.html">Dine data &amp; personvern</a>.</p>
     <h2>Fungerer det uten internett?</h2>
-    <p>Skrivebordsappene, ja: SundayRec tar opp, redigerer og transkriberer helt på din maskin, uten behov for internett. SundayPlan er en nettapp og trenger internettforbindelse.</p>
+    <p>Skrivebordsappene, ja: SundayRec tar opp, redigerer og transkriberer helt på din maskin, og SundayScreen er bygd for å kjøre helt uten nett. Web-appene trenger internettforbindelse.</p>
     <h2>Brukes AI på dataene mine?</h2>
     <p>Lokal AI — som preken-transkripsjonen i SundayRec — kjører på din egen maskin og laster ikke opp noe. Funksjoner som ville brukt sky-AI, ligger bak en samtykke-bryter som er av som standard.</p>
     <h2>Kan jeg slette alt?</h2>
-    <p>Ja. I SundayPlan kan du eksportere menighetens data som JSON og slette enkeltpersoner under Innstillinger → Personvern; send oss en e-post for å få menighetens konto og data fjernet helt. Filer fra skrivebordsappene ligger på din egen disk — å slette dem er opp til deg, slik det skal være.</p>
-    <h2>Kan SundayPlan sende SMS?</h2>
-    <p>SMS-utsending er designet inn og rulles ut gradvis. E-postforespørsler gjør samme jobb, og magiske lenker virker like godt fra begge.</p>
+    <p>Ja. Send oss en e-post for å få Sunday-kontoen din og menighetens data i web-appene fjernet helt. Filer fra skrivebordsappene ligger på din egen disk — å slette dem er opp til deg, slik det skal være.</p>
     <h2>Hvordan får jeg hjelp?</h2>
     <p>Send e-post til <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a>. Det finnes ikke noe kundesenter og ingen billettrobot — meldingen din lander hos dem som bygger suiten, og vi svarer på hver e-post.</p>'''}},
 }
 
 def help_fill(s, L):
     return (s.replace("@@PRIVACY@@", L["legal"]("privacy"))
-             .replace("@@PLANAPP@@", L["app"]("sundayplan"))
              .replace("@@RECAPP@@",  L["app"]("sundayrec"))
              .replace("@@SCREENAPP@@", L["app"]("sundayscreen"))
              .replace("@@SONGAPP@@", L["app"]("sundaysong"))
              .replace("@@INFOAPP@@", L["app"]("sundayinfo"))
              .replace("@@BOOKINGAPP@@", L["app"]("sundaybooking"))
-             .replace("@@TOOLBOX@@", L["toolbox"]))
+             .replace("@@TOOLBOX@@", L["toolbox"])
+             .replace("@@BUILD@@", L["build"]))
 
 def render_help_index(lang):
     c=CH[lang]; root="../" if lang=="en" else "../../"; L=links(lang,root)
@@ -1747,7 +1823,7 @@ def W(path, html):
 
 def page_pairs():
     """(EN html path, NO html path) for every page — drives hreflang and the sitemap."""
-    pairs=[("index.html","no/index.html"),("toolbox.html","no/verktoykasse.html")]
+    pairs=[("index.html","no/index.html"),("toolbox.html","no/verktoykasse.html"),("build.html","no/bygg.html")]
     pairs+=[(f"apps/{s}.html", f"no/apps/{s}.html") for s in SLUGS]
     pairs+=[("legal/terms.html","no/legal/terms.html"),("legal/privacy.html","no/legal/privacy.html")]
     pairs+=[("help/index.html","no/hjelp/index.html")]
@@ -1773,6 +1849,7 @@ for lang in ("en","no"):
     hpre = "help/" if lang=="en" else "no/hjelp/"
     W(pre+"index.html", render_home(lang))
     W(pre+("toolbox.html" if lang=="en" else "verktoykasse.html"), render_toolbox_page(lang))
+    W(pre+("build.html" if lang=="en" else "bygg.html"), render_build_page(lang))
     for s in SLUGS:
         W(pre+f"apps/{s}.html", render_app(lang,s))
     W(pre+"legal/terms.html",   terms_en()   if lang=="en" else terms_no())
@@ -1782,4 +1859,5 @@ for lang in ("en","no"):
         W(hpre+f"{hs}.html", render_help_article(lang,hs))
 W("sitemap.xml", sitemap_xml())
 W("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
+W("_redirects", "".join(f"/help/{s} /help/ 301\n/no/hjelp/{s} /no/hjelp/ 301\n" for s in REMOVED_HELP))
 print("done")
