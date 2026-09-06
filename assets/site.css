@@ -400,3 +400,22 @@ h1.app-title .sunday{ color:var(--txt-on-ink-dim); font-weight:500; }
 /* ---------- help ---------- */
 .legal-body .wrap.wide{ max-width:1100px; }
 .prose ol{ margin:12px 0 12px 26px; }
+
+/* ---------- SUPPORT (what it costs to run) ---------- */
+.support{ background:var(--paper-warm); color:var(--txt-on-paper); padding:110px 0; }
+.cost-list{ max-width:820px; margin:0 auto; display:flex; flex-direction:column; gap:10px; }
+.cost-row{ display:flex; align-items:baseline; gap:18px; padding:16px 22px; background:#fff;
+  border:1px solid var(--paper-line); border-radius:14px; }
+.cost-row .cost-what{ font-weight:700; font-size:15.5px; white-space:nowrap; }
+.cost-row .cost-why{ flex:1; font-size:14px; color:var(--txt-on-paper-dim); }
+.cost-row .cost-sum{ font-size:13px; font-weight:700; letter-spacing:.03em; color:var(--gold-deep);
+  background:#FBF3DF; padding:5px 11px; border-radius:100px; white-space:nowrap; }
+.support-foot{ max-width:820px; margin:40px auto 0; text-align:center; }
+.support-foot h4{ font-family:var(--display); font-weight:700; font-size:24px; }
+.support-foot p{ margin-top:12px; font-size:16px; color:var(--txt-on-paper-dim); }
+.support-foot .btn{ margin:6px 4px 0; }
+.support-note{ margin-top:22px !important; font-size:13.5px !important; opacity:.75; }
+@media(max-width:640px){
+  .cost-row{ flex-wrap:wrap; gap:6px 14px; }
+  .cost-row .cost-why{ flex-basis:100%; order:3; }
+}
