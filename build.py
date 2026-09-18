@@ -104,7 +104,11 @@ GITHUB_ORG = "https://github.com/SundaySuite-app"
 # an email fallback instead of a dead button. Fill in and rebuild when ready:
 #   vipps: the payment link from the Vipps business agreement (needs an org.nr.)
 #   github_sponsors: https://github.com/sponsors/<user>
-SUPPORT = {"vipps": None, "github_sponsors": None}
+# vipps_number: the business's Vippsnummer, shown as text + the official QR
+# Vipps generated (assets/vipps-qr.png) — no guessed payment URL, since Vipps
+# does not document a stable public "pay to number" link format. Users open
+# the Vipps app and search the number, or scan the QR from another device.
+SUPPORT = {"vipps_number": "24288", "vipps_name": "Fossland Media", "github_sponsors": None}
 
 SITE = "https://sundaysuite.app"
 def clean_url(path):
@@ -198,8 +202,10 @@ HOME = {
      ("Cloudflare Workers","5 USD a month","The paid tier the classroom tools need when a whole class joins at once."),
      ("Domains and databases","A few hundred kroner a month","sundaysuite.app and the servers behind the web tools.")],
    "su_ways":"Want to chip in?",
+   "su_vipps_how":"Scan with your phone, or open Vipps and search #24288 or “Fossland Media”.",
+   "su_gh_soon":"GitHub Sponsors is on the way. Until then, get in touch:",
    "su_soon":"A Vipps number and GitHub Sponsors are on the way. Until they are ready, send an email and we will sort it out:",
-   "su_note":"Sunday Suite is run by one person, not a registered charity, so a gift is not tax-deductible. It goes to the costs above and nothing else.",
+   "su_note":"Payments go to Fossland Media, the sole proprietorship behind Sunday Suite — not a registered charity, so a gift is not tax-deductible. It goes to the costs above and nothing else.",
    "tb_kicker":"The toolbox","tb_title":"Eleven small web tools",
    "tb_lead":"Games and group activities for church and classroom. They run in the browser with nothing to install: open one on the big screen, and everyone joins from their phone.",
    "tb_note":"More are being built. Have an idea for one?",
@@ -227,8 +233,10 @@ HOME = {
      ("Cloudflare Workers","5 USD i måneden","Betalt nivå som klasseromsverktøyene trenger når en hel klasse er inne samtidig."),
      ("Domener og databaser","Noen hundre kroner i måneden","sundaysuite.app og serverne bak nettverktøyene.")],
    "su_ways":"Vil du bidra?",
+   "su_vipps_how":"Skann med mobilen, eller åpne Vipps og søk #24288 eller «Fossland Media».",
+   "su_gh_soon":"GitHub Sponsors er på vei. Send en e-post i mellomtiden:",
    "su_soon":"Vippsnummer og GitHub Sponsors er på vei. Til de er klare, send en e-post, så ordner vi det:",
-   "su_note":"Sunday Suite drives av én person, ikke en godkjent organisasjon, så en gave gir ikke skattefradrag. Den går til kostnadene over og ingenting annet.",
+   "su_note":"Betalinger går til Fossland Media, enkeltpersonforetaket bak Sunday Suite — ikke en godkjent organisasjon, så en gave gir ikke skattefradrag. Den går til kostnadene over og ingenting annet.",
    "tb_kicker":"Verktøykassa","tb_title":"Elleve små nettverktøy",
    "tb_lead":"Spill og gruppeaktiviteter for menighet og klasserom. De kjører i nettleseren uten installasjon: åpne ett på storskjermen, så blir alle med fra mobilen.",
    "tb_note":"Flere er under arbeid. Har du en idé til ett?",
@@ -601,11 +609,22 @@ def render_home(lang):
     costs="".join(f'      <div class="cost-row"><span class="cost-what">{w}</span>'
         f'<span class="cost-why">{why}</span><span class="cost-sum">{sum_}</span></div>\n'
         for w,sum_,why in h["su_costs"])
-    acts=[]
-    if SUPPORT.get("vipps"): acts.append(f'<a class="btn btn-primary" href="{SUPPORT["vipps"]}">Vipps</a>')
-    if SUPPORT.get("github_sponsors"): acts.append(f'<a class="btn btn-primary" href="{SUPPORT["github_sponsors"]}" target="_blank" rel="noopener">GitHub Sponsors</a>')
-    support_actions=(" ".join(acts) if acts
-        else f'{h["su_soon"]} <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a>')
+    vipps_block=""
+    if SUPPORT.get("vipps_number"):
+        vipps_block=(f'<div class="vipps-block">'
+          f'<img class="vipps-qr" src="{L["assets"]}vipps-qr.png" alt="Vipps QR code for {SUPPORT["vipps_name"]}, #{SUPPORT["vipps_number"]}" width="104" height="104" loading="lazy" />'
+          f'<div class="vipps-info"><strong>Vipps</strong><span class="vipps-num">#{SUPPORT["vipps_number"]} &middot; {SUPPORT["vipps_name"]}</span>'
+          f'<span class="vipps-how">{h["su_vipps_how"]}</span></div></div>')
+    gh_link=(f'<a class="btn btn-primary" href="{SUPPORT["github_sponsors"]}" target="_blank" rel="noopener">GitHub Sponsors</a>'
+        if SUPPORT.get("github_sponsors") else None)
+    if vipps_block and gh_link:
+        support_actions=vipps_block+f'<p style="margin-top:18px">{gh_link}</p>'
+    elif vipps_block:
+        support_actions=vipps_block+f'<p style="margin-top:18px">{h["su_gh_soon"]} <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a></p>'
+    elif gh_link:
+        support_actions=f'<p>{gh_link}</p>'
+    else:
+        support_actions=f'<p>{h["su_soon"]} <a href="mailto:dev@sundaysuite.app">dev@sundaysuite.app</a></p>' 
     avail=[s for s in SLUGS if STATUS[s]=="beta"]
     indev=[s for s in SLUGS if STATUS[s]=="build"]
     early=[s for s in SLUGS if STATUS[s]=="early"]
@@ -651,7 +670,7 @@ def render_home(lang):
 {costs}  </div>
   <div class="support-foot reveal">
     <h4>{h["su_ways"]}</h4>
-    <p>{support_actions}</p>
+    {support_actions}
     <p class="support-note">{h["su_note"]}</p>
   </div>
 </div></section>
