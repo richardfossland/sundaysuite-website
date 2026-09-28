@@ -45,6 +45,7 @@ retired copy comes back.
 build.py            program data, UI text, page templates, sitemap, _redirects
 legal.py            terms + privacy text (EN + NO)
 check_links.py      quality gate
+deploy.sh           build + check + deploy from a clean staging folder
 index.html          generated (NO)      en/index.html      generated (EN)
 apps/*.html         generated (NO)      en/apps/*.html     generated (EN)
 legal/*.html        generated (NO)      en/legal/*.html    generated (EN)

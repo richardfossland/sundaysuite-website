@@ -1,6 +1,7 @@
 build.py
 legal.py
 check_links.py
+deploy.sh
 DEPLOY.md
 README.md
 .assetsignore
@@ -9,3 +10,4 @@ README.md
 .wrangler
 .claude
 __pycache__
+.DS_Store
