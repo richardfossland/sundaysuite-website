@@ -85,6 +85,11 @@ footer a{ color:var(--text); }
 .vipps img{ width:120px; height:120px; flex:none; border-radius:6px; background:#fff; padding:6px; }
 @media (max-width:480px){ .vipps{ flex-direction:column; } }
 
+details.more{ margin-top:48px; }
+details.more summary{ cursor:pointer; font-size:15.5px; color:var(--muted); }
+details.more summary:hover{ color:var(--text); }
+details.more[open] summary{ margin-bottom:10px; }
+
 /* program pages */
 .back{ margin:28px 0 0; font-size:15px; }
 .back a{ color:var(--muted); }

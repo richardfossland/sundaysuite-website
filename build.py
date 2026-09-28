@@ -32,6 +32,9 @@ HTML_LANG = {"no": "nb", "en": "en"}
 # ----------------------------------------------------------------- programs
 # group: "download" (beta, direct download) · "web" (open in the browser) ·
 #        "dev" (in development).
+# parked: True moves the program out of the main lists into the collapsed
+#       "not a priority" section at the bottom of the front page. It keeps its
+#       page and its group's action (Open link, source link).
 # logo: True uses assets/logos/<slug>.svg; otherwise a flat tile in `color`
 #       with the `glyph` below.
 # testbuild: "aarch64" or "universal" — the /download/<slug>/{mac,windows}
@@ -65,7 +68,7 @@ PROGRAMS = [
                   "SundayRec is in beta. Test a few recordings before you rely on it for an important service."]}},
 
  # ---- web programs
- {"slug": "sundayinfo", "name": "SundayInfo", "group": "web", "logo": True,
+ {"slug": "sundayinfo", "parked": True, "name": "SundayInfo", "group": "web", "logo": True,
   "url": "https://info.sundaysuite.app",
   "no": {"line": "Infoskjerm for kirka. Viser gudstjenestetider, kunngjøringer, vær og et bibelvers på en TV.",
          "body": ["Skjermen kan være en TV med nettleser, en Chromecast, en PC eller en Raspberry Pi. Du kobler den til med en kode og redigerer innholdet fra mobil eller PC. Flere personer kan redigere.",
@@ -75,7 +78,7 @@ PROGRAMS = [
          "body": ["The screen can be a TV with a browser, a Chromecast, a PC or a Raspberry Pi. You connect it with a code and edit the content from a phone or computer. Several people can edit.",
                   "The look follows the church year. If the network drops, the screen keeps showing the latest content.",
                   "You sign in with a Sunday account."]}},
- {"slug": "sundaybooking", "name": "SundayBooking", "group": "web", "logo": True,
+ {"slug": "sundaybooking", "parked": True, "name": "SundayBooking", "group": "web", "logo": True,
   "url": "https://booking.sundaysuite.app",
   "no": {"line": "Booking av rom, utstyr og avtaler i menigheten, uten dobbeltbooking.",
          "body": ["Stab og frivillige booker rom og utstyr i en felles kalender. Kalenderen tillater ikke to bookinger på samme tid, heller ikke når det er satt av tid til rigging og rydding.",
@@ -85,7 +88,7 @@ PROGRAMS = [
          "body": ["Staff and volunteers book rooms and equipment in a shared calendar. The calendar does not allow two bookings at the same time, including the time set aside for setting up and clearing away.",
                   "People from outside can ask to rent through a link, without creating an account. Requests go into a queue that the staff approve or decline.",
                   "Each room's calendar can be subscribed to (ICS). You sign in with a Sunday account."]}},
- {"slug": "sundaywelcome", "name": "SundayWelcome", "group": "web", "glyph": "welcome", "color": "#C96A50",
+ {"slug": "sundaywelcome", "parked": True, "name": "SundayWelcome", "group": "web", "glyph": "welcome", "color": "#C96A50",
   "url": "https://welcome.sundaysuite.app",
   "no": {"line": "Digital velkomstlapp for nye besøkende, så menigheten kan følge dem opp.",
          "body": ["Den besøkende skanner en QR-kode, for eksempel på en lapp i benken eller på en skjerm, og fyller ut et kort skjema på sin egen mobil. Teamet i menigheten ser svarene og kan ta kontakt.",
@@ -213,17 +216,17 @@ PROGRAMS = [
   "en": {"line": "Interpretation of the service straight to people's phones, and clearer sound for the hard of hearing.",
          "body": ["An interpreter speaks into their phone, and listeners hear the interpretation in their own earphones, about a second behind. The same setup can send the room sound straight to the phones of people who hear poorly, and show subtitles.",
                   "Listeners join with a code or a QR code, with no app and no account. It will be a web program."]}},
- {"slug": "sundayplan", "name": "SundayPlan", "group": "dev", "logo": True,
+ {"slug": "sundayplan", "parked": True, "name": "SundayPlan", "group": "dev", "logo": True,
   "no": {"line": "Planlegging av gudstjenester og vaktlister for frivillige.",
          "body": ["Målet er å samle gudstjenesteplanen, rollene og de frivillige på ett sted, med forslag til en rettferdig vaktliste og påminnelser på SMS og e-post. Arbeidet er i en tidlig fase."]},
   "en": {"line": "Service planning and rotas for volunteers.",
          "body": ["The aim is to keep the service plan, the roles and the volunteers in one place, with suggestions for a fair rota and reminders by text message and email. The work is at an early stage."]}},
- {"slug": "sundaysong", "name": "SundaySong", "group": "dev", "logo": True,
+ {"slug": "sundaysong", "parked": True, "name": "SundaySong", "group": "dev", "logo": True,
   "no": {"line": "Sangdatabase med opplysningene som trengs til TONO og CCLI.",
          "body": ["Målet er en sangdatabase der du kan søke på tema og ikke bare tittel, og der hver sang har med opplysningene som trengs for rapportering til TONO og CCLI. Arbeidet er i en tidlig fase."]},
   "en": {"line": "A song database with the details needed for TONO and CCLI.",
          "body": ["The aim is a song database you can search by theme and not only by title, where each song carries the details needed for reporting to TONO and CCLI. The work is at an early stage."]}},
- {"slug": "sundaypaper", "name": "SundayPaper", "group": "dev", "logo": True,
+ {"slug": "sundaypaper", "parked": True, "name": "SundayPaper", "group": "dev", "logo": True,
   "no": {"line": "Verktøy for trykksaker som gudstjenesteprogram, menighetsblad og storskrift.",
          "body": ["Målet er et program for å lage gudstjenesteprogram, menighetsblad, storskriftutgaver og skjemaer, og for å dele skannede sangbøker opp i enkeltsanger. Arbeidet er i en tidlig fase."]},
   "en": {"line": "A tool for print, such as service programmes, parish magazines and large print.",
@@ -279,7 +282,11 @@ T = {
   "vipps_caption": f"Skann koden med mobilen, eller søk opp #{VIPPS['number']} i Vipps.",
   "terms": "Vilkår", "privacy": "Personvern",
   "legal_back": "← Til forsiden", "contents": "Innhold",
-  "status": {"download": "Beta", "web": "På nett", "dev": "Under utvikling"},
+  "status": {"download": "Beta", "web": "På nett", "dev": "Under utvikling", "parked": "Ikke prioritert"},
+  "parked_h": "Andre programmer (ikke prioritert)",
+  "parked_p": "Disse programmene er ikke prioritert for øyeblikket.",
+  "parked_web": "Kan brukes, men er ikke prioritert for øyeblikket.",
+  "parked_dev": "Ikke prioritert for øyeblikket.",
   "and": "og",
   "terms_desc": "Vilkår for bruk av Sunday Suite og sundaysuite.app.",
   "privacy_desc": "Personvernerklæring for Sunday Suite og sundaysuite.app.",
@@ -313,7 +320,11 @@ T = {
   "vipps_caption": f"Scan the code with your phone, or search for #{VIPPS['number']} in Vipps.",
   "terms": "Terms", "privacy": "Privacy",
   "legal_back": "← Front page", "contents": "Contents",
-  "status": {"download": "Beta", "web": "Online", "dev": "In development"},
+  "status": {"download": "Beta", "web": "Online", "dev": "In development", "parked": "Not a priority"},
+  "parked_h": "Other programs (not a priority)",
+  "parked_p": "These programs are not a priority at the moment.",
+  "parked_web": "Usable, but not a priority at the moment.",
+  "parked_dev": "Not a priority at the moment.",
   "and": "and",
   "terms_desc": "Terms of Use for Sunday Suite and sundaysuite.app.",
   "privacy_desc": "Privacy Policy for Sunday Suite and sundaysuite.app.",
@@ -436,7 +447,9 @@ def render_home(lang):
     rec = BY["sundayrec"]
     rec_page = link(path, page_path(lang, "apps/sundayrec"))
     sid = lambda k: f'<h2 id="{t[k][0]}">{t[k][1]}</h2>'
-    rows = lambda g: '<ul class="list">\n' + "\n".join(row(p, lang, path) for p in PROGRAMS if p["group"] == g) + "\n</ul>"
+    ul = lambda ps: '<ul class="list">\n' + "\n".join(row(p, lang, path) for p in ps) + "\n</ul>"
+    rows = lambda g: ul(p for p in PROGRAMS if p["group"] == g and not p.get("parked"))
+    parked = ul(p for g in GROUPS for p in PROGRAMS if p["group"] == g and p.get("parked"))
     support = "\n".join(f"<p>{s}</p>" for s in t["support"])
     main = f'''<h1>{t["h1"]}</h1>
 <p class="intro">{t["intro"]}</p>
@@ -467,7 +480,13 @@ def render_home(lang):
 {support}
 <p class="small">{t["vipps_caption"]}</p>
 </div></div>
-</section>'''
+</section>
+
+<details class="more">
+<summary>{t["parked_h"]}</summary>
+<p class="small">{t["parked_p"]}</p>
+{parked}
+</details>'''
     return shell(lang, path, t["home_title"], t["home_desc"], main, script=True)
 
 def render_program(lang, p):
@@ -478,7 +497,9 @@ def render_program(lang, p):
     tag = f' <span class="tag">{t["beta"]}</span>' if p["group"] == "download" else ""
     parts = [f'<p class="back"><a href="{home}">{t["back"]}</a></p>',
              f'<div class="phead">{icon(p, path)}<div><h1>{p["name"]}{tag}</h1><p class="line">{d["line"]}</p></div></div>']
-    if p["group"] == "dev":
+    if p.get("parked"):
+        parts.append(f'<p class="status">{t["parked_" + p["group"]]}</p>')
+    elif p["group"] == "dev":
         parts.append(f'<p class="status">{t["dev_status"]}</p>')
     parts.append(blocks(d["body"], path, lang))
     source = (f'<a href="https://github.com/{p["repo"]}">{t["source"]}</a>' if p.get("repo") else "")
@@ -509,8 +530,10 @@ def render_program(lang, p):
 def render_legal(lang, doc):
     t = T[lang]
     path = page_path(lang, "legal/" + doc)
-    rows = "".join(f'<tr><td>{p["name"]}</td><td>{p[lang]["line"]}</td><td>{t["status"][p["group"]]}</td></tr>'
-                   for g in GROUPS for p in PROGRAMS if p["group"] == g)
+    ordered = ([p for g in GROUPS for p in PROGRAMS if p["group"] == g and not p.get("parked")]
+               + [p for g in GROUPS for p in PROGRAMS if p["group"] == g and p.get("parked")])
+    rows = "".join(f'<tr><td>{p["name"]}</td><td>{p[lang]["line"]}</td>'
+                   f'<td>{t["status"]["parked" if p.get("parked") else p["group"]]}</td></tr>' for p in ordered)
     names = [p["name"] for p in PROGRAMS]
     names = ", ".join(names[:-1]) + f' {t["and"]} ' + names[-1]
     fn = {("terms", "en"): lambda: legal.terms_en(rows, names), ("terms", "no"): lambda: legal.terms_no(rows, names),

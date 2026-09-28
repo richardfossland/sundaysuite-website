@@ -9,8 +9,8 @@ Norwegian at the root and English under `/en/`, deployed on Cloudflare Pages.
 ## What is on it
 
 - **Front page** — SundayRec (the only downloadable beta), the web programs
-  (open in the browser) and the programs in development, plus a short support
-  note with Vipps.
+  (open in the browser), the programs in development, a short support note
+  with Vipps, and a collapsed list of programs that are not a priority.
 - **One short page per program** (23) under `/apps/<slug>`.
 - **Terms and privacy** under `/legal/`.
 - **404 page**.
@@ -23,6 +23,10 @@ Status lives in one place, the `group` field of each entry in `PROGRAMS` in
 | `download` | Beta | download buttons (SundayRec) |
 | `web` | no label | “Open” link to the app |
 | `dev` | In development | quiet test-build link where `testbuild` is set, source link where `repo` is set |
+
+`parked: True` moves a program out of the main lists into a collapsed
+“not a priority” section at the bottom of the front page (currently Info,
+Booking, Welcome, Plan, Song and Paper). It keeps its page and its group's action.
 
 ## Building
 
