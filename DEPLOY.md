@@ -1,30 +1,14 @@
-# Sunday Suite — deploy notes
+# Deploy
 
-Static site. English at root (primary), Norwegian under `/no/`, shared assets in `/assets/`.
-Regenerate the HTML from content with:
+Cloudflare Pages project **sundaysuite**; custom domains sundaysuite.app, www,
+and sundayrec.com (redirected by `functions/_middleware.js`).
 
 ```
-python3 build.py
+python3 build.py && python3 check_links.py
+npx wrangler pages deploy . --project-name sundaysuite --branch main
 ```
 
-## Deploy to Cloudflare Pages
-
-Project name: **sundaysuite**
-
-1. Authenticate (one-time, opens a browser):
-   ```
-   npx wrangler login
-   ```
-2. Deploy the current folder:
-   ```
-   npx wrangler pages deploy . --project-name sundaysuite --branch main
-   ```
-   `--branch main` targets the production branch, so the deploy goes straight to
-   the live custom domains. The first deploy creates the project. `.assetsignore`
-   keeps `build.py` and these notes out of the upload.
-
-3. Attach the custom domain `sundaysuite.app`:
-   - Cloudflare dashboard → Workers & Pages → **sundaysuite** → Custom domains → *Set up a custom domain* → `sundaysuite.app` (and `www.sundaysuite.app`).
-   - This requires the `sundaysuite.app` zone to be in the same Cloudflare account (nameservers pointed at Cloudflare). Pages adds the CNAME automatically.
-
-Subsequent deploys: just rerun step 2.
+`--branch main` is the production branch, so this goes straight to the live
+domains. `.assetsignore` keeps the Python files and these notes out of the
+upload. Allow about a minute for the new version to reach every edge before
+checking it.

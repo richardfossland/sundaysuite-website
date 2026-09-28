@@ -1,8 +1,11 @@
 build.py
+legal.py
+check_links.py
 DEPLOY.md
 README.md
 .assetsignore
 .git
 .gitignore
 .wrangler
-check_links.py
+.claude
+__pycache__
