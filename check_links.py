@@ -25,6 +25,7 @@ ALLOWED_ABSOLUTE = ("/download/",)
 SKIP_DIRS = {".git", "functions", ".wrangler", "node_modules", ".claude"}
 
 BANNED = [
+    ("Sunday Suite", "the name is written SundaySuite, one word"),
     # retired copy from the old marketing site
     ("ten times faster", "retired marketing copy"),
     ("ti ganger raskere", "retired marketing copy (NO)"),

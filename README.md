@@ -1,6 +1,6 @@
 # sundaysuite.app
 
-A plain site for getting hold of the Sunday Suite programs. Static HTML,
+A plain site for getting hold of the SundaySuite programs. Static HTML,
 Norwegian at the root and English under `/en/`, deployed on Cloudflare Pages.
 
 - Live: https://sundaysuite.app (Norwegian) · https://sundaysuite.app/en/ (English)

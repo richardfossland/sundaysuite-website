@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Sunday Suite — static site generator for sundaysuite.app.
+"""SundaySuite — static site generator for sundaysuite.app.
 
 Norwegian at the site root, English under /en/. Standard library only:
 
@@ -270,10 +270,10 @@ CROSS = '<svg class="cross" viewBox="0 0 20 26" aria-hidden="true"><path d="M8 0
 T = {
  "no": {
   "other_label": "English", "other_lang": "en",
-  "home_title": "Sunday Suite — programmer for kirke og klasserom",
+  "home_title": "SundaySuite — programmer for kirke og klasserom",
   "home_desc": "Gratis programmer for kirke og klasserom, med åpen kildekode. Last ned SundayRec, eller åpne nettprogrammene i nettleseren.",
   "h1": "Programmer for kirke og klasserom",
-  "intro": (f'Sunday Suite er gratis programmer for menigheter og skoler, laget i Norge. Kildekoden ligger på <a href="{GITHUB_ORG}">GitHub</a>. '
+  "intro": (f'SundaySuite er gratis programmer for menigheter og skoler, laget i Norge. Kildekoden ligger på <a href="{GITHUB_ORG}">GitHub</a>. '
             f'Har du spørsmål, har du funnet en feil eller ønsker du deg noe, kan du skrive til <a href="mailto:{EMAIL}">{EMAIL}</a>.'),
   "h_download": ("last-ned", "Last ned"), "h_web": ("nettprogrammer", "Nettprogrammer"),
   "h_dev": ("under-utvikling", "Under utvikling"), "h_support": ("stotte", "Støtte"),
@@ -292,7 +292,7 @@ T = {
   "install_mac": "<strong>Mac:</strong> krever Apple Silicon (M1 eller nyere). Programmet er signert, men ikke notarisert ennå. Første gang du starter det, må du derfor høyreklikke på programmet og velge Åpne.",
   "install_win": "<strong>Windows:</strong> første gang kan Windows vise et SmartScreen-varsel. Velg Mer info og deretter Kjør likevel.",
   "support": [f"Programmene er gratis. Det koster likevel penger å drive dem: servere, domener og sertifikater for å signere programmene. Vil du bidra til det, kan du vippse til #{VIPPS['number']} ({VIPPS['name']}).",
-              f"{VIPPS['name']} er enkeltpersonforetaket som står bak Sunday Suite. Det er ikke en veldedig organisasjon, så gaver gir ikke skattefradrag."],
+              f"{VIPPS['name']} er enkeltpersonforetaket som står bak SundaySuite. Det er ikke en veldedig organisasjon, så gaver gir ikke skattefradrag."],
   "vipps_alt": f"QR-kode for Vipps til #{VIPPS['number']} {VIPPS['name']}",
   "vipps_caption": f"Skann koden med mobilen, eller søk opp #{VIPPS['number']} i Vipps.",
   "terms": "Vilkår", "privacy": "Personvern",
@@ -303,15 +303,15 @@ T = {
   "parked_web": "Kan brukes, men er ikke prioritert for øyeblikket.",
   "parked_dev": "Ikke prioritert for øyeblikket.",
   "and": "og",
-  "terms_desc": "Vilkår for bruk av Sunday Suite og sundaysuite.app.",
-  "privacy_desc": "Personvernerklæring for Sunday Suite og sundaysuite.app.",
+  "terms_desc": "Vilkår for bruk av SundaySuite og sundaysuite.app.",
+  "privacy_desc": "Personvernerklæring for SundaySuite og sundaysuite.app.",
  },
  "en": {
   "other_label": "Norsk", "other_lang": "nb",
-  "home_title": "Sunday Suite — software for church and classroom",
+  "home_title": "SundaySuite — software for church and classroom",
   "home_desc": "Free, open-source programs for church and classroom. Download SundayRec, or open the web programs in your browser.",
   "h1": "Software for church and classroom",
-  "intro": (f'Sunday Suite is a set of free programs for churches and schools, made in Norway. The source code is on <a href="{GITHUB_ORG}">GitHub</a>. '
+  "intro": (f'SundaySuite is a set of free programs for churches and schools, made in Norway. The source code is on <a href="{GITHUB_ORG}">GitHub</a>. '
             f'Questions, bug reports and requests go to <a href="mailto:{EMAIL}">{EMAIL}</a>.'),
   "h_download": ("download", "Download"), "h_web": ("web", "Web programs"),
   "h_dev": ("in-development", "In development"), "h_support": ("support", "Support"),
@@ -330,7 +330,7 @@ T = {
   "install_mac": "<strong>Mac:</strong> needs Apple Silicon (M1 or newer). The app is signed but not notarized yet, so the first time you open it, right-click the app and choose Open.",
   "install_win": "<strong>Windows:</strong> the first time, Windows may show a SmartScreen warning. Choose More info, then Run anyway.",
   "support": [f"The programs are free. Running them still costs money: servers, domains and certificates for signing the apps. If you would like to help with that, you can send a Vipps payment to #{VIPPS['number']} ({VIPPS['name']}). Vipps needs a Norwegian bank account; from abroad, write to <a href=\"mailto:{EMAIL}\">{EMAIL}</a>.",
-              f"{VIPPS['name']} is the sole proprietorship behind Sunday Suite. It is not a charity, so gifts are not tax-deductible."],
+              f"{VIPPS['name']} is the sole proprietorship behind SundaySuite. It is not a charity, so gifts are not tax-deductible."],
   "vipps_alt": f"Vipps QR code for #{VIPPS['number']} {VIPPS['name']}",
   "vipps_caption": f"Scan the code with your phone, or search for #{VIPPS['number']} in Vipps.",
   "terms": "Terms", "privacy": "Privacy",
@@ -341,8 +341,8 @@ T = {
   "parked_web": "Usable, but not a priority at the moment.",
   "parked_dev": "Not a priority at the moment.",
   "and": "and",
-  "terms_desc": "Terms of Use for Sunday Suite and sundaysuite.app.",
-  "privacy_desc": "Privacy Policy for Sunday Suite and sundaysuite.app.",
+  "terms_desc": "Terms of Use for SundaySuite and sundaysuite.app.",
+  "privacy_desc": "Privacy Policy for SundaySuite and sundaysuite.app.",
  },
 }
 
@@ -425,13 +425,13 @@ def shell(lang, path, title, desc, main, script=False):
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{url(path)}">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Sunday Suite">
+<meta property="og:site_name" content="SundaySuite">
 <link rel="icon" href="{asset(path, "favicon.svg")}" type="image/svg+xml">
 <link rel="stylesheet" href="{asset(path, "site.css")}">
 </head>
 <body>
 <header class="top"><div class="wrap">
-<a class="brand" href="{home}">{CROSS}Sunday Suite</a>
+<a class="brand" href="{home}">{CROSS}SundaySuite</a>
 <a class="lang" href="{link(path, other)}" hreflang="{t["other_lang"]}" lang="{t["other_lang"]}">{t["other_label"]}</a>
 </div></header>
 <main class="wrap">
@@ -539,7 +539,7 @@ def render_program(lang, p):
             extra.append(source)
         if extra:
             parts.append(f'<p class="small">{" ".join(extra)}</p>')
-    title = f'{p["name"]} — Sunday Suite'
+    title = f'{p["name"]} — SundaySuite'
     return shell(lang, path, title, plain(d["line"]), "\n".join(parts), script=(p["group"] == "download"))
 
 def render_legal(lang, doc):
@@ -565,7 +565,7 @@ def render_legal(lang, doc):
 <nav class="toc" aria-label="{t["contents"]}"><ol>{toc}</ol></nav>
 {prose}
 </article>'''
-    return shell(lang, path, f"{title} — Sunday Suite", t[doc + "_desc"], main)
+    return shell(lang, path, f"{title} — SundaySuite", t[doc + "_desc"], main)
 
 def render_404():
     # Served by Pages for any unknown path at any depth, so links are absolute.
@@ -574,14 +574,14 @@ def render_404():
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fant ikke siden — Sunday Suite</title>
+<title>Fant ikke siden — SundaySuite</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
 <header class="top"><div class="wrap">
-<a class="brand" href="/">{CROSS}Sunday Suite</a>
+<a class="brand" href="/">{CROSS}SundaySuite</a>
 <a class="lang" href="/en/" hreflang="en" lang="en">English</a>
 </div></header>
 <main class="wrap">

@@ -1,4 +1,4 @@
-// Sunday Suite — shows the newest release next to the SundayRec download
+// SundaySuite — shows the newest release next to the SundayRec download
 // links. Progressive enhancement: the page works the same without it.
 (function () {
   var slot = document.querySelector('[data-app-version]');
